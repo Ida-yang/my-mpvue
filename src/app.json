@@ -9,6 +9,7 @@
     "pages/mine/main",
     "pages/logs/main",
     "pages/clue/main",
+    "pages/clue/clueAdd/main",
     "pages/customer/main",
     "pages/contact/main"
   ],

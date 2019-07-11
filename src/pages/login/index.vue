@@ -1,11 +1,11 @@
 <template>
     <div>
-        <i-panel class="loginPanel" :title="current"></i-panel>
-        <i-panel class="loginPanel" title="欢迎您登录">
-            <i-input v-model="account" type="text" maxlength="11" title="登录账号" mode="wrapped" class="loginInput" @input="handinput($event,1)" />
-            <i-input v-model="password" type="password" maxlength="16" title="登录密码" mode="wrapped" class="loginInput" @input="handinput($event,2)" />
-        </i-panel>
-        <i-button @click="toLogin" type="ghost">登录</i-button>
+        <i-panel i-class="loginLabel" :title="current"></i-panel>
+        <i-panel i-class="loginWelcome" title="欢迎您登录"></i-panel>
+            <i-input v-model="account" type="text" maxlength="11" title="登录账号" mode="wrapped" i-class="loginInput" @input="handinput($event,1)" />
+            <i-input v-model="password" type="password" maxlength="16" title="登录密码" mode="wrapped" i-class="loginInput" @input="handinput($event,2)" />
+        
+        <i-button @click="toLogin" type="ghost" i-class="loginSubmit">登录</i-button>
 
         <i-message id="message" />
         
@@ -79,34 +79,47 @@
             },
         },
         created() {
-    console.log('page index created', this)
-  },
-  mounted() {
-    console.log('mounted', this)
-  },
-  onLoad() {
-    console.log('page index onLoad', this)
-  },
-  onReady () {
-    console.log('page index onReady', this)
-  },
-  onShow() {
-    console.log('onShow', this)
-  },
-  onUnload() {
-    console.log('onUnload', this)
-  },
-  onHide() {
-    console.log('onHide', this)
-  },
+            console.log('page index created', this)
+        },
+        mounted() {
+            console.log('mounted', this)
+        },
+        onLoad() {
+            console.log('page index onLoad', this)
+        },
+        onReady () {
+            console.log('page index onReady', this)
+        },
+        onShow() {
+            console.log('onShow', this)
+        },
+        onUnload() {
+            console.log('onUnload', this)
+        },
+        onHide() {
+            console.log('onHide', this)
+        },
     }
 </script>
 
-<style scoped>
-    .loginPanel{
+<style>
+    .loginLabel{
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .loginWelcome{
+        font-size: 16px
+    }
+    .loginLabel,.loginWelcome{
         text-align: center;
     }
     .loginInput{
-        text-align: left;
+        /* text-align: left; */
+        width: 250px;
+        margin: 10px auto !important;
+    }
+    .loginSubmit{
+        width: 280px;
+        margin: 10px auto !important;
     }
 </style>

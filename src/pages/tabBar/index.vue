@@ -123,6 +123,7 @@
             toggleRight(){
                 this.showRight = !this.showRight
             },
+            
             changePage (val) {
                 const type = val.target.type;
                 if (type === 'next') {
@@ -133,11 +134,11 @@
             },
 
             onShareAppMessage() {
-            return {
-                title: 'iView Weapp',
-                imageUrl: 'https://file.iviewui.com/iview-weapp-logo.png'
-            };
-        },
+                return {
+                    title: 'iView Weapp',
+                    imageUrl: 'https://file.iviewui.com/iview-weapp-logo.png'
+                };
+            },
 
             handleOpen1 () {
                 this.actionSheet1 = true
