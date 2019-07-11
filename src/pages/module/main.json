@@ -1,0 +1,13 @@
+{
+    "navigationBarTitleText": "功能模块",
+    "usingComponents": {
+      "i-panel": "../../iview/panel/index",
+      "i-grid": "../../iview/grid/index",
+      "i-grid-item": "../../iview/grid-item/index",
+      "i-grid-icon": "../../iview/grid-icon/index",
+      "i-grid-label": "../../iview/grid-label/index",
+      "i-row": "../../iview/row/index",
+      "i-icon": "../../iview/icon/index"
+    }
+}
+  

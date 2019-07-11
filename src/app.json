@@ -1,0 +1,82 @@
+{
+  "pages": [
+    "pages/login/main",
+    "pages/tabBar/main",
+    "pages/index/main",
+    "pages/order/main",
+    "pages/module/main",
+    "pages/approval/main",
+    "pages/mine/main",
+    "pages/logs/main",
+    "pages/clue/main",
+    "pages/customer/main",
+    "pages/contact/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#343f53",
+    "backgroundColor": "#ffffff",
+    "selectedColor": "#ff6333",
+    "borderStyle": "white",
+
+    "list": [{
+      "text": "首页",
+      "pagePath": "pages/index/main",
+      "iconPath": "static/tabs/01-1.png",
+      "selectedIconPath": "static/tabs/01-2.png"
+    }, {
+      "text": "订单",
+      "pagePath": "pages/order/main",
+      "iconPath": "static/tabs/02-1.png",
+      "selectedIconPath": "static/tabs/02-2.png"
+    }, {
+      "text": "功能",
+      "pagePath": "pages/module/main",
+      "iconPath": "static/tabs/03-1.png",
+      "selectedIconPath": "static/tabs/03-2.png"
+    }, {
+      "text": "审批",
+      "pagePath": "pages/approval/main",
+      "iconPath": "static/tabs/04-1.png",
+      "selectedIconPath": "static/tabs/04-2.png"
+    }, {
+      "text": "我的",
+      "pagePath": "pages/mine/main",
+      "iconPath": "static/tabs/05-1.png",
+      "selectedIconPath": "static/tabs/05-2.png"
+    }],
+
+    "items": [{
+      "name": "首页",
+      "pagePath": "pages/index/main",
+      "icon": "static/tabs/01-1.png",
+      "activeIcon": "static/tabs/01-2.png"
+    }, {
+      "name": "订单",
+      "pagePath": "pages/order/main",
+      "icon": "static/tabs/02-1.png",
+      "activeIcon": "static/tabs/02-2.png"
+    }, {
+      "name": "功能",
+      "pagePath": "pages/module/main",
+      "icon": "static/tabs/03-1.png",
+      "activeIcon": "static/tabs/03-2.png"
+    }, {
+      "name": "审批",
+      "pagePath": "pages/approval/main",
+      "icon": "static/tabs/04-1.png",
+      "activeIcon": "static/tabs/04-2.png"
+    }, {
+      "name": "我的",
+      "pagePath": "pages/mine/main",
+      "icon": "static/tabs/05-1.png",
+      "activeIcon": "static/tabs/05-2.png"
+    }],
+    "position": "bottom"
+  }
+}

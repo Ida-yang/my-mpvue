@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "欢迎登录",
+    "usingComponents": {
+      "i-button": "../../iview/button/index",
+      "i-panel": "../../iview/panel/index",
+      "i-input": "../../iview/input/index",
+      "i-message": "../../iview/message/index"
+    }
+}

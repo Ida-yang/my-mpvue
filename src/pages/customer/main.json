@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "客户",
+    "usingComponents": {
+      "i-panel": "../../iview/panel/index"
+    }
+}

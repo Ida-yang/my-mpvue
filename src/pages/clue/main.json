@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "线索",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "i-panel": "../../iview/panel/index",
+    "i-card": "../../iview/card/index",
+    "i-load-more": "../../iview/load-more/index"
+  }
+}

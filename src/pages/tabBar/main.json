@@ -1,0 +1,17 @@
+{
+    "navigationBarTitleText": "登录页",
+    "usingComponents": {
+      "i-tab-bar": "../../iview/tab-bar/index",
+      "i-tab-bar-item": "../../iview/tab-bar-item/index",
+      "i-panel": "../../iview/panel/index",
+      "i-button": "../../iview/button/index",
+      "i-toast": "../../iview/toast/index",
+      "i-message": "../../iview/message/index",
+      "i-drawer": "../../iview/drawer/index",
+      "i-page": "../../iview/page/index",
+      "i-action-sheet": "../../iview/action-sheet/index",
+      "i-notice-bar": "../../iview/notice-bar/index",
+      "i-modal": "../../iview/modal/index"
+    }
+  }
+  
