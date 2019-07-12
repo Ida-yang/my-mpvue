@@ -10,6 +10,8 @@
     "pages/logs/main",
     "pages/clue/main",
     "pages/clue/clueAdd/main",
+    "pages/clue/clueUpdate/main",
+    "pages/clue/clueDetail/main",
     "pages/customer/main",
     "pages/contact/main"
   ],

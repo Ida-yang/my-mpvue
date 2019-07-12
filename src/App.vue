@@ -49,7 +49,7 @@
   }
 
   /* ------查询组件样式------- */
-  .searchView{
+  .search_view{
     height: 40px;
     background-color: #f0f0f0;
     padding: 0 10px;
@@ -57,7 +57,7 @@
     display: flex;
     align-items: center;
   }
-  .searchBox{
+  .search_box{
     height: 30px;
     line-height: 30px;
     background-color: #ffffff;
@@ -68,38 +68,39 @@
     display: flex;
     align-items: center
   }
-  .searchIcon{
+  .search_icon{
     display: inherit;
+    border-radius: 5px;
     flex: 0;
   }
-  .searchInput{
+  .search_input{
     flex: 1;
-    width: 250px;
+    width: 240px;
     height: 25px;
     line-height: 25px;
     padding: 2px 8px !important;
     background-color: #ffffff00
   }
-  .searchBtn{
+  .search_btn{
     font-size: 14px;
     color: #62a072;
     line-height: 30px;
     margin: 0 10px;
   }
-  .searchContainer{
+  .search_container{
     width: 100%;
     height: 100%;
     background-color: #f7f7f7;
     font-size: 13px;
   }
-  .queryView{
+  .query_view{
     padding: 5px;
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
     position: relative
   }
-  .queryLabel{
+  .query_label{
     font-size: 14px;
   }
   .queryBtn{
@@ -115,16 +116,55 @@
     color: #ff5722;
     border: 1rpx solid #ff5722;
   }
-  .resetBtn{
+  .reset_btn{
     position: absolute;
     bottom: 0;
     width: 100%;
     font-size: 13px;
   }
 
-  .bottomBtn{
+  /* 跟进记录 */
+  
+  .follow_content{
+    font-size: 12px;
+    line-height: 24px;
+  }
+  .contact_span1{
+    color: #80848f;
+  }
+  .contact_span2{
+    color: #919191;
+  }
+  .contact_way{
+    display: inline-block;
+    width: 40px;
+    height: 18px;
+    line-height: 18px;
+    background-color: #80848f;
+    color: #ffffff;
+    border-radius: 9px;
+    text-align: center;
+  }
+  .bottom_List{
+    margin: 5px 15px;
+    position: fixed;
+    bottom: 0;
+  }
+  .nomargin_btn{
+    margin: 0 !important;
+  }
+
+  .bottom_btn{
     position: fixed;
     bottom: 0;
     width: 100%;
+  }
+  .request_tip{
+    margin: 15px;
+    font-size: 12px;
+    color: #80848f;
+  }
+  .font_size_12{
+    font-size: 12px;
   }
 </style>

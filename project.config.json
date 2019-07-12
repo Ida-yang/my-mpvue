@@ -38,7 +38,7 @@
 				{
 					"id": 0,
 					"name": "单页调试",
-					"pathName": "pages/clue/clueAdd/main",
+					"pathName": "pages/clue/clueDetail/main",
 					"query": "",
 					"scene": null
 				}

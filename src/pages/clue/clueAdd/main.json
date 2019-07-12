@@ -1,13 +1,12 @@
 {
-    "navigationBarTitleText": "新增线索",
-    "enablePullDownRefresh": true,
-    "backgroundTextStyle": "dark",
-    "usingComponents": {
-      "i-panel": "../../../iview/panel/index",
-      "i-icon": "../../../iview/icon/index",
-      "i-input": "../../../iview/input/index",
-      "i-button": "../../../iview/button/index",
-      "i-action-sheet": "../../../iview/action-sheet/index",
-      "i-message": "../../../iview/message/index"
-    }
+  "navigationBarTitleText": "新增线索",
+  "usingComponents": {
+    "i-panel": "../../../iview/panel/index",
+    "i-icon": "../../../iview/icon/index",
+    "i-input": "../../../iview/input/index",
+    "i-button": "../../../iview/button/index",
+    "i-action-sheet": "../../../iview/action-sheet/index",
+    "i-message": "../../../iview/message/index",
+    "i-toast": "../../../iview/toast/index"
   }
+}

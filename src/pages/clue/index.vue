@@ -1,57 +1,81 @@
 <template>
-    <div class="clueContainer">
+    <div class="clue_wrap">
         <!-- 线索 -->
          <!-- 查询 -->
-        <view class="searchView">
-            <view class="searchBox">
-                <i-icon type="search" size="14" color="#80848f" class="searchIcon" />
-                <i-input v-model="searchList.searchName" maxlength="50" i-class="searchInput" @input="handleInput($event,1)" />
-                <i-icon v-if="isValue" type="close" size="14" color="#80848f" class="searchIcon" @click="closeSearch" />
+        <view class="search_view">
+            <view class="search_box">
+                <i-icon type="search" size="16" color="#80848f" class="search_icon" />
+                <i-input v-model="searchList.searchName" maxlength="50" i-class="search_input" @input="handleInput($event,1)" />
+                <i-icon v-if="isValue" type="close" size="14" color="#80848f" class="search_icon" @click="closeSearch" />
             </view>
-            <span class="searchBtn" @click="search">搜索</span>
-            <i-icon type="other" size="16" color="#80848f" class="searchIcon" @click="queryCriteria" />
+            <span class="search_btn" @click="search">搜索</span>
+            <i-icon type="other" size="18" color="#80848f" class="search_icon" @click="queryCriteria" />
         </view>
         <i-drawer mode="right" :visible="searchCriteria" @close="queryCriteria">
-            <view class="searchContainer">
-                <i-panel title="线索状态" i-class="queryLabel">
-                    <view class="queryView">
+            <view class="search_container">
+                <i-panel title="线索状态" i-class="query_label">
+                    <view class="query_view">
                         <span class="queryBtn" :class="[index == stateActive ? 'isActive':'']" v-for="(item,index) in stateList" :key="item.id" @click="checkCriteria(item,index,1)">{{item.typeName}}</span>
                     </view>
                 </i-panel>
-                <i-panel title="线索来源" i-class="queryLabel">
-                    <view class="queryView">
+                <i-panel title="线索来源" i-class="query_label">
+                    <view class="query_view">
                         <span class="queryBtn" :class="[index == originActive ? 'isActive':'']" v-for="(item,index) in originList" :key="item.id" @click="checkCriteria(item,index,2)">{{item.typeName}}</span>
                     </view>
                 </i-panel>
-                <i-panel title="数据授权" i-class="queryLabel">
-                    <view class="queryView">
+                <i-panel title="数据授权" i-class="query_label">
+                    <view class="query_view">
                         <span class="queryBtn" :class="[index == powerActive ? 'isActive':'']" v-for="(item,index) in powerList" :key="item.label" @click="checkCriteria(item,index,3)">{{item.name}}</span>
                     </view>
                 </i-panel>
-                <i-panel title="新增时间" i-class="queryLabel">
-                    <view class="queryView">
+                <i-panel title="新增时间" i-class="query_label">
+                    <view class="query_view">
                         <span class="queryBtn" :class="[index == timeActive ? 'isActive':'']" v-for="(item,index) in timeList" :key="item.label" @click="checkCriteria(item,index,4)">{{item.name}}</span>
                     </view>
                 </i-panel>
-                <i-button @click="reSet" type="ghost" size="mini" long="true" class="resetBtn">重置</i-button>
+                <i-button @click="reSet" type="ghost" size="mini" long="true" class="reset_btn">重置</i-button>
             </view>
         </i-drawer>
 
         <!-- 列表 -->
-        <i-card v-for="item in tableData" :key="item.id" :title="item.name" :full="true" class="clueCard">
-            <view slot="content" class="clueContent">{{item.address || '无'}}</view>
-            <view slot="footer" class="clueFooter">
+        <!-- <i-card v-for="item in tableData" :key="item.id" :title="item.name" :full="true" class="clueCard">
+            <view slot="content" class="clue_content">{{item.address || '无'}}</view>
+            <view slot="footer" class="clue_footer">
                 {{'负责人：' + item.privateUser[0].private_employee}}
                 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                 {{'状态：' + item.state}}
                 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                 {{'未联系天数：' + item.dayNum}}
             </view>
-        </i-card>
+        </i-card> -->
+        
+        
+        <i-swipeout  i-class="i-swipeout-demo-item" :operateWidth="60" v-for="item in tableData" :key="item.id">
+            <view slot="content" @click="toClueDetail($event,item)">
+                <i-cell 
+                    i-class="clue_content" 
+                    :title="item.name" 
+                    :label="item.address || '无'">
+                    <view class="clue_footer">
+                        {{'负责人：' + item.privateUser[0].private_employee}}
+                        &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                        {{'状态：' + item.state}}
+                        &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                        {{'未联系天数：' + item.dayNum}}
+                    </view>
+                </i-cell>
+            </view>
+            <view slot="button" class="i-swipeout-demo-button-group">
+                <view class="i-swipeout-demo-button" style="width:60px;" @click="toUpdateClue($event,item)">
+                    <i-icon size="24" type="editor" style="line-height:89px;margin-left:18px;color:#80848f"></i-icon>
+                </view>
+            </view>
+        </i-swipeout>
+
         <i-load-more v-if="noMore" tip="我是有底线的" :loading="false" />
 
         <!-- 新增 -->
-        <i-button @click="toAddClue" type="ghost" size="small" long="true" class="bottomBtn">新增</i-button>
+        <i-button @click="toAddClue" type="ghost" :long="true" class="bottom_btn">新增</i-button>
     </div>
 </template>
 
@@ -241,25 +265,33 @@
                 this.loadData()
             },
             toAddClue(){
-                console.log('去线索')
                 const url = 'clueAdd/main'
                 mpvue.navigateTo({ url })
             },
+            toUpdateClue(e,val){
+                const url = 'clueUpdate/main'
+                config.information.clueupdateData = val
+                mpvue.navigateTo({ url })
+            },
+            toClueDetail(e,val){
+                const url = 'clueDetail/main'
+                config.information.clueDetailData = val
+                mpvue.navigateTo({ url })
+            }
         },
     }
 </script>
 
 <style>
-    .clueContainer{
+    .clue_wrap{
         margin-bottom: 40px;
     }
-    .clueContent{
-        font-size: 12px;
-        color: #80848f
+    .clue_content{
+        padding: 0 !important;
     }
-    .clueFooter{
+    .clue_footer{
         font-size: 11px;
-        color: #80848fc4;
-        padding-bottom: 8px;
+        color: #80848f8e;
+        padding-top: 5px;
     }
 </style>

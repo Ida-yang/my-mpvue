@@ -1,11 +1,11 @@
 <template>
     <div>
-        <i-panel i-class="loginLabel" :title="current"></i-panel>
-        <i-panel i-class="loginWelcome" title="欢迎您登录"></i-panel>
-            <i-input v-model="account" type="text" maxlength="11" title="登录账号" mode="wrapped" i-class="loginInput" @input="handinput($event,1)" />
-            <i-input v-model="password" type="password" maxlength="16" title="登录密码" mode="wrapped" i-class="loginInput" @input="handinput($event,2)" />
+        <i-panel i-class="login_label" :title="current"></i-panel>
+        <i-panel i-class="login_welcome" title="欢迎您登录"></i-panel>
+            <i-input v-model="account" type="text" maxlength="11" title="登录账号" mode="wrapped" i-class="login_input" @input="handinput($event,1)" />
+            <i-input v-model="password" type="password" maxlength="16" title="登录密码" mode="wrapped" i-class="login_input" @input="handinput($event,2)" />
         
-        <i-button @click="toLogin" type="ghost" i-class="loginSubmit">登录</i-button>
+        <i-button @click="toLogin" type="ghost" i-class="login_submit">登录</i-button>
 
         <i-message id="message" />
         
@@ -103,22 +103,22 @@
 </script>
 
 <style>
-    .loginLabel{
+    .login_label{
         font-weight: bold;
         font-size: 18px;
     }
-    .loginWelcome{
+    .login_welcome{
         font-size: 16px
     }
-    .loginLabel,.loginWelcome{
+    .login_label,.login_welcome{
         text-align: center;
     }
-    .loginInput{
+    .login_input{
         /* text-align: left; */
         width: 250px;
         margin: 10px auto !important;
     }
-    .loginSubmit{
+    .login_submit{
         width: 280px;
         margin: 10px auto !important;
     }
