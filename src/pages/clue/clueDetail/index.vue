@@ -46,6 +46,11 @@
             </i-cell-group>
         </view>
 
+        <!-- 新增 -->
+        <i-button @click="moreOptions" type="ghost" :long="true" class="bottom_btn">更多</i-button>
+        <i-action-sheet :visible="showOptions" :actions="optionList" show-cancel @cancel="optionCencel" @change="optionChange" />
+        <i-toast id="toast" />
+
     </div>
 </template>
 
@@ -69,6 +74,14 @@
 
                 followData:[],
                 contactData:[],
+
+                showOptions:false,
+                optionList:[
+                    {name:'添加跟进记录'},
+                    {name:'电话呼叫'},
+                    {name:'转移至客户'},
+                    {name:'转移至线索池'},
+                ],
             }
         },
 
@@ -89,7 +102,7 @@
             loadFollows(){
                 const _this = this
                 let data = {
-                    customertwoId:this.clue_id
+                    customertwoId:this.clueData.id
                 }
 
                 wx.request({
@@ -107,7 +120,7 @@
             loadContacts(){
                 const _this = this
                 let data = {
-                    customeroneId:this.clue_id,
+                    customeroneId:this.clueData.id,
                     page:1,
                     limit:50,
                 }
@@ -126,7 +139,7 @@
             },
             loadType(){
                 const _this = this
-                _this.cueList = []
+                _this.stateList = []
 
                 wx.request({
                     url: config.defaulthost + 'typeInfo/getTypeInfoGroupByType.do?cId=' + config.userData.cId,  //接口地址
@@ -143,18 +156,130 @@
                 })
             },
             tabClick(e){
-                console.log(e.target.key)
                 this.activeName = e.target.key
             },
-            toAddFollow(){},
-            telephoneCall(){},
+            moreOptions(){
+                this.showOptions = true
+            },
+            optionCencel(){
+                this.showOptions = false
+            },
+            optionChange(val){
+                let index = val.target.index
+                if(index === 0){
+                    this.toAddFollow()
+                }else if(index === 1){
+                    this.telephoneCall()
+                }else if(index === 2){
+                    this.transferToCustomer()
+                }else if(index === 3){
+                    this.transferTocluePool()
+                }
+                this.showOptions = false
+            },
+            toAddFollow(){
+                const url = '../clueFollow/main'
+                mpvue.navigateTo({ url })
+            },
+            telephoneCall(){
+                let phoneNum = this.clueContact.phone
+                if(phoneNum){
+                    wx.makePhoneCall({
+                        phoneNumber: phoneNum //仅为示例，并非真实的电话号码
+                    })
+                }else{
+                    $Toast({
+                        content: '无法呼叫，请添加手机号码',
+                        type: 'error'
+                    });
+                }
+            },
+            // 转移至客户
+            transferToCustomer(){
+                const _this = this
+                let data = {
+                    id: this.clueData.id,
+                    pId: config.userData.pId,
+                    secondid: config.userData.second_id,
+                }
+
+                wx.request({
+                    methods: 'post',
+                    url: config.defaulthost + 'customerTwo/insert.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    success: function (res) {
+                        let info = res.data
+                        if(res.data.code && res.data.code == '200'){
+                            $Toast({
+                                content: '转移成功',
+                                type: 'success'
+                            });
+                            _this.toClue()
+                        }else if(res.data.msg && res.data.msg == 'error'){
+                            $Toast({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }else{
+                            $Toast({
+                                content: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
+            },
+            // 转移至线索池
+            transferTocluePool(){
+                const _this = this
+                let data = {
+                    id: this.clueData.id,
+                }
+
+                wx.request({
+                    methods: 'post',
+                    url: config.defaulthost + 'customerTwo/updateState.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    success: function (res) {
+                        let info = res.data
+                        if(res.data.code && res.data.code == '200'){
+                            $Toast({
+                                content: '转移成功',
+                                type: 'success'
+                            });
+                            _this.toClue()
+                        }else if(res.data.msg && res.data.msg == 'error'){
+                            $Toast({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }else{
+                            $Toast({
+                                content: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
+            },
+            toClue(){
+                const url = '../main'
+                mpvue.navigateTo({ url })
+            },
         },
     }
 </script>
 
 <style>
     .clue_detail{
-        background-color: #f7f7f7
+        background-color: #f7f7f7;
+        margin-bottom: 40px;
     }
     .clueInfo{
         font-size: 12px;

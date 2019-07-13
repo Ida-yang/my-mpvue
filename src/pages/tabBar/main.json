@@ -11,7 +11,8 @@
       "i-page": "../../iview/page/index",
       "i-action-sheet": "../../iview/action-sheet/index",
       "i-notice-bar": "../../iview/notice-bar/index",
-      "i-modal": "../../iview/modal/index"
+      "i-modal": "../../iview/modal/index",
+      "i-datetimePicker": "../../iview/datetimePicker/index"
     }
   }
   

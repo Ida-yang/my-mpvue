@@ -12,6 +12,7 @@
     "pages/clue/clueAdd/main",
     "pages/clue/clueUpdate/main",
     "pages/clue/clueDetail/main",
+    "pages/clue/clueFollow/main",
     "pages/customer/main",
     "pages/contact/main"
   ],

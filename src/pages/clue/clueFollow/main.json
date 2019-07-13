@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "编辑线索",
+    "navigationBarTitleText": "跟进记录",
     "usingComponents": {
       "i-panel": "../../../iview/panel/index",
       "i-icon": "../../../iview/icon/index",

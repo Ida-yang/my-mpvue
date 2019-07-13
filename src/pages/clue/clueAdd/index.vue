@@ -2,7 +2,8 @@
     <div>
         <i-panel title=" "></i-panel>
         <i-panel title=" ">
-            <i-input v-model="addList.cues" title="线索来源" right request @focus="cueFocus" />
+            <!-- <i-input v-model="addList.cues" title="线索来源" right request @focus="cueFocus" /> -->
+            <i-cell title="线索来源" :value="addList.cues" is-link i-class="simple_cell" request @click="cueFocus"></i-cell>
             <i-input v-model="addList.poolName" title="公司名称" right request maxlength="50" @input="handleInput($event,2)" @blur="handleBlur" />
             <i-input v-model="addList.contactsName" title="联系人" right request maxlength="20" @input="handleInput($event,3)" />
             <i-input v-model="addList.phone" title="手机号码" right request type="number" maxlength="11" @input="handleInput($event,4)" />

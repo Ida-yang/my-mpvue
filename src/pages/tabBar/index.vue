@@ -55,6 +55,9 @@
             <view>一些文本</view>
         </i-modal>
 
+        <i-button type="warning" @click="clickdatetimepicker">日期时间选择器</i-button>
+        <i-datetimePicker :visible="aaaaaaaaa" show-cancel @cancel="canceldatetimepicker" />
+
         <i-button type="success" @click="bindViewTap">进入小程序</i-button>
     </div>
 </template>
@@ -92,6 +95,8 @@
                 ],
 
                 modelvisible:false,
+
+                aaaaaaaaa:false,
                 
             }
         },
@@ -186,6 +191,13 @@
             },
             closeModel(){
                 this.modelvisible = false
+            },
+
+            clickdatetimepicker(){
+                this.aaaaaaaaa = true
+            },
+            canceldatetimepicker(){
+                this.aaaaaaaaa = false
             },
         },
     }

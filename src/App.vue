@@ -167,4 +167,8 @@
   .font_size_12{
     font-size: 12px;
   }
+  .simple_cell::after{
+    /* border-bottom: 1px solid #e9eaec; */
+    display: initial !important;
+  }
 </style>

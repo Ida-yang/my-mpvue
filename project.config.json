@@ -11,7 +11,7 @@
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
-	"appid": "wx67e3dd068a0f7a73",
+	"appid": "wxe13dd35e1b0f00d2",
 	"projectname": "my-mpvue",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -33,12 +33,26 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
 					"name": "单页调试",
-					"pathName": "pages/clue/clueDetail/main",
+					"pathName": "pages/clue/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "小页调试",
+					"pathName": "pages/clue/clueAdd/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试调试",
+					"pathName": "pages/tabBar/main",
 					"query": "",
 					"scene": null
 				}
