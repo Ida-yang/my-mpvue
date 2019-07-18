@@ -8,6 +8,7 @@
       "i-action-sheet": "../../../iview/action-sheet/index",
       "i-message": "../../../iview/message/index",
       "i-toast": "../../../iview/toast/index",
-      "i-cell": "../../../iview/cell/index"
+      "i-cell": "../../../iview/cell/index",
+      "i-datetime-picker": "../../../iview/datetime-picker/index"
     }
 }

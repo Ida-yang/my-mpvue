@@ -53,6 +53,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 40rpx;
+  box-sizing: border-box
 }
 
 .log-item {

@@ -66,7 +66,7 @@
                 </i-cell>
             </view>
             <view slot="button" class="i-swipeout-demo-button-group">
-                <view class="i-swipeout-demo-button" style="width:60px;" @click="toUpdateClue($event,item)">
+                <view class="i-swipeout-demo-button" style="width:60px;background-color:#fcfcfc" @click="toUpdateClue($event,item)">
                     <i-icon size="24" type="editor" style="line-height:89px;margin-left:18px;color:#80848f"></i-icon>
                 </view>
             </view>
@@ -293,5 +293,6 @@
         font-size: 11px;
         color: #80848f8e;
         padding-top: 5px;
+        box-sizing: border-box
     }
 </style>

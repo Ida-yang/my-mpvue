@@ -76,9 +76,10 @@
   .search_input{
     flex: 1;
     width: 240px;
-    height: 25px;
+    height: 29px;
     line-height: 25px;
     padding: 2px 8px !important;
+    box-sizing: border-box;
     background-color: #ffffff00
   }
   .search_btn{
@@ -90,8 +91,8 @@
   .search_container{
     width: 100%;
     height: 100%;
-    background-color: #f7f7f7;
-    font-size: 13px;
+    background-color: #fcfcfc;
+    font-size: 12px;
   }
   .query_view{
     padding: 5px;
@@ -101,11 +102,11 @@
     position: relative
   }
   .query_label{
-    font-size: 14px;
+    font-size: 13px;
   }
   .queryBtn{
     margin: 2px 5px 3px 0 !important;
-    font-size: 13px !important;
+    font-size: 12px !important;
     width: 71px;
     padding: 4px 0;
     border: 1rpx solid rgba(0, 0, 0, .1);
@@ -124,11 +125,16 @@
   }
 
   /* 跟进记录 */
-  
-  .follow_content{
+  .margin_card{
+    margin: 10px 10px 0 10px !important;
+  }
+  .follow_view{
+    background-color: #fff;
+  }
+  /* .follow_content{
     font-size: 12px;
     line-height: 24px;
-  }
+  } */
   .contact_span1{
     color: #80848f;
   }
@@ -140,7 +146,7 @@
     width: 40px;
     height: 18px;
     line-height: 18px;
-    background-color: #80848f;
+    background-color: #80848faf;
     color: #ffffff;
     border-radius: 9px;
     text-align: center;
@@ -159,16 +165,38 @@
     bottom: 0;
     width: 100%;
   }
+  .followimg_btn{
+    margin-top: 30px !important;
+  }
   .request_tip{
-    margin: 15px;
+    margin: 30px 0 0 15px;
     font-size: 12px;
     color: #80848f;
   }
   .font_size_12{
     font-size: 12px;
   }
+  .simple_cell{
+    position: relative;
+  }
   .simple_cell::after{
-    /* border-bottom: 1px solid #e9eaec; */
     display: initial !important;
+  }
+  .cell_picker{
+    min-width: 50px;
+    height: 30px;
+  }
+  .fullwidth_img{
+    margin-top: 10px;
+    width: 100%;
+  }
+  .follow_image{
+    margin-top: 10px;
+    width: 70px;
+    height: 70px;
+  }
+  .vice_panel{
+    font-size: 13px;
+    color: #80848f
   }
 </style>

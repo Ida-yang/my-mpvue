@@ -30,7 +30,7 @@
             <view slot="next">Next</view>
         </i-page>
 
-        <view style="margin-top: 100px">
+        <view>
             <i-button type="ghost" @click="handleOpen1">一般用法</i-button>
             <i-button type="ghost" @click="handleOpen2">带有提示、异步</i-button>
         </view>
@@ -55,14 +55,28 @@
             <view>一些文本</view>
         </i-modal>
 
-        <i-button type="warning" @click="clickdatetimepicker">日期时间选择器</i-button>
-        <i-datetimePicker :visible="aaaaaaaaa" show-cancel @cancel="canceldatetimepicker" />
+        <i-button type="warning" @click="uploadIMG">上传图片</i-button>
+        
+        <i-cell title="只显示箭头" is-link i-class="index_cell">
+            <i-datetime-picker class="index_picker"></i-datetime-picker>
+        </i-cell>
+
+        
+        <view class="section">
+            <view class="section__title">日期选择器</view>
+            <picker mode="date" :value="date222" start="2015-09-01" end="2017-09-01" @change="DateChange">
+                <view class="picker">
+                当前选择: {{date222}}
+                </view>
+            </picker>
+        </view>
 
         <i-button type="success" @click="bindViewTap">进入小程序</i-button>
     </div>
 </template>
 
 <script>
+    import config from '../../config'
     import { $Toast,$Message } from '../../../dist/wx/iview/base/index';
 
     export default {
@@ -96,7 +110,7 @@
 
                 modelvisible:false,
 
-                aaaaaaaaa:false,
+                date222: '2016-09-01',
                 
             }
         },
@@ -193,11 +207,30 @@
                 this.modelvisible = false
             },
 
-            clickdatetimepicker(){
-                this.aaaaaaaaa = true
+            clickdatepicker(){},
+            DateChange(e){
+                console.log('picker发送选择改变，携带值为', e.detail.value)
+                this.date222 = e.detail.value
             },
-            canceldatetimepicker(){
-                this.aaaaaaaaa = false
+
+            uploadIMG(){
+                wx.chooseImage({
+                    count: 1,
+                    success (res) {
+                //         // tempFilePath可以作为img标签的src属性显示图片
+                        const tempFilePaths = res.tempFilePaths
+                        // console.log(tempFilePaths)
+                        wx.uploadFile({
+                            url: config.defaulthost + 'goods/masterGraph.do?cId=' + config.userData.cId,
+                            filePath: tempFilePaths[0],
+                            name: 'file',
+                            success: function (res) {
+                                // var data = JSON.parse(res)　　//坑2：与wx.request不同，wx.uploadFile返回的是[字符串]，需要自己转为JSON格式
+                                console.log(res)
+                            }
+                        })
+                    }
+                })
             },
         },
     }
@@ -209,5 +242,13 @@
         height: 100%;
         background-color: #fff;
         text-align: center;
+    }
+    .index_cell{
+        position: relative;
+    }
+    .index_picker{
+        position: absolute;
+        top: -10px;
+        right: 10px;
     }
 </style>

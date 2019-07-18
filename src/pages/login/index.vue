@@ -1,20 +1,23 @@
 <template>
-    <div>
-        <i-panel i-class="login_label" :title="current"></i-panel>
-        <i-panel i-class="login_welcome" title="欢迎您登录"></i-panel>
+    <view class="login_content">
+        <view class="login_view">
+            <i-panel i-class="login_label" :title="current"></i-panel>
+            <i-panel i-class="login_welcome" title="欢迎您登录"></i-panel>
+
             <i-input v-model="account" type="text" maxlength="11" title="登录账号" mode="wrapped" i-class="login_input" @input="handinput($event,1)" />
             <i-input v-model="password" type="password" maxlength="16" title="登录密码" mode="wrapped" i-class="login_input" @input="handinput($event,2)" />
-        
-        <i-button @click="toLogin" type="ghost" i-class="login_submit">登录</i-button>
+            
+            <i-button @click="toLogin" type="ghost" i-class="login_submit">登录</i-button>
 
-        <i-message id="message" />
+            <i-message id="message" />
+        </view>
         
-    </div>
+    </view>
 </template>
 
 <script>
     import config from '../../config'
-    import { $Message } from '../../../dist/wx/iview/base/index';
+    import { $Toast,$Message } from '../../../dist/wx/iview/base/index';
 
     export default {
         data () {
@@ -39,6 +42,23 @@
                     public_username: this.account,
                     public_password: this.password
                 }
+
+                let flag = false
+                if(!data.public_username){
+                    $Toast({
+                        content: '登录账号不能为空',
+                        type: 'error'
+                    });
+                    flag = true
+                }
+                if(!data.public_password){
+                    $Toast({
+                        content: '登录密码不能为空',
+                        type: 'error'
+                    });
+                    flag = true
+                }
+                
                 wx.request({
                     method:'post',
                     url: config.defaulthost + 'tologin.do',  //接口地址
@@ -103,23 +123,35 @@
 </script>
 
 <style>
+    .login_content{
+        height: 100vh;
+        background-image: url('https://crm.yunzoe.com/upload/staticImg/small_procedures_login_bg.png');
+        background-size: cover;
+        display: flex;
+        align-items: center;
+    }
+    .login_view{
+        flex: 1;
+        /* background-color: rgba(0, 0, 0, 0.3); */
+    }
     .login_label{
+        font-size: 24px;
         font-weight: bold;
-        font-size: 18px;
+        color: #ffffff
     }
     .login_welcome{
-        font-size: 16px
+        font-size: 16px;
+        color: #ffffff
     }
     .login_label,.login_welcome{
         text-align: center;
     }
     .login_input{
-        /* text-align: left; */
-        width: 250px;
-        margin: 10px auto !important;
+        width: 70vw;
+        margin: 25px auto !important;
     }
     .login_submit{
-        width: 280px;
-        margin: 10px auto !important;
+        width: 70vw;
+        margin: 25px auto !important;
     }
 </style>
