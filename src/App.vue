@@ -76,11 +76,10 @@
   .search_input{
     flex: 1;
     width: 240px;
-    height: 29px;
+    height: 28px;
     line-height: 25px;
-    padding: 2px 8px !important;
+    padding: 0 8px !important;
     box-sizing: border-box;
-    background-color: #ffffff00
   }
   .search_btn{
     font-size: 14px;
@@ -91,7 +90,7 @@
   .search_container{
     width: 100%;
     height: 100%;
-    background-color: #fcfcfc;
+    background-color: #f5f5f5;
     font-size: 12px;
   }
   .query_view{
@@ -105,23 +104,36 @@
     font-size: 13px;
   }
   .queryBtn{
-    margin: 2px 5px 3px 0 !important;
+    /* margin: 2px 5px 3px 0 !important; */
+    margin: 4px 8px !important;
     font-size: 12px !important;
-    width: 71px;
+    width: 60px;
     padding: 4px 0;
-    border: 1rpx solid rgba(0, 0, 0, .1);
-    border-radius: 4px;
+    /* border: 1rpx solid rgba(0, 0, 0, .1); */
     text-align: center;
   }
   .isActive{
     color: #ff5722;
-    border: 1rpx solid #ff5722;
+    border-bottom: 1rpx solid #ff5722;
+    /* border-radius: 4px; */
   }
   .reset_btn{
     position: absolute;
     bottom: 0;
     width: 100%;
     font-size: 13px;
+  }
+
+  /* 列表 */
+  .cell_content{
+    padding: 0 !important;
+    font-size: 14px;
+  }
+  .cell_footer{
+    font-size: 12px;
+    color: #acacac;
+    padding-top: 5px;
+    box-sizing: border-box
   }
 
   /* 跟进记录 */
@@ -131,10 +143,6 @@
   .follow_view{
     background-color: #fff;
   }
-  /* .follow_content{
-    font-size: 12px;
-    line-height: 24px;
-  } */
   .contact_span1{
     color: #80848f;
   }
@@ -159,33 +167,6 @@
   .nomargin_btn{
     margin: 0 !important;
   }
-
-  .bottom_btn{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-  .followimg_btn{
-    margin-top: 30px !important;
-  }
-  .request_tip{
-    margin: 30px 0 0 15px;
-    font-size: 12px;
-    color: #80848f;
-  }
-  .font_size_12{
-    font-size: 12px;
-  }
-  .simple_cell{
-    position: relative;
-  }
-  .simple_cell::after{
-    display: initial !important;
-  }
-  .cell_picker{
-    min-width: 50px;
-    height: 30px;
-  }
   .fullwidth_img{
     margin-top: 10px;
     width: 100%;
@@ -195,8 +176,44 @@
     width: 70px;
     height: 70px;
   }
+
+  /* 底部按钮 */
+  .bottom_btn{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  /* 跟进记录上传图片按钮 */
+  .followimg_btn{
+    margin-top: 30px !important;
+  }
+  /* 必填 */
+  .request_tip{
+    margin: 30px 0 0 15px;
+    font-size: 12px;
+    color: #80848f;
+  }
+  .font_size_12{
+    font-size: 12px;
+  }
+  /* 单个列表 */
+  .simple_cell{
+    position: relative;
+  }
+  .simple_cell::after{
+    display: initial !important;
+  }
+  /* 列表中picker组件 */
+  .cell_picker{
+    min-width: 50px;
+    height: 30px;
+  }
+  /* 副标题 */
   .vice_panel{
     font-size: 13px;
     color: #80848f
+  }
+  .small_panel{
+    font-size: 14px;
   }
 </style>

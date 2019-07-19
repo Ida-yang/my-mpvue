@@ -80,17 +80,6 @@
             loadData(){
                 this.followData = config.information.clueDetailData
 
-                this.followList = {
-                    followType:'电话',
-                    contactTime:'',
-                    followContent:'',
-                    contactsId:'',
-                    contactsName:'',
-                    follow_state:'',
-                    follow_stateName:'',
-                    imgName:'',
-                }
-
                 const _this = this
                 _this.stateList = []
                 _this.contactList = []

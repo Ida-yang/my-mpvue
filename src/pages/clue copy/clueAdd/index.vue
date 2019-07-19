@@ -49,23 +49,10 @@
         },
 
         mounted(){
-            this.loadData()
             this.loadType()
         },
 
         methods: {
-            loadData(){
-                this.addList = {
-                    cues:'大数据',
-                    cuesid:'3001',
-                    poolName:'',
-                    contactsName:'',
-                    phone:'',
-                    telphone:'',
-                    address:'',
-                    remark:'',
-                }
-            },
             loadType(){
                 const _this = this
                 _this.cueList = []

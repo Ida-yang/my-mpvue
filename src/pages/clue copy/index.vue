@@ -1,7 +1,7 @@
 <template>
     <div class="clue_wrap">
         <!-- 线索 -->
-        <!-- 查询 -->
+         <!-- 查询 -->
         <view class="search_view">
             <view class="search_box">
                 <i-icon type="search" size="16" color="#80848f" class="search_icon" />
@@ -13,19 +13,19 @@
         </view>
         <i-drawer mode="right" :visible="searchCriteria" @close="queryCriteria">
             <view class="search_container">
-                <i-panel title="数据授权" i-class="query_label">
-                    <view class="query_view">
-                        <span class="queryBtn" :class="[index == powerActive ? 'isActive':'']" v-for="(item,index) in powerList" :key="item.label" @click="checkCriteria(item,index,1)">{{item.name}}</span>
-                    </view>
-                </i-panel>
                 <i-panel title="线索状态" i-class="query_label">
                     <view class="query_view">
-                        <span class="queryBtn" :class="[index == stateActive ? 'isActive':'']" v-for="(item,index) in stateList" :key="item.id" @click="checkCriteria(item,index,2)">{{item.typeName}}</span>
+                        <span class="queryBtn" :class="[index == stateActive ? 'isActive':'']" v-for="(item,index) in stateList" :key="item.id" @click="checkCriteria(item,index,1)">{{item.typeName}}</span>
                     </view>
                 </i-panel>
                 <i-panel title="线索来源" i-class="query_label">
                     <view class="query_view">
-                        <span class="queryBtn" :class="[index == originActive ? 'isActive':'']" v-for="(item,index) in originList" :key="item.id" @click="checkCriteria(item,index,3)">{{item.typeName}}</span>
+                        <span class="queryBtn" :class="[index == originActive ? 'isActive':'']" v-for="(item,index) in originList" :key="item.id" @click="checkCriteria(item,index,2)">{{item.typeName}}</span>
+                    </view>
+                </i-panel>
+                <i-panel title="数据授权" i-class="query_label">
+                    <view class="query_view">
+                        <span class="queryBtn" :class="[index == powerActive ? 'isActive':'']" v-for="(item,index) in powerList" :key="item.label" @click="checkCriteria(item,index,3)">{{item.name}}</span>
                     </view>
                 </i-panel>
                 <i-panel title="新增时间" i-class="query_label">
@@ -33,7 +33,7 @@
                         <span class="queryBtn" :class="[index == timeActive ? 'isActive':'']" v-for="(item,index) in timeList" :key="item.label" @click="checkCriteria(item,index,4)">{{item.name}}</span>
                     </view>
                 </i-panel>
-                <i-button @click="reSet" type="ghost" size="small" long="true" class="reset_btn">重置</i-button>
+                <i-button @click="reSet" type="ghost" size="mini" long="true" class="reset_btn">重置</i-button>
             </view>
         </i-drawer>
 
@@ -178,7 +178,6 @@
                     }
                 })
             },
-
             getSearchList(){
                 const _this = this
 
@@ -214,16 +213,17 @@
             queryCriteria(){
                 this.searchCriteria = !this.searchCriteria
             },
+            
             checkCriteria(item,index,val){
                 if(val === 1){
-                    this.powerActive = index
-                    this.searchList.powerid = item.label
-                }else if(val === 2){
                     this.stateActive = index
                     this.searchList.stateid = item.id
-                }else if(val === 3){
+                }else if(val === 2){
                     this.originActive = index
                     this.searchList.cuesid = item.id
+                }else if(val === 3){
+                    this.powerActive = index
+                    this.searchList.powerid = item.label
                 }else if(val === 4){
                     this.timeActive = index
                     this.searchList.example = item.label
@@ -251,7 +251,6 @@
                 this.noMore = false
                 this.loadData()
             },
-
             toAddClue(){
                 const url = 'clueAdd/main'
                 mpvue.navigateTo({ url })

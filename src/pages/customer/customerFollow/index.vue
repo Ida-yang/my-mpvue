@@ -1,7 +1,6 @@
 <template>
-    <div class="clue_follow">
+    <div class="customer_follow">
         <!-- <i-panel :title="current"></i-panel> -->
-        <!-- <i-panel title=" "></i-panel> -->
         <i-panel :title="followData.name">
             <i-cell title="联系方式" :value="followList.followType" is-link request i-class="simple_cell" @click="optionFocus($event,1)"></i-cell>
             <i-cell title="联系人" :value="followList.contactsName" is-link request i-class="simple_cell" @click="optionFocus($event,2)"></i-cell>
@@ -12,13 +11,11 @@
             <i-input v-model="followList.followContent" title="跟进内容" right request type="textarea" maxlength="200" @input="handleInput($event,1)" />
             <i-button type="ghost" :long="true" @click="uploadIMG" i-class="followimg_btn">上传图片</i-button>
         </i-panel>
-
-        <!-- <img v-if="followImg" :src="followImg" /> -->
         <image v-if="followImg" mode="aspectFit" :src="followImg" class="fullwidth_img"></image>
         <p class="request_tip"><span style="color:#ed3f14"> * </span>为必填项</p>
 
         <!-- 提交 -->
-        <i-button type="ghost" :long="true" @click="addClueFollow" class="bottom_btn">确定</i-button>
+        <i-button type="ghost" :long="true" @click="addCustomerFollow" class="bottom_btn">确定</i-button>
 
         <i-action-sheet :visible="showtype" :actions="typeList" @change="typeChange" />
         <i-action-sheet :visible="showcontact" :actions="contactList" @change="contactChange" />
@@ -36,7 +33,7 @@
         data () {
             return {
                 current: '跟进记录',
-                clue_id:7026,
+                customer_id:7026,
 
                 followData:{},
 
@@ -78,7 +75,7 @@
 
         methods: {
             loadData(){
-                this.followData = config.information.clueDetailData
+                this.followData = config.information.customerDetailData
 
                 this.followList = {
                     followType:'电话',
@@ -96,7 +93,7 @@
                 _this.contactList = []
 
                 let data = {
-                    customeroneId:this.followData.id,
+                    customerpool_id:this.followData.id,
                     page:1,
                     limit:50,
                 }
@@ -104,7 +101,7 @@
                 wx.request({
                     url: config.defaulthost + 'typeInfo/getTypeInfoGroupByType.do?cId=' + config.userData.cId,  //接口地址
                     data: {
-                        type: '线索状态'
+                        type: '客户状态'
                     },
                     success: function (res) {
                         let info = res.data.slice(1)
@@ -120,7 +117,7 @@
 
                 wx.request({
                     method:'post',
-                    url: config.defaulthost + 'customerTwo/getClueContacts.do?cId=' + config.userData.cId,  //接口地址
+                    url: config.defaulthost + 'customerpool/getPoolContacts.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
                         "Content-Type": "application/x-www-form-urlencoded"
@@ -209,10 +206,10 @@
             },
 
 
-            addClueFollow(){
+            addCustomerFollow(){
                 const _this = this
                 let data = {
-                    customertwo_id: this.followData.id,
+                    customerpool_id: this.followData.id,
                     followType: this.followList.followType,
                     contactTime: this.followList.contactTime,
                     followContent: this.followList.followContent,
@@ -261,7 +258,7 @@
                                 content: '添加成功',
                                 type: 'success'
                             });
-                            _this.toClueDetail()
+                            _this.toCustomerDetail()
                         }else{
                             $Message({
                                 content: res.data.msg,
@@ -271,8 +268,8 @@
                     }
                 })
             },
-            toClueDetail(){
-                const url = '../clueDetail/main'
+            toCustomerDetail(){
+                const url = '../customerDetail/main'
                 mpvue.navigateTo({ url })
             },
         },
@@ -280,7 +277,7 @@
 </script>
 
 <style>
-    .clue_follow{
+    .customer_follow{
         margin-bottom:60px;
     }
 </style>

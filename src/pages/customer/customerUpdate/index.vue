@@ -2,9 +2,9 @@
     <div>
         <!-- <i-panel :title="current"></i-panel> -->
         <i-panel title=" "></i-panel>
-        <i-panel :title="clueData.name">
-            <!-- <i-input v-model="updateList.cues" title="线索来源" right request @focus="cueFocus" /> -->
-            <i-cell title="线索来源" :value="updateList.cues" is-link request i-class="simple_cell" @click="cueFocus"></i-cell>
+        <i-panel :title="customerData.pName">
+            <i-cell title="客户来源" :value="updateList.source" is-link request i-class="simple_cell" @click="cueFocus(1)"></i-cell>
+            <i-cell title="客户分类" :value="updateList.levels" is-link request i-class="simple_cell" @click="cueFocus(2)"></i-cell>
             <i-input v-model="updateList.poolName" title="公司名称" right request maxlength="50" @input="handleInput($event,2)" />
             <i-input v-model="updateList.contactsName" title="联系人" right request maxlength="20" @input="handleInput($event,3)" />
             <i-input v-model="updateList.phone" title="手机号码" right request type="number" maxlength="11" @input="handleInput($event,4)" />
@@ -15,9 +15,10 @@
         <p class="request_tip"><span style="color:#ed3f14"> * </span>为必填项</p>
 
         <!-- 修改 -->
-        <i-button @click="updateClue" type="ghost" :long="true" class="bottom_btn">确定</i-button>
+        <i-button @click="updateCustomer" type="ghost" :long="true" class="bottom_btn">确定</i-button>
 
-        <i-action-sheet :visible="showcues" :actions="cueList" show-cancel @cancel="cueCancel" @change="cueChange" />
+        <i-action-sheet :visible="showcues" :actions="cueList" show-cancel @cancel="cueCancel(1)" @change="cueChange" />
+        <i-action-sheet :visible="showtype" :actions="typeList" show-cancel @cancel="cueCancel(2)" @change="typeChange" />
         <i-message id="message" />
         <i-toast id="toast" />
     </div>
@@ -30,14 +31,16 @@
     export default {
         data() {
             return {
-                current: '修改线索',
-                clueData:{},
+                current: '修改客户',
+                customerData:{},
 
                 updateList:{
                     csId:'',
                     id:'',
-                    cues:'',
-                    cuesid:'',
+                    source:'',
+                    customerStateid:'',
+                    levels:'',
+                    levelsid:'',
                     poolName:'',
                     contactsName:'',
                     phone:'',
@@ -45,10 +48,13 @@
                     address:'',
                     remark:'',
                 },
+                cueData:[],
                 typeData:[],
 
                 showcues: false,
                 cueList:[],
+                showtype:false,
+                typeList:[],
             }
         },
 
@@ -59,51 +65,77 @@
 
         methods: {
             loadData(){
-                this.clueData = config.information.clueupdateData
+                this.customerData = config.information.customerupdateData
                 this.updateList = {
-                    cues: this.clueData.cues,
-                    cuesid: this.clueData.cuesid,
-                    poolName: this.clueData.name,
-                    contactsName: this.clueData.contacts[0].coName,
-                    phone: this.clueData.phone,
-                    telphone: this.clueData.telephone,
-                    address: this.clueData.address,
-                    remark: this.clueData.remark,
+                    source: this.customerData.source,
+                    customerStateid: this.customerData.sourceid,
+                    levels: this.customerData.levels,
+                    levelsid: this.customerData.levelsid,
+                    poolName: this.customerData.pName,
+                    contactsName: this.customerData.contacts[0].coName,
+                    phone: this.customerData.contacts[0].phone,
+                    telphone: this.customerData.telephone,
+                    address: this.customerData.address,
+                    remark: this.customerData.remark,
                 }
             },
             loadType(){
                 const _this = this
                 _this.cueList = []
+                _this.typeList = []
 
                 wx.request({
-                    url: config.defaulthost + 'typeInfo/getTypeInfoGroupByType.do?cId=' + config.userData.cId,  //接口地址
+                    url: config.defaulthost + 'typeInfo/getTypeInfoByType.do?cId=' + config.userData.cId,  //接口地址
                     data: {
                         type: '客户来源'
                     },
                     success: function (res) {
-                        _this.typeData = res.data
-                        let info = res.data
-                        info.forEach(el => {
+                        _this.cueData = res.data.name3001
+                        _this.typeData = res.data.name4001
+                        let info1 = res.data.name3001
+                        info1.forEach(el => {
                             _this.cueList.push({name:el.typeName})
+                        });
+                        let info2 = res.data.name4001
+                        info2.forEach(el => {
+                            _this.typeList.push({name:el.typeName})
                         });
                     }
                 })
             },
-            cueFocus(){
-                this.showcues = true
+            cueFocus(val){
+                if(val == 1){
+                    this.showcues = true
+                }else if(val == 2){
+                    this.showtype = true
+                }
             },
-            cueCancel(){
-                this.showcues = false
+            cueCancel(val){
+                if(val == 1){
+                    this.showcues = false
+                }else if(val == 2){
+                    this.showtype = false
+                }
             },
             cueChange(val){
                 let key = val.mp.detail.index
-                this.typeData.forEach((a,i) => {
+                this.cueData.forEach((a,i) => {
                     if(i == key){
-                        this.updateList.cues = a.typeName
-                        this.updateList.cuesid = a.id
+                        this.updateList.source = a.typeName
+                        this.updateList.customerStateid = a.id
                     }
                 });
                 this.showcues = false
+            },
+            typeChange(val){
+                let key = val.mp.detail.index
+                this.typeData.forEach((a,i) => {
+                    if(i == key){
+                        this.updateList.levels = a.typeName
+                        this.updateList.levelsid = a.id
+                    }
+                });
+                this.showtype = false
             },
             handleInput(e,val){
                 let value = e.mp.detail
@@ -121,12 +153,13 @@
                     this.updateList.remark = value
                 }
             },
-            updateClue(){
+            updateCustomer(){
                 const _this = this
                 let data = {
-                    id: this.clueData.id,
-                    csId: this.clueData.contacts[0].csId,
-                    cuesid: this.updateList.cuesid,
+                    id: this.customerData.id,
+                    csId: this.customerData.contacts[0].csId,
+                    customerStateid: this.updateList.customerStateid,
+                    levelsid: this.updateList.levelsid,
                     poolName: this.updateList.poolName,
                     contactsName: this.updateList.contactsName,
                     phone: this.updateList.phone,
@@ -160,11 +193,18 @@
                     });
                     flag = true
                 }
+                if(!data.levelsid){
+                    $Toast({
+                        content: '请选择客户分类',
+                        type: 'warning'
+                    });
+                    flag = true
+                }
                 if(flag) return
 
                 wx.request({
                     method:'post',
-                    url: config.defaulthost + 'customerTwo/updateClue.do?cId=' + config.userData.cId,  //接口地址
+                    url: config.defaulthost + 'customerpool/updatepool.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
                         "Content-Type": "application/x-www-form-urlencoded"
@@ -175,7 +215,7 @@
                                 content: '修改成功',
                                 type: 'success'
                             });
-                            _this.toClue()
+                            _this.toCustomer()
                         }else{
                             $Message({
                                 content: res.data.msg,
@@ -185,7 +225,7 @@
                     }
                 })
             },
-            toClue(){
+            toCustomer(){
                 const url = '../main'
                 mpvue.navigateTo({ url })
             },

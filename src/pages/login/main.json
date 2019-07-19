@@ -1,5 +1,7 @@
 {
     "navigationBarTitleText": "欢迎登录",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
     "usingComponents": {
       "i-button": "../../iview/button/index",
       "i-panel": "../../iview/panel/index",

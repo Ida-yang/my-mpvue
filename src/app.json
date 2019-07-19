@@ -14,13 +14,17 @@
     "pages/clue/clueDetail/main",
     "pages/clue/clueFollow/main",
     "pages/customer/main",
+    "pages/customer/customerAdd/main",
+    "pages/customer/customerUpdate/main",
+    "pages/customer/customerDetail/main",
+    "pages/customer/customerFollow/main",
     "pages/contact/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#ff6333",
+    "navigationBarTitleText": "云纵CRM",
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#343f53",

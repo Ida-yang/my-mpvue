@@ -1,19 +1,21 @@
 <template>
     <div>
-        <i-panel title=" "></i-panel>
+        <!-- <i-panel :title="current"></i-panel> -->
+        <i-panel :title="clueData.name"></i-panel>
         <i-panel title=" ">
-            <i-cell title="线索来源" :value="addList.cues" is-link i-class="simple_cell" request @click="cueFocus"></i-cell>
-            <i-input v-model="addList.poolName" title="公司名称" right request maxlength="50" @input="handleInput($event,2)" @blur="handleBlur" />
-            <i-input v-model="addList.contactsName" title="联系人" right request maxlength="20" @input="handleInput($event,3)" />
-            <i-input v-model="addList.phone" title="手机号码" right request type="number" maxlength="11" @input="handleInput($event,4)" />
-            <i-input v-model="addList.telphone" title="电话" right type="number" maxlength="21" @input="handleInput($event,5)" />
-            <i-input v-model="addList.address" title="详细地址" right placeholder="(最多50字)" maxlength="50" @input="handleInput($event,6)" />
-            <i-input v-model="addList.remark" title="备注" right type="textarea" maxlength="200" @input="handleInput($event,7)" />
+            <!-- <i-input v-model="updateList.cues" title="线索来源" right request @focus="cueFocus" /> -->
+            <i-cell title="线索来源" :value="updateList.cues" is-link request i-class="simple_cell" @click="cueFocus"></i-cell>
+            <i-input v-model="updateList.poolName" title="公司名称" right request maxlength="50" @input="handleInput($event,2)" />
+            <i-input v-model="updateList.contactsName" title="联系人" right request maxlength="20" @input="handleInput($event,3)" />
+            <i-input v-model="updateList.phone" title="手机号码" right request type="number" maxlength="11" @input="handleInput($event,4)" />
+            <i-input v-model="updateList.telphone" title="电话" right type="number" maxlength="21" @input="handleInput($event,5)" />
+            <i-input v-model="updateList.address" title="详细地址" right placeholder="(最多50字)" maxlength="50" @input="handleInput($event,6)" />
+            <i-input v-model="updateList.remark" title="备注" right type="textarea" maxlength="200" @input="handleInput($event,7)" />
         </i-panel>
         <p class="request_tip"><span style="color:#ed3f14"> * </span>为必填项</p>
 
-        <!-- 新增 -->
-        <i-button @click="addClue" type="ghost" :long="true" class="bottom_btn">确定</i-button>
+        <!-- 修改 -->
+        <i-button @click="updateClue" type="ghost" :long="true" class="bottom_btn">确定</i-button>
 
         <i-action-sheet :visible="showcues" :actions="cueList" show-cancel @cancel="cueCancel" @change="cueChange" />
         <i-message id="message" />
@@ -26,14 +28,16 @@
     import { $Toast,$Message } from '../../../../dist/wx/iview/base/index';
 
     export default {
-        data () {
+        data() {
             return {
-                current: '新增线索',
-                existingList:[],
+                current: '修改线索',
+                clueData:{},
 
-                addList:{
-                    cues:'大数据',
-                    cuesid:'3001',
+                updateList:{
+                    csId:'',
+                    id:'',
+                    cues:'',
+                    cuesid:'',
                     poolName:'',
                     contactsName:'',
                     phone:'',
@@ -49,21 +53,22 @@
         },
 
         mounted(){
-            this.loadData()
             this.loadType()
+            this.loadData()
         },
 
         methods: {
             loadData(){
-                this.addList = {
-                    cues:'大数据',
-                    cuesid:'3001',
-                    poolName:'',
-                    contactsName:'',
-                    phone:'',
-                    telphone:'',
-                    address:'',
-                    remark:'',
+                this.clueData = config.information.clueupdateData
+                this.updateList = {
+                    cues: this.clueData.cues,
+                    cuesid: this.clueData.cuesid,
+                    poolName: this.clueData.name,
+                    contactsName: this.clueData.contacts[0].coName,
+                    phone: this.clueData.phone,
+                    telphone: this.clueData.telephone,
+                    address: this.clueData.address,
+                    remark: this.clueData.remark,
                 }
             },
             loadType(){
@@ -94,8 +99,8 @@
                 let key = val.mp.detail.index
                 this.typeData.forEach((a,i) => {
                     if(i == key){
-                        this.addList.cues = a.typeName
-                        this.addList.cuesid = a.id
+                        this.updateList.cues = a.typeName
+                        this.updateList.cuesid = a.id
                     }
                 });
                 this.showcues = false
@@ -103,53 +108,31 @@
             handleInput(e,val){
                 let value = e.mp.detail
                 if(val === 2){
-                    this.addList.poolName = value
+                    this.updateList.poolName = value
                 }else if(val === 3){
-                    this.addList.contactsName = value
+                    this.updateList.contactsName = value
                 }else if(val === 4){
-                    this.addList.phone = value
+                    this.updateList.phone = value
                 }else if(val === 5){
-                    this.addList.telphone = value
+                    this.updateList.telphone = value
                 }else if(val === 6){
-                    this.addList.address = value
+                    this.updateList.address = value
                 }else if(val === 7){
-                    this.addList.remark = value
+                    this.updateList.remark = value
                 }
             },
-            handleBlur(e){
-                let val = e.target.detail.value
-                let data = {
-                    name:val,
-                }
-                wx.request({
-                    method:'post',
-                    url: config.defaulthost + 'customerTwo/checkName.do?cId=' + config.userData.cId,  //接口地址
-                    data: data,
-                    header:{
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    success: function (res) {
-                        if(res.data.code && res.data.code == '20000'){
-                            $Toast({
-                                content: '该公司已存在于线索或客户中',
-                                type: 'warning'
-                            });
-                        }else{
-                            return
-                        }
-                    }
-                })
-            },
-            addClue(){
+            updateClue(){
                 const _this = this
                 let data = {
-                    cuesid: this.addList.cuesid,
-                    poolName: this.addList.poolName,
-                    contactsName: this.addList.contactsName,
-                    phone: this.addList.phone,
-                    telphone: this.addList.telphone,
-                    address: this.addList.address,
-                    remark: this.addList.remark,
+                    id: this.clueData.id,
+                    csId: this.clueData.contacts[0].csId,
+                    cuesid: this.updateList.cuesid,
+                    poolName: this.updateList.poolName,
+                    contactsName: this.updateList.contactsName,
+                    phone: this.updateList.phone,
+                    telphone: this.updateList.telphone,
+                    address: this.updateList.address,
+                    remark: this.updateList.remark,
                     pId: config.userData.pId,
                     secondid: config.userData.second_id,
                     deptid: config.userData.private_deptid,
@@ -181,7 +164,7 @@
 
                 wx.request({
                     method:'post',
-                    url: config.defaulthost + 'customerTwo/saveClue.do?cId=' + config.userData.cId,  //接口地址
+                    url: config.defaulthost + 'customerTwo/updateClue.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
                         "Content-Type": "application/x-www-form-urlencoded"
@@ -189,7 +172,7 @@
                     success: function (res) {
                         if(res.data.code && res.data.code == "200"){
                             $Message({
-                                content: '新增成功',
+                                content: '修改成功',
                                 type: 'success'
                             });
                             _this.toClue()
@@ -210,5 +193,5 @@
     }
 </script>
 
-<style>
+<style scoped>
 </style>

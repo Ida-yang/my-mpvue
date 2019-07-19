@@ -2,7 +2,8 @@
     <div>
         <i-panel title=" "></i-panel>
         <i-panel title=" ">
-            <i-cell title="线索来源" :value="addList.cues" is-link i-class="simple_cell" request @click="cueFocus"></i-cell>
+            <i-cell title="客户来源" :value="addList.cues" is-link i-class="simple_cell" request @click="cueFocus($event,1)"></i-cell>
+            <i-cell title="客户分类" :value="addList.levels" is-link i-class="simple_cell" request @click="cueFocus($event,2)"></i-cell>
             <i-input v-model="addList.poolName" title="公司名称" right request maxlength="50" @input="handleInput($event,2)" @blur="handleBlur" />
             <i-input v-model="addList.contactsName" title="联系人" right request maxlength="20" @input="handleInput($event,3)" />
             <i-input v-model="addList.phone" title="手机号码" right request type="number" maxlength="11" @input="handleInput($event,4)" />
@@ -13,9 +14,10 @@
         <p class="request_tip"><span style="color:#ed3f14"> * </span>为必填项</p>
 
         <!-- 新增 -->
-        <i-button @click="addClue" type="ghost" :long="true" class="bottom_btn">确定</i-button>
+        <i-button @click="addCustomer" type="ghost" :long="true" class="bottom_btn">确定</i-button>
 
-        <i-action-sheet :visible="showcues" :actions="cueList" show-cancel @cancel="cueCancel" @change="cueChange" />
+        <i-action-sheet :visible="showcues" :actions="cueList" show-cancel @cancel="cueCancel(1)" @change="cueChange" />
+        <i-action-sheet :visible="showtype" :actions="typeList" show-cancel @cancel="cueCancel(2)" @change="typeChange" />
         <i-message id="message" />
         <i-toast id="toast" />
     </div>
@@ -28,12 +30,14 @@
     export default {
         data () {
             return {
-                current: '新增线索',
+                current: '新增客户',
                 existingList:[],
 
                 addList:{
                     cues:'大数据',
-                    cuesid:'3001',
+                    customerStateid:'3001',
+                    levelsid:'',
+                    levels:'',
                     poolName:'',
                     contactsName:'',
                     phone:'',
@@ -41,10 +45,13 @@
                     address:'',
                     remark:'',
                 },
+                cuesData:[],
                 typeData:[],
 
                 showcues: false,
                 cueList:[],
+                showtype: false,
+                typeList:[]
             }
         },
 
@@ -57,7 +64,9 @@
             loadData(){
                 this.addList = {
                     cues:'大数据',
-                    cuesid:'3001',
+                    customerStateid:'3001',
+                    levelsid:'',
+                    levels:'',
                     poolName:'',
                     contactsName:'',
                     phone:'',
@@ -69,36 +78,60 @@
             loadType(){
                 const _this = this
                 _this.cueList = []
+                _this.typeList = []
 
                 wx.request({
-                    url: config.defaulthost + 'typeInfo/getTypeInfoGroupByType.do?cId=' + config.userData.cId,  //接口地址
+                    url: config.defaulthost + 'typeInfo/getTypeInfoByType.do?cId=' + config.userData.cId,  //接口地址
                     data: {
                         type: '客户来源'
                     },
                     success: function (res) {
-                        _this.typeData = res.data
-                        let info = res.data
-                        info.forEach(el => {
+                        _this.cuesData = res.data.name3001
+                        _this.typeData = res.data.name4001
+                        let info1 = res.data.name3001
+                        info1.forEach(el => {
                             _this.cueList.push({name:el.typeName})
+                        });
+                        let info2 = res.data.name4001
+                        info2.forEach(el => {
+                            _this.typeList.push({name:el.typeName})
                         });
                     }
                 })
             },
-            cueFocus(){
-                this.showcues = true
+            cueFocus(e,val){
+                if(val == 1){
+                    this.showcues = true
+                }else if(val == 2){
+                    this.showtype = true
+                }
             },
-            cueCancel(){
-                this.showcues = false
+            cueCancel(val){
+                if(val == 1){
+                    this.showcues = false
+                }else if(val == 2){
+                    this.showtype = false
+                }
             },
             cueChange(val){
                 let key = val.mp.detail.index
-                this.typeData.forEach((a,i) => {
+                this.cuesData.forEach((a,i) => {
                     if(i == key){
                         this.addList.cues = a.typeName
-                        this.addList.cuesid = a.id
+                        this.addList.customerStateid = a.id
                     }
                 });
                 this.showcues = false
+            },
+            typeChange(val){
+                let key = val.mp.detail.index
+                this.typeData.forEach((a,i) => {
+                    if(i == key){
+                        this.addList.levels = a.typeName
+                        this.addList.levelsid = a.id
+                    }
+                });
+                this.showtype = false
             },
             handleInput(e,val){
                 let value = e.mp.detail
@@ -140,10 +173,11 @@
                     }
                 })
             },
-            addClue(){
+            addCustomer(){
                 const _this = this
                 let data = {
-                    cuesid: this.addList.cuesid,
+                    customerStateid: this.addList.customerStateid,
+                    levelsid:this.addList.levelsid,
                     poolName: this.addList.poolName,
                     contactsName: this.addList.contactsName,
                     phone: this.addList.phone,
@@ -177,11 +211,18 @@
                     });
                     flag = true
                 }
+                if(!data.levelsid){
+                    $Toast({
+                        content: '请选择客户分类',
+                        type: 'warning'
+                    });
+                    flag = true
+                }
                 if(flag) return
 
                 wx.request({
                     method:'post',
-                    url: config.defaulthost + 'customerTwo/saveClue.do?cId=' + config.userData.cId,  //接口地址
+                    url: config.defaulthost + 'customerpool/savePool.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
                         "Content-Type": "application/x-www-form-urlencoded"
@@ -192,7 +233,7 @@
                                 content: '新增成功',
                                 type: 'success'
                             });
-                            _this.toClue()
+                            _this.toCustomer()
                         }else{
                             $Message({
                                 content: res.data.msg,
@@ -202,7 +243,7 @@
                     }
                 })
             },
-            toClue(){
+            toCustomer(){
                 const url = '../main'
                 mpvue.navigateTo({ url })
             },

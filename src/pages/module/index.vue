@@ -1,47 +1,46 @@
 <template>
-    <div>
-        <i-panel title="客户管理"></i-panel>
-        <i-grid>
+    <div class="module_content">
+        <i-panel title="客户管理" class="small_panel"></i-panel>
+        <i-grid i-class="module_view">
             <i-row>
                 <i-grid-item @click="toClue">
                     <i-grid-icon>
-                        <!-- <image src="../../static/images/user.png" /> -->
-                        <i-icon type="addressbook_fill" size="28" />
+                        <i-icon type="addressbook_fill" size="28" color="#80848f" />
                     </i-grid-icon>
                     <i-grid-label>线索</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toCustomer">
                     <i-grid-icon>
-                        <i-icon type="group_fill" size="28" />
+                        <i-icon type="group_fill" size="28" color="#303331" />
                     </i-grid-icon>
                     <i-grid-label>客户</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toContact">
                     <i-grid-icon>
-                        <i-icon type="interactive_fill" size="28" />
+                        <i-icon type="interactive_fill" size="28" color="#80848f" />
                     </i-grid-icon>
                     <i-grid-label>联系人</i-grid-label>
                 </i-grid-item>
             </i-row>
         </i-grid>
-        <i-panel title="销售"></i-panel>
-        <i-grid>
+        <i-panel title="销售" class="small_panel"></i-panel>
+        <i-grid i-class="module_view">
             <i-row>
                 <i-grid-item @click="toClue">
                     <i-grid-icon>
-                        <i-icon type="addressbook_fill" size="28" />
+                        <i-icon type="addressbook_fill" size="28" color="#303331" />
                     </i-grid-icon>
                     <i-grid-label>线索</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toCustomer">
                     <i-grid-icon>
-                        <i-icon type="group_fill" size="28" />
+                        <i-icon type="group_fill" size="28" color="#80848f" />
                     </i-grid-icon>
                     <i-grid-label>客户</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toContact">
                     <i-grid-icon>
-                        <i-icon type="interactive_fill" size="28" />
+                        <i-icon type="interactive_fill" size="28" color="#303331" />
                     </i-grid-icon>
                     <i-grid-label>联系人</i-grid-label>
                 </i-grid-item>
@@ -49,19 +48,19 @@
             <i-row>
                 <i-grid-item @click="toClue">
                     <i-grid-icon>
-                        <i-icon type="addressbook_fill" size="28" />
+                        <i-icon type="addressbook_fill" size="28" color="#80848f" />
                     </i-grid-icon>
                     <i-grid-label>线索</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toCustomer">
                     <i-grid-icon>
-                        <i-icon type="group_fill" size="28" />
+                        <i-icon type="group_fill" size="28" color="#303331" />
                     </i-grid-icon>
                     <i-grid-label>客户</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toContact">
                     <i-grid-icon>
-                        <i-icon type="interactive_fill" size="28" />
+                        <i-icon type="interactive_fill" size="28" color="#80848f" />
                     </i-grid-icon>
                     <i-grid-label>联系人</i-grid-label>
                 </i-grid-item>
@@ -105,5 +104,11 @@
     }
 </script>
 
-<style scoped>
+<style>
+    .module_content{
+        background-color: #f5f5f5;
+    }
+    .module_view{
+        background-color: #fff;
+    }
 </style>
