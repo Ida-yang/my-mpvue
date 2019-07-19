@@ -1,7 +1,5 @@
 {
     "navigationBarTitleText": "首页",
-    "navigationBarBackgroundColor": "#ff6333",
-    "navigationBarTextStyle": "white",
     "usingComponents": {
         "i-tab-bar": "../../iview/tab-bar/index",
         "i-tab-bar-item": "../../iview/tab-bar-item/index",

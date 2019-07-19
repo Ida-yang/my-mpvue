@@ -5,7 +5,7 @@
             <i-row>
                 <i-grid-item @click="toClue">
                     <i-grid-icon>
-                        <i-icon type="addressbook_fill" size="28" color="#80848f" />
+                        <i-icon type="homepage" size="28" color="#80848f" />
                     </i-grid-icon>
                     <i-grid-label>线索</i-grid-label>
                 </i-grid-item>
