@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "编辑便签",
+    "usingComponents": {
+      "i-panel": "../../iview/panel/index"
+    }
+}

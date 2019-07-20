@@ -38,7 +38,7 @@
 				{
 					"id": 0,
 					"name": "单页调试",
-					"pathName": "pages/customer/main",
+					"pathName": "pages/module/main",
 					"query": "",
 					"scene": null
 				},

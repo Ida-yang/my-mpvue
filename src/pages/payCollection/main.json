@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "应收回款",
+    "usingComponents": {
+      "i-panel": "../../iview/panel/index"
+    }
+}

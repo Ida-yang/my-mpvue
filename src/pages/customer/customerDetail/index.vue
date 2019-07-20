@@ -20,14 +20,17 @@
                 <i-fiche full :title="item.contacts[0].name" :extra="item.state" :thumb="item.portrait">
                     <view slot="content">{{item.followContent}}</view>
                     <view slot="footer">
-                        {{item.inputType}}&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span v-if="item.contactTime">下次联系时间：{{item.contactTime}}</span>
+                        <span class="bgc_span">{{item.followType}}</span>
+                        <span v-if="item.contactTime">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="bgc_span" v-if="item.contactTime">{{item.contactTime}}</span>
+                        <!-- <span class="bgc_span" v-if="item.contactTime">下次联系时间：{{item.contactTime}}</span> -->
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span>{{item.inputType}}</span>
                         <br/>
                         <image v-if="item.followImg" mode="scaleToFill" :src="item.followImg" class="follow_image"></image>
                     </view>
                 </i-fiche>
             </view>
-            
         </view>
 
         <view v-if="activeName == 'second'" class="font_size_12">

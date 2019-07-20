@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "线索池",
+    "usingComponents": {
+      "i-panel": "../../iview/panel/index"
+    }
+}

@@ -8,17 +8,52 @@
     "pages/approval/main",
     "pages/mine/main",
     "pages/logs/main",
+
     "pages/clue/main",
     "pages/clue/clueAdd/main",
     "pages/clue/clueUpdate/main",
     "pages/clue/clueDetail/main",
     "pages/clue/clueFollow/main",
+
+    "pages/cluePool/main",
+    "pages/cluePool/cluePoolDetail/main",
+
     "pages/customer/main",
     "pages/customer/customerAdd/main",
     "pages/customer/customerUpdate/main",
     "pages/customer/customerDetail/main",
     "pages/customer/customerFollow/main",
-    "pages/contact/main"
+
+    "pages/customerPool/main",
+    "pages/customerPool/customerPoolDetail/main",
+
+    "pages/agreement/main",
+    "pages/agreement/agreementAdd/main",
+    "pages/agreement/agreementUpdate/main",
+    "pages/agreement/agreementDetail/main",
+
+    "pages/opportunity/main",
+    "pages/opportunity/opportunityAdd/main",
+    "pages/opportunity/opportunityUpdate/main",
+    "pages/opportunity/opportunityDetail/main",
+
+    "pages/payCollection/main",
+    "pages/payCollection/payCollectionDetail/main",
+
+    "pages/outwork/main",
+    "pages/outwork/outworkAdd/main",
+    "pages/outwork/outworkUpdate/main",
+    "pages/outwork/outworkDetail/main",
+
+    "pages/task/main",
+    "pages/task/taskAdd/main",
+    "pages/task/taskUpdate/main",
+    "pages/task/taskDetail/main",
+
+    "pages/note/main",
+    "pages/note/noteAdd/main",
+    "pages/note/noteUpdate/main",
+    "pages/note/noteDetail/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

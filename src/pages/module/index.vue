@@ -1,68 +1,101 @@
 <template>
     <div class="module_content">
-        <i-panel title="客户管理" class="small_panel"></i-panel>
+        <i-panel title="常用" class="small_panel"></i-panel>
         <i-grid i-class="module_view">
             <i-row>
-                <i-grid-item @click="toClue">
-                    <i-grid-icon>
-                        <i-icon type="homepage" size="28" color="#80848f" />
-                    </i-grid-icon>
-                    <i-grid-label>线索</i-grid-label>
-                </i-grid-item>
                 <i-grid-item @click="toCustomer">
                     <i-grid-icon>
-                        <i-icon type="group_fill" size="28" color="#303331" />
+                        <image src="../../static/images/a.png" style="width:28px;height:28px;" />
                     </i-grid-icon>
                     <i-grid-label>客户</i-grid-label>
                 </i-grid-item>
-                <i-grid-item @click="toContact">
+                <i-grid-item @click="toOpportunity">
                     <i-grid-icon>
-                        <i-icon type="interactive_fill" size="28" color="#80848f" />
+                        <image src="../../static/images/b.png" style="width:28px;height:28px;" />
                     </i-grid-icon>
-                    <i-grid-label>联系人</i-grid-label>
+                    <i-grid-label>商机</i-grid-label>
+                </i-grid-item>
+                <i-grid-item @click="toAgreement">
+                    <i-grid-icon>
+                        <image src="../../static/images/c.png" style="width:28px;height:28px;" />
+                    </i-grid-icon>
+                    <i-grid-label>合同</i-grid-label>
                 </i-grid-item>
             </i-row>
         </i-grid>
-        <i-panel title="销售" class="small_panel"></i-panel>
+        <i-panel title="销售支持" class="small_panel"></i-panel>
         <i-grid i-class="module_view">
             <i-row>
                 <i-grid-item @click="toClue">
                     <i-grid-icon>
-                        <i-icon type="addressbook_fill" size="28" color="#303331" />
+                        <image src="../../static/images/d.png" style="width:28px;height:28px;" />
                     </i-grid-icon>
                     <i-grid-label>线索</i-grid-label>
                 </i-grid-item>
+                <i-grid-item @click="toCluePool">
+                    <i-grid-icon>
+                        <image src="../../static/images/a.png" style="width:28px;height:28px;" />
+                    </i-grid-icon>
+                    <i-grid-label>线索池</i-grid-label>
+                </i-grid-item>
                 <i-grid-item @click="toCustomer">
                     <i-grid-icon>
-                        <i-icon type="group_fill" size="28" color="#80848f" />
+                        <image src="../../static/images/b.png" style="width:28px;height:28px;" />
                     </i-grid-icon>
                     <i-grid-label>客户</i-grid-label>
                 </i-grid-item>
+                <i-grid-item @click="toCustomerPool">
+                    <i-grid-icon>
+                        <image src="../../static/images/c.png" style="width:28px;height:28px;" />
+                    </i-grid-icon>
+                    <i-grid-label>客户池</i-grid-label>
+                </i-grid-item>
                 <i-grid-item @click="toContact">
                     <i-grid-icon>
-                        <i-icon type="interactive_fill" size="28" color="#303331" />
+                        <image src="../../static/images/d.png" style="width:28px;height:28px;" />
                     </i-grid-icon>
                     <i-grid-label>联系人</i-grid-label>
+                </i-grid-item>
+                <i-grid-item @click="toOpportunity">
+                    <i-grid-icon>
+                        <image src="../../static/images/c.png" style="width:28px;height:28px;" />
+                    </i-grid-icon>
+                    <i-grid-label>商机</i-grid-label>
+                </i-grid-item>
+                <i-grid-item @click="toAgreement">
+                    <i-grid-icon>
+                        <image src="../../static/images/a.png" style="width:28px;height:28px;" />
+                    </i-grid-icon>
+                    <i-grid-label>合同</i-grid-label>
+                </i-grid-item>
+                <i-grid-item @click="toPayCollection">
+                    <i-grid-icon>
+                        <image src="../../static/images/b.png" style="width:28px;height:28px;" />
+                    </i-grid-icon>
+                    <i-grid-label>应收回款</i-grid-label>
                 </i-grid-item>
             </i-row>
+        </i-grid>
+        <i-panel title="办公" class="small_panel"></i-panel>
+        <i-grid i-class="module_view">
             <i-row>
-                <i-grid-item @click="toClue">
+                <i-grid-item @click="toOutwork">
                     <i-grid-icon>
-                        <i-icon type="addressbook_fill" size="28" color="#80848f" />
+                        <image src="../../static/images/c.png" style="width:28px;height:28px;" />
                     </i-grid-icon>
-                    <i-grid-label>线索</i-grid-label>
+                    <i-grid-label>外勤</i-grid-label>
                 </i-grid-item>
-                <i-grid-item @click="toCustomer">
+                <i-grid-item @click="toTask">
                     <i-grid-icon>
-                        <i-icon type="group_fill" size="28" color="#303331" />
+                        <image src="../../static/images/d.png" style="width:28px;height:28px;" />
                     </i-grid-icon>
-                    <i-grid-label>客户</i-grid-label>
+                    <i-grid-label>任务</i-grid-label>
                 </i-grid-item>
-                <i-grid-item @click="toContact">
+                <i-grid-item @click="toNote">
                     <i-grid-icon>
-                        <i-icon type="interactive_fill" size="28" color="#80848f" />
+                        <image src="../../static/images/a.png" style="width:28px;height:28px;" />
                     </i-grid-icon>
-                    <i-grid-label>联系人</i-grid-label>
+                    <i-grid-label>便签</i-grid-label>
                 </i-grid-item>
             </i-row>
         </i-grid>
@@ -90,14 +123,54 @@
                 const url = '../clue/main'
                 mpvue.navigateTo({ url })
             },
+            toCluePool(){
+                console.log('去线索池')
+                const url = '../cluePool/main'
+                mpvue.navigateTo({ url })
+            },
             toCustomer(){
                 console.log('去客户')
                 const url = '../customer/main'
                 mpvue.navigateTo({ url })
             },
+            toCustomerPool(){
+                console.log('去客户池')
+                const url = '../customerPool/main'
+                mpvue.navigateTo({ url })
+            },
             toContact(){
                 console.log('去联系人')
                 const url = '../contact/main'
+                mpvue.navigateTo({ url })
+            },
+            toOpportunity(){
+                console.log('去商机')
+                const url = '../opportunity/main'
+                mpvue.navigateTo({ url })
+            },
+            toAgreement(){
+                console.log('去合同')
+                const url = '../agreement/main'
+                mpvue.navigateTo({ url })
+            },
+            toPayCollection(){
+                console.log('去应收回款')
+                const url = '../payCollection/main'
+                mpvue.navigateTo({ url })
+            },
+            toOutwork(){
+                console.log('去外勤')
+                const url = '../outwork/main'
+                mpvue.navigateTo({ url })
+            },
+            toTask(){
+                console.log('去任务')
+                const url = '../task/main'
+                mpvue.navigateTo({ url })
+            },
+            toNote(){
+                console.log('去便签')
+                const url = '../note/main'
                 mpvue.navigateTo({ url })
             },
         },

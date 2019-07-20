@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "商机",
+    "usingComponents": {
+      "i-panel": "../../iview/panel/index"
+    }
+}

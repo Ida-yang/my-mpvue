@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "编辑合同",
+    "usingComponents": {
+      "i-panel": "../../iview/panel/index"
+    }
+}

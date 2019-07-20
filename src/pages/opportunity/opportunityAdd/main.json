@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "新增商机",
+    "usingComponents": {
+      "i-panel": "../../iview/panel/index"
+    }
+}

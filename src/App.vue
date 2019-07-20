@@ -210,10 +210,18 @@
   }
   /* 副标题 */
   .vice_panel{
-    font-size: 13px;
+    font-size: 12px;
     color: #80848f
   }
   .small_panel{
     font-size: 14px;
+  }
+  /* 带背景的span */
+  .bgc_span{
+    display: inline-block;
+    padding: 2px 8px;
+    box-sizing: border-box;
+    background-color: rgb(241, 250, 255);
+    border-radius: 8px;
   }
 </style>
