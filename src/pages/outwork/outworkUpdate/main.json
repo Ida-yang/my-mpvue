@@ -1,6 +1,6 @@
 {
     "navigationBarTitleText": "编辑外勤",
     "usingComponents": {
-      "i-panel": "../../iview/panel/index"
+      "i-panel": "../../../iview/panel/index"
     }
 }

@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "便签详情",
+    "navigationBarTitleText": "联系人详情",
     "usingComponents": {
       "i-panel": "../../../iview/panel/index"
     }

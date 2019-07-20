@@ -27,15 +27,20 @@
     "pages/customerPool/main",
     "pages/customerPool/customerPoolDetail/main",
 
-    "pages/agreement/main",
-    "pages/agreement/agreementAdd/main",
-    "pages/agreement/agreementUpdate/main",
-    "pages/agreement/agreementDetail/main",
+    "pages/contact/main",
+    "pages/contact/contactAdd/main",
+    "pages/contact/contactUpdate/main",
+    "pages/contact/contactDetail/main",
 
     "pages/opportunity/main",
     "pages/opportunity/opportunityAdd/main",
     "pages/opportunity/opportunityUpdate/main",
     "pages/opportunity/opportunityDetail/main",
+
+    "pages/agreement/main",
+    "pages/agreement/agreementAdd/main",
+    "pages/agreement/agreementUpdate/main",
+    "pages/agreement/agreementDetail/main",
 
     "pages/payCollection/main",
     "pages/payCollection/payCollectionDetail/main",

@@ -14,7 +14,9 @@
       "i-modal": "../../iview/modal/index",
       "i-datetime-picker": "../../iview/datetime-picker/index",
       "i-cell-group": "../../iview/cell-group/index",
-      "i-cell": "../../iview/cell/index"
+      "i-cell": "../../iview/cell/index",
+      
+      "i-card": "../../iview/card/index"
     }
   }
   

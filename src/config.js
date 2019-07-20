@@ -15,8 +15,17 @@ const userData = {
 const information = {
     clueupdateData: '',
     clueDetailData: '',
+    cluePoolDetailData: '',
     customerupdateData: '',
     customerDetailData: '',
+    customerPoolDetailData: '',
+    contactupdateData: '',
+    contactDetailData: '',
+    opportunityupdateData: '',
+    opportunityDetailData: '',
+    agreementupdateData: '',
+    agreementDetailData: '',
+    payCollectionDetailData: '',
 }
 
 const config = {

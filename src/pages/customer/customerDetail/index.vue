@@ -9,8 +9,8 @@
         <i-panel title=" ">
             <i-tabs :current="activeName" @change="tabClick">
                 <i-tab key="first" title="跟进记录"></i-tab>
-                <i-tab key="second" title="联系人"></i-tab>
-                <i-tab key="third" title="基本信息"></i-tab>
+                <i-tab key="second" title="基本信息"></i-tab>
+                <i-tab key="third" title="相关信息"></i-tab>
             </i-tabs>
         </i-panel>
 
@@ -34,13 +34,6 @@
         </view>
 
         <view v-if="activeName == 'second'" class="font_size_12">
-            <i-cell-group v-for="item in contactData" :key="item.id">
-                <i-cell title="联系人" :value="item.name"></i-cell>
-                <i-cell title="手机号码" :value="item.phone"></i-cell>
-            </i-cell-group>
-        </view>
-
-        <view v-if="activeName == 'third'" class="font_size_12">
             <i-cell-group>
                 <i-cell title="公司名称" :value="customerData.pName"></i-cell>
                 <i-cell title="负责人" :value="customerData.privateUser[0].private_employee"></i-cell>
@@ -48,6 +41,25 @@
                 <i-cell title="未联系天数" :value="customerData.dayNum"></i-cell>
                 <i-cell title="创建时间" :value="customerData.createTime"></i-cell>
             </i-cell-group>
+            <!-- <i-cell-group v-for="item in contactData" :key="item.id">
+                <i-cell title="联系人" :value="item.name"></i-cell>
+                <i-cell title="手机号码" :value="item.phone"></i-cell>
+            </i-cell-group> -->
+        </view>
+
+        <view v-if="activeName == 'third'" class="font_size_12">
+            <i-card full title="联系人">
+                <i-cell slot="content" v-for="item in contactData" :key="item.id" :title="item.name" :value="item.phone"></i-cell>
+            </i-card>
+            <i-card full title="商机">
+                <i-cell slot="content" title="商机" value="item.phone"></i-cell>
+            </i-card>
+            <i-card full title="合同">
+                <i-cell slot="content" title="合同" value="item.phone"></i-cell>
+            </i-card>
+            <i-card full title="任务">
+                <i-cell slot="content" title="任务" value="item.phone"></i-cell>
+            </i-card>
         </view>
 
         <!-- 更多 -->

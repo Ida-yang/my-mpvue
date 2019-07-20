@@ -12,6 +12,11 @@
             <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" dot title="My"></i-tab-bar-item>
         </i-tab-bar>
 
+        <i-card title="卡片标题">
+            <view slot="content">内容不错</view>
+            <view slot="footer">尾部内容</view>
+        </i-card>
+
         <i-button type="ghost" @click="handleWarning">错误</i-button>
         <i-toast id="toast" />
 
