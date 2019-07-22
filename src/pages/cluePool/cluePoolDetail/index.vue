@@ -65,6 +65,7 @@
             </view>
         </i-action-sheet>
         <i-toast id="toast" />
+        <i-message id="message" />
     </div>
 </template>
 
@@ -201,7 +202,7 @@
                                 content: '领取成功',
                                 type: 'success'
                             });
-                            this.toCluePool()
+                            _this.toCluePool()
                         }else{
                             $Message({
                                 content: res.data.msg,
