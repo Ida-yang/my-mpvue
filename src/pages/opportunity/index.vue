@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="opportunity_wrap">
         <!-- <i-panel :title="current"></i-panel> -->
         <!-- 查询 -->
         <view class="search_view">
@@ -248,5 +248,8 @@
     }
 </script>
 
-<style scoped>
+<style>
+    .opportunity_wrap{
+        margin-top: 40px;
+    }
 </style>

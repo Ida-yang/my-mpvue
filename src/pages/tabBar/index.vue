@@ -11,6 +11,11 @@
             <i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" count="3" title="Notice"></i-tab-bar-item>
             <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" dot title="My"></i-tab-bar-item>
         </i-tab-bar>
+        
+        <i-progress percent="60" circle></i-progress>
+            
+
+        <div style="margin-top:100px;"></div>
 
         <i-card title="卡片标题">
             <view slot="content">内容不错</view>

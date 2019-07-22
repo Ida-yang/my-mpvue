@@ -38,7 +38,7 @@
         </i-drawer>
 
         <!-- 列表 -->
-        <i-swipeout  i-class="i-swipeout-demo-item" :operateWidth="60" v-for="item in tableData" :key="item.id">
+        <i-swipeout i-class="i-swipeout-demo-item" :operateWidth="60" v-for="item in tableData" :key="item.id">
             <view slot="content" @click="toClueDetail($event,item)">
                 <i-cell 
                     i-class="cell_content" 
@@ -273,5 +273,6 @@
 <style>
     .clue_wrap{
         margin-bottom: 40px;
+        margin-top: 40px;
     }
 </style>

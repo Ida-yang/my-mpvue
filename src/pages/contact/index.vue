@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="contact_wrap">
         <!-- <i-panel :title="current"></i-panel> -->
         <view class="search_view">
             <view class="search_box">
@@ -202,5 +202,8 @@
     }
 </script>
 
-<style scoped>
+<style>
+    .contact_wrap{
+        margin-top: 40px;
+    }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="clue_pool_wrap">
         <!-- <i-panel :title="current"></i-panel> -->
         <!-- 查询 -->
         <view class="search_view">
@@ -26,6 +26,20 @@
                 <i-button @click="reSet" type="ghost" size="small" long="true" class="reset_btn">重置</i-button>
             </view>
         </i-drawer>
+        
+        <i-cell-group>
+            <i-cell i-class="pool_cell" v-for="item in tableData" :key="item.id" :title="item.name"  :label="item.address || '无'" @click="toCluePoolDetail($event,item)">
+                <view class="cell_footer">
+                    {{'负责人：' + item.privateUser[0].private_employee}}
+                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                    {{'状态：' + item.state}}
+                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                    {{'未联系天数：' + item.dayNum}}
+                </view>
+            </i-cell>
+        </i-cell-group>
+
+        <i-load-more v-if="noMore" tip="我是有底线的" :loading="false" />
     </div>
 </template>
 
@@ -193,5 +207,8 @@
     }
 </script>
 
-<style scoped>
+<style>
+    .clue_pool_wrap{
+        margin-top: 40px;
+    }
 </style>

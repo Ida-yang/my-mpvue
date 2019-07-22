@@ -1,9 +1,9 @@
 <template>
     <div class="customer_detail">
         <i-cell :title="customerData.pName">
-            <p class="customerInfo">联系人姓名：&nbsp;&nbsp;{{customerContact.coName}}</p>
-            <p class="customerInfo">联系人手机：&nbsp;&nbsp;{{customerContact.phone || '无'}}</p>
-            <p class="customerInfo">详细地址：&nbsp;&nbsp;&nbsp;&nbsp;{{customerData.address || '无'}}</p>
+            <p class="cell_info">联系人姓名：&nbsp;&nbsp;{{customerContact.coName}}</p>
+            <p class="cell_info">联系人手机：&nbsp;&nbsp;{{customerContact.phone || '无'}}</p>
+            <p class="cell_info">详细地址：&nbsp;&nbsp;&nbsp;&nbsp;{{customerData.address || '无'}}</p>
         </i-cell>
 
         <i-panel title=" ">
@@ -49,16 +49,37 @@
 
         <view v-if="activeName == 'third'" class="font_size_12">
             <i-card full title="联系人">
-                <i-cell slot="content" v-for="item in contactData" :key="item.id" :title="item.name" :value="item.phone"></i-cell>
+                <i-cell slot="content" i-class="card_cell" v-for="item in contactData" :key="item.id" :title="item.name" :value="item.phone"></i-cell>
             </i-card>
+            <view class="detail_module"></view>
             <i-card full title="商机">
-                <i-cell slot="content" title="商机" value="item.phone"></i-cell>
+                <i-cell slot="content" i-class="card_cell" v-for="item in opportunityData" :key="item.id" :title="item.opportunity_name" :label="item.opportunity_time">
+                    <view slot="footer">
+                        <span style="font-size:11px;color:#80848f">{{item.opportunity_achievement}}</span>
+                        <br>
+                        <span style="font-size:11px;color:#80848f">{{item.opportunityProgress[0].progress_name}}</span>
+                    </view>
+                </i-cell>
             </i-card>
+            <view class="detail_module"></view>
             <i-card full title="合同">
-                <i-cell slot="content" title="合同" value="item.phone"></i-cell>
+                <i-cell slot="content" i-class="card_cell" v-for="item in agreementData" :key="item.id" :title="item.contract_name" :label="item.start_date">
+                    <view slot="footer">
+                        <span style="font-size:11px;color:#80848f">{{item.amount}}</span>
+                        <br>
+                        <span style="font-size:11px;color:#80848f">{{item.contract_type}}</span>
+                    </view>
+                </i-cell>
             </i-card>
+            <view class="detail_module"></view>
             <i-card full title="任务">
-                <i-cell slot="content" title="任务" value="item.phone"></i-cell>
+                <i-cell slot="content" i-class="card_cell" v-for="item in outWordAddTaskDara" :key="item.id" :title="item.theme" :label="item.startTime">
+                    <view slot="footer">
+                        <span style="font-size:11px;color:#80848f">{{item.type}}</span>
+                        <br>
+                        <span style="font-size:11px;color:#80848f">{{item.state}}</span>
+                    </view>
+                </i-cell>
             </i-card>
         </view>
 
@@ -91,6 +112,9 @@
 
                 followData:[],
                 contactData:[],
+                opportunityData:[],
+                agreementData:[],
+                outWordAddTaskDara:[],
 
                 showOptions:false,
                 optionList:[
@@ -115,7 +139,7 @@
                 this.activeBar = ''
 
                 this.loadFollows()
-                this.loadContacts()
+                this.loadOthers()
             },
             loadFollows(){
                 const _this = this
@@ -150,8 +174,20 @@
                         _this.followData = info
                     }
                 })
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'customerpool/selectWorkPlanAndVisit.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    success:function(res) {
+                        _this.outWordAddTaskDara = res.data.map.workPlanAndVisit
+                    }
+                })
             },
-            loadContacts(){
+            loadOthers(){
                 const _this = this
                 let data = {
                     customerpool_id:this.customerData.id,
@@ -168,6 +204,30 @@
                     },
                     success:function(res) {
                         _this.contactData = res.data.map.success
+                    }
+                })
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'customerpool/queryForPoolList.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    success:function(res) {
+                        _this.opportunityData = res.data.map.success
+                    }
+                })
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'customerpool/getContractByPool.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    success:function(res) {
+                        _this.agreementData = res.data.map.success
                     }
                 })
             },
@@ -264,12 +324,6 @@
 <style>
     .customer_detail{
         background-color: #f5f5f5;
-        margin-bottom: 60px;
-    }
-    .customerInfo{
-        font-size: 12px;
-        color: #80848f;
-        padding-top: 6px;
-        box-sizing: border-box
+        margin-bottom: 50px;
     }
 </style>

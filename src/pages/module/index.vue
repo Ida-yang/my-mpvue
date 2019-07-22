@@ -5,19 +5,19 @@
             <i-row>
                 <i-grid-item @click="toCustomer">
                     <i-grid-icon>
-                        <image src="../../static/images/w.png" style="width:20px;height:20px;" />
+                        <image src="../../static/images/customer.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>客户</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toOpportunity">
                     <i-grid-icon>
-                        <image src="../../static/images/x.png" style="width:20px;height:20px;" />
+                        <image src="../../static/images/opportunity.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>商机</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toAgreement">
                     <i-grid-icon>
-                        <image src="../../static/images/y.png" style="width:20px;height:20px;" />
+                        <image src="../../static/images/agreement.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>合同</i-grid-label>
                 </i-grid-item>
@@ -28,49 +28,49 @@
             <i-row>
                 <i-grid-item @click="toClue">
                     <i-grid-icon>
-                        <image src="../../static/images/z.png" style="width:20px;height:20px;" />
+                        <image src="../../static/images/clue.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>线索</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toCluePool">
                     <i-grid-icon>
-                        <image src="../../static/images/w.png" style="width:20px;height:20px;" />
+                        <image src="../../static/images/cluePool.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>线索池</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toCustomer">
                     <i-grid-icon>
-                        <image src="../../static/images/x.png" style="width:20px;height:20px;" />
+                        <image src="../../static/images/customer.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>客户</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toCustomerPool">
                     <i-grid-icon>
-                        <image src="../../static/images/y.png" style="width:20px;height:20px;" />
+                        <image src="../../static/images/customerPool.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>客户池</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toContact">
                     <i-grid-icon>
-                        <image src="../../static/images/z.png" style="width:20px;height:20px;" />
+                        <image src="../../static/images/contact.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>联系人</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toOpportunity">
                     <i-grid-icon>
-                        <image src="../../static/images/y.png" style="width:20px;height:20px;" />
+                        <image src="../../static/images/opportunity.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>商机</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toAgreement">
                     <i-grid-icon>
-                        <image src="../../static/images/w.png" style="width:20px;height:20px;" />
+                        <image src="../../static/images/agreement.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>合同</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toPayCollection">
                     <i-grid-icon>
-                        <image src="../../static/images/x.png" style="width:20px;height:20px;" />
+                        <image src="../../static/images/payCollection.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>应收回款</i-grid-label>
                 </i-grid-item>
@@ -81,19 +81,19 @@
             <i-row>
                 <i-grid-item @click="toOutwork">
                     <i-grid-icon>
-                        <image src="../../static/images/y.png" style="width:20px;height:20px;" />
+                        <image src="../../static/images/outwork.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>外勤</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toTask">
                     <i-grid-icon>
-                        <image src="../../static/images/z.png" style="width:20px;height:20px;" />
+                        <image src="../../static/images/task.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>任务</i-grid-label>
                 </i-grid-item>
                 <i-grid-item @click="toNote">
                     <i-grid-icon>
-                        <image src="../../static/images/w.png" style="width:20px;height:20px;" />
+                        <image src="../../static/images/note.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>便签</i-grid-label>
                 </i-grid-item>

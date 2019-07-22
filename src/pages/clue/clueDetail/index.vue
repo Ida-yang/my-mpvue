@@ -1,9 +1,9 @@
 <template>
     <div class="clue_detail">
         <i-cell :title="clueData.name">
-            <p class="clueInfo">联系人姓名：&nbsp;&nbsp;{{clueContact.coName}}</p>
-            <p class="clueInfo">联系人手机：&nbsp;&nbsp;{{clueContact.phone || '无'}}</p>
-            <p class="clueInfo">详细地址：&nbsp;&nbsp;&nbsp;&nbsp;{{clueData.address || '无'}}</p>
+            <p class="cell_info">联系人姓名：&nbsp;&nbsp;{{clueContact.coName}}</p>
+            <p class="cell_info">联系人手机：&nbsp;&nbsp;{{clueContact.phone || '无'}}</p>
+            <p class="cell_info">详细地址：&nbsp;&nbsp;&nbsp;&nbsp;{{clueData.address || '无'}}</p>
         </i-cell>
 
         <i-panel title=" ">
@@ -15,18 +15,6 @@
         </i-panel>
 
         <view v-if="activeName == 'first'" class="follow_view">
-            <!-- <i-cell-group>
-                <i-cell title=" " v-for="item in followData" :key="item.id">
-                    <p class="follow_content">
-                        <span class="contact_span1">{{item.contacts[0].name}}&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                        <span class="contact_span2">{{item.createTime}}</span>
-                        <span class="contact_span1">&nbsp;&nbsp;&nbsp;{{item.state}}&nbsp;&nbsp;&nbsp;</span>
-                        <span class="contact_way">{{item.followType}}</span>
-                    </p>
-                    <p class="follow_content">{{item.followContent}}</p>
-                    <p class="follow_content contact_span2">{{item.inputType}}&nbsp;&nbsp;{{item.contactTime}}</p>
-                </i-cell>
-            </i-cell-group> -->
             <view v-for="item in followData" :key="item.id">
                 <i-panel :title="item.createTime" i-class="vice_panel"></i-panel>
                 <i-fiche full :title="item.contacts[0].name" :extra="item.state" :thumb="item.portrait">
@@ -35,7 +23,6 @@
                         <span class="bgc_span">{{item.followType}}</span>
                         <span v-if="item.contactTime">&nbsp;&nbsp;&nbsp;&nbsp;</span>
                         <span class="bgc_span" v-if="item.contactTime">{{item.contactTime}}</span>
-                        <!-- <span class="bgc_span" v-if="item.contactTime">下次联系时间：{{item.contactTime}}</span> -->
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <span>{{item.inputType}}</span>
                         <br/>
@@ -51,9 +38,6 @@
                 <i-cell title="联系人" :value="item.name"></i-cell>
                 <i-cell title="手机号码" :value="item.phone"></i-cell>
             </i-cell-group>
-            <!-- <i-card v-for="item in contactData" :key="item.id" :title="item.name" :extra="item.isCrux" class="margin_card">
-                <view slot="content">{{item.phone || '无'}}</view>
-            </i-card> -->
         </view>
 
         <view v-if="activeName == 'third'" class="font_size_12">
@@ -92,10 +76,6 @@
                 clue_id:7029,
 
                 activeName:'first',
-                collapseName:'one',
-
-                typeData:[],
-                stateList:[],
 
                 followData:[],
                 contactData:[],
@@ -111,7 +91,6 @@
         },
 
         mounted(){
-            this.loadType()
             this.loadData()
         },
 
@@ -176,24 +155,6 @@
                     },
                     success:function(res) {
                         _this.contactData = res.data.map.success
-                    }
-                })
-            },
-            loadType(){
-                const _this = this
-                _this.stateList = []
-
-                wx.request({
-                    url: config.defaulthost + 'typeInfo/getTypeInfoGroupByType.do?cId=' + config.userData.cId,  //接口地址
-                    data: {
-                        type: '线索状态'
-                    },
-                    success: function (res) {
-                        _this.typeData = res.data
-                        let info = res.data
-                        info.forEach(el => {
-                            _this.stateList.push({name:el.typeName})
-                        });
                     }
                 })
             },
@@ -331,11 +292,5 @@
     .clue_detail{
         background-color: #f5f5f5;
         margin-bottom: 60px;
-    }
-    .clueInfo{
-        font-size: 12px;
-        color: #80848f;
-        padding-top: 6px;
-        box-sizing: border-box
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="customer_wrap">
         <!-- <i-panel :title="current"></i-panel> -->
         <view class="search_view">
             <view class="search_box">
@@ -285,4 +285,7 @@
 </script>
 
 <style>
+    .customer_wrap{
+        margin-top: 40px;
+    }
 </style>

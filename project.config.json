@@ -33,19 +33,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
 					"name": "单页调试",
-					"pathName": "pages/customer/main",
+					"pathName": "pages/cluePool/main",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": 1,
 					"name": "小页调试",
-					"pathName": "pages/clue/clueFollow/main",
+					"pathName": "pages/clue/main",
 					"query": "",
 					"scene": null
 				},

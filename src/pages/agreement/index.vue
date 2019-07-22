@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="agreement_wrap">
         <!-- <i-panel :title="current"></i-panel> -->
         <!-- 查询 -->
         <view class="search_view">
@@ -223,5 +223,8 @@
     }
 </script>
 
-<style scoped>
+<style>
+    .agreement_wrap{
+        margin-top: 40px;
+    }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pay_wrap">
         <!-- <i-panel :title="current"></i-panel> -->
         <!-- 查询 -->
         <view class="search_view">
@@ -191,5 +191,8 @@
     }
 </script>
 
-<style scoped>
+<style>
+    .pay_wrap{
+        margin-top: 40px;
+    }
 </style>

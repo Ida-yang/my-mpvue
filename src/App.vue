@@ -50,12 +50,16 @@
 
   /* ------查询组件样式------- */
   .search_view{
+    width: 100%;
     height: 40px;
     background-color: #f0f0f0;
     padding: 0 10px;
     box-sizing: border-box;
+    position: fixed;
+    top: 0;
     display: flex;
     align-items: center;
+    z-index: 99
   }
   .search_box{
     height: 30px;
@@ -134,6 +138,9 @@
     color: #acacac;
     padding-top: 5px;
     box-sizing: border-box
+  }
+  .pool_cell{
+    padding: 15px 20px !important;
   }
 
   /* 跟进记录 */
@@ -223,5 +230,15 @@
     box-sizing: border-box;
     background-color: rgb(241, 250, 255);
     border-radius: 8px;
+  }
+  .detail_module{
+    margin-top: 10px;
+  }
+  
+  .cell_info{
+    font-size: 12px;
+    color: #80848f;
+    padding-top: 6px;
+    box-sizing: border-box
   }
 </style>
