@@ -271,8 +271,11 @@
                 })
             },
             toCustomerDetail(){
-                const url = '../customerDetail/main'
-                mpvue.navigateTo({ url })
+                // const url = '../customerDetail/main'
+                // mpvue.navigateTo({ url })
+                wx.navigateBack({
+                    delta: 1,
+                })
             },
         },
     }

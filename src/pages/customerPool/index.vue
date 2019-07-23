@@ -25,6 +25,20 @@
                 <i-button @click="reSet" type="ghost" size="small" long="true" class="reset_btn">重置</i-button>
             </view>
         </i-drawer>
+
+        <i-cell-group>
+            <i-cell i-class="pool_cell" v-for="item in tableData" :key="item.id" :title="item.name"  :label="item.address || '无'" @click="toCustomerPoolDetail($event,item)">
+                <view class="cell_footer">
+                    {{'前负责人：' + item.privateUser[0].private_employee}}
+                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                    {{'状态：' + item.status || '无'}}
+                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                    {{'未联系天数：' + item.dayNum}}
+                </view>
+            </i-cell>
+        </i-cell-group>
+
+        <i-load-more v-if="noMore" tip="我是有底线的" :loading="false" />
     </div>
 </template>
 
@@ -69,7 +83,10 @@
             }
         },
 
-        mounted(){
+        onShow(){
+            this.init = true
+            this.noMore = false
+            this.searchList.page = 1
             this.loadData()
         },
         // 触底加载
@@ -119,14 +136,14 @@
                         if(_this.init === true){
                             _this.tableData = info
                             _this.init = false
-                            // console.log('我的第一次加载')
+                            console.log('我的第一次加载')
                             wx.stopPullDownRefresh()
                         }else{
                             _this.tableData = _this.tableData.concat(info)
-                            // console.log('我不是第一次加载了')
-                        }
-                        if(info.length < 10){
-                            _this.noMore = true
+                            console.log('我不是第一次加载了')
+                            if(info.length < 10){
+                                _this.noMore = true
+                            }
                         }
                     }
                 })
@@ -145,6 +162,7 @@
             closeSearch(){
                 this.searchList.searchName = ''
                 this.isValue = false
+                this.loadData()
             },
             search(){
                 this.init = true

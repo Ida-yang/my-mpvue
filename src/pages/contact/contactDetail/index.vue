@@ -13,6 +13,8 @@
             }
         },
 
+        onShow(){},
+
         methods: {
         },
     }

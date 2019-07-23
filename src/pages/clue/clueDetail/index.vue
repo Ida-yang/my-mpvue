@@ -91,7 +91,7 @@
             }
         },
 
-        mounted(){
+        onShow(){
             this.loadData()
         },
 
@@ -286,8 +286,11 @@
                 })
             },
             toClue(){
-                const url = '../main'
-                mpvue.navigateTo({ url })
+                // const url = '../main'
+                // mpvue.navigateTo({ url })
+                wx.navigateBack({
+                    delta: 1,
+                })
             },
         },
     }

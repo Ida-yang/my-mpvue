@@ -274,8 +274,11 @@
                 })
             },
             toClueDetail(){
-                const url = '../clueDetail/main'
-                mpvue.navigateTo({ url })
+                // const url = '../clueDetail/main'
+                // mpvue.navigateTo({ url })
+                wx.navigateBack({
+                    delta: 1,
+                })
             },
         },
     }

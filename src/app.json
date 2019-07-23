@@ -17,6 +17,7 @@
 
     "pages/cluePool/main",
     "pages/cluePool/cluePoolDetail/main",
+    "pages/cluePool/userList/main",
 
     "pages/customer/main",
     "pages/customer/customerAdd/main",
@@ -26,6 +27,7 @@
 
     "pages/customerPool/main",
     "pages/customerPool/customerPoolDetail/main",
+    "pages/customerPool/userList/main",
 
     "pages/contact/main",
     "pages/contact/contactAdd/main",

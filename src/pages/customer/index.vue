@@ -121,7 +121,10 @@
             }
         },
         
-        mounted(){
+        onShow(){
+            this.init = true
+            this.noMore = false
+            this.searchList.page = 1
             this.loadData()
             this.getSearchList()
         },
@@ -180,9 +183,9 @@
                         }else{
                             _this.tableData = _this.tableData.concat(info)
                             // console.log('我不是第一次加载了')
-                        }
-                        if(info.length < 10){
-                            _this.noMore = true
+                            if(info.length < 10){
+                                _this.noMore = true
+                            }
                         }
                     }
                 })
@@ -212,6 +215,7 @@
             closeSearch(){
                 this.searchList.searchName = ''
                 this.isValue = false
+                this.loadData()
             },
             search(){
                 this.init = true

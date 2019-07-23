@@ -58,7 +58,7 @@
             <i-tab-bar-item key="trash" icon="trash" current-icon="trash" title="删除"></i-tab-bar-item>
         </i-tab-bar>
 
-        <i-action-sheet :visible="showDetele" :actions="deleteActions" show-cancel @cancel="cancelDalete" @click="clickDelete" :mask-closable="false">
+        <i-action-sheet :visible="showDetele" :actions="deleteActions" show-cancel @cancel="cancelDelete" @click="clickDelete" :mask-closable="false">
             <view slot="header" style="padding: 16px">
                 <view style="color: #444;font-size: 16px">确定吗？</view>
                 <text>删除后无法恢复哦</text>
@@ -104,7 +104,6 @@
 
         methods: {
             loadData(){
-                // console.log(config.information.cluePoolDetailData)
                 this.cluePoolDetail = config.information.cluePoolDetailData
                 this.cluePoolContact = config.information.cluePoolDetailData.contacts[0]
 
@@ -183,7 +182,6 @@
             },
             receiveItem(){
                 const _this = this
-                console.log(this.cluePoolDetail.id)
                 let data = {
                     ids: this.cluePoolDetail.id,
                     pId: config.userData.pId,
@@ -206,6 +204,11 @@
                                 type: 'success'
                             });
                             _this.toCluePool()
+                        }else if(res.data.msg && res.data.msg == 'error'){
+                            $Toast({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
                         }else{
                             $Message({
                                 content: res.data.msg,
@@ -217,31 +220,69 @@
             },
 
             distributeItem(){
-                const _this = this
-                console.log(this.cluePoolDetail.id)
+                const url = '../userList/main'
+                mpvue.navigateTo({ url })
             },
 
             deleteItem(){
                 this.showDetele = true
             },
-            cancelDalete(){
+            cancelDelete(){
                 this.showDetele = false
             },
             clickDelete(){
                 const _this = this
-                console.log(this.cluePoolDetail.id)
                 let data = {
-
+                    id: this.cluePoolDetail.id
                 }
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'customerTwo/delete.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        if(res.data.success && res.data.success == true){
+                            $Message({
+                                content: '删除成功',
+                                type: 'success'
+                            });
+                            _this.toCluePool()
+                        }else if(res.data.msg && res.data.msg == 'error'){
+                            $Toast({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                            _this.cancelDelete()
+                        }else{
+                            $Message({
+                                content: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
             },
 
             toCluePool(){
-                const url = '../main'
-                mpvue.navigateTo({ url })
+                // const url = '../main'
+                // mpvue.navigateTo({ url })
+                // let pages = getCurrentPages();
+                // let prevPage = pages[pages.length - 2];
+                wx.navigateBack({
+                    delta: 1,
+                })
             },
         },
     }
 </script>
 
-<style scoped>
+<style>
+    .clue_pool_detail{
+        background-color: #fcfcfc;
+        margin-bottom: 60px;
+    }
 </style>

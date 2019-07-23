@@ -15,6 +15,7 @@
       "i-tab-bar": "../../../iview/tab-bar/index",
       "i-tab-bar-item": "../../../iview/tab-bar-item/index",
       "i-card": "../../../iview/card/index",
-      "i-fiche": "../../../iview/fiche/index"
+      "i-fiche": "../../../iview/fiche/index",
+      "i-modal": "../../../iview/modal/index"
     }
 }

@@ -104,12 +104,11 @@
         data () {
             return {
                 current: '客户详情',
+
                 customerData:{},
                 customerContact:{},
-                customer_id:7029,
 
                 activeName:'first',
-                collapseName:'one',
 
                 followData:[],
                 contactData:[],
@@ -126,7 +125,7 @@
             }
         },
 
-        mounted(){
+        onShow(){
             this.loadData()
         },
 
@@ -321,8 +320,11 @@
                 })
             },
             toCustomer(){
-                const url = '../main'
-                mpvue.navigateTo({ url })
+                // const url = '../main'
+                // mpvue.navigateTo({ url })
+                wx.navigateBack({
+                    delta: 1,
+                })
             },
         },
     }

@@ -12,6 +12,8 @@
                 current: '合同详情'
             }
         },
+        
+        onShow(){},
 
         methods: {
         },
