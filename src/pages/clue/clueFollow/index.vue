@@ -286,6 +286,6 @@
 
 <style>
     .clue_follow{
-        margin-bottom:60px;
+        margin-bottom:40px
     }
 </style>

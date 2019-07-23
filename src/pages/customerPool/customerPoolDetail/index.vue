@@ -117,7 +117,6 @@
 
         methods: {
             loadData(){
-                console.log(config.information.customerPoolDetailData)
                 this.customerPoolDetail = config.information.customerPoolDetailData
                 this.customerPoolContact = config.information.customerPoolDetailData.contacts[0]
                 
@@ -332,7 +331,7 @@
 
 <style>
     .customer_pool_detail{
-        background-color: #fcfcfc;
-        margin-bottom: 60px
+        background-color: #f5f5f5;
+        margin-bottom: 50px
     }
 </style>

@@ -123,6 +123,6 @@
 
 <style>
     .user_wrap{
-        margin-bottom: 40px;
+        margin-bottom: 40px
     }
 </style>

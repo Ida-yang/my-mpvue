@@ -131,10 +131,8 @@
 
         methods: {
             loadData(){
-                console.log(config.information.customerDetailData)
                 this.customerData = config.information.customerDetailData
                 this.customerContact = config.information.customerDetailData.contacts[0]
-                // this.customerData = {id:7057}
 
                 this.activeBar = ''
 
@@ -333,6 +331,6 @@
 <style>
     .customer_detail{
         background-color: #f5f5f5;
-        margin-bottom: 50px;
+        margin-bottom: 50px
     }
 </style>

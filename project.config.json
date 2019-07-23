@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -57,9 +57,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "首页调试",
-					"pathName": "pages/index/main",
+					"pathName": "pages/module/main",
 					"query": "",
 					"scene": null
 				}

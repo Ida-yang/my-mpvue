@@ -163,7 +163,7 @@
             closeSearch(){
                 this.searchList.searchName = ''
                 this.isValue = false
-                this.loadData()
+                this.search()
             },
             search(){
                 this.init = true
@@ -182,10 +182,7 @@
                     this.timeActive = index
                     this.searchList.example = item.label
                 }
-                this.init = true
-                this.noMore = false
-                this.searchList.page = 1
-                this.loadData()
+                this.search()
             },
             reSet(){
                 this.searchList = {

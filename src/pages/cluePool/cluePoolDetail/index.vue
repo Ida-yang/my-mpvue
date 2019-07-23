@@ -282,7 +282,7 @@
 
 <style>
     .clue_pool_detail{
-        background-color: #fcfcfc;
-        margin-bottom: 60px;
+        background-color: #f5f5f5;
+        margin-bottom: 50px
     }
 </style>

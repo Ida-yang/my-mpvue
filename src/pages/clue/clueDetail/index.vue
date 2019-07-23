@@ -299,6 +299,6 @@
 <style>
     .clue_detail{
         background-color: #f5f5f5;
-        margin-bottom: 60px;
+        margin-bottom: 50px
     }
 </style>

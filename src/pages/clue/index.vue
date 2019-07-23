@@ -170,11 +170,11 @@
                         if(_this.init === true){
                             _this.tableData = info
                             _this.init = false
-                            // console.log('我的第一次加载')
+                            console.log('我的第一次加载')
                             wx.stopPullDownRefresh()
                         }else{
                             _this.tableData = _this.tableData.concat(info)
-                            // console.log('我不是第一次加载了')
+                            console.log('我不是第一次加载了')
                             if(info.length < 10){
                                 _this.noMore = true
                             }
@@ -208,7 +208,7 @@
             closeSearch(){
                 this.searchList.searchName = ''
                 this.isValue = false
-                this.loadData()
+                this.search()
             },
             search(){
                 this.init = true
@@ -233,10 +233,7 @@
                     this.timeActive = index
                     this.searchList.example = item.label
                 }
-                this.init = true
-                this.noMore = false
-                this.searchList.page = 1
-                this.loadData()
+                this.search()
             },
             reSet(){
                 this.searchList = {
@@ -277,7 +274,8 @@
 
 <style>
     .clue_wrap{
+        background-color: #fcfcfc;
         margin-bottom: 40px;
-        margin-top: 40px;
+        margin-top: 40px
     }
 </style>
