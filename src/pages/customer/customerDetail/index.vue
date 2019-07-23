@@ -91,6 +91,7 @@
         </i-tab-bar>
         <i-action-sheet :visible="showOptions" :actions="optionList" show-cancel @cancel="optionCencel" @change="optionChange" />
         <i-toast id="toast" />
+        <i-message id="message" />
 
     </div>
 </template>
@@ -152,7 +153,8 @@
                     url: config.defaulthost + 'customerpool/getFollowStaffAndpool.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
-                        "Content-Type": "application/x-www-form-urlencoded"
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
                     },
                     success:function(res) {
                         let info = res.data.map.success
@@ -180,7 +182,8 @@
                     url: config.defaulthost + 'customerpool/selectWorkPlanAndVisit.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
-                        "Content-Type": "application/x-www-form-urlencoded"
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
                     },
                     success:function(res) {
                         _this.outWordAddTaskDara = res.data.map.workPlanAndVisit
@@ -200,7 +203,8 @@
                     url: config.defaulthost + 'customerpool/getPoolContacts.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
-                        "Content-Type": "application/x-www-form-urlencoded"
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
                     },
                     success:function(res) {
                         _this.contactData = res.data.map.success
@@ -212,7 +216,8 @@
                     url: config.defaulthost + 'customerpool/queryForPoolList.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
-                        "Content-Type": "application/x-www-form-urlencoded"
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
                     },
                     success:function(res) {
                         _this.opportunityData = res.data.map.success
@@ -224,7 +229,8 @@
                     url: config.defaulthost + 'customerpool/getContractByPool.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
-                        "Content-Type": "application/x-www-form-urlencoded"
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
                     },
                     success:function(res) {
                         _this.agreementData = res.data.map.success
@@ -289,12 +295,13 @@
                     url: config.defaulthost + 'customerpool/updateTo.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
-                        "Content-Type": "application/x-www-form-urlencoded"
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
                     },
                     success: function (res) {
                         let info = res.data
                         if(res.data.code && res.data.code == '200'){
-                            $Toast({
+                            $Message({
                                 content: '转移成功',
                                 type: 'success'
                             });
@@ -305,7 +312,7 @@
                                 type: 'error'
                             });
                         }else{
-                            $Toast({
+                            $Message({
                                 content: res.data.msg,
                                 type: 'error'
                             });

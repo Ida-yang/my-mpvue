@@ -59,6 +59,7 @@
         </i-tab-bar>
         <i-action-sheet :visible="showOptions" :actions="optionList" show-cancel @cancel="optionCencel" @change="optionChange" />
         <i-toast id="toast" />
+        <i-message id="message" />
 
     </div>
 </template>
@@ -115,7 +116,8 @@
                     url: config.defaulthost + 'getFollowStaff.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
-                        "Content-Type": "application/x-www-form-urlencoded"
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
                     },
                     success:function(res) {
                         let info = res.data.map.success
@@ -151,7 +153,8 @@
                     url: config.defaulthost + 'customerTwo/getClueContacts.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
-                        "Content-Type": "application/x-www-form-urlencoded"
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
                     },
                     success:function(res) {
                         _this.contactData = res.data.map.success
@@ -220,12 +223,13 @@
                     url: config.defaulthost + 'customerTwo/insert.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
-                        "Content-Type": "application/x-www-form-urlencoded"
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
                     },
                     success: function (res) {
                         let info = res.data
                         if(res.data.code && res.data.code == '200'){
-                            $Toast({
+                            $Message({
                                 content: '转移成功',
                                 type: 'success'
                             });
@@ -236,7 +240,7 @@
                                 type: 'error'
                             });
                         }else{
-                            $Toast({
+                            $Message({
                                 content: res.data.msg,
                                 type: 'error'
                             });
@@ -256,12 +260,13 @@
                     url: config.defaulthost + 'customerTwo/updateState.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
-                        "Content-Type": "application/x-www-form-urlencoded"
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
                     },
                     success: function (res) {
                         let info = res.data
-                        if(res.data.code && res.data.code == '200'){
-                            $Toast({
+                        if(res.data && res.data == 'success'){
+                            $Message({
                                 content: '转移成功',
                                 type: 'success'
                             });
@@ -272,7 +277,7 @@
                                 type: 'error'
                             });
                         }else{
-                            $Toast({
+                            $Message({
                                 content: res.data.msg,
                                 type: 'error'
                             });

@@ -55,6 +55,8 @@
 
         mounted () {
             this.userAvator = config.userData.portrait
+
+            console.log(config)
         }
     }
 </script>

@@ -123,7 +123,8 @@
                     url: config.defaulthost + 'customerTwo/getClueContacts.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
-                        "Content-Type": "application/x-www-form-urlencoded"
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
                     },
                     success:function(res) {
                         let info2 = res.data.map.success
@@ -253,7 +254,8 @@
                     url: config.defaulthost + 'addFollowFromSmallProcedures.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
-                        "Content-Type": "application/x-www-form-urlencoded"
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
                     },
                     success:function(res) {
                         if(res.data.code && res.data.code == '200'){
