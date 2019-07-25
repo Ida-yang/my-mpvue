@@ -1,0 +1,8 @@
+<view class="i-datetime-picker" bindtap="handleTap">
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="i-picker">
+            {{value}}
+        </view>
+        <slot></slot>
+    </picker>
+</view>

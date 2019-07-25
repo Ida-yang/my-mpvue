@@ -1,0 +1,1 @@
+<import src="/pages/agreement/agreementUpdate/index.vue.wxml" /><template is="106c8162" data="{{ ...$root['0'], $root }}"/>

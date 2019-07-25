@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "便签详情",
+    "usingComponents": {
+      "i-panel": "../../../iview/panel/index"
+    }
+}

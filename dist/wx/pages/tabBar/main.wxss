@@ -1,0 +1,16 @@
+@import "../../common/vendor.wxss";
+
+.demo-container.data-v-d483bbb4 {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  text-align: center;
+}
+.index_cell.data-v-d483bbb4 {
+  position: relative;
+}
+.index_picker.data-v-d483bbb4 {
+  position: absolute;
+  top: -20rpx;
+  right: 20rpx;
+}

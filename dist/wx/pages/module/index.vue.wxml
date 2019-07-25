@@ -1,0 +1,103 @@
+<template name="b10f68cc">
+  <view class="_div data-v-619bc6d4 module_content">
+    <i-panel title="常用" class="_i-panel data-v-619bc6d4 small_panel"></i-panel>
+    <i-grid i-class="module_view" class="_i-grid data-v-619bc6d4">
+      <i-row class="_i-row data-v-619bc6d4">
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/customer.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">客户</i-grid-label>
+        </i-grid-item>
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/opportunity.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">商机</i-grid-label>
+        </i-grid-item>
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/agreement.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">合同</i-grid-label>
+        </i-grid-item>
+      </i-row>
+    </i-grid>
+    <i-panel title="销售支持" class="_i-panel data-v-619bc6d4 small_panel"></i-panel>
+    <i-grid i-class="module_view" class="_i-grid data-v-619bc6d4">
+      <i-row class="_i-row data-v-619bc6d4">
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/clue.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">线索</i-grid-label>
+        </i-grid-item>
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/cluePool.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">线索池</i-grid-label>
+        </i-grid-item>
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/customer.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">客户</i-grid-label>
+        </i-grid-item>
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/customerPool.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">客户池</i-grid-label>
+        </i-grid-item>
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/contact.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">联系人</i-grid-label>
+        </i-grid-item>
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'8'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/opportunity.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">商机</i-grid-label>
+        </i-grid-item>
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'9'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/agreement.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">合同</i-grid-label>
+        </i-grid-item>
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'10'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/payCollection.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">应收回款</i-grid-label>
+        </i-grid-item>
+      </i-row>
+    </i-grid>
+    <i-panel title="办公" class="_i-panel data-v-619bc6d4 small_panel"></i-panel>
+    <i-grid i-class="module_view" class="_i-grid data-v-619bc6d4">
+      <i-row class="_i-row data-v-619bc6d4">
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'11'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/outwork.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">外勤</i-grid-label>
+        </i-grid-item>
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'12'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/task.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">任务</i-grid-label>
+        </i-grid-item>
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'13'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/note.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">便签</i-grid-label>
+        </i-grid-item>
+      </i-row>
+    </i-grid>
+  </view>
+</template>

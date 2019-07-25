@@ -1,0 +1,33 @@
+@import "../../common/vendor.wxss";
+
+.login_content {
+  height: 100vh;
+  background-image: url('https://crm.yunzoe.com/upload/staticImg/small_procedures_login_bg.png');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+.login_view {
+  flex: 1;
+}
+.login_label {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #ffffff;
+}
+.login_welcome {
+  font-size: 32rpx;
+  color: #ffffff;
+}
+.login_label,
+.login_welcome {
+  text-align: center;
+}
+.login_input {
+  width: 70vw;
+  margin: 50rpx auto !important;
+}
+.login_submit {
+  width: 70vw;
+  margin: 50rpx auto !important;
+}

@@ -1,0 +1,5 @@
+@import "../../common/vendor.wxss";
+
+.clue_pool_wrap {
+  margin-top: 80rpx;
+}

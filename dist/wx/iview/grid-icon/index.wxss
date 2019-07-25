@@ -1,0 +1,7 @@
+.i-grid-icon{
+    display:block;
+    /* width:28px;
+    height:28px; */
+    text-align: center;
+    margin:0 auto
+}

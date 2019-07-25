@@ -1,0 +1,31 @@
+<template name="4aee98c8">
+  <view class="_div data-v-21a3437c customer_pool_wrap">
+    <view class="_view data-v-21a3437c search_view">
+      <view class="_view data-v-21a3437c search_box">
+        <i-icon type="search" size="16" color="#80848f" class="_i-icon data-v-21a3437c search_icon"></i-icon>
+        <i-input value="{{searchList.searchName}}" bindchange="handleProxy" maxlength="50" i-class="search_input" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-21a3437c"></i-input>
+        <i-icon wx:if="{{isValue}}" type="close" size="14" color="#80848f" class="_i-icon data-v-21a3437c search_icon" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}"></i-icon>
+      </view> <label class="_span data-v-21a3437c search_btn" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}">搜索</label>
+      <i-icon type="other" size="18" color="#80848f" class="_i-icon data-v-21a3437c search_icon" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}"></i-icon>
+    </view>
+    <i-drawer mode="right" visible="{{searchCriteria}}" bindclose="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-drawer data-v-21a3437c">
+      <view class="_view data-v-21a3437c search_container">
+        <i-panel title="数据授权" i-class="query_label" class="_i-panel data-v-21a3437c">
+          <view class="_view data-v-21a3437c query_view"><label class="_span data-v-21a3437c queryBtn {{[index == powerActive ? 'isActive' : '']}}" wx:key="item.label" key="{{item.label}}" bindtap="handleProxy" data-eventid="{{'4_'+index}}" data-comkey="{{$k}}" wx:for="{{powerList}}" wx:for-index="index" wx:for-item="item">{{item.name}}</label></view>
+        </i-panel>
+        <i-panel title="新增时间" i-class="query_label" class="_i-panel data-v-21a3437c">
+          <view class="_view data-v-21a3437c query_view"><label class="_span data-v-21a3437c queryBtn {{[index == timeActive ? 'isActive' : '']}}" wx:key="item.label" key="{{item.label}}" bindtap="handleProxy" data-eventid="{{'5_'+index}}" data-comkey="{{$k}}" wx:for="{{timeList}}" wx:for-index="index" wx:for-item="item">{{item.name}}</label></view>
+        </i-panel>
+        <i-button bindtap="handleProxy" type="ghost" size="small" long="true" class="_i-button data-v-21a3437c reset_btn" data-eventid="{{'6'}}" data-comkey="{{$k}}">重置</i-button>
+      </view>
+    </i-drawer>
+    <i-cell-group class="_i-cell-group data-v-21a3437c">
+      <i-cell i-class="pool_cell" wx:key="item.id" key="{{item.id}}" title="{{item.name}}" label="{{item.address || '无'}}" bindtap="handleProxy" data-eventid="{{'8_'+index}}" data-comkey="{{$k}}" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-21a3437c">
+        <view class="_view data-v-21a3437c cell_footer">
+          {{'前负责人：' + item.privateUser[0].private_employee}}    |    状态：{{item.status || '无'}}    |    {{'未联系天数：' + item.dayNum}}
+        </view>
+      </i-cell>
+    </i-cell-group>
+    <i-load-more wx:if="{{noMore}}" tip="我是有底线的" loading="{{false}}" class="_i-load-more data-v-21a3437c"></i-load-more>
+  </view>
+</template>

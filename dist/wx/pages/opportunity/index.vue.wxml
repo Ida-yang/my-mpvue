@@ -1,0 +1,29 @@
+<template name="720793fe">
+  <view class="_div data-v-0c6f7a01 opportunity_wrap">
+    <view class="_view data-v-0c6f7a01 search_view">
+      <view class="_view data-v-0c6f7a01 search_box">
+        <i-icon type="search" size="16" color="#80848f" class="_i-icon data-v-0c6f7a01 search_icon"></i-icon>
+        <i-input value="{{searchList.searchName}}" bindchange="handleProxy" maxlength="50" i-class="search_input" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-0c6f7a01"></i-input>
+        <i-icon wx:if="{{isValue}}" type="close" size="14" color="#80848f" class="_i-icon data-v-0c6f7a01 search_icon" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}"></i-icon>
+      </view> <label class="_span data-v-0c6f7a01 search_btn" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}">搜索</label>
+      <i-icon type="other" size="18" color="#80848f" class="_i-icon data-v-0c6f7a01 search_icon" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}"></i-icon>
+    </view>
+    <i-drawer mode="right" visible="{{searchCriteria}}" bindclose="handleProxy" data-eventid="{{'9'}}" data-comkey="{{$k}}" class="_i-drawer data-v-0c6f7a01">
+      <view class="_view data-v-0c6f7a01 search_container">
+        <i-panel title="数据授权" i-class="query_label" class="_i-panel data-v-0c6f7a01">
+          <view class="_view data-v-0c6f7a01 query_view"><label class="_span data-v-0c6f7a01 queryBtn {{[index == powerActive ? 'isActive' : '']}}" wx:key="item.label" key="{{item.label}}" bindtap="handleProxy" data-eventid="{{'4_'+index}}" data-comkey="{{$k}}" wx:for="{{powerList}}" wx:for-index="index" wx:for-item="item">{{item.name}}</label></view>
+        </i-panel>
+        <i-panel title="商机进度" i-class="query_label" class="_i-panel data-v-0c6f7a01">
+          <view class="_view data-v-0c6f7a01 query_view"><label class="_span data-v-0c6f7a01 queryBtn {{[index == stateActive ? 'isActive' : '']}}" wx:key="item.step_id" key="{{item.step_id}}" bindtap="handleProxy" data-eventid="{{'5_'+index}}" data-comkey="{{$k}}" wx:for="{{stateList}}" wx:for-index="index" wx:for-item="item">{{item.step_name}}</label></view>
+        </i-panel>
+        <i-panel title="商机预测" i-class="query_label" class="_i-panel data-v-0c6f7a01">
+          <view class="_view data-v-0c6f7a01 query_view"><label class="_span data-v-0c6f7a01 queryBtn {{[index == predActive ? 'isActive' : '']}}" wx:key="item.label" key="{{item.label}}" bindtap="handleProxy" data-eventid="{{'6_'+index}}" data-comkey="{{$k}}" wx:for="{{predList}}" wx:for-index="index" wx:for-item="item">{{item.name}}</label></view>
+        </i-panel>
+        <i-panel title="新增时间" i-class="query_label" class="_i-panel data-v-0c6f7a01">
+          <view class="_view data-v-0c6f7a01 query_view"><label class="_span data-v-0c6f7a01 queryBtn {{[index == timeActive ? 'isActive' : '']}}" wx:key="item.label" key="{{item.label}}" bindtap="handleProxy" data-eventid="{{'7_'+index}}" data-comkey="{{$k}}" wx:for="{{timeList}}" wx:for-index="index" wx:for-item="item">{{item.name}}</label></view>
+        </i-panel>
+        <i-button bindtap="handleProxy" type="ghost" size="small" long="true" class="_i-button data-v-0c6f7a01 reset_btn" data-eventid="{{'8'}}" data-comkey="{{$k}}">重置</i-button>
+      </view>
+    </i-drawer>
+  </view>
+</template>

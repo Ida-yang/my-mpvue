@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "编辑联系人",
+    "usingComponents": {
+      "i-panel": "../../../iview/panel/index"
+    }
+}

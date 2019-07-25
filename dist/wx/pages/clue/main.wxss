@@ -1,0 +1,7 @@
+@import "../../common/vendor.wxss";
+
+.clue_wrap {
+  background-color: #fcfcfc;
+  margin-bottom: 80rpx;
+  margin-top: 80rpx;
+}

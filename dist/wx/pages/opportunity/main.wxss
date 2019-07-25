@@ -1,0 +1,5 @@
+@import "../../common/vendor.wxss";
+
+.opportunity_wrap {
+  margin-top: 80rpx;
+}

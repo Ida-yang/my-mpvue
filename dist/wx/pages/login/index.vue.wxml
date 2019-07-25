@@ -1,0 +1,13 @@
+<template name="2e768317">
+  <view class="_view data-v-5bd85957 login_content">
+    <view class="_view data-v-5bd85957 login_view">
+      <i-panel i-class="login_label" title="{{current}}" class="_i-panel data-v-5bd85957"></i-panel>
+      <i-panel i-class="login_welcome" title="欢迎您登录" class="_i-panel data-v-5bd85957"></i-panel>
+      <i-input value="{{account}}" type="text" maxlength="11" right title="登录账号" mode="wrapped" i-class="login_input" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-5bd85957"></i-input>
+      <i-input value="{{password}}" type="password" maxlength="16" right title="登录密码" mode="wrapped" i-class="login_input" bindinput="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-input data-v-5bd85957"></i-input>
+      <i-button bindtap="handleProxy" type="ghost" i-class="login_submit" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-button data-v-5bd85957">登录</i-button>
+      <i-message id="message" class="_i-message data-v-5bd85957"></i-message>
+      <i-toast id="toast" class="_i-toast data-v-5bd85957"></i-toast>
+    </view>
+  </view>
+</template>

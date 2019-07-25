@@ -1,0 +1,5 @@
+@import "../../../common/vendor.wxss";
+
+.user_wrap {
+  margin-bottom: 80rpx;
+}

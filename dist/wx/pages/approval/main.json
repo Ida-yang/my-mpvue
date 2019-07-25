@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "审批",
+    "usingComponents": {
+      "i-panel": "../../iview/panel/index"
+    }
+}

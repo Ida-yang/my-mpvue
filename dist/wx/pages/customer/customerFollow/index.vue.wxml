@@ -1,0 +1,22 @@
+<template name="574630ca">
+  <view class="_div data-v-69b4e424 customer_follow">
+    <i-panel title="{{followData.name}}" class="_i-panel data-v-69b4e424">
+      <i-cell title="联系方式" value="{{followList.followType}}" is-link request i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-cell data-v-69b4e424"></i-cell>
+      <i-cell title="联系人" value="{{followList.contactsName}}" is-link request i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-69b4e424"></i-cell>
+      <i-cell title="状态" value="{{followList.follow_stateName}}" is-link request i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-cell data-v-69b4e424"></i-cell>
+      <i-cell title="下次联系时间" is-link i-class="simple_cell" class="_i-cell data-v-69b4e424">
+        <i-datetime-picker slot="footer" value="{{followList.contactTime}}" bindchange="handleProxy" class="_i-datetime-picker data-v-69b4e424 cell_picker" data-eventid="{{'3'}}" data-comkey="{{$k}}"></i-datetime-picker>
+      </i-cell>
+      <i-input value="{{followList.followContent}}" bindchange="handleProxy" title="跟进内容" right request type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-input data-v-69b4e424"></i-input>
+      <i-button type="ghost" long="{{true}}" bindtap="handleProxy" i-class="followimg_btn" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-button data-v-69b4e424">上传图片</i-button>
+    </i-panel>
+    <image wx:if="{{followImg}}" mode="aspectFit" src="{{followImg}}" class="_image data-v-69b4e424 fullwidth_img"></image>
+    <view class="_p data-v-69b4e424 request_tip"><label style="color:#ed3f14" class="_span data-v-69b4e424"> * </label>为必填项</view>
+    <i-button type="ghost" long="{{true}}" bindtap="handleProxy" class="_i-button data-v-69b4e424 bottom_btn" data-eventid="{{'6'}}" data-comkey="{{$k}}">确定</i-button>
+    <i-action-sheet visible="{{showtype}}" actions="{{typeList}}" bindchange="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-69b4e424"></i-action-sheet>
+    <i-action-sheet visible="{{showcontact}}" actions="{{contactList}}" bindchange="handleProxy" data-eventid="{{'8'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-69b4e424"></i-action-sheet>
+    <i-action-sheet visible="{{showstate}}" actions="{{stateList}}" bindchange="handleProxy" data-eventid="{{'9'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-69b4e424"></i-action-sheet>
+    <i-message id="message" class="_i-message data-v-69b4e424"></i-message>
+    <i-toast id="toast" class="_i-toast data-v-69b4e424"></i-toast>
+  </view>
+</template>
