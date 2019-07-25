@@ -25,6 +25,32 @@
                 <i-button @click="reSet" type="ghost" size="small" long="true" class="reset_btn">重置</i-button>
             </view>
         </i-drawer>
+
+        <!-- 列表 -->
+        <i-swipeout i-class="i-swipeout-demo-item" :operateWidth="60" v-for="item in tableData" :key="item.id">
+            <view slot="content" @click="toContactDetail($event,item)">
+                <i-cell 
+                    i-class="cell_content" 
+                    :title="item.name" 
+                    :label="item.poolname">
+                    <view class="cell_footer">
+                        电话：{{ item.phone || '无'}}
+                        &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                        是否为关键人：{{ item.isCrux}}
+                    </view>
+                </i-cell>
+            </view>
+            <view slot="button" class="i-swipeout-demo-button-group">
+                <view class="i-swipeout-demo-button" style="width:60px;background-color:#f5f5f5" @click="toUpdateContact($event,item)">
+                    <i-icon size="24" type="editor" style="line-height:89px;margin-left:18px;color:#80848f"></i-icon>
+                </view>
+            </view>
+        </i-swipeout>
+
+        <i-load-more v-if="noMore" tip="我是有底线的" :loading="false" />
+        
+        <!-- 新增 -->
+        <i-button @click="toAddContact" type="ghost" :long="true" class="bottom_btn">新增</i-button>
     </div>
 </template>
 
@@ -206,6 +232,8 @@
 
 <style>
     .contact_wrap{
+        background-color: #fcfcfc;
         margin-top: 40px;
+        margin-bottom: 40px
     }
 </style>

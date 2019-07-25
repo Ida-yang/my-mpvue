@@ -50,7 +50,7 @@
                     <view class="cell_footer">
                         {{'负责人：' + item.privateUser[0].private_employee}}
                         &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                        {{'状态：' + item.status || '无'}}
+                        状态：{{ item.status || '无'}}
                         &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                         {{'未联系天数：' + item.dayNum}}
                     </view>

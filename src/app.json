@@ -33,6 +33,7 @@
     "pages/contact/contactAdd/main",
     "pages/contact/contactUpdate/main",
     "pages/contact/contactDetail/main",
+    "pages/contact/clueandCustomer/main",
 
     "pages/opportunity/main",
     "pages/opportunity/opportunityAdd/main",
