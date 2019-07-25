@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([28],{
+global.webpackJsonpMpvue([30],{
 
 /***/ 110:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -121,7 +121,6 @@ if (false) {(function () {
     data: function data() {
         return {
             current: '跟进记录',
-            customer_id: 7026,
 
             followData: {},
 

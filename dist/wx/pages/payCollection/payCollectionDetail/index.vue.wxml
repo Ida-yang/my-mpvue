@@ -1,4 +1,4 @@
-<template name="3ffe5b8f">
+<template name="5c16f5f4">
   <view class="_div data-v-a9c26748">
     <i-panel title="{{current}}" class="_i-panel data-v-a9c26748"></i-panel>
   </view>

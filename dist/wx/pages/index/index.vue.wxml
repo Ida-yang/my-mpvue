@@ -1,9 +1,9 @@
-<import src="/components/card.vue.wxml" /><template name="25a5cd40">
+<import src="/components/card.vue.wxml" /><template name="91fcfdb6">
   <view class="_div data-v-5307a380 container">
     <view class="_div data-v-5307a380 userinfo" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
       <image class="_img data-v-5307a380 userinfo-avatar" wx:if="{{userInfo.avatarUrl}}" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <image class="_img data-v-5307a380 userinfo-avatar" src="/static/images/user.png" background-size="cover"></image>
-      <view class="_div data-v-5307a380 userinfo-nickname"><template data="{{...$root[$kk+'0'], $root}}" is="14c999b4"></template></view>
+      <view class="_div data-v-5307a380 userinfo-nickname"><template data="{{...$root[$kk+'0'], $root}}" is="45ac9c4b"></template></view>
     </view>
     <view class="_div data-v-5307a380 container">
       <i-button type="subject" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-button data-v-5307a380">这是一个按钮</i-button>

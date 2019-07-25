@@ -1,0 +1,10 @@
+<template name="5f6d91ae">
+  <view class="_div data-v-ac714354 oppo_follow">
+    <i-panel title="{{current}}" class="_i-panel data-v-ac714354"></i-panel>
+    <i-button type="ghost" long="{{true}}" bindtap="handleProxy" class="_i-button data-v-ac714354 bottom_btn" data-eventid="{{'0'}}" data-comkey="{{$k}}">确定</i-button>
+    <i-action-sheet visible="{{showtype}}" actions="{{typeList}}" bindchange="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-ac714354"></i-action-sheet>
+    <i-action-sheet visible="{{showcontact}}" actions="{{contactList}}" bindchange="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-ac714354"></i-action-sheet>
+    <i-message id="message" class="_i-message data-v-ac714354"></i-message>
+    <i-toast id="toast" class="_i-toast data-v-ac714354"></i-toast>
+  </view>
+</template>

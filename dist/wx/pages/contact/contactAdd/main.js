@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([37],{
+global.webpackJsonpMpvue([39],{
 
 /***/ 80:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -144,6 +144,9 @@ if (false) {(function () {
             this.loadData();
         }
     },
+    mounted: function mounted() {
+        this.loadList();
+    },
 
 
     methods: {
@@ -153,13 +156,28 @@ if (false) {(function () {
             this.addList.customeroneId = poolObj.customeroneId;
             this.addList.customerpool_id = poolObj.customerpool_id;
         },
+        loadList: function loadList() {
+            this.addList = {
+                name: '',
+                poolName: '',
+                phone: '',
+                telephone: '',
+                qq: '',
+                email: '',
+                wechat: '',
+                sex: '',
+                customerpool_id: '',
+                customeroneId: '',
+                remark: ''
+            };
+        },
         handleInput: function handleInput(e, val) {
             if (val == 1) {
                 this.addList.name = e.mp.detail;
             } else if (val == 2) {
                 this.addList.phone = e.mp.detail;
             } else if (val == 3) {
-                this.addList.telphone = e.mp.detail;
+                this.addList.telephone = e.mp.detail;
             } else if (val == 4) {
                 this.addList.qq = e.mp.detail;
             } else if (val == 5) {
@@ -356,11 +374,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       }
     },
     model: {
-      value: (_vm.addList.telphone),
+      value: (_vm.addList.telephone),
       callback: function($$v) {
-        _vm.addList.telphone = $$v
+        _vm.addList.telephone = $$v
       },
-      expression: "addList.telphone"
+      expression: "addList.telephone"
     }
   }), _vm._v(" "), _c('i-input', {
     attrs: {

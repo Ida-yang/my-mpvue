@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([46],{
+global.webpackJsonpMpvue([48],{
 
 /***/ 60:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -549,7 +549,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     },
     on: {
       "cancel": _vm.cancelDelete,
-      "click": _vm.clickDelete
+      "change": _vm.clickDelete
     }
   }, [_c('view', {
     staticStyle: {

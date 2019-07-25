@@ -1,5 +1,5 @@
 {
-    "navigationBarTitleText": "新增联系人",
+    "navigationBarTitleText": "选择公司名称",
     "usingComponents": {
       "i-panel": "../../../iview/panel/index",
       "i-button": "../../../iview/button/index",

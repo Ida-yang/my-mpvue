@@ -27,6 +27,7 @@ const information = {
     contactPoolNameData: '',
     contactDetailData: '',
     opportunityupdateData: '',
+    opportunityPoolNameData: '',
     opportunityDetailData: '',
     agreementupdateData: '',
     agreementDetailData: '',

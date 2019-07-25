@@ -39,6 +39,8 @@
     "pages/opportunity/opportunityAdd/main",
     "pages/opportunity/opportunityUpdate/main",
     "pages/opportunity/opportunityDetail/main",
+    "pages/opportunity/customers/main",
+    "pages/opportunity/opportunityFollow/main",
 
     "pages/agreement/main",
     "pages/agreement/agreementAdd/main",

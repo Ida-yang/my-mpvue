@@ -8,7 +8,7 @@
         </i-radio-group>
 
         <!-- 确认 -->
-        <i-button @click="clickpoolName" type="ghost" :long="true" class="bottom_btn">确认分配</i-button>
+        <i-button @click="clickpoolName" type="ghost" :long="true" class="bottom_btn">确定</i-button>
 
         <i-toast id="toast" />
         <i-message id="message" />
@@ -47,7 +47,7 @@
                 this.itemList = []
                 let data = {
                     page: 1,
-                    limit: 9999999,
+                    limit: 10,
                     pId:config.userData.pId,
                     searchName:this.poolName,
                 }

@@ -41,10 +41,6 @@
                 <i-cell title="未联系天数" :value="customerData.dayNum"></i-cell>
                 <i-cell title="创建时间" :value="customerData.createTime"></i-cell>
             </i-cell-group>
-            <!-- <i-cell-group v-for="item in contactData" :key="item.id">
-                <i-cell title="联系人" :value="item.name"></i-cell>
-                <i-cell title="手机号码" :value="item.phone"></i-cell>
-            </i-cell-group> -->
         </view>
 
         <view v-if="activeName == 'third'" class="font_size_12">
@@ -271,7 +267,7 @@
                 let phoneNum = this.customerContact.phone
                 if(phoneNum){
                     wx.makePhoneCall({
-                        phoneNumber: phoneNum //仅为示例，并非真实的电话号码
+                        phoneNumber: phoneNum
                     })
                 }else{
                     $Toast({

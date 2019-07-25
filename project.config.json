@@ -33,19 +33,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "单页调试",
-					"pathName": "pages/contact/main",
+					"pathName": "pages/opportunity/main",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": 1,
 					"name": "小页调试",
-					"pathName": "pages/contact/clueandCustomer/main",
+					"pathName": "pages/opportunity/customers/main",
 					"query": "",
 					"scene": null
 				},

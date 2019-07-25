@@ -1,4 +1,4 @@
-<template name="4f2cb1e4">
+<template name="fcb0149a">
   <view class="_div data-v-c3ffc6e4 contact_wrap">
     <view class="_view data-v-c3ffc6e4 search_view">
       <view class="_view data-v-c3ffc6e4 search_box">
@@ -28,7 +28,7 @@
       </view>
       <view slot="button" class="_view data-v-c3ffc6e4 i-swipeout-demo-button-group">
         <view class="_view data-v-c3ffc6e4 i-swipeout-demo-button" style="width:60px;background-color:#f5f5f5" bindtap="handleProxy" data-eventid="{{'9_'+index}}" data-comkey="{{$k}}">
-          <i-icon size="24" type="editor" style="line-height:89px;margin-left:18px;color:#80848f" class="_i-icon data-v-c3ffc6e4"></i-icon>
+          <i-icon size="24" type="editor" style="line-height:90px;margin-left:18px;color:#80848f" class="_i-icon data-v-c3ffc6e4"></i-icon>
         </view>
       </view>
     </i-swipeout>

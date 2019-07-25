@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([42],{
+global.webpackJsonpMpvue([44],{
 
 /***/ 40:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -86,7 +86,6 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
-//
 //
 //
 //
@@ -250,7 +249,6 @@ if (false) {(function () {
             this.activeName = e.target.key;
         },
         changeBar: function changeBar(val) {
-            console.log(val);
             var key = val.target.key;
             this.activeBar = key;
             if (key == 'brush') {
@@ -284,7 +282,7 @@ if (false) {(function () {
             var phoneNum = this.clueContact.phone;
             if (phoneNum) {
                 wx.makePhoneCall({
-                    phoneNumber: phoneNum //仅为示例，并非真实的电话号码
+                    phoneNumber: phoneNum
                 });
             } else {
                 Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({

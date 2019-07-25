@@ -30,7 +30,6 @@
                     </view>
                 </i-fiche>
             </view>
-            
         </view>
 
         <view v-if="activeName == 'second'" class="font_size_12">
@@ -166,7 +165,6 @@
             },
             
             changeBar(val){
-                console.log(val)
                 let key = val.target.key
                 this.activeBar = key
                 if(key == 'brush'){
@@ -200,7 +198,7 @@
                 let phoneNum = this.clueContact.phone
                 if(phoneNum){
                     wx.makePhoneCall({
-                        phoneNumber: phoneNum //仅为示例，并非真实的电话号码
+                        phoneNumber: phoneNum
                     })
                 }else{
                     $Toast({

@@ -1,5 +1,24 @@
-<template name="5b417be1">
+<template name="50a910c6">
   <view class="_div data-v-c9fa4524">
-    <i-panel title="{{current}}" class="_i-panel data-v-c9fa4524"></i-panel>
+    <i-panel title=" " class="_i-panel data-v-c9fa4524"></i-panel>
+    <i-panel title=" " class="_i-panel data-v-c9fa4524">
+      <i-input value="{{updateList.opportunity_name}}" bindchange="handleProxy" title="商机名称" right request maxlength="20" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-c9fa4524"></i-input>
+      <i-cell title="公司名称" value="{{updateList.poolName}}" request is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-c9fa4524"></i-cell>
+      <i-cell title="客户决策人" value="{{updateList.contact}}" request is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-cell data-v-c9fa4524"></i-cell>
+      <i-input value="{{updateList.opportunity_achievement}}" bindchange="handleProxy" title="预计成交金额" right request type="number" maxlength="50" bindinput="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-input data-v-c9fa4524"></i-input>
+      <i-cell title="预计成交时间" request is-link i-class="simple_cell" class="_i-cell data-v-c9fa4524">
+        <picker slot="footer" mode="date" value="{{updateList.opportunity_deal}}" start="{{nowDate}}" bindchange="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_picker data-v-c9fa4524">
+          <view class="_view data-v-c9fa4524 picker cell_picker">
+            {{updateList.opportunity_deal}}
+          </view>
+        </picker>
+      </i-cell>
+      <i-input value="{{updateList.opportunity_remarks}}" bindchange="handleProxy" title="备注" right type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-input data-v-c9fa4524"></i-input>
+    </i-panel>
+    <view class="_p data-v-c9fa4524 request_tip"><label style="color:#ed3f14" class="_span data-v-c9fa4524"> * </label>为必填项</view>
+    <i-button bindtap="handleProxy" type="ghost" long="{{true}}" class="_i-button data-v-c9fa4524 bottom_btn" data-eventid="{{'6'}}" data-comkey="{{$k}}">确定</i-button>
+    <i-action-sheet visible="{{showContact}}" actions="{{contactList}}" bindchange="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-c9fa4524"></i-action-sheet>
+    <i-message id="message" class="_i-message data-v-c9fa4524"></i-message>
+    <i-toast id="toast" class="_i-toast data-v-c9fa4524"></i-toast>
   </view>
 </template>

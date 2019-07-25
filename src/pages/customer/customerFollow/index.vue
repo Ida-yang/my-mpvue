@@ -33,7 +33,6 @@
         data () {
             return {
                 current: '跟进记录',
-                customer_id:7026,
 
                 followData:{},
 

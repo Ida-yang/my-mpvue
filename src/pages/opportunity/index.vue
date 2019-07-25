@@ -36,6 +36,37 @@
                 <i-button @click="reSet" type="ghost" size="small" long="true" class="reset_btn">重置</i-button>
             </view>
         </i-drawer>
+
+        <!-- 列表 -->
+        <i-swipeout i-class="i-swipeout-demo-item" :operateWidth="60" v-for="item in tableData" :key="item.id">
+            <view slot="content" @click="toOpportunityDetail($event,item)">
+                <i-cell 
+                    i-class="cell_content" 
+                    :title="item.opportunity_name"
+                    :label="item.customerpool[0].name">
+                    <view class="cell_footer">
+                        {{'负责人：' + item.private_employee}}
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        {{'预计成交金额：' + item.opportunity_achievement}}
+                    </view>
+                    <view class="cell_footer">
+                        {{'预计成交时间：' + item.opportunity_deal}}
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        {{'阶段：' + item.opportunityProgress[0].progress_name}}
+                    </view>
+                </i-cell>
+            </view>
+            <view slot="button" class="i-swipeout-demo-button-group">
+                <view class="i-swipeout-demo-button" style="width:60px;background-color:#f5f5f5" @click="toUpdateOpportunity($event,item)">
+                    <i-icon size="24" type="editor" style="line-height:114px;margin-left:18px;color:#80848f"></i-icon>
+                </view>
+            </view>
+        </i-swipeout>
+
+        <i-load-more v-if="noMore" tip="我是有底线的" :loading="false" />
+
+        <!-- 新增 -->
+        <i-button @click="toAddOpportunity" type="ghost" :long="true" class="bottom_btn">新增</i-button>
     </div>
 </template>
 
@@ -168,7 +199,6 @@
                 wx.request({
                     url: config.defaulthost + 'addstep/selectAddstep.do?cId=' + config.userData.cId,  //接口地址
                     success:function(res) {
-                        // console.log(res.data)
                         _this.stateList = res.data.map.addsteps
                     }
                 })
@@ -252,6 +282,8 @@
 
 <style>
     .opportunity_wrap{
+        background-color: #fcfcfc;
         margin-top: 40px;
+        margin-bottom: 40px
     }
 </style>

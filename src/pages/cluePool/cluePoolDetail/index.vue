@@ -58,7 +58,7 @@
             <i-tab-bar-item key="trash" icon="trash" current-icon="trash" title="删除"></i-tab-bar-item>
         </i-tab-bar>
 
-        <i-action-sheet :visible="showDetele" :actions="deleteActions" show-cancel @cancel="cancelDelete" @click="clickDelete" :mask-closable="false">
+        <i-action-sheet :visible="showDetele" :actions="deleteActions" show-cancel @cancel="cancelDelete" @change="clickDelete" :mask-closable="false">
             <view slot="header" style="padding: 16px">
                 <view style="color: #444;font-size: 16px">确定吗？</view>
                 <text>删除后无法恢复哦</text>

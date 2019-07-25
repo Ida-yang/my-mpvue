@@ -1,11 +1,11 @@
-<template name="24374cea">
+<template name="706e3c74">
   <view class="_div data-v-070c9198">
     <i-panel title=" " class="_i-panel data-v-070c9198"></i-panel>
     <i-panel title=" " class="_i-panel data-v-070c9198">
       <i-input value="{{addList.name}}" bindchange="handleProxy" title="联系人" right request maxlength="20" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-070c9198"></i-input>
       <i-cell title="公司名称" value="{{addList.poolName}}" is-link i-class="simple_cell" request bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-070c9198"></i-cell>
       <i-input value="{{addList.phone}}" bindchange="handleProxy" title="手机号码" right request type="number" maxlength="11" bindinput="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-input data-v-070c9198"></i-input>
-      <i-input value="{{addList.telphone}}" bindchange="handleProxy" title="电话" right type="number" maxlength="21" bindinput="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-input data-v-070c9198"></i-input>
+      <i-input value="{{addList.telephone}}" bindchange="handleProxy" title="电话" right type="number" maxlength="21" bindinput="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-input data-v-070c9198"></i-input>
       <i-input value="{{addList.qq}}" bindchange="handleProxy" title="QQ" right maxlength="50" bindinput="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-input data-v-070c9198"></i-input>
       <i-input value="{{addList.email}}" bindchange="handleProxy" title="邮箱" right maxlength="50" bindinput="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-input data-v-070c9198"></i-input>
       <i-input value="{{addList.wechat}}" bindchange="handleProxy" title="微信" right maxlength="50" bindinput="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_i-input data-v-070c9198"></i-input>

@@ -1,4 +1,4 @@
-<template name="00e92ebb">
+<template name="3abf1e60">
   <view class="_div data-v-cb0edee4 customer_pool_detail">
     <i-cell title="{{customerPoolDetail.name}}" class="_i-cell data-v-cb0edee4">
       <view class="_p data-v-cb0edee4 cell_info">联系人姓名：  {{customerPoolContact.coName}}</view>
@@ -55,7 +55,7 @@
       <i-tab-bar-item key="distribute" icon="share" current-icon="share" title="分配" class="_i-tab-bar-item data-v-cb0edee4"></i-tab-bar-item>
       <i-tab-bar-item key="trash" icon="trash" current-icon="trash" title="删除" class="_i-tab-bar-item data-v-cb0edee4"></i-tab-bar-item>
     </i-tab-bar>
-    <i-action-sheet visible="{{showDetele}}" actions="{{deleteActions}}" show-cancel bindcancel="handleProxy" bindtap="handleProxy" mask-closable="{{false}}" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-cb0edee4">
+    <i-action-sheet visible="{{showDetele}}" actions="{{deleteActions}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-cb0edee4">
       <view slot="header" style="padding: 16px" class="_view data-v-cb0edee4">
         <view style="color: #444;font-size: 16px" class="_view data-v-cb0edee4">确定吗？</view> <text class="_text data-v-cb0edee4">删除后无法恢复哦</text>
       </view>

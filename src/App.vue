@@ -139,6 +139,10 @@
     padding-top: 5px;
     box-sizing: border-box
   }
+  .cell_label{
+    color: #80848f;
+    font-size: 12px;
+  }
   .pool_cell{
     padding: 15px 20px !important;
   }
@@ -206,14 +210,15 @@
   /* 单个列表 */
   .simple_cell{
     position: relative;
+    padding: 10px 15px !important
   }
   .simple_cell::after{
     display: initial !important;
   }
   /* 列表中picker组件 */
   .cell_picker{
-    min-width: 50px;
-    height: 30px;
+    min-width: 100px;
+    height: 24px;
   }
   /* 副标题 */
   .vice_panel{

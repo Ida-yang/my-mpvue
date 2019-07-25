@@ -1,5 +1,73 @@
-<template name="5f9f9169">
-  <view class="_div data-v-c13e1a14">
-    <i-panel title="{{current}}" class="_i-panel data-v-c13e1a14"></i-panel>
+<template name="5507264e">
+  <view class="_div data-v-c13e1a14 oppo_detail_wrap">
+    <i-cell title="{{opportunityDetail.opportunity_name}}" class="_i-cell data-v-c13e1a14">
+      <view class="_p data-v-c13e1a14 cell_info">商机编号：  {{opportunityDetail.opportunity_number}}</view>
+      <view class="_p data-v-c13e1a14 cell_info">预计成交金额：  {{opportunityDetail.opportunity_achievement}}   |   时间：  {{opportunityDetail.opportunity_deal}}</view>
+      <view class="_p data-v-c13e1a14 cell_info">商机阶段：  {{opportunityDetail.opportunityProgress[0].progress_name}}</view>
+    </i-cell>
+    <i-panel title=" " class="_i-panel data-v-c13e1a14">
+      <i-tabs current="{{activeName}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-c13e1a14">
+        <i-tab key="first" title="跟进记录" class="_i-tab data-v-c13e1a14"></i-tab>
+        <i-tab key="second" title="基本信息" class="_i-tab data-v-c13e1a14"></i-tab>
+        <i-tab key="third" title="相关信息" class="_i-tab data-v-c13e1a14"></i-tab>
+      </i-tabs>
+    </i-panel>
+    <view wx:if="{{activeName == 'first'}}" class="_view data-v-c13e1a14 follow_view">
+      <view wx:key="item.id" key="{{item.id}}" wx:for="{{followData}}" wx:for-index="index" wx:for-item="item" class="_view data-v-c13e1a14">
+        <i-panel title="{{item.createTime}}" i-class="vice_panel" class="_i-panel data-v-c13e1a14"></i-panel>
+        <i-fiche full title="{{item.contacts[0].name}}" extra="{{item.state}}" thumb="{{item.portrait}}" class="_i-fiche data-v-c13e1a14">
+          <view slot="content" class="_view data-v-c13e1a14">{{item.followContent}}</view>
+          <view slot="footer" class="_view data-v-c13e1a14"><label class="_span data-v-c13e1a14 bgc_span">{{item.followType}}</label> <label wx:if="{{item.contactTime}}" class="_span data-v-c13e1a14">    </label> <label class="_span data-v-c13e1a14 bgc_span" wx:if="{{item.contactTime}}">{{item.contactTime}}</label>      <label class="_span data-v-c13e1a14">{{item.inputType}}</label>
+            <view class="_br data-v-c13e1a14"></view>
+            <image wx:if="{{item.followImg}}" mode="scaleToFill" src="{{item.followImg}}" class="_image data-v-c13e1a14 follow_image"></image>
+          </view>
+        </i-fiche>
+      </view>
+    </view>
+    <view wx:if="{{activeName == 'second'}}" class="_view data-v-c13e1a14 font_size_12">
+      <i-cell-group class="_i-cell-group data-v-c13e1a14">
+        <i-cell title="公司名称" value="{{opportunityDetail.customerpool[0].name}}" class="_i-cell data-v-c13e1a14"></i-cell>
+        <i-cell title="客户决策人" value="{{opportunityDetail.contacts[0].coName}}" class="_i-cell data-v-c13e1a14"></i-cell>
+        <i-cell title="电话" value="{{opportunityDetail.phone}}" class="_i-cell data-v-c13e1a14"></i-cell>
+        <i-cell title="项目阶段" value="{{opportunityDetail.opportunityProgress[0].progress_name}}" class="_i-cell data-v-c13e1a14"></i-cell>
+        <i-cell title="预计成交时间" value="{{opportunityDetail.opportunity_deal}}" class="_i-cell data-v-c13e1a14"></i-cell>
+        <i-cell title="预计成交金额" value="{{opportunityDetail.opportunity_achievement}}" class="_i-cell data-v-c13e1a14"></i-cell>
+        <i-cell title="签约时间" value="{{opportunityDetail.signingTime}}" class="_i-cell data-v-c13e1a14"></i-cell>
+        <i-cell title="失败时间" value="{{opportunityDetail.failureTime}}" class="_i-cell data-v-c13e1a14"></i-cell>
+        <i-cell title="创建时间" value="{{opportunityDetail.opportunity_time}}" class="_i-cell data-v-c13e1a14"></i-cell>
+        <i-cell title="创建人" value="{{opportunityDetail.private_employee}}" class="_i-cell data-v-c13e1a14"></i-cell>
+        <i-cell title="部门" value="{{opportunityDetail.deptname}}" class="_i-cell data-v-c13e1a14"></i-cell>
+        <i-cell title="机构" value="{{opportunityDetail.parentname}}" class="_i-cell data-v-c13e1a14"></i-cell>
+      </i-cell-group>
+    </view>
+    <view wx:if="{{activeName == 'third'}}" class="_view data-v-c13e1a14 font_size_12">
+      <i-card full title="联系人" class="_i-card data-v-c13e1a14">
+        <i-cell slot="content" i-class="card_cell" wx:key="item.id" key="{{item.id}}" title="{{item.name}}" value="{{item.phone}}" wx:for="{{contactData}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-c13e1a14"></i-cell>
+      </i-card>
+      <view class="_view data-v-c13e1a14 detail_module"></view>
+      <i-card full title="竞争对手" class="_i-card data-v-c13e1a14">
+        <i-cell slot="content" i-class="card_cell" wx:key="item.id" key="{{item.id}}" title="{{item.name}}" value="{{item.contacts}}" wx:for="{{competitorData}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-c13e1a14"></i-cell>
+      </i-card>
+      <view class="_view data-v-c13e1a14 detail_module"></view>
+      <i-card full title="合同" class="_i-card data-v-c13e1a14">
+        <i-cell slot="content" i-class="card_cell" wx:key="item.id" key="{{item.id}}" title="{{item.contract_name}}" label="{{item.start_date}}" wx:for="{{agreementData}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-c13e1a14">
+          <view slot="footer" class="_view data-v-c13e1a14"><label style="font-size:11px;color:#80848f" class="_span data-v-c13e1a14">{{item.amount}}</label>
+            <view class="_br data-v-c13e1a14"></view> <label style="font-size:11px;color:#80848f" class="_span data-v-c13e1a14">{{item.contract_type}}</label>
+          </view>
+        </i-cell>
+      </i-card>
+    </view>
+    <i-tab-bar current="{{activeBar}}" bindchange="handleProxy" class="_i-tab-bar data-v-c13e1a14 bottom_btn" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+      <i-tab-bar-item key="brush" icon="brush" current-icon="brush" title="写跟进" class="_i-tab-bar-item data-v-c13e1a14"></i-tab-bar-item>
+      <i-tab-bar-item key="addressbook" icon="addressbook" current-icon="addressbook" title="打电话" class="_i-tab-bar-item data-v-c13e1a14"></i-tab-bar-item>
+      <i-tab-bar-item key="more" icon="more" current-icon="more" title="更多" class="_i-tab-bar-item data-v-c13e1a14"></i-tab-bar-item>
+    </i-tab-bar>
+    <i-action-sheet visible="{{showDetele}}" actions="{{deleteActions}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-c13e1a14">
+      <view slot="header" style="padding: 16px" class="_view data-v-c13e1a14">
+        <view style="color: #444;font-size: 16px" class="_view data-v-c13e1a14">确定吗？</view> <text class="_text data-v-c13e1a14">删除后无法恢复哦</text>
+      </view>
+    </i-action-sheet>
+    <i-toast id="toast" class="_i-toast data-v-c13e1a14"></i-toast>
+    <i-message id="message" class="_i-message data-v-c13e1a14"></i-message>
   </view>
 </template>

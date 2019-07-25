@@ -94,6 +94,10 @@
   padding-top: 10rpx;
   box-sizing: border-box;
 }
+.cell_label {
+  color: #80848f;
+  font-size: 24rpx;
+}
 .pool_cell {
   padding: 30rpx 40rpx !important;
 }
@@ -154,13 +158,14 @@
 }
 .simple_cell {
   position: relative;
+  padding: 20rpx 30rpx !important;
 }
 .simple_cell::after {
   display: initial !important;
 }
 .cell_picker {
-  min-width: 100rpx;
-  height: 60rpx;
+  min-width: 200rpx;
+  height: 48rpx;
 }
 .vice_panel {
   font-size: 24rpx;

@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([38],{
+global.webpackJsonpMpvue([40],{
 
 /***/ 75:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -135,7 +135,7 @@ if (false) {(function () {
             this.itemList = [];
             var data = {
                 page: 1,
-                limit: 9999999,
+                limit: 10,
                 pId: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.pId,
                 searchName: this.poolName
             };
@@ -246,7 +246,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.clickpoolName
     }
-  }, [_vm._v("确认分配")]), _vm._v(" "), _c('i-toast', {
+  }, [_vm._v("确定")]), _vm._v(" "), _c('i-toast', {
     attrs: {
       "id": "toast",
       "mpcomid": '4'

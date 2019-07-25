@@ -6058,6 +6058,7 @@ var information = {
     contactPoolNameData: '',
     contactDetailData: '',
     opportunityupdateData: '',
+    opportunityPoolNameData: '',
     opportunityDetailData: '',
     agreementupdateData: '',
     agreementDetailData: '',
@@ -6079,7 +6080,7 @@ var config = {
 
 /***/ }),
 
-/***/ 270:
+/***/ 280:
 /***/ (function(module, exports) {
 
 /*
@@ -6162,13 +6163,13 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 271:
+/***/ 281:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["default"] = addStylesClient;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__listToStyles__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__listToStyles__ = __webpack_require__(282);
 /*
   MIT License http://www.opensource.org/licenses/mit-license.php
   Author Tobias Koppers @sokra
@@ -6395,7 +6396,7 @@ function applyToTag (styleElement, obj) {
 
 /***/ }),
 
-/***/ 272:
+/***/ 282:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

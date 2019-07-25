@@ -55,7 +55,7 @@
             </view>
             <view slot="button" class="i-swipeout-demo-button-group">
                 <view class="i-swipeout-demo-button" style="width:60px;background-color:#f5f5f5" @click="toUpdateClue($event,item)">
-                    <i-icon size="24" type="editor" style="line-height:89px;margin-left:18px;color:#80848f"></i-icon>
+                    <i-icon size="24" type="editor" style="line-height:90px;margin-left:18px;color:#80848f"></i-icon>
                 </view>
             </view>
         </i-swipeout>
