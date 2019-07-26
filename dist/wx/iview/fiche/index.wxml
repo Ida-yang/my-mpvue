@@ -1,4 +1,4 @@
-<view class="i-class i-fiche {{ full ? 'i-fiche-full' : '' }}">
+<view class="i-class i-fiche {{ full ? 'i-fiche-full' : '' }} {{ unborder ? 'i-fiche-no-border' : '' }}">
     <view class="i-class i-fiche-header">
         <view class="i-fiche-header-content">
             <image class="i-fiche-header-thumb" src="{{ thumb }}" mode="aspectFill" wx:if="{{ thumb }}" />
@@ -6,6 +6,6 @@
         </view>
         <view class="i-fiche-header-extra" wx:if="{{ extra }}">{{ extra }}</view>
     </view>
-    <view class="i-class i-fiche-body"><slot name="content"></slot></view>
-    <view class="i-class i-fiche-footer"><slot name="footer"></slot></view>
+    <view class="i-class i-fiche-body" wx:if="{{ isContent }}"><slot name="content"></slot></view>
+    <view class="i-class i-fiche-footer" wx:if="{{ isFooter }}"><slot name="footer"></slot></view>
 </view>

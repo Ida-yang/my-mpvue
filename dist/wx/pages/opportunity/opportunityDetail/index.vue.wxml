@@ -3,10 +3,10 @@
     <i-cell title="{{opportunityDetail.opportunity_name}}" class="_i-cell data-v-c13e1a14">
       <view class="_p data-v-c13e1a14 cell_info">商机编号：  {{opportunityDetail.opportunity_number}}</view>
       <view class="_p data-v-c13e1a14 cell_info">预计成交金额：  {{opportunityDetail.opportunity_achievement}}   |   时间：  {{opportunityDetail.opportunity_deal}}</view>
-      <view class="_p data-v-c13e1a14 cell_info">商机阶段：  {{opportunityDetail.opportunityProgress[0].progress_name}}</view>
+      <i-cell title="{{'商机阶段：' + opportunityDetail.opportunityProgress[0].progress_name}}" is-link bindtap="handleProxy" i-class="cell_link" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-cell data-v-c13e1a14"></i-cell>
     </i-cell>
     <i-panel title=" " class="_i-panel data-v-c13e1a14">
-      <i-tabs current="{{activeName}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-c13e1a14">
+      <i-tabs current="{{activeName}}" bindchange="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-tabs data-v-c13e1a14">
         <i-tab key="first" title="跟进记录" class="_i-tab data-v-c13e1a14"></i-tab>
         <i-tab key="second" title="基本信息" class="_i-tab data-v-c13e1a14"></i-tab>
         <i-tab key="third" title="相关信息" class="_i-tab data-v-c13e1a14"></i-tab>
@@ -15,7 +15,7 @@
     <view wx:if="{{activeName == 'first'}}" class="_view data-v-c13e1a14 follow_view">
       <view wx:key="item.id" key="{{item.id}}" wx:for="{{followData}}" wx:for-index="index" wx:for-item="item" class="_view data-v-c13e1a14">
         <i-panel title="{{item.createTime}}" i-class="vice_panel" class="_i-panel data-v-c13e1a14"></i-panel>
-        <i-fiche full title="{{item.contacts[0].name}}" extra="{{item.state}}" thumb="{{item.portrait}}" class="_i-fiche data-v-c13e1a14">
+        <i-fiche full isContent isFooter title="{{item.contacts[0].name}}" extra="{{item.state}}" thumb="{{item.portrait}}" class="_i-fiche data-v-c13e1a14">
           <view slot="content" class="_view data-v-c13e1a14">{{item.followContent}}</view>
           <view slot="footer" class="_view data-v-c13e1a14"><label class="_span data-v-c13e1a14 bgc_span">{{item.followType}}</label> <label wx:if="{{item.contactTime}}" class="_span data-v-c13e1a14">    </label> <label class="_span data-v-c13e1a14 bgc_span" wx:if="{{item.contactTime}}">{{item.contactTime}}</label>      <label class="_span data-v-c13e1a14">{{item.inputType}}</label>
             <view class="_br data-v-c13e1a14"></view>
@@ -57,12 +57,12 @@
         </i-cell>
       </i-card>
     </view>
-    <i-tab-bar current="{{activeBar}}" bindchange="handleProxy" class="_i-tab-bar data-v-c13e1a14 bottom_btn" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+    <i-tab-bar current="{{activeBar}}" bindchange="handleProxy" class="_i-tab-bar data-v-c13e1a14 bottom_btn" data-eventid="{{'2'}}" data-comkey="{{$k}}">
       <i-tab-bar-item key="brush" icon="brush" current-icon="brush" title="写跟进" class="_i-tab-bar-item data-v-c13e1a14"></i-tab-bar-item>
       <i-tab-bar-item key="addressbook" icon="addressbook" current-icon="addressbook" title="打电话" class="_i-tab-bar-item data-v-c13e1a14"></i-tab-bar-item>
-      <i-tab-bar-item key="more" icon="more" current-icon="more" title="更多" class="_i-tab-bar-item data-v-c13e1a14"></i-tab-bar-item>
+      <i-tab-bar-item key="trash" icon="trash" current-icon="trash" title="更多" class="_i-tab-bar-item data-v-c13e1a14"></i-tab-bar-item>
     </i-tab-bar>
-    <i-action-sheet visible="{{showDetele}}" actions="{{deleteActions}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-c13e1a14">
+    <i-action-sheet visible="{{showDetele}}" actions="{{deleteActions}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-c13e1a14">
       <view slot="header" style="padding: 16px" class="_view data-v-c13e1a14">
         <view style="color: #444;font-size: 16px" class="_view data-v-c13e1a14">确定吗？</view> <text class="_text data-v-c13e1a14">删除后无法恢复哦</text>
       </view>

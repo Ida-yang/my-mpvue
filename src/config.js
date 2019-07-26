@@ -29,6 +29,7 @@ const information = {
     opportunityupdateData: '',
     opportunityPoolNameData: '',
     opportunityDetailData: '',
+    failReason:'',
     agreementupdateData: '',
     agreementDetailData: '',
     payCollectionDetailData: '',

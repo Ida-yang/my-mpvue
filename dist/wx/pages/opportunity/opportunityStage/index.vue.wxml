@@ -1,0 +1,39 @@
+<template name="66cc8106">
+  <view class="_div data-v-23c342e2">
+    <i-panel title=" " class="_i-panel data-v-23c342e2"></i-panel>
+    <i-panel title="{{opportunityInfo.name}}" class="_i-panel data-v-23c342e2"></i-panel>
+    <i-steps current="{{stepIndex}}" direction="vertical" i-class="stage_steps" class="_i-steps data-v-23c342e2">
+      <i-step wx:key="item.sort" key="{{item.sort}}" status="{{item.stepStatus}}" icon="{{item.stepIcon}}" wx:for="{{stepList}}" wx:for-index="index" wx:for-item="item" class="_i-step data-v-23c342e2">
+        <i-fiche unborder isFooter slot="title" wx:if="{{index == 0}}" title="{{item.step_name}}" extra="{{'成功几率：' + item.step_probability + ' %'}}" class="_i-fiche data-v-23c342e2">
+          <view slot="footer" class="_view data-v-23c342e2"> 创建时间：{{item.createTime}}
+          </view>
+        </i-fiche>
+        <i-fiche unborder isFooter slot="title" wx:if="{{index < stageIndex && index !== 0}}" title="{{item.step_name}}" extra="{{'成功几率：' + item.step_probability + ' %'}}" class="_i-fiche data-v-23c342e2">
+          <view slot="footer" class="_view data-v-23c342e2"> 推进时间：{{item.createTime}}   -   {{item.duration}}
+          </view>
+        </i-fiche>
+        <i-fiche slot="title" wx:if="{{index == stageIndex && !failStep}}" title="{{item.step_name}}" extra="{{'成功几率：' + item.step_probability + ' %'}}" class="_i-fiche data-v-23c342e2"></i-fiche>
+        <i-fiche slot="title" isFooter wx:if="{{index == stageIndex && failStep}}" title="{{item.step_name}}" extra="{{'成功几率：' + item.step_probability + ' %'}}" class="_i-fiche data-v-23c342e2">
+          <view slot="footer" class="_view data-v-23c342e2"> 推进时间：{{item.createTime}}   -   {{item.duration}}
+          </view>
+        </i-fiche>
+        <i-fiche unborder slot="title" wx:if="{{index > stageIndex}}" title="{{item.step_name}}" extra="{{'成功几率：' + item.step_probability + ' %'}}" class="_i-fiche data-v-23c342e2"></i-fiche>
+      </i-step>
+    </i-steps>
+    <i-tab-bar wx:if="{{!failStep && !finishStep}}" current="{{activeBar}}" bindchange="handleProxy" class="_i-tab-bar data-v-23c342e2 bottom_btn" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+      <i-tab-bar-item key="playon" icon="playon" current-icon="playon" title="下一步" class="_i-tab-bar-item data-v-23c342e2"></i-tab-bar-item>
+      <i-tab-bar-item key="offline" icon="offline" current-icon="offline" title="失败关闭" class="_i-tab-bar-item data-v-23c342e2"></i-tab-bar-item>
+    </i-tab-bar>
+    <i-modal title="确认修改商机进度吗？一旦确定将不可撤回" visible="{{showNext}}" bindok="handleProxy" bindcancel="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-modal data-v-23c342e2">
+      <i-cell title="预计成交时间" is-link class="_i-cell data-v-23c342e2">
+        <picker slot="footer" mode="date" value="{{opportunity_deal}}" bindchange="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_picker data-v-23c342e2">
+          <view class="_view data-v-23c342e2 picker" style="min-width:100px;height:20px">
+            {{opportunity_deal}}
+          </view>
+        </picker>
+      </i-cell>
+    </i-modal>
+    <i-toast id="toast" class="_i-toast data-v-23c342e2"></i-toast>
+    <i-message id="message" class="_i-message data-v-23c342e2"></i-message>
+  </view>
+</template>

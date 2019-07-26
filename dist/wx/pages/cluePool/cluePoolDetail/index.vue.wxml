@@ -15,7 +15,7 @@
     <view wx:if="{{activeName == 'first'}}" class="_view data-v-36929c6e follow_view">
       <view wx:key="item.id" key="{{item.id}}" wx:for="{{followData}}" wx:for-index="index" wx:for-item="item" class="_view data-v-36929c6e">
         <i-panel title="{{item.createTime}}" i-class="vice_panel" class="_i-panel data-v-36929c6e"></i-panel>
-        <i-fiche full title="{{item.contacts[0].name}}" extra="{{item.state}}" thumb="{{item.portrait}}" class="_i-fiche data-v-36929c6e">
+        <i-fiche full isContent isFooter title="{{item.contacts[0].name}}" extra="{{item.state}}" thumb="{{item.portrait}}" class="_i-fiche data-v-36929c6e">
           <view slot="content" class="_view data-v-36929c6e">{{item.followContent}}</view>
           <view slot="footer" class="_view data-v-36929c6e"><label class="_span data-v-36929c6e bgc_span">{{item.followType}}</label> <label wx:if="{{item.contactTime}}" class="_span data-v-36929c6e">    </label> <label class="_span data-v-36929c6e bgc_span" wx:if="{{item.contactTime}}">{{item.contactTime}}</label>      <label class="_span data-v-36929c6e">{{item.inputType}}</label>
             <view class="_br data-v-36929c6e"></view>

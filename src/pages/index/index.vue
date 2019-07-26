@@ -2,8 +2,9 @@
     <div class="container">
 
         <div class="userinfo" @click="bindViewTap">
-        <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-        <img class="userinfo-avatar" src="/static/images/user.png" background-size="cover" />
+        <!-- <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" /> -->
+        <!-- <img class="userinfo-avatar" src="/static/images/user.png" background-size="cover" /> -->
+        <i-avatar :src="userAvator" size="default"></i-avatar>
 
         <div class="userinfo-nickname">
             <card :text="userInfo.nickName"></card>
@@ -11,12 +12,10 @@
         </div>
 
         <div class="container">
-            <i-button type="subject" @click="bindViewTap">这是一个按钮</i-button>
+            <i-button type="subject" @click="bindViewTap">查看登录日志</i-button>
         </div>
 
-        <i-avatar :src="userAvator" size="default"></i-avatar>
-
-        <img :src="userAvator" alt="头像" />
+        
     </div>
 </template>
 
@@ -46,11 +45,6 @@
                 const url = '../logs/main'
                 mpvue.navigateTo({ url })
             },
-            handleChange ({ detail }) {
-                this.setData({
-                    current: detail.key
-                });
-            }
         },
 
         mounted () {

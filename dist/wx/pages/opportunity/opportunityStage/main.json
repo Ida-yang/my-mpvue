@@ -1,0 +1,21 @@
+{
+    "navigationBarTitleText": "商机阶段",
+    "usingComponents": {
+      "i-panel": "../../../iview/panel/index",
+      "i-icon": "../../../iview/icon/index",
+      "i-input": "../../../iview/input/index",
+      "i-button": "../../../iview/button/index",
+      "i-action-sheet": "../../../iview/action-sheet/index",
+      "i-message": "../../../iview/message/index",
+      "i-toast": "../../../iview/toast/index",
+      "i-cell": "../../../iview/cell/index",
+      "i-checkbox-group": "../../../iview/checkbox-group/index",
+      "i-checkbox": "../../../iview/checkbox/index",
+      "i-steps": "../../../iview/steps/index",
+      "i-step": "../../../iview/step/index",
+      "i-fiche": "../../../iview/fiche/index",
+      "i-tab-bar": "../../../iview/tab-bar/index",
+      "i-tab-bar-item": "../../../iview/tab-bar-item/index",
+      "i-modal": "../../../iview/modal/index"
+    }
+}

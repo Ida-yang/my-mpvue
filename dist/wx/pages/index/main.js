@@ -1,6 +1,6 @@
 require("../../common/manifest.js")
 require("../../common/vendor.js")
-global.webpackJsonpMpvue([27],{
+global.webpackJsonpMpvue([29],{
 
 /***/ 140:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -113,7 +113,6 @@ if (false) {(function () {
 //
 //
 //
-//
 
 
 
@@ -140,13 +139,6 @@ if (false) {(function () {
         bindViewTap: function bindViewTap() {
             var url = '../logs/main';
             global.mpvue.navigateTo({ url: url });
-        },
-        handleChange: function handleChange(_ref) {
-            var detail = _ref.detail;
-
-            this.setData({
-                current: detail.key
-            });
         }
     },
 
@@ -174,48 +166,31 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.bindViewTap
     }
-  }, [(_vm.userInfo.avatarUrl) ? _c('img', {
-    staticClass: "userinfo-avatar",
+  }, [_c('i-avatar', {
     attrs: {
-      "src": _vm.userInfo.avatarUrl,
-      "background-size": "cover"
-    }
-  }) : _vm._e(), _vm._v(" "), _c('img', {
-    staticClass: "userinfo-avatar",
-    attrs: {
-      "src": "/static/images/user.png",
-      "background-size": "cover"
+      "src": _vm.userAvator,
+      "size": "default",
+      "mpcomid": '0'
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "userinfo-nickname"
   }, [_c('card', {
     attrs: {
       "text": _vm.userInfo.nickName,
-      "mpcomid": '0'
+      "mpcomid": '1'
     }
-  })], 1)]), _vm._v(" "), _c('div', {
+  })], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "container"
   }, [_c('i-button', {
     attrs: {
       "type": "subject",
       "eventid": '1',
-      "mpcomid": '1'
+      "mpcomid": '2'
     },
     on: {
       "click": _vm.bindViewTap
     }
-  }, [_vm._v("这是一个按钮")])], 1), _vm._v(" "), _c('i-avatar', {
-    attrs: {
-      "src": _vm.userAvator,
-      "size": "default",
-      "mpcomid": '2'
-    }
-  }), _vm._v(" "), _c('img', {
-    attrs: {
-      "src": _vm.userAvator,
-      "alt": "头像"
-    }
-  })], 1)
+  }, [_vm._v("查看登录日志")])], 1)])
 }
 var staticRenderFns = []
 render._withStripped = true

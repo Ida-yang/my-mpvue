@@ -4,7 +4,9 @@
         <i-cell :title="opportunityDetail.opportunity_name">
             <p class="cell_info">商机编号：&nbsp;&nbsp;{{opportunityDetail.opportunity_number}}</p>
             <p class="cell_info">预计成交金额：&nbsp;&nbsp;{{opportunityDetail.opportunity_achievement}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;时间：&nbsp;&nbsp;{{opportunityDetail.opportunity_deal}}</p>
-            <p class="cell_info">商机阶段：&nbsp;&nbsp;{{opportunityDetail.opportunityProgress[0].progress_name}}</p>
+            <i-cell :title="'商机阶段：' + opportunityDetail.opportunityProgress[0].progress_name" is-link @click="toOpportunityStage" i-class="cell_link">
+                <!-- <i-icon slot="icon" type="homepage_fill" /> -->
+            </i-cell>
         </i-cell>
 
         <i-panel title=" ">
@@ -18,7 +20,7 @@
         <view v-if="activeName == 'first'" class="follow_view">
             <view v-for="item in followData" :key="item.id">
                 <i-panel :title="item.createTime" i-class="vice_panel"></i-panel>
-                <i-fiche full :title="item.contacts[0].name" :extra="item.state" :thumb="item.portrait">
+                <i-fiche full isContent isFooter :title="item.contacts[0].name" :extra="item.state" :thumb="item.portrait">
                     <view slot="content">{{item.followContent}}</view>
                     <view slot="footer">
                         <span class="bgc_span">{{item.followType}}</span>
@@ -73,7 +75,7 @@
         <i-tab-bar :current="activeBar" @change="changeBar" class="bottom_btn">
             <i-tab-bar-item key="brush" icon="brush" current-icon="brush" title="写跟进"></i-tab-bar-item>
             <i-tab-bar-item key="addressbook" icon="addressbook" current-icon="addressbook" title="打电话"></i-tab-bar-item>
-            <i-tab-bar-item key="more" icon="more" current-icon="more" title="更多"></i-tab-bar-item>
+            <i-tab-bar-item key="trash" icon="trash" current-icon="trash" title="更多"></i-tab-bar-item>
         </i-tab-bar>
         <i-action-sheet :visible="showDetele" :actions="deleteActions" show-cancel @cancel="cancelDelete" @change="deleteOppo" :mask-closable="false">
             <view slot="header" style="padding: 16px">
@@ -186,8 +188,7 @@
                         'Cookie': config.SESSIONID
                     },
                     success:function(res) {
-                        let info = res.data.map.success
-                        _this.contactData = info
+                        _this.contactData = res.data.map.success
                     }
                 })
 
@@ -200,8 +201,7 @@
                         'Cookie': config.SESSIONID
                     },
                     success:function(res) {
-                        let info = res.data
-                        _this.competitorData = info
+                        _this.competitorData = res.data
                     }
                 })
             },
@@ -223,14 +223,70 @@
             },
 
             toAddFollow(){
-                const url = '../customerFollow/main'
+                const url = '../opportunityFollow/main'
                 mpvue.navigateTo({ url })
             },
-            telephoneCall(){},
+            telephoneCall(){
+                let phoneNum = this.opportunityDetail.phone
+                if(phoneNum){
+                    wx.makePhoneCall({
+                        phoneNumber: phoneNum
+                    })
+                }else{
+                    $Toast({
+                        content: '无法呼叫，请添加手机号码',
+                        type: 'error'
+                    });
+                }
+            },
             cancelDelete(){
                 this.showDetele = false
             },
-            deleteOppo(){}
+            deleteOppo(){
+                const _this = this
+                let data = {
+                    id: this.opportunityDetail.opportunity_id
+                }
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'opportunity/delete.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        if(res.data.success && res.data.success == true){
+                            $Message({
+                                content: '删除成功',
+                                type: 'success'
+                            });
+                            _this.toOpportunity()
+                        }else if(res.data.msg && res.data.msg == 'error'){
+                            $Toast({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                            _this.cancelDelete()
+                        }else{
+                            $Message({
+                                content: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
+            },
+            toOpportunity(){
+                wx.navigateBack({
+                    delta: 1,
+                })
+            },
+            toOpportunityStage(){
+                const url = '../opportunityStage/main'
+                mpvue.navigateTo({ url })
+            },
         },
     }
 </script>

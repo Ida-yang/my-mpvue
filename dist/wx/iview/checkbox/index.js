@@ -12,6 +12,10 @@ Component({
             type: String,
             value: ''
         },
+        label: {
+            type: String,
+            value: ''
+        },
         checked: {
             type: Boolean,
             value: false
@@ -43,7 +47,7 @@ Component({
         },
         checkboxChange() {
             if (this.data.disabled) return;
-            const item = { current: !this.data.checked, value: this.data.value };
+            const item = { current: !this.data.checked, value: this.data.value, label: this.data.label };
             const parent = this.getRelationNodes('../checkbox-group/index')[0];
             parent ? parent.emitEvent(item) : this.triggerEvent('change', item);
         },

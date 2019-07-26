@@ -1,7 +1,7 @@
 <template name="50a910c6">
   <view class="_div data-v-c9fa4524">
     <i-panel title=" " class="_i-panel data-v-c9fa4524"></i-panel>
-    <i-panel title=" " class="_i-panel data-v-c9fa4524">
+    <i-panel title="{{opportunityName}}" class="_i-panel data-v-c9fa4524">
       <i-input value="{{updateList.opportunity_name}}" bindchange="handleProxy" title="商机名称" right request maxlength="20" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-c9fa4524"></i-input>
       <i-cell title="公司名称" value="{{updateList.poolName}}" request is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-c9fa4524"></i-cell>
       <i-cell title="客户决策人" value="{{updateList.contact}}" request is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-cell data-v-c9fa4524"></i-cell>

@@ -14,6 +14,9 @@
     border-top: none;
     border-radius:0
 }
+.i-fiche-no-border{
+    border: none
+}
 .i-fiche-header{
     display:flex;
     padding:6px 16px;
@@ -65,12 +68,12 @@
     transform-origin:0 0;
     pointer-events:none;
     box-sizing:border-box;
-    border:0 solid #e9eaec;
-    border-top-width:1px
+    /* border:0 solid #e9eaec;
+    border-top-width:1px */
 }
-.i-fiche-full .i-fiche-body::before{
+/* .i-fiche-full .i-fiche-body::before{
     border-top-width: 0
-}
+} */
 .i-fiche-footer{
     position:relative;
     padding:6px 16px;

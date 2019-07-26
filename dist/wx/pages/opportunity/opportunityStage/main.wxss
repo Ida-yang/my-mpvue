@@ -1,0 +1,5 @@
+@import "../../../common/vendor.wxss";
+
+.stage_steps {
+  margin-top: 40rpx;
+}

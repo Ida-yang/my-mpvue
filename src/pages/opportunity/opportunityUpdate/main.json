@@ -1,15 +1,15 @@
 {
-    "navigationBarTitleText": "编辑商机",
-    "usingComponents": {
-      "i-panel": "../../../iview/panel/index",
-      "i-icon": "../../../iview/icon/index",
-      "i-input": "../../../iview/input/index",
-      "i-button": "../../../iview/button/index",
-      "i-action-sheet": "../../../iview/action-sheet/index",
-      "i-message": "../../../iview/message/index",
-      "i-toast": "../../../iview/toast/index",
-      "i-cell": "../../../iview/cell/index",
-      "i-radio-group": "../../../iview/radio-group/index",
-      "i-radio": "../../../iview/radio/index"
-    }
+  "navigationBarTitleText": "编辑商机",
+  "usingComponents": {
+    "i-panel": "../../../iview/panel/index",
+    "i-icon": "../../../iview/icon/index",
+    "i-input": "../../../iview/input/index",
+    "i-button": "../../../iview/button/index",
+    "i-action-sheet": "../../../iview/action-sheet/index",
+    "i-message": "../../../iview/message/index",
+    "i-toast": "../../../iview/toast/index",
+    "i-cell": "../../../iview/cell/index",
+    "i-radio-group": "../../../iview/radio-group/index",
+    "i-radio": "../../../iview/radio/index"
+  }
 }

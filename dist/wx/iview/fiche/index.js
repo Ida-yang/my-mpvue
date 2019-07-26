@@ -21,6 +21,18 @@ Component({
         extra: {
             type: String,
             value: ''
+        },
+        isContent: {
+            type: Boolean,
+            value: false
+        },
+        isFooter: {
+            type: Boolean,
+            value: false
+        },
+        unborder: {
+            type: Boolean,
+            value: false
         }
     }
 });

@@ -1,7 +1,7 @@
 <template>
     <div>
         <i-panel title=" "></i-panel>
-        <i-panel title=" ">
+        <i-panel :title="opportunityName">
             <i-input v-model="updateList.opportunity_name" title="商机名称" right request maxlength="20" @input="handleInput($event,1)" />
             <i-cell title="公司名称" :value="updateList.poolName" request is-link i-class="simple_cell" @click="cellFocus($event,1)"></i-cell>
             <i-cell title="客户决策人" :value="updateList.contact" request is-link i-class="simple_cell" @click="cellFocus($event,2)"></i-cell>
@@ -34,6 +34,7 @@
         data () {
             return {
                 current: '编辑商机',
+                opportunityName:'',
 
                 updateList:{
                     opportunity_id: '',
@@ -73,6 +74,7 @@
             },
             loadList(){
                 let opportunityData = config.information.opportunityupdateData
+                this.opportunityName = opportunityData.opportunity_name
                 this.updateList = {
                     opportunity_id: opportunityData.opportunity_id,
                     opportunity_name: opportunityData.opportunity_name,

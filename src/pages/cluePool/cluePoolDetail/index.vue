@@ -18,7 +18,7 @@
         <view v-if="activeName == 'first'" class="follow_view">
             <view v-for="item in followData" :key="item.id">
                 <i-panel :title="item.createTime" i-class="vice_panel"></i-panel>
-                <i-fiche full :title="item.contacts[0].name" :extra="item.state" :thumb="item.portrait">
+                <i-fiche full isContent isFooter :title="item.contacts[0].name" :extra="item.state" :thumb="item.portrait">
                     <view slot="content">{{item.followContent}}</view>
                     <view slot="footer">
                         <span class="bgc_span">{{item.followType}}</span>

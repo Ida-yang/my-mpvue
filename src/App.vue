@@ -38,14 +38,14 @@
     align-items: center;
     justify-content: space-between;
     padding: 200rpx 0;
-    box-sizing: border-box;
+    box-sizing: border-box
   }
   /* this rule will be remove */
   * {
     transition: width 2s;
     -moz-transition: width 2s;
     -webkit-transition: width 2s;
-    -o-transition: width 2s;
+    -o-transition: width 2s
   }
 
   /* ------查询组件样式------- */
@@ -75,7 +75,7 @@
   .search_icon{
     display: inherit;
     border-radius: 5px;
-    flex: 0;
+    flex: 0
   }
   .search_input{
     flex: 1;
@@ -83,19 +83,19 @@
     height: 28px;
     line-height: 25px;
     padding: 0 8px !important;
-    box-sizing: border-box;
+    box-sizing: border-box
   }
   .search_btn{
     font-size: 14px;
     color: #62a072;
     line-height: 30px;
-    margin: 0 10px;
+    margin: 0 10px
   }
   .search_container{
     width: 100%;
     height: 100%;
     background-color: #f5f5f5;
-    font-size: 12px;
+    font-size: 12px
   }
   .query_view{
     padding: 5px;
@@ -105,7 +105,7 @@
     position: relative
   }
   .query_label{
-    font-size: 13px;
+    font-size: 13px
   }
   .queryBtn{
     /* margin: 2px 5px 3px 0 !important; */
@@ -114,7 +114,7 @@
     width: 60px;
     padding: 4px 0;
     /* border: 1rpx solid rgba(0, 0, 0, .1); */
-    text-align: center;
+    text-align: center
   }
   .isActive{
     color: #ff5722;
@@ -125,13 +125,13 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    font-size: 13px;
+    font-size: 13px
   }
 
   /* 列表 */
   .cell_content{
     padding: 0 !important;
-    font-size: 14px;
+    font-size: 14px
   }
   .cell_footer{
     font-size: 12px;
@@ -141,24 +141,24 @@
   }
   .cell_label{
     color: #80848f;
-    font-size: 12px;
+    font-size: 12px
   }
   .pool_cell{
-    padding: 15px 20px !important;
+    padding: 15px 20px !important
   }
 
   /* 跟进记录 */
   .margin_card{
-    margin: 10px 10px 0 10px !important;
+    margin: 10px 10px 0 10px !important
   }
   .follow_view{
-    background-color: #fff;
+    background-color: #fff
   }
   .contact_span1{
-    color: #80848f;
+    color: #80848f
   }
   .contact_span2{
-    color: #919191;
+    color: #919191
   }
   .contact_way{
     display: inline-block;
@@ -168,24 +168,24 @@
     background-color: #80848faf;
     color: #ffffff;
     border-radius: 9px;
-    text-align: center;
+    text-align: center
   }
   .bottom_List{
     margin: 5px 15px;
     position: fixed;
-    bottom: 0;
+    bottom: 0
   }
   .nomargin_btn{
-    margin: 0 !important;
+    margin: 0 !important
   }
   .fullwidth_img{
     margin-top: 10px;
-    width: 100%;
+    width: 100%
   }
   .follow_image{
     margin-top: 10px;
     width: 70px;
-    height: 70px;
+    height: 70px
   }
 
   /* 底部按钮 */
@@ -193,19 +193,20 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+    z-index: 9
   }
   /* 跟进记录上传图片按钮 */
   .followimg_btn{
-    margin-top: 30px !important;
+    margin-top: 30px !important
   }
   /* 必填 */
   .request_tip{
     margin: 30px 0 0 15px;
     font-size: 12px;
-    color: #80848f;
+    color: #80848f
   }
   .font_size_12{
-    font-size: 12px;
+    font-size: 12px
   }
   /* 单个列表 */
   .simple_cell{
@@ -213,12 +214,12 @@
     padding: 10px 15px !important
   }
   .simple_cell::after{
-    display: initial !important;
+    display: initial !important
   }
   /* 列表中picker组件 */
   .cell_picker{
     min-width: 100px;
-    height: 24px;
+    height: 24px
   }
   /* 副标题 */
   .vice_panel{
@@ -226,7 +227,7 @@
     color: #80848f
   }
   .small_panel{
-    font-size: 14px;
+    font-size: 14px
   }
   /* 带背景的span */
   .bgc_span{
@@ -234,10 +235,10 @@
     padding: 2px 8px;
     box-sizing: border-box;
     background-color: rgb(241, 250, 255);
-    border-radius: 8px;
+    border-radius: 8px
   }
   .detail_module{
-    margin-top: 10px;
+    margin-top: 10px
   }
   
   .cell_info{
@@ -245,5 +246,16 @@
     color: #80848f;
     padding-top: 6px;
     box-sizing: border-box
+  }
+  .cell_link{
+    background-color: rgb(241, 250, 255) !important;
+    width: 100%;
+    margin-top: 8px;
+    padding: 5px !important;
+    color: #5f6164;
+    font-size: 12px !important
+  }
+  .cell_link .i-cell-text{
+    font-size: 12px !important
   }
 </style>

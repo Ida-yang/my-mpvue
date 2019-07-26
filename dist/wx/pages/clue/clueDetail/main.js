@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([44],{
+global.webpackJsonpMpvue([46],{
 
 /***/ 40:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -445,6 +445,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }), _vm._v(" "), _c('i-fiche', {
       attrs: {
         "full": "",
+        "isContent": "",
+        "isFooter": "",
         "title": item.contacts[0].name,
         "extra": item.state,
         "thumb": item.portrait,
