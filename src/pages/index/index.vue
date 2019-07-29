@@ -2,8 +2,6 @@
     <div class="container">
 
         <div class="userinfo" @click="bindViewTap">
-        <!-- <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" /> -->
-        <!-- <img class="userinfo-avatar" src="/static/images/user.png" background-size="cover" /> -->
         <i-avatar :src="userAvator" size="default"></i-avatar>
 
         <div class="userinfo-nickname">
@@ -27,8 +25,7 @@
         data () {
             return {
                 userInfo: {
-                    nickName: 'mpvue',
-                    avatarUrl: 'http://mpvue.com/assets/logo.png'
+                    nickName: '云纵CRM',
                 },
                 current:'homepage',
 
@@ -49,8 +46,6 @@
 
         mounted () {
             this.userAvator = config.userData.portrait
-
-            console.log(config)
         }
     }
 </script>

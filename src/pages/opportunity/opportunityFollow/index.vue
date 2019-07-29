@@ -1,5 +1,5 @@
 <template>
-    <div class="oppo_follow">
+    <div class="add_or_update_wrap">
         <!-- <i-panel :title="current"></i-panel> -->
         <i-panel :title="followData.opportunity_name">
             <i-cell title="联系方式" :value="followList.followType" is-link request i-class="simple_cell" @click="optionFocus($event,1)"></i-cell>
@@ -224,7 +224,4 @@
 </script>
 
 <style>
-    .oppo_follow{
-        margin-bottom: 40px;
-    }
 </style>

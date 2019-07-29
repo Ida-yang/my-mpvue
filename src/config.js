@@ -32,6 +32,7 @@ const information = {
     failReason:'',
     agreementupdateData: '',
     agreementDetailData: '',
+    agreementPoolNameData: '',
     payCollectionDetailData: '',
 }
 

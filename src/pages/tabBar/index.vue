@@ -13,9 +13,38 @@
         </i-tab-bar>
         
         <i-progress percent="60" circle></i-progress>
+
+        <i-steps direction="vertical">
+            <i-step status="finish" icon="barrage">
+                <view slot="title">
+                    已完成
+                </view>
+                <view slot="content">
+                    这里是该步骤的描述信息
+                </view>
+            </i-step>
+            <i-step status="process" icon="brush">
+                <view slot="title">
+                    进行中
+                </view>
+                <view slot="content" icon="camera">
+                    这里是该步骤的描述信息
+                </view>
+            </i-step>
+            <i-step status="error" icon="collection">
+                <view slot="title">
+                    错误
+                </view>
+                <view slot="content">
+                    这里是该步骤的描述信息
+                </view>
+            </i-step>
+        </i-steps>
             
 
         <div style="margin-top:100px;"></div>
+
+        <rich-text :nodes="nodesText" />
 
         <i-card title="卡片标题">
             <view slot="content">内容不错</view>
@@ -76,7 +105,7 @@
             <view class="section__title">日期选择器</view>
             <picker mode="date" :value="date222" start="2015-09-01" end="2017-09-01" @change="DateChange">
                 <view class="picker">
-                当前选择: {{date222}}
+                    当前选择: {{date222}}
                 </view>
             </picker>
         </view>
@@ -121,6 +150,8 @@
                 modelvisible:false,
 
                 date222: '2016-09-01',
+
+                nodesText:'<ul style="color:red"><li>你好你好</li><li>世界</li></ul>'
                 
             }
         },

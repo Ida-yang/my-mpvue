@@ -32,6 +32,35 @@
             </view>
         </i-drawer>
 
+        <!-- 列表 -->
+        <i-swipeout i-class="i-swipeout-demo-item" :operateWidth="60" v-for="item in tableData" :key="item.id">
+            <view slot="content" @click="toAgreementDetail($event,item)">
+                <i-cell 
+                    i-class="cell_content" 
+                    :title="item.contract_name"
+                    :label="item.poolName">
+                    <wxs module="tools" src="./../utils/comming.wxs" />
+                    <view class="cell_footer">
+                        负责人：{{item.our_signatories}}
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        合同金额： {{item.amount}}
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        审核状态：{{item.state}}
+                    </view>
+                    <view class="cell_footer">
+                        合同类型：{{item.contract_type}}
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        签约时间：{{item.start_date}}
+                    </view>
+                </i-cell>
+            </view>
+            <view slot="button" class="i-swipeout-demo-button-group">
+                <view class="i-swipeout-demo-button" style="width:60px;background-color:#f5f5f5" @click="toUpdateAgreement($event,item)">
+                    <i-icon size="24" type="editor" style="line-height:114px;margin-left:18px;color:#80848f"></i-icon>
+                </view>
+            </view>
+        </i-swipeout>
+
         <!-- 新增 -->
         <i-button @click="toAddAgreement" type="ghost" :long="true" class="bottom_btn">新增</i-button>
     </div>

@@ -2,14 +2,14 @@ require("../../common/manifest.js")
 require("../../common/vendor.js")
 global.webpackJsonpMpvue([6],{
 
-/***/ 264:
+/***/ 269:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(265);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(270);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 265:
+/***/ 270:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(267);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_d483bbb4_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(272);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_d483bbb4_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(273);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(266)
+  __webpack_require__(271)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,20 +72,49 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 266:
+/***/ 271:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 267:
+/***/ 272:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -202,7 +231,9 @@ if (false) {(function () {
 
             modelvisible: false,
 
-            date222: '2016-09-01'
+            date222: '2016-09-01',
+
+            nodesText: '<ul style="color:red"><li>你好你好</li><li>世界</li></ul>'
 
         };
     },
@@ -320,7 +351,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 268:
+/***/ 273:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -385,14 +416,57 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "circle": "",
       "mpcomid": '7'
     }
-  }), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('i-steps', {
+    attrs: {
+      "direction": "vertical",
+      "mpcomid": '11'
+    }
+  }, [_c('i-step', {
+    attrs: {
+      "status": "finish",
+      "icon": "barrage",
+      "mpcomid": '8'
+    }
+  }, [_c('view', {
+    slot: "title"
+  }, [_vm._v("\n                已完成\n            ")]), _vm._v(" "), _c('view', {
+    slot: "content"
+  }, [_vm._v("\n                这里是该步骤的描述信息\n            ")])]), _vm._v(" "), _c('i-step', {
+    attrs: {
+      "status": "process",
+      "icon": "brush",
+      "mpcomid": '9'
+    }
+  }, [_c('view', {
+    slot: "title"
+  }, [_vm._v("\n                进行中\n            ")]), _vm._v(" "), _c('view', {
+    attrs: {
+      "icon": "camera"
+    },
+    slot: "content"
+  }, [_vm._v("\n                这里是该步骤的描述信息\n            ")])]), _vm._v(" "), _c('i-step', {
+    attrs: {
+      "status": "error",
+      "icon": "collection",
+      "mpcomid": '10'
+    }
+  }, [_c('view', {
+    slot: "title"
+  }, [_vm._v("\n                错误\n            ")]), _vm._v(" "), _c('view', {
+    slot: "content"
+  }, [_vm._v("\n                这里是该步骤的描述信息\n            ")])])], 1), _vm._v(" "), _c('div', {
     staticStyle: {
       "margin-top": "100px"
+    }
+  }), _vm._v(" "), _c('rich-text', {
+    attrs: {
+      "nodes": _vm.nodesText,
+      "mpcomid": '12'
     }
   }), _vm._v(" "), _c('i-card', {
     attrs: {
       "title": "卡片标题",
-      "mpcomid": '8'
+      "mpcomid": '13'
     }
   }, [_c('view', {
     slot: "content"
@@ -402,7 +476,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "type": "ghost",
       "eventid": '1',
-      "mpcomid": '9'
+      "mpcomid": '14'
     },
     on: {
       "click": _vm.handleWarning
@@ -410,13 +484,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("错误")]), _vm._v(" "), _c('i-toast', {
     attrs: {
       "id": "toast",
-      "mpcomid": '10'
+      "mpcomid": '15'
     }
   }), _vm._v(" "), _c('i-button', {
     attrs: {
       "type": "ghost",
       "eventid": '2',
-      "mpcomid": '11'
+      "mpcomid": '16'
     },
     on: {
       "click": _vm.handleSuccess
@@ -424,13 +498,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("成功提醒")]), _vm._v(" "), _c('i-message', {
     attrs: {
       "id": "message",
-      "mpcomid": '12'
+      "mpcomid": '17'
     }
   }), _vm._v(" "), _c('i-button', {
     attrs: {
       "type": "ghost",
       "eventid": '3',
-      "mpcomid": '13'
+      "mpcomid": '18'
     },
     on: {
       "click": _vm.toggleRight
@@ -440,7 +514,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "mode": "right",
       "visible": _vm.showRight,
       "eventid": '4',
-      "mpcomid": '14'
+      "mpcomid": '19'
     },
     on: {
       "close": _vm.toggleRight
@@ -452,7 +526,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "current": _vm.page,
       "total": "5",
       "eventid": '5',
-      "mpcomid": '15'
+      "mpcomid": '20'
     },
     on: {
       "change": _vm.changePage
@@ -465,7 +539,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "type": "ghost",
       "eventid": '6',
-      "mpcomid": '16'
+      "mpcomid": '21'
     },
     on: {
       "click": _vm.handleOpen1
@@ -474,7 +548,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "type": "ghost",
       "eventid": '7',
-      "mpcomid": '17'
+      "mpcomid": '22'
     },
     on: {
       "click": _vm.handleOpen2
@@ -485,7 +559,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "actions": _vm.actions1,
       "show-cancel": "",
       "eventid": '8',
-      "mpcomid": '18'
+      "mpcomid": '23'
     },
     on: {
       "cancel": _vm.handleCancel1,
@@ -498,7 +572,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "show-cancel": "",
       "mask-closable": false,
       "eventid": '9',
-      "mpcomid": '19'
+      "mpcomid": '24'
     },
     on: {
       "cancel": _vm.handleCancel2,
@@ -518,7 +592,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "type": "ghost",
       "eventid": '10',
-      "mpcomid": '20'
+      "mpcomid": '25'
     },
     on: {
       "click": _vm.openModel
@@ -528,7 +602,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "title": "标题",
       "visible": _vm.modelvisible,
       "eventid": '11',
-      "mpcomid": '21'
+      "mpcomid": '26'
     },
     on: {
       "ok": _vm.closeModel,
@@ -538,7 +612,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "type": "warning",
       "eventid": '12',
-      "mpcomid": '22'
+      "mpcomid": '27'
     },
     on: {
       "click": _vm.uploadIMG
@@ -548,12 +622,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "title": "只显示箭头",
       "is-link": "",
       "i-class": "index_cell",
-      "mpcomid": '24'
+      "mpcomid": '29'
     }
   }, [_c('i-datetime-picker', {
     staticClass: "index_picker",
     attrs: {
-      "mpcomid": '23'
+      "mpcomid": '28'
     }
   })], 1), _vm._v(" "), _c('view', {
     staticClass: "section"
@@ -572,11 +646,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }, [_c('view', {
     staticClass: "picker"
-  }, [_vm._v("\n            当前选择: " + _vm._s(_vm.date222) + "\n            ")])])], 1), _vm._v(" "), _c('i-button', {
+  }, [_vm._v("\n                当前选择: " + _vm._s(_vm.date222) + "\n            ")])])], 1), _vm._v(" "), _c('i-button', {
     attrs: {
       "type": "success",
       "eventid": '14',
-      "mpcomid": '25'
+      "mpcomid": '30'
     },
     on: {
       "click": _vm.bindViewTap
@@ -596,4 +670,4 @@ if (false) {
 
 /***/ })
 
-},[264]);
+},[269]);

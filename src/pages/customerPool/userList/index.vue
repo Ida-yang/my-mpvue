@@ -1,5 +1,5 @@
 <template>
-    <div class="user_wrap">
+    <div class="add_or_update_wrap">
         <!-- <i-panel :title="current"></i-panel> -->
         <i-input :value="searchNames" type="text" maxlength="50" placeholder="输入用户名称查询" @input="search" />
         <i-radio-group :current="cheakItem" @change="changeUser">
@@ -122,7 +122,4 @@
 </script>
 
 <style>
-    .user_wrap{
-        margin-bottom: 40px;
-    }
 </style>

@@ -1,0 +1,27 @@
+var add_comma_toThousands = function (num) {
+    var num = (num || 0).toString();
+    var valArray = num.split('.')
+    var intPart = valArray[0] //获取整数部分
+    var result = '';
+    while (intPart.length > 3) {
+        result = ',' + intPart.slice(-3) + result;
+        intPart = intPart.slice(0, intPart.length - 3);
+    }
+    if (intPart) { result = intPart + result; }
+    var floatPart = '.00' // 预定义小数部分
+    if(valArray.length == 2) {
+        if(valArray[1]){
+            floatPart = valArray[1].toString()
+        } // 拿到小数部分
+        if(floatPart.length == 1) { // 补0,实际上用不着
+            return result + '.' + floatPart + '0'
+        }else{
+            return result + '.' + floatPart
+        }
+    } else {
+        return result + floatPart
+    }
+}
+module.exports = {
+    comming: add_comma_toThousands   //暴露接口调用
+}

@@ -38,14 +38,14 @@
 				{
 					"id": 0,
 					"name": "单页调试",
-					"pathName": "pages/opportunity/main",
+					"pathName": "pages/agreement/main",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": 1,
 					"name": "小页调试",
-					"pathName": "pages/opportunity/opportunityFail/main",
+					"pathName": "pages/agreement/agreementAdd/main",
 					"query": "",
 					"scene": null
 				},

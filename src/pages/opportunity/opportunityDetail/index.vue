@@ -75,7 +75,7 @@
         <i-tab-bar :current="activeBar" @change="changeBar" class="bottom_btn">
             <i-tab-bar-item key="brush" icon="brush" current-icon="brush" title="写跟进"></i-tab-bar-item>
             <i-tab-bar-item key="addressbook" icon="addressbook" current-icon="addressbook" title="打电话"></i-tab-bar-item>
-            <i-tab-bar-item key="trash" icon="trash" current-icon="trash" title="更多"></i-tab-bar-item>
+            <i-tab-bar-item key="trash" icon="trash" current-icon="trash" title="删除"></i-tab-bar-item>
         </i-tab-bar>
         <i-action-sheet :visible="showDetele" :actions="deleteActions" show-cancel @cancel="cancelDelete" @change="deleteOppo" :mask-closable="false">
             <view slot="header" style="padding: 16px">

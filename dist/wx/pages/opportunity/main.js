@@ -2,14 +2,14 @@ require("../../common/manifest.js")
 require("../../common/vendor.js")
 global.webpackJsonpMpvue([20],{
 
-/***/ 194:
+/***/ 199:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(200);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 195:
+/***/ 200:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_0c6f7a01_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_0c6f7a01_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(203);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(196)
+  __webpack_require__(201)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,18 +72,19 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 196:
+/***/ 201:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 197:
+/***/ 202:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+//
 //
 //
 //
@@ -339,6 +340,7 @@ if (false) {(function () {
             global.mpvue.navigateTo({ url: url });
         },
         toOpportunityDetail: function toOpportunityDetail(e, val) {
+            console.log('11111');
             var url = 'opportunityDetail/main';
             __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.opportunityDetailData = val;
             global.mpvue.navigateTo({ url: url });
@@ -348,7 +350,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 198:
+/***/ 203:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -536,7 +538,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       attrs: {
         "i-class": "i-swipeout-demo-item",
         "operateWidth": 60,
-        "mpcomid": '12_' + index
+        "mpcomid": '13_' + index
       }
     }, [_c('view', {
       attrs: {
@@ -553,13 +555,19 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "i-class": "cell_content",
         "title": item.opportunity_name,
         "label": item.customerpool[0].name,
+        "mpcomid": '11_' + index
+      }
+    }, [_c('wxs', {
+      attrs: {
+        "module": "tools",
+        "src": "./../utils/comming.wxs",
         "mpcomid": '10_' + index
       }
-    }, [_c('view', {
+    }), _vm._v(" "), _c('view', {
       staticClass: "cell_footer"
-    }, [_vm._v("\n                    " + _vm._s('负责人：' + item.private_employee) + "\n                      |  \n                    " + _vm._s('预计成交金额：' + item.opportunity_achievement) + "\n                ")]), _vm._v(" "), _c('view', {
+    }, [_vm._v("\n                    负责人：" + _vm._s(item.private_employee) + "\n                      |  \n                    预计成交金额： " + _vm._s(item.opportunity_achievement) + "\n                ")]), _vm._v(" "), _c('view', {
       staticClass: "cell_footer"
-    }, [_vm._v("\n                    " + _vm._s('预计成交时间：' + item.opportunity_deal) + "\n                      |  \n                    " + _vm._s('阶段：' + item.opportunityProgress[0].progress_name) + "\n                ")])])], 1), _vm._v(" "), _c('view', {
+    }, [_vm._v("\n                    预计成交时间：" + _vm._s(item.opportunity_deal) + "\n                      |  \n                    阶段：" + _vm._s(item.opportunityProgress[0].progress_name) + "\n                ")])], 1)], 1), _vm._v(" "), _c('view', {
       staticClass: "i-swipeout-demo-button-group",
       slot: "button"
     }, [_c('view', {
@@ -585,14 +593,14 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       attrs: {
         "size": "24",
         "type": "editor",
-        "mpcomid": '11_' + index
+        "mpcomid": '12_' + index
       }
     })], 1)])])
   }), _vm._v(" "), (_vm.noMore) ? _c('i-load-more', {
     attrs: {
       "tip": "我是有底线的",
       "loading": false,
-      "mpcomid": '13'
+      "mpcomid": '14'
     }
   }) : _vm._e(), _vm._v(" "), _c('i-button', {
     staticClass: "bottom_btn",
@@ -600,7 +608,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "type": "ghost",
       "long": true,
       "eventid": '12',
-      "mpcomid": '14'
+      "mpcomid": '15'
     },
     on: {
       "click": _vm.toAddOpportunity
@@ -620,4 +628,4 @@ if (false) {
 
 /***/ })
 
-},[194]);
+},[199]);

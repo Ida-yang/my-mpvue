@@ -60,7 +60,7 @@
     <i-tab-bar current="{{activeBar}}" bindchange="handleProxy" class="_i-tab-bar data-v-c13e1a14 bottom_btn" data-eventid="{{'2'}}" data-comkey="{{$k}}">
       <i-tab-bar-item key="brush" icon="brush" current-icon="brush" title="写跟进" class="_i-tab-bar-item data-v-c13e1a14"></i-tab-bar-item>
       <i-tab-bar-item key="addressbook" icon="addressbook" current-icon="addressbook" title="打电话" class="_i-tab-bar-item data-v-c13e1a14"></i-tab-bar-item>
-      <i-tab-bar-item key="trash" icon="trash" current-icon="trash" title="更多" class="_i-tab-bar-item data-v-c13e1a14"></i-tab-bar-item>
+      <i-tab-bar-item key="trash" icon="trash" current-icon="trash" title="删除" class="_i-tab-bar-item data-v-c13e1a14"></i-tab-bar-item>
     </i-tab-bar>
     <i-action-sheet visible="{{showDetele}}" actions="{{deleteActions}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-c13e1a14">
       <view slot="header" style="padding: 16px" class="_view data-v-c13e1a14">

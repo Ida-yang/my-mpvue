@@ -202,3 +202,6 @@
 .cell_link .i-cell-text {
   font-size: 24rpx !important;
 }
+.add_or_update_wrap {
+  margin-bottom: 80rpx;
+}

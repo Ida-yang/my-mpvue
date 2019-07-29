@@ -1,0 +1,31 @@
+var threeNum = {
+    add_comma_toThousands: function (num) {
+        var num = (num || 0).toString();
+        var arr = num.split('.')
+        var intPart = arr[0] //获取整数部分
+        var result = '';
+        while (intPart.length > 3) {
+            result = ',' + intPart.slice(-3) + result;
+            intPart = intPart.slice(0, intPart.length - 3);
+        }
+        if (num) { result = intPart + result; }
+        var floatPart = '.00' // 预定义小数部分
+        var valArray = arr[1]
+        if(arr.length === 2) {
+            if(valArray){
+                floatPart = valArray.toString()
+            } // 拿到小数部分
+            if(floatPart.length === 1) { // 补0,实际上用不着
+                return result + '.' + floatPart + '0'
+            }else{
+                return result + '.' + floatPart
+            }
+        } else {
+            return result + floatPart
+        }
+    }
+}
+   
+module.exports = {
+    comming: threeNum.add_comma_toThousands//暴露接口调用
+}

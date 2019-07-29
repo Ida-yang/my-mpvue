@@ -28,11 +28,10 @@
     <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{60}}" wx:key="item.id" key="{{item.id}}" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item" class="_i-swipeout data-v-0c6f7a01">
       <view slot="content" bindtap="handleProxy" data-eventid="{{'10_'+index}}" data-comkey="{{$k}}" class="_view data-v-0c6f7a01">
         <i-cell i-class="cell_content" title="{{item.opportunity_name}}" label="{{item.customerpool[0].name}}" class="_i-cell data-v-0c6f7a01">
-          <view class="_view data-v-0c6f7a01 cell_footer">
-            {{'负责人：' + item.private_employee}}   |   {{'预计成交金额：' + item.opportunity_achievement}}
+          <wxs module="tools" src="./../utils/comming.wxs" class="_wxs data-v-0c6f7a01"></wxs>
+          <view class="_view data-v-0c6f7a01 cell_footer"> 负责人：{{item.private_employee}}   |   预计成交金额： {{item.opportunity_achievement}}
           </view>
-          <view class="_view data-v-0c6f7a01 cell_footer">
-            {{'预计成交时间：' + item.opportunity_deal}}   |   {{'阶段：' + item.opportunityProgress[0].progress_name}}
+          <view class="_view data-v-0c6f7a01 cell_footer"> 预计成交时间：{{item.opportunity_deal}}   |   阶段：{{item.opportunityProgress[0].progress_name}}
           </view>
         </i-cell>
       </view>

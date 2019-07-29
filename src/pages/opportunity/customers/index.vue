@@ -22,7 +22,7 @@
     export default {
         data () {
             return {
-                current: '新增联系人',
+                current: '选择客户',
                 
                 poolName:'',
                 itemData:[],

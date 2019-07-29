@@ -179,7 +179,7 @@
                                 }
                                 if(i > point){
                                     // console.log(el,'还在排队的')
-                                    el.stepStatus = 'process'
+                                    el.stepStatus = 'wait'
                                     el.stepIcon = 'time_fill'
                                 }
                             });
@@ -258,12 +258,6 @@
                     }
                 })
             },
-
-            // toOppoDetail(){
-            //     wx.navigateBack({
-            //         delta: 1,
-            //     })
-            // }
         },
     }
 </script>

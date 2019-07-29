@@ -9,7 +9,22 @@
       <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" dot title="My" class="_i-tab-bar-item data-v-d483bbb4"></i-tab-bar-item>
     </i-tab-bar>
     <i-progress percent="60" circle class="_i-progress data-v-d483bbb4"></i-progress>
+    <i-steps direction="vertical" class="_i-steps data-v-d483bbb4">
+      <i-step status="finish" icon="barrage" class="_i-step data-v-d483bbb4">
+        <view slot="title" class="_view data-v-d483bbb4"> 已完成 </view>
+        <view slot="content" class="_view data-v-d483bbb4"> 这里是该步骤的描述信息 </view>
+      </i-step>
+      <i-step status="process" icon="brush" class="_i-step data-v-d483bbb4">
+        <view slot="title" class="_view data-v-d483bbb4"> 进行中 </view>
+        <view slot="content" icon="camera" class="_view data-v-d483bbb4"> 这里是该步骤的描述信息 </view>
+      </i-step>
+      <i-step status="error" icon="collection" class="_i-step data-v-d483bbb4">
+        <view slot="title" class="_view data-v-d483bbb4"> 错误 </view>
+        <view slot="content" class="_view data-v-d483bbb4"> 这里是该步骤的描述信息 </view>
+      </i-step>
+    </i-steps>
     <view style="margin-top:100px;" class="_div data-v-d483bbb4"></view>
+    <rich-text nodes="{{nodesText}}" class="_rich-text data-v-d483bbb4"></rich-text>
     <i-card title="卡片标题" class="_i-card data-v-d483bbb4">
       <view slot="content" class="_view data-v-d483bbb4">内容不错</view>
       <view slot="footer" class="_view data-v-d483bbb4">尾部内容</view>

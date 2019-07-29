@@ -2,14 +2,14 @@ require("../../common/manifest.js")
 require("../../common/vendor.js")
 global.webpackJsonpMpvue([52],{
 
-/***/ 25:
+/***/ 30:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(31);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 26:
+/***/ 31:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_c2bf3590_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_c2bf3590_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(34);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(27)
+  __webpack_require__(32)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,18 +72,47 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 27:
+/***/ 32:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 28:
+/***/ 33:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -295,7 +324,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 29:
+/***/ 34:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -455,18 +484,82 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.reSet
     }
-  }, [_vm._v("重置")])], 1)]), _vm._v(" "), _c('i-button', {
+  }, [_vm._v("重置")])], 1)]), _vm._v(" "), _vm._l((_vm.tableData), function(item, index) {
+    return _c('i-swipeout', {
+      key: item.id,
+      attrs: {
+        "i-class": "i-swipeout-demo-item",
+        "operateWidth": 60,
+        "mpcomid": '12_' + index
+      }
+    }, [_c('view', {
+      attrs: {
+        "eventid": '9_' + index
+      },
+      on: {
+        "click": function($event) {
+          _vm.toAgreementDetail($event, item)
+        }
+      },
+      slot: "content"
+    }, [_c('i-cell', {
+      attrs: {
+        "i-class": "cell_content",
+        "title": item.contract_name,
+        "label": item.poolName,
+        "mpcomid": '10_' + index
+      }
+    }, [_c('wxs', {
+      attrs: {
+        "module": "tools",
+        "src": "./../utils/comming.wxs",
+        "mpcomid": '9_' + index
+      }
+    }), _vm._v(" "), _c('view', {
+      staticClass: "cell_footer"
+    }, [_vm._v("\n                    负责人：" + _vm._s(item.our_signatories) + "\n                      |  \n                    合同金额： " + _vm._s(item.amount) + "\n                      |  \n                    审核状态：" + _vm._s(item.state) + "\n                ")]), _vm._v(" "), _c('view', {
+      staticClass: "cell_footer"
+    }, [_vm._v("\n                    合同类型：" + _vm._s(item.contract_type) + "\n                      |  \n                    签约时间：" + _vm._s(item.start_date) + "\n                ")])], 1)], 1), _vm._v(" "), _c('view', {
+      staticClass: "i-swipeout-demo-button-group",
+      slot: "button"
+    }, [_c('view', {
+      staticClass: "i-swipeout-demo-button",
+      staticStyle: {
+        "width": "60px",
+        "background-color": "#f5f5f5"
+      },
+      attrs: {
+        "eventid": '10_' + index
+      },
+      on: {
+        "click": function($event) {
+          _vm.toUpdateAgreement($event, item)
+        }
+      }
+    }, [_c('i-icon', {
+      staticStyle: {
+        "line-height": "114px",
+        "margin-left": "18px",
+        "color": "#80848f"
+      },
+      attrs: {
+        "size": "24",
+        "type": "editor",
+        "mpcomid": '11_' + index
+      }
+    })], 1)])])
+  }), _vm._v(" "), _c('i-button', {
     staticClass: "bottom_btn",
     attrs: {
       "type": "ghost",
       "long": true,
-      "eventid": '9',
-      "mpcomid": '9'
+      "eventid": '11',
+      "mpcomid": '13'
     },
     on: {
       "click": _vm.toAddAgreement
     }
-  }, [_vm._v("新增")])], 1)
+  }, [_vm._v("新增")])], 2)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -481,4 +574,4 @@ if (false) {
 
 /***/ })
 
-},[25]);
+},[30]);

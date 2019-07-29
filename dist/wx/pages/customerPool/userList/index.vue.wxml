@@ -1,5 +1,5 @@
 <template name="23d2bac4">
-  <view class="_div data-v-35523a0c user_wrap">
+  <view class="_div data-v-35523a0c add_or_update_wrap">
     <i-input value="{{searchNames}}" type="text" maxlength="50" placeholder="输入用户名称查询" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-35523a0c"></i-input>
     <i-radio-group current="{{cheakItem}}" bindchange="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-radio-group data-v-35523a0c">
       <i-radio wx:key="item.id" key="{{item.id}}" position="right" value="{{item.name}}" label="{{item.id}}" wx:for="{{userList}}" wx:for-index="index" wx:for-item="item" class="_i-radio data-v-35523a0c"></i-radio>

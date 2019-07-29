@@ -44,15 +44,16 @@
                     i-class="cell_content" 
                     :title="item.opportunity_name"
                     :label="item.customerpool[0].name">
+                    <wxs module="tools" src="./../utils/comming.wxs" />
                     <view class="cell_footer">
-                        {{'负责人：' + item.private_employee}}
+                        负责人：{{item.private_employee}}
                         &nbsp;&nbsp;|&nbsp;&nbsp;
-                        {{'预计成交金额：' + item.opportunity_achievement}}
+                        预计成交金额： {{item.opportunity_achievement}}
                     </view>
                     <view class="cell_footer">
-                        {{'预计成交时间：' + item.opportunity_deal}}
+                        预计成交时间：{{item.opportunity_deal}}
                         &nbsp;&nbsp;|&nbsp;&nbsp;
-                        {{'阶段：' + item.opportunityProgress[0].progress_name}}
+                        阶段：{{item.opportunityProgress[0].progress_name}}
                     </view>
                 </i-cell>
             </view>
@@ -272,6 +273,7 @@
                 mpvue.navigateTo({ url })
             },
             toOpportunityDetail(e,val){
+                console.log('11111')
                 const url = 'opportunityDetail/main'
                 config.information.opportunityDetailData = val
                 mpvue.navigateTo({ url })

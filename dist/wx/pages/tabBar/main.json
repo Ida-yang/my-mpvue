@@ -16,7 +16,9 @@
       "i-cell-group": "../../iview/cell-group/index",
       "i-cell": "../../iview/cell/index",
       "i-progress": "../../iview/progress/index",
-      "i-card": "../../iview/card/index"
+      "i-card": "../../iview/card/index",
+      "i-steps": "../../iview/steps/index",
+      "i-step": "../../iview/step/index"
     }
   }
   
