@@ -49,6 +49,10 @@
     "pages/agreement/agreementUpdate/main",
     "pages/agreement/agreementDetail/main",
     "pages/agreement/customers/main",
+    "pages/agreement/agreementFollow/main",
+    "pages/agreement/agreementState/main",
+    "pages/agreement/paymentPlan/main",
+    "pages/agreement/paymentInfo/main",
 
     "pages/payCollection/main",
     "pages/payCollection/payCollectionDetail/main",

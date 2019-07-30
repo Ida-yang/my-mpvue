@@ -5,6 +5,7 @@
             {{ title }}
         </view>
         <view class="i-card-header-extra" wx:if="{{ extra }}">{{ extra }}</view>
+        <view class=" {{ desc ? 'i-card-header-desc' : ''}}" bindtap="handleTap"><slot name="desc"></slot></view>
     </view>
     <view class="i-class i-card-body"><slot name="content"></slot></view>
     <view class="i-class {{ footer ? 'i-card-footer' : ''}}"><slot name="footer"></slot></view>

@@ -45,7 +45,7 @@
                         &nbsp;&nbsp;|&nbsp;&nbsp;
                         合同金额： {{item.amount}}
                         &nbsp;&nbsp;|&nbsp;&nbsp;
-                        审核状态：{{item.state}}
+                        审核状态：{{item.auditStatus}}
                     </view>
                     <view class="cell_footer">
                         合同类型：{{item.contract_type}}
@@ -178,6 +178,18 @@
                                 _this.noMore = true
                             }
                         }
+
+                        _this.tableData.forEach(el => {
+                            if(el.checkStatus == 0){
+                                el.auditStatus = '未审核'
+                            }else if(el.checkStatus == 1){
+                                el.auditStatus = '审核中'
+                            }else if(el.checkStatus == 2){
+                                el.auditStatus = '已审核'
+                            }else if(el.checkStatus == 3){
+                                el.auditStatus = '未通过'
+                            }
+                        });
                     }
                 })
             },

@@ -33,6 +33,8 @@ const information = {
     agreementupdateData: '',
     agreementDetailData: '',
     agreementPoolNameData: '',
+    payplanData: '',
+    payinfoData: '',
     payCollectionDetailData: '',
 }
 

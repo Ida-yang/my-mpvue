@@ -5977,14 +5977,14 @@ return Vue$3;
 
 /***/ }),
 
-/***/ 149:
+/***/ 169:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 150:
+/***/ 170:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6003,7 +6003,7 @@ return Vue$3;
 
 /***/ }),
 
-/***/ 151:
+/***/ 171:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6064,6 +6064,8 @@ var information = {
     agreementupdateData: '',
     agreementDetailData: '',
     agreementPoolNameData: '',
+    payplanData: '',
+    payinfoData: '',
     payCollectionDetailData: ''
 };
 
@@ -6082,7 +6084,50 @@ var config = {
 
 /***/ }),
 
-/***/ 295:
+/***/ 3:
+/***/ (function(module, exports) {
+
+function getCtx (selector) {
+    const pages = getCurrentPages();
+    const ctx = pages[pages.length - 1];
+
+    const componentCtx = ctx.selectComponent(selector);
+
+    if (!componentCtx) {
+        console.error('无法找到对应的组件，请按文档说明使用组件');
+        return null;
+    }
+    return componentCtx;
+}
+
+function Toast(options) {
+    const { selector = '#toast' } = options;
+    const ctx = getCtx(selector);
+
+    ctx.handleShow(options);
+}
+
+Toast.hide = function (selector = '#toast') {
+    const ctx = getCtx(selector);
+
+    ctx.handleHide();
+};
+
+function Message(options) {
+    const { selector = '#message' } = options;
+    const ctx = getCtx(selector);
+
+    ctx.handleShow(options);
+}
+
+module.exports = {
+    $Toast: Toast,
+    $Message: Message
+};
+
+/***/ }),
+
+/***/ 315:
 /***/ (function(module, exports) {
 
 /*
@@ -6165,13 +6210,13 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 296:
+/***/ 316:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["default"] = addStylesClient;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__listToStyles__ = __webpack_require__(297);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__listToStyles__ = __webpack_require__(317);
 /*
   MIT License http://www.opensource.org/licenses/mit-license.php
   Author Tobias Koppers @sokra
@@ -6398,7 +6443,7 @@ function applyToTag (styleElement, obj) {
 
 /***/ }),
 
-/***/ 297:
+/***/ 317:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6434,59 +6479,16 @@ function listToStyles (parentId, list) {
 
 /***/ }),
 
-/***/ 3:
-/***/ (function(module, exports) {
-
-function getCtx (selector) {
-    const pages = getCurrentPages();
-    const ctx = pages[pages.length - 1];
-
-    const componentCtx = ctx.selectComponent(selector);
-
-    if (!componentCtx) {
-        console.error('无法找到对应的组件，请按文档说明使用组件');
-        return null;
-    }
-    return componentCtx;
-}
-
-function Toast(options) {
-    const { selector = '#toast' } = options;
-    const ctx = getCtx(selector);
-
-    ctx.handleShow(options);
-}
-
-Toast.hide = function (selector = '#toast') {
-    const ctx = getCtx(selector);
-
-    ctx.handleHide();
-};
-
-function Message(options) {
-    const { selector = '#message' } = options;
-    const ctx = getCtx(selector);
-
-    ctx.handleShow(options);
-}
-
-module.exports = {
-    $Toast: Toast,
-    $Message: Message
-};
-
-/***/ }),
-
 /***/ 4:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_card_vue__ = __webpack_require__(150);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_cef12b42_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_card_vue__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_card_vue__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_cef12b42_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_card_vue__ = __webpack_require__(171);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(149)
+  __webpack_require__(169)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */

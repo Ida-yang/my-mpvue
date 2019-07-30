@@ -149,6 +149,14 @@
 .followimg_btn {
   margin-top: 60rpx !important;
 }
+.btn_group {
+  width: 100%;
+  margin-top: 16rpx;
+  display: flex;
+}
+.flex_btn {
+  flex: 1;
+}
 .request_tip {
   margin: 60rpx 0 0 30rpx;
   font-size: 24rpx;
@@ -156,6 +164,10 @@
 }
 .font_size_12 {
   font-size: 24rpx;
+}
+.gray_12 {
+  font-size: 24rpx;
+  color: #80848f;
 }
 .simple_cell {
   position: relative;
@@ -197,7 +209,6 @@
   margin-top: 16rpx;
   padding: 10rpx !important;
   color: #5f6164;
-  font-size: 24rpx !important;
 }
 .cell_link .i-cell-text {
   font-size: 24rpx !important;

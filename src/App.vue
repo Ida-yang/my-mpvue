@@ -199,14 +199,28 @@
   .followimg_btn{
     margin-top: 30px !important
   }
+  /* 按钮组 */
+  .btn_group{
+    width: 100%;
+    margin-top: 8px;
+    display: flex
+  }
+  .flex_btn{
+    flex: 1
+  }
   /* 必填 */
   .request_tip{
     margin: 30px 0 0 15px;
     font-size: 12px;
     color: #80848f
   }
+  /* 不同文字 */
   .font_size_12{
     font-size: 12px
+  }
+  .gray_12{
+    font-size: 12px;
+    color: #80848f
   }
   /* 单个列表 */
   .simple_cell{
@@ -252,8 +266,7 @@
     width: 100%;
     margin-top: 8px;
     padding: 5px !important;
-    color: #5f6164;
-    font-size: 12px !important
+    color: #5f6164
   }
   .cell_link .i-cell-text{
     font-size: 12px !important

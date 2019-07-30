@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "回款信息",
+    "usingComponents": {
+        "i-panel": "../../../iview/panel/index"
+    }
+}

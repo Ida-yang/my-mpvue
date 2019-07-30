@@ -1,0 +1,14 @@
+<template name="1f6f9cbc">
+  <view class="_div data-v-75b27b18">
+    <i-panel title=" " class="_i-panel data-v-75b27b18"></i-panel>
+    <i-panel title="{{agreementName}}" class="_i-panel data-v-75b27b18"></i-panel>
+    <i-steps current="{{stepIndex}}" direction="vertical" i-class="stage_steps" class="_i-steps data-v-75b27b18">
+      <i-step wx:key="item.orderId" key="{{item.orderId}}" status="{{item.stepStatus}}" icon="{{item.stepIcon}}" wx:for="{{auditLog}}" wx:for-index="index" wx:for-item="item" class="_i-step data-v-75b27b18">
+        <i-fiche isContent isFooter slot="title" title="{{item.realname}}" extra="{{item.auditState}}" thumb="{{item.portrait}}" class="_i-fiche data-v-75b27b18">
+          <view slot="content" class="_view data-v-75b27b18">{{item.remarks}}</view>
+          <view slot="footer" class="_view data-v-75b27b18">{{item.examineTime}}</view>
+        </i-fiche>
+      </i-step>
+    </i-steps>
+  </view>
+</template>

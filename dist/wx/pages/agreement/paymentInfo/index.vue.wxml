@@ -1,0 +1,5 @@
+<template name="2aed6956">
+  <view class="_div data-v-99937886">
+    <i-panel title="{{current}}" class="_i-panel data-v-99937886"></i-panel>
+  </view>
+</template>

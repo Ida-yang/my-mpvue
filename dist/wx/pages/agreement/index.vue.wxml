@@ -26,7 +26,7 @@
       <view slot="content" bindtap="handleProxy" data-eventid="{{'9_'+index}}" data-comkey="{{$k}}" class="_view data-v-c2bf3590">
         <i-cell i-class="cell_content" title="{{item.contract_name}}" label="{{item.poolName}}" class="_i-cell data-v-c2bf3590">
           <wxs module="tools" src="./../utils/comming.wxs" class="_wxs data-v-c2bf3590"></wxs>
-          <view class="_view data-v-c2bf3590 cell_footer"> 负责人：{{item.our_signatories}}   |   合同金额： {{item.amount}}   |   审核状态：{{item.state}}
+          <view class="_view data-v-c2bf3590 cell_footer"> 负责人：{{item.our_signatories}}   |   合同金额： {{item.amount}}   |   审核状态：{{item.auditStatus}}
           </view>
           <view class="_view data-v-c2bf3590 cell_footer"> 合同类型：{{item.contract_type}}   |   签约时间：{{item.start_date}}
           </view>
