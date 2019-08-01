@@ -15,7 +15,7 @@
 
         <!-- <img v-if="followImg" :src="followImg" /> -->
         <image v-if="followImg" mode="aspectFit" :src="followImg" class="fullwidth_img"></image>
-        <p class="request_tip"><span style="color:#ed3f14"> * </span>为必填项</p>
+        <p class="request_tip"><span style="color:#f56c6c"> * </span>为必填项</p>
 
         <!-- 提交 -->
         <i-button type="ghost" :long="true" @click="addClueFollow" class="bottom_btn">确定</i-button>

@@ -5,8 +5,8 @@
             <p class="cell_info">合同编号：&nbsp;&nbsp;{{agreementDetail.contract_number}}</p>
             <p class="cell_info">合同金额：&nbsp;&nbsp;{{agreementDetail.amount}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;到期时间：&nbsp;&nbsp;{{agreementDetail.end_date}}</p>
             <view class="btn_group" v-if="authority">
-                <i-button class="flex_btn" type="subject" size="small" @click="handleClick">通过</i-button>
-                <i-button class="flex_btn" type="ghost" size="small" @click="handleClick">拒绝</i-button>
+                <i-button class="flex_btn" type="subject" size="small" @click="handleClick($event,1)">通过</i-button>
+                <i-button class="flex_btn" type="ghost" size="small" @click="handleClick($event,2)">拒绝</i-button>
             </view>
             <i-cell :title="'审核状态：' + agreementDetail.auditStatus" is-link @click="toAgreeState" i-class="cell_link"></i-cell>
         </i-cell>
@@ -23,7 +23,7 @@
             <view v-for="item in followData" :key="item.id">
                 <i-panel :title="item.createTime" i-class="vice_panel"></i-panel>
                 <i-fiche full isContent isFooter :title="item.contacts[0].name" :thumb="item.portrait">
-                    <view slot="content">{{item.followContent}}</view>
+                    <view slot="content"><rich-text :nodes="item.followContent" /></view>
                     <view slot="footer">
                         <span class="bgc_span">{{item.followType}}</span>
                         <span v-if="item.contactTime">&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -76,12 +76,19 @@
             <i-tab-bar-item key="addressbook" icon="addressbook" current-icon="addressbook" title="打电话"></i-tab-bar-item>
             <i-tab-bar-item key="trash" icon="trash" current-icon="trash" title="删除"></i-tab-bar-item>
         </i-tab-bar>
+
         <i-action-sheet :visible="showDetele" :actions="deleteActions" show-cancel @cancel="cancelDelete" @change="deleteAgree" :mask-closable="false">
             <view slot="header" style="padding: 16px">
                 <view style="color: #444;font-size: 16px">确定吗？</view>
                 <text>删除后无法恢复哦</text>
             </view>
         </i-action-sheet>
+        <i-modal title="请填写审核意见" :visible="showSure" @ok="adopt" @cancel="cancelClick($event,1)">
+            <i-input v-model="remarks" right type="textarea" request maxlength="200" @input="handleInput" />
+        </i-modal>
+        <i-modal title="请填写审核意见" :visible="showRefuse" @ok="refuse" @cancel="cancelClick($event,2)">
+            <i-input v-model="remarks" right type="textarea" request maxlength="200" @input="handleInput" />
+        </i-modal>
         <i-toast id="toast" />
         <i-message id="message" />
     </div>
@@ -112,9 +119,13 @@
                 deleteActions:[
                     {
                         name: '删除',
-                        color: '#ed3f14'
+                        color: '#f56c6c'
                     }
-                ]
+                ],
+
+                showSure:false,
+                showRefuse:false,
+                remarks:'',
             }
         },
 
@@ -206,6 +217,8 @@
                             }else{
                                 el.followImg = ''
                             }
+                            el.followContent = el.followContent.replace(/\n/g, '<br/>')
+                            el.followContent = '<div>' + el.followContent + '</div>'
                         });
 
                         _this.followData = info
@@ -243,6 +256,115 @@
                     success:function(res) {
                         config.information.payinfoData = res.data
                         _this.payInfoData = res.data
+                    }
+                })
+            },
+            handleClick(e,val){
+                if(val == 1){
+                    this.showSure = true
+                }else if(val == 2){
+                    this.showRefuse = true
+                }
+            },
+            cancelClick(e,val){
+                if(val == 1){
+                    this.showSure = false
+                }else if(val == 2){
+                    this.showRefuse = false
+                }
+            },
+            handleInput(e){
+                this.remarks = e.mp.detail
+            },
+            adopt(){
+                const _this = this
+                let data = {
+                    id: this.agreementDetail.contract_id,
+                    recordId: this.agreementDetail.examineRecordId,
+                    status: 1,
+                    remarks:this.remarks,
+                    pId: config.userData.pId
+                }
+
+                let flag = false
+                if(!data.remarks){
+                    $Toast({
+                        content: '审批意见不能为空',
+                        type: 'error'
+                    });
+                    flag = true
+                }
+                if(flag) return
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'examineRecord/auditExamine.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        if(res.data.code && res.data.code == '200'){
+                            $Message({
+                                content: '审批成功',
+                                type: 'success'
+                            });
+                            _this.remarks = ''
+                            _this.showSure = false
+                            _this.loadData()
+                        }else{
+                            $Message({
+                                content: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
+            },
+            refuse(){
+                const _this = this
+                let data = {
+                    id: this.agreementDetail.contract_id,
+                    recordId: this.agreementDetail.examineRecordId,
+                    status: 2,
+                    remarks:this.remarks,
+                    pId: config.userData.pId
+                }
+
+                let flag = false
+                if(!data.remarks){
+                    $Toast({
+                        content: '审批意见不能为空',
+                        type: 'error'
+                    });
+                    flag = true
+                }
+                if(flag) return
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'examineRecord/auditExamine.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        if(res.data.code && res.data.code == '200'){
+                            $Message({
+                                content: '审批成功',
+                                type: 'success'
+                            });
+                            _this.remarks = ''
+                            _this.showRefuse = false
+                            _this.loadData()
+                        }else{
+                            $Message({
+                                content: res.data.msg,
+                                type: 'error'
+                            });
+                        }
                     }
                 })
             },

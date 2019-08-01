@@ -146,6 +146,15 @@
   .pool_cell{
     padding: 15px 20px !important
   }
+  .i-swipeout-button{
+    height: 100%;
+  }
+  .i-swipeout-button-item{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
 
   /* 跟进记录 */
   .margin_card{
@@ -252,7 +261,9 @@
     border-radius: 8px
   }
   .detail_module{
-    margin-top: 10px
+    width: 100%;
+    height: 10px
+    /* margin-top: 10px */
   }
   
   .cell_info{
@@ -273,5 +284,10 @@
   }
   .add_or_update_wrap{
     margin-bottom: 40px
+  }
+
+  /* 白色背景 */
+  .white_bg{
+    background-color: #fff;
   }
 </style>

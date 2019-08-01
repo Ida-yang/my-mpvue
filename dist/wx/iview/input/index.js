@@ -41,11 +41,25 @@ Component({
             value: false
         },
         maxlength: {
-            type: Number
+            type: Number,
+            value: -1
+        },
+        row: {
+            type: String,
+            value: '5'
         }
     },
 
+    mounted(){
+        this.loadRow()
+    },
+
     methods: {
+        loadRow(){
+            // if(this.data.row){
+                console.log(this.data.row)
+            // }
+        },
         handleInputChange(event) {
             const { detail } = event;
             const { value } = detail;

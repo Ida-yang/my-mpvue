@@ -18,7 +18,7 @@
             </i-cell>
             <i-input v-model="planList.remarks" title="备注" right type="textarea" maxlength="200" @input="handleInput($event,4)" />
         </i-panel>
-        <p class="request_tip"><span style="color:#ed3f14"> * </span>为必填项</p>
+        <p class="request_tip"><span style="color:#f56c6c"> * </span>为必填项</p>
 
         <!-- 提交 -->
         <i-button type="ghost" :long="true" @click="submitPayPlan" class="bottom_btn">确定</i-button>
@@ -99,7 +99,7 @@
                 }else if(val == 2){
                     this.planList.date = e.target.value
                 }else if(val == 3){
-                    this.planList.remind_date = e.mp.detail
+                    this.planList.remind_date = e.mp.detail + ':00'
                 }else if(val == 4){
                     this.planList.remarks = e.mp.detail
                 }
@@ -126,7 +126,7 @@
                     contract_id: this.agreementData.contract_id,
                     customerpool_id: this.agreementData.customerpool_id,
                     remarks: this.planList.remarks,
-                    remind_date: this.planList.remind_date + ':00',
+                    remind_date: this.planList.remind_date,
                     pId: config.userData.pId,
                 }
                 let flag = false
@@ -159,6 +159,35 @@
                     flag = true
                 }
                 if(flag) return
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'backPlan/saveOrUpdate.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        if(res.data.code && res.data.code == '200'){
+                            $Message({
+                                content: '添加成功',
+                                type: 'success'
+                            });
+                            _this.toAgreeDetail()
+                        }else{
+                            $Message({
+                                content: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
+            },
+            toAgreeDetail(){
+                wx.navigateBack({
+                    delta: 1,
+                })
             },
         },
     }

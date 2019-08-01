@@ -83,23 +83,61 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
 //
 //
 //
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
         return {
-            current: '新增便签'
+            current: '新增便签',
+
+            addList: {
+                name: '',
+                noteType: '',
+                noteId: ''
+            }
         };
+    },
+    mounted: function mounted() {
+        this.loadData();
     },
 
 
-    methods: {}
+    methods: {
+        loadData: function loadData() {
+            var info = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.noteaddData;
+
+            this.addList = {
+                name: '',
+                noteType: info.name,
+                noteId: info.id
+            };
+        },
+        handleInput: function handleInput() {},
+        addNote: function addNote() {
+            var _this = this;
+            var data = {};
+        }
+    }
 });
 
 /***/ }),
@@ -111,8 +149,71 @@ if (false) {(function () {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('i-panel', {
     attrs: {
-      "title": _vm.current,
+      "title": " ",
       "mpcomid": '0'
+    }
+  }), _vm._v(" "), _c('i-panel', {
+    attrs: {
+      "title": " ",
+      "mpcomid": '1'
+    }
+  }), _vm._v(" "), _c('i-input', {
+    attrs: {
+      "title": "便签类别",
+      "right": "",
+      "disabled": "",
+      "maxlength": "20",
+      "eventid": '0',
+      "mpcomid": '2'
+    },
+    on: {
+      "input": _vm.handleInput
+    },
+    model: {
+      value: (_vm.addList.noteType),
+      callback: function($$v) {
+        _vm.addList.noteType = $$v
+      },
+      expression: "addList.noteType"
+    }
+  }), _vm._v(" "), _c('i-input', {
+    attrs: {
+      "right": "",
+      "type": "textarea",
+      "maxlength": "200",
+      "eventid": '1',
+      "mpcomid": '3'
+    },
+    on: {
+      "input": _vm.handleInput
+    },
+    model: {
+      value: (_vm.addList.name),
+      callback: function($$v) {
+        _vm.addList.name = $$v
+      },
+      expression: "addList.name"
+    }
+  }), _vm._v(" "), _c('i-button', {
+    staticClass: "bottom_btn",
+    attrs: {
+      "type": "ghost",
+      "long": true,
+      "eventid": '2',
+      "mpcomid": '4'
+    },
+    on: {
+      "click": _vm.addNote
+    }
+  }, [_vm._v("确定")]), _vm._v(" "), _c('i-message', {
+    attrs: {
+      "id": "message",
+      "mpcomid": '5'
+    }
+  }), _vm._v(" "), _c('i-toast', {
+    attrs: {
+      "id": "toast",
+      "mpcomid": '6'
     }
   })], 1)
 }

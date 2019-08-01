@@ -15,6 +15,24 @@
             </i-tabs>
         </i-panel>
 
+        <view v-if="activeName == 'first'" class="follow_view">
+            <view v-for="item in followData" :key="item.id">
+                <i-panel :title="item.createTime" i-class="vice_panel"></i-panel>
+                <i-fiche full isContent isFooter :title="item.contacts[0].name" :extra="item.state" :thumb="item.portrait">
+                    <view slot="content"><rich-text :nodes="item.followContent" /></view>
+                    <view slot="footer">
+                        <span class="bgc_span">{{item.followType}}</span>
+                        <span v-if="item.contactTime">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <span class="bgc_span" v-if="item.contactTime">{{item.contactTime}}</span>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span>{{item.inputType}}</span>
+                        <br/>
+                        <image v-if="item.followImg" mode="scaleToFill" :src="item.followImg" class="follow_image"></image>
+                    </view>
+                </i-fiche>
+            </view>
+        </view>
+
         <view v-if="activeName == 'second'" class="font_size_12">
             <i-cell-group>
                 <i-cell title="公司名称" :value="customerPoolDetail.pName"></i-cell>
@@ -103,7 +121,7 @@
                 deleteActions:[
                     {
                         name: '删除',
-                        color: '#ed3f14'
+                        color: '#f56c6c'
                     }
                 ],
 
@@ -152,6 +170,8 @@
                             }else{
                                 el.followImg = ''
                             }
+                            el.followContent = el.followContent.replace(/\n/g, '<br/>')
+                            el.followContent = '<div>' + el.followContent + '</div>'
                         });
 
                         _this.followData = info

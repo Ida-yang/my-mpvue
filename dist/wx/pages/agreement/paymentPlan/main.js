@@ -180,7 +180,7 @@ if (false) {(function () {
             } else if (val == 2) {
                 this.planList.date = e.target.value;
             } else if (val == 3) {
-                this.planList.remind_date = e.mp.detail;
+                this.planList.remind_date = e.mp.detail + ':00';
             } else if (val == 4) {
                 this.planList.remarks = e.mp.detail;
             }
@@ -209,7 +209,7 @@ if (false) {(function () {
                 contract_id: this.agreementData.contract_id,
                 customerpool_id: this.agreementData.customerpool_id,
                 remarks: this.planList.remarks,
-                remind_date: this.planList.remind_date + ':00',
+                remind_date: this.planList.remind_date,
                 pId: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.pId
             };
             var flag = false;
@@ -242,6 +242,35 @@ if (false) {(function () {
                 flag = true;
             }
             if (flag) return;
+
+            wx.request({
+                method: 'post',
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'backPlan/saveOrUpdate.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                data: data,
+                header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    if (res.data.code && res.data.code == '200') {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: '添加成功',
+                            type: 'success'
+                        });
+                        _this.toAgreeDetail();
+                    } else {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: res.data.msg,
+                            type: 'error'
+                        });
+                    }
+                }
+            });
+        },
+        toAgreeDetail: function toAgreeDetail() {
+            wx.navigateBack({
+                delta: 1
+            });
         }
     }
 });
@@ -397,7 +426,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "request_tip"
   }, [_c('span', {
     staticStyle: {
-      "color": "#ed3f14"
+      "color": "#f56c6c"
     }
   }, [_vm._v(" * ")]), _vm._v("为必填项")]), _vm._v(" "), _c('i-button', {
     staticClass: "bottom_btn",

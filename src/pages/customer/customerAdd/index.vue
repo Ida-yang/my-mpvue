@@ -11,7 +11,7 @@
             <i-input v-model="addList.address" title="详细地址" right placeholder="(最多50字)" maxlength="50" @input="handleInput($event,6)" />
             <i-input v-model="addList.remark" title="备注" right type="textarea" maxlength="200" @input="handleInput($event,7)" />
         </i-panel>
-        <p class="request_tip"><span style="color:#ed3f14"> * </span>为必填项</p>
+        <p class="request_tip"><span style="color:#f56c6c"> * </span>为必填项</p>
 
         <!-- 新增 -->
         <i-button @click="addCustomer" type="ghost" :long="true" class="bottom_btn">确定</i-button>

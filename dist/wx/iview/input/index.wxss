@@ -83,12 +83,12 @@
     border-radius:4px
 }
 .i-input-error{
-    color:#ed3f14
+    color:#f56c6c
 }
 .i-input-request::after{
     content: '*';
     margin-left: 6px;
-    color: #ed3f14
+    color: #f56c6c
 }
 .i-input-title{
     color:#495060;
@@ -115,7 +115,7 @@
     display:block
 }
 .i-input-wrapped.i-input-error::after{
-    border-color:#ed3f14
+    border-color:#f56c6c
 }
 .i-cell-textarea{
     min-height: 60px

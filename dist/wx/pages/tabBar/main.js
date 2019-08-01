@@ -202,6 +202,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -226,7 +227,7 @@ if (false) {(function () {
             }],
             actions2: [{
                 name: '删除',
-                color: '#ed3f14'
+                color: '#f56c6c'
             }],
 
             modelvisible: false,
@@ -458,15 +459,36 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticStyle: {
       "margin-top": "100px"
     }
+  }), _vm._v(" "), _c('i-input', {
+    attrs: {
+      "title": "备注",
+      "right": "",
+      "type": "textarea",
+      "maxlength": "200",
+      "eventid": '1',
+      "mpcomid": '12'
+    },
+    on: {
+      "input": function($event) {
+        _vm.handleInput()
+      }
+    },
+    model: {
+      value: (_vm.addList.opportunity_remarks),
+      callback: function($$v) {
+        _vm.addList.opportunity_remarks = $$v
+      },
+      expression: "addList.opportunity_remarks"
+    }
   }), _vm._v(" "), _c('rich-text', {
     attrs: {
       "nodes": _vm.nodesText,
-      "mpcomid": '12'
+      "mpcomid": '13'
     }
   }), _vm._v(" "), _c('i-card', {
     attrs: {
       "title": "卡片标题",
-      "mpcomid": '13'
+      "mpcomid": '14'
     }
   }, [_c('view', {
     slot: "content"
@@ -475,8 +497,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("尾部内容")])]), _vm._v(" "), _c('i-button', {
     attrs: {
       "type": "ghost",
-      "eventid": '1',
-      "mpcomid": '14'
+      "eventid": '2',
+      "mpcomid": '15'
     },
     on: {
       "click": _vm.handleWarning
@@ -484,13 +506,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("错误")]), _vm._v(" "), _c('i-toast', {
     attrs: {
       "id": "toast",
-      "mpcomid": '15'
+      "mpcomid": '16'
     }
   }), _vm._v(" "), _c('i-button', {
     attrs: {
       "type": "ghost",
-      "eventid": '2',
-      "mpcomid": '16'
+      "eventid": '3',
+      "mpcomid": '17'
     },
     on: {
       "click": _vm.handleSuccess
@@ -498,13 +520,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("成功提醒")]), _vm._v(" "), _c('i-message', {
     attrs: {
       "id": "message",
-      "mpcomid": '17'
+      "mpcomid": '18'
     }
   }), _vm._v(" "), _c('i-button', {
     attrs: {
       "type": "ghost",
-      "eventid": '3',
-      "mpcomid": '18'
+      "eventid": '4',
+      "mpcomid": '19'
     },
     on: {
       "click": _vm.toggleRight
@@ -513,8 +535,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "mode": "right",
       "visible": _vm.showRight,
-      "eventid": '4',
-      "mpcomid": '19'
+      "eventid": '5',
+      "mpcomid": '20'
     },
     on: {
       "close": _vm.toggleRight
@@ -525,8 +547,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "current": _vm.page,
       "total": "5",
-      "eventid": '5',
-      "mpcomid": '20'
+      "eventid": '6',
+      "mpcomid": '21'
     },
     on: {
       "change": _vm.changePage
@@ -538,8 +560,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("Next")])]), _vm._v(" "), _c('view', [_c('i-button', {
     attrs: {
       "type": "ghost",
-      "eventid": '6',
-      "mpcomid": '21'
+      "eventid": '7',
+      "mpcomid": '22'
     },
     on: {
       "click": _vm.handleOpen1
@@ -547,8 +569,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("一般用法")]), _vm._v(" "), _c('i-button', {
     attrs: {
       "type": "ghost",
-      "eventid": '7',
-      "mpcomid": '22'
+      "eventid": '8',
+      "mpcomid": '23'
     },
     on: {
       "click": _vm.handleOpen2
@@ -558,8 +580,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "visible": _vm.actionSheet1,
       "actions": _vm.actions1,
       "show-cancel": "",
-      "eventid": '8',
-      "mpcomid": '23'
+      "eventid": '9',
+      "mpcomid": '24'
     },
     on: {
       "cancel": _vm.handleCancel1,
@@ -571,8 +593,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "actions": _vm.actions2,
       "show-cancel": "",
       "mask-closable": false,
-      "eventid": '9',
-      "mpcomid": '24'
+      "eventid": '10',
+      "mpcomid": '25'
     },
     on: {
       "cancel": _vm.handleCancel2,
@@ -591,8 +613,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("确定吗？")]), _vm._v(" "), _c('text', [_vm._v("删除后无法恢复哦")])])]), _vm._v(" "), _c('i-button', {
     attrs: {
       "type": "ghost",
-      "eventid": '10',
-      "mpcomid": '25'
+      "eventid": '11',
+      "mpcomid": '26'
     },
     on: {
       "click": _vm.openModel
@@ -601,8 +623,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "title": "标题",
       "visible": _vm.modelvisible,
-      "eventid": '11',
-      "mpcomid": '26'
+      "eventid": '12',
+      "mpcomid": '27'
     },
     on: {
       "ok": _vm.closeModel,
@@ -611,8 +633,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('view', [_vm._v("一些文本")]), _vm._v(" "), _c('view', [_vm._v("一些文本")]), _vm._v(" "), _c('view', [_vm._v("一些文本")]), _vm._v(" "), _c('view', [_vm._v("一些文本")]), _vm._v(" "), _c('view', [_vm._v("一些文本")]), _vm._v(" "), _c('view', [_vm._v("一些文本")]), _vm._v(" "), _c('view', [_vm._v("一些文本")]), _vm._v(" "), _c('view', [_vm._v("一些文本")]), _vm._v(" "), _c('view', [_vm._v("一些文本")])]), _vm._v(" "), _c('i-button', {
     attrs: {
       "type": "warning",
-      "eventid": '12',
-      "mpcomid": '27'
+      "eventid": '13',
+      "mpcomid": '28'
     },
     on: {
       "click": _vm.uploadIMG
@@ -622,12 +644,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "title": "只显示箭头",
       "is-link": "",
       "i-class": "index_cell",
-      "mpcomid": '29'
+      "mpcomid": '30'
     }
   }, [_c('i-datetime-picker', {
     staticClass: "index_picker",
     attrs: {
-      "mpcomid": '28'
+      "mpcomid": '29'
     }
   })], 1), _vm._v(" "), _c('view', {
     staticClass: "section"
@@ -639,7 +661,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "value": _vm.date222,
       "start": "2015-09-01",
       "end": "2017-09-01",
-      "eventid": '13'
+      "eventid": '14'
     },
     on: {
       "change": _vm.DateChange
@@ -649,8 +671,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("\n                当前选择: " + _vm._s(_vm.date222) + "\n            ")])])], 1), _vm._v(" "), _c('i-button', {
     attrs: {
       "type": "success",
-      "eventid": '14',
-      "mpcomid": '30'
+      "eventid": '15',
+      "mpcomid": '31'
     },
     on: {
       "click": _vm.bindViewTap

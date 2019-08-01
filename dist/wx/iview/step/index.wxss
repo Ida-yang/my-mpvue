@@ -69,11 +69,11 @@
     background:#19be6b
 }
 .i-step-error .i-step-ico{
-    border:#ed3f14 solid 1px;
-    color:#ed3f14
+    border:#f56c6c solid 1px;
+    color:#f56c6c
 }
 .i-step-error .i-step-line{
-    background:#ed3f14
+    background:#f56c6c
 }
 .i-step-item{
     font-size:12px;

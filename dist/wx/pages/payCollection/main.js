@@ -115,6 +115,20 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -208,6 +222,18 @@ if (false) {(function () {
                             _this.noMore = true;
                         }
                     }
+
+                    _this.tableData.forEach(function (el) {
+                        if (el.checkStatus == 0) {
+                            el.checkState = '待审核';
+                        } else if (el.checkStatus == 1) {
+                            el.checkState = '审核中';
+                        } else if (el.checkStatus == 2) {
+                            el.checkState = '已审核';
+                        } else if (el.checkStatus == 3) {
+                            el.checkState = '未通过';
+                        }
+                    });
                 }
             });
         },
@@ -407,7 +433,35 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.reSet
     }
-  }, [_vm._v("重置")])], 1)])], 1)
+  }, [_vm._v("重置")])], 1)]), _vm._v(" "), _c('i-cell-group', {
+    attrs: {
+      "mpcomid": '9'
+    }
+  }, _vm._l((_vm.tableData), function(item, index) {
+    return _c('i-cell', {
+      key: item.id,
+      attrs: {
+        "i-class": "pool_cell",
+        "title": item.back_plan + '：' + item.price,
+        "label": item.customerName,
+        "eventid": '8_' + index,
+        "mpcomid": '8_' + index
+      },
+      on: {
+        "click": function($event) {
+          _vm.topayDetail($event, item)
+        }
+      }
+    }, [_c('view', {
+      staticClass: "cell_footer"
+    }, [_vm._v("\n                " + _vm._s('负责人：' + item.private_employee) + "\n                   |   \n                " + _vm._s('状态：' + item.checkState) + "\n                   |   \n                " + _vm._s('类型：' + item.type) + "\n            ")])])
+  })), _vm._v(" "), (_vm.noMore) ? _c('i-load-more', {
+    attrs: {
+      "tip": "我是有底线的",
+      "loading": false,
+      "mpcomid": '10'
+    }
+  }) : _vm._e()], 1)
 }
 var staticRenderFns = []
 render._withStripped = true

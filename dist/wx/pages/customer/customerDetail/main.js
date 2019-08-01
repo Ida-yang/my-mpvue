@@ -237,7 +237,6 @@ if (false) {(function () {
                 },
                 success: function success(res) {
                     var info = res.data.map.success;
-                    // _this.followData = res.data.map.success
                     info.forEach(function (el) {
                         if (el.userImagName) {
                             el.portrait = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].sourcehost + 'upload/' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId + '/' + el.userImagName;
@@ -250,6 +249,8 @@ if (false) {(function () {
                         } else {
                             el.followImg = '';
                         }
+                        el.followContent = el.followContent.replace(/\n/g, '<br/>');
+                        el.followContent = '<div>' + el.followContent + '</div>';
                     });
 
                     _this.followData = info;
@@ -480,11 +481,16 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "title": item.contacts[0].name,
         "extra": item.state,
         "thumb": item.portrait,
-        "mpcomid": '7_' + index
+        "mpcomid": '8_' + index
       }
     }, [_c('view', {
       slot: "content"
-    }, [_vm._v(_vm._s(item.followContent))]), _vm._v(" "), _c('view', {
+    }, [_c('rich-text', {
+      attrs: {
+        "nodes": item.followContent,
+        "mpcomid": '7_' + index
+      }
+    })], 1), _vm._v(" "), _c('view', {
       slot: "footer"
     }, [_c('span', {
       staticClass: "bgc_span"
@@ -501,37 +507,37 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "font_size_12"
   }, [_c('i-cell-group', {
     attrs: {
-      "mpcomid": '13'
+      "mpcomid": '14'
     }
   }, [_c('i-cell', {
     attrs: {
       "title": "公司名称",
       "value": _vm.customerData.pName,
-      "mpcomid": '8'
+      "mpcomid": '9'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "负责人",
       "value": _vm.customerData.privateUser[0].private_employee,
-      "mpcomid": '9'
+      "mpcomid": '10'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "客户状态",
       "value": _vm.customerData.source,
-      "mpcomid": '10'
+      "mpcomid": '11'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "未联系天数",
       "value": _vm.customerData.dayNum,
-      "mpcomid": '11'
+      "mpcomid": '12'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "创建时间",
       "value": _vm.customerData.createTime,
-      "mpcomid": '12'
+      "mpcomid": '13'
     }
   })], 1)], 1) : _vm._e(), _vm._v(" "), (_vm.activeName == 'third') ? _c('view', {
     staticClass: "font_size_12"
@@ -539,7 +545,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "full": "",
       "title": "联系人",
-      "mpcomid": '15'
+      "mpcomid": '16'
     }
   }, _vm._l((_vm.contactData), function(item, index) {
     return _c('i-cell', {
@@ -548,7 +554,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "i-class": "card_cell",
         "title": item.name,
         "value": item.phone,
-        "mpcomid": '14_' + index
+        "mpcomid": '15_' + index
       },
       slot: "content"
     })
@@ -558,7 +564,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "full": "",
       "title": "商机",
-      "mpcomid": '17'
+      "mpcomid": '18'
     }
   }, _vm._l((_vm.opportunityData), function(item, index) {
     return _c('i-cell', {
@@ -567,7 +573,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "i-class": "card_cell",
         "title": item.opportunity_name,
         "label": item.opportunity_time,
-        "mpcomid": '16_' + index
+        "mpcomid": '17_' + index
       },
       slot: "content"
     }, [_c('view', {
@@ -589,7 +595,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "full": "",
       "title": "合同",
-      "mpcomid": '19'
+      "mpcomid": '20'
     }
   }, _vm._l((_vm.agreementData), function(item, index) {
     return _c('i-cell', {
@@ -598,7 +604,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "i-class": "card_cell",
         "title": item.contract_name,
         "label": item.start_date,
-        "mpcomid": '18_' + index
+        "mpcomid": '19_' + index
       },
       slot: "content"
     }, [_c('view', {
@@ -620,7 +626,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "full": "",
       "title": "任务",
-      "mpcomid": '21'
+      "mpcomid": '22'
     }
   }, _vm._l((_vm.outWordAddTaskDara), function(item, index) {
     return _c('i-cell', {
@@ -629,7 +635,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "i-class": "card_cell",
         "title": item.theme,
         "label": item.startTime,
-        "mpcomid": '20_' + index
+        "mpcomid": '21_' + index
       },
       slot: "content"
     }, [_c('view', {
@@ -650,7 +656,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "current": _vm.activeBar,
       "eventid": '1',
-      "mpcomid": '25'
+      "mpcomid": '26'
     },
     on: {
       "change": _vm.changeBar
@@ -661,7 +667,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "brush",
       "current-icon": "brush",
       "title": "写跟进",
-      "mpcomid": '22'
+      "mpcomid": '23'
     }
   }), _vm._v(" "), _c('i-tab-bar-item', {
     key: "addressbook",
@@ -669,7 +675,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "addressbook",
       "current-icon": "addressbook",
       "title": "打电话",
-      "mpcomid": '23'
+      "mpcomid": '24'
     }
   }), _vm._v(" "), _c('i-tab-bar-item', {
     key: "send",
@@ -677,7 +683,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "send",
       "current-icon": "send",
       "title": "转移至客户池",
-      "mpcomid": '24'
+      "mpcomid": '25'
     }
   })], 1), _vm._v(" "), _c('i-action-sheet', {
     attrs: {
@@ -685,7 +691,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "actions": _vm.optionList,
       "show-cancel": "",
       "eventid": '2',
-      "mpcomid": '26'
+      "mpcomid": '27'
     },
     on: {
       "cancel": _vm.optionCencel,
@@ -694,12 +700,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }), _vm._v(" "), _c('i-toast', {
     attrs: {
       "id": "toast",
-      "mpcomid": '27'
+      "mpcomid": '28'
     }
   }), _vm._v(" "), _c('i-message', {
     attrs: {
       "id": "message",
-      "mpcomid": '28'
+      "mpcomid": '29'
     }
   })], 1)
 }

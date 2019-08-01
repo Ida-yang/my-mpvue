@@ -471,10 +471,10 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }, [_c('view', {
       staticClass: "cell_footer"
     }, [_vm._v("\n                    电话：" + _vm._s(item.phone || '无') + "\n                       |   \n                    是否为关键人：" + _vm._s(item.isCrux) + "\n                ")])])], 1), _vm._v(" "), _c('view', {
-      staticClass: "i-swipeout-demo-button-group",
+      staticClass: "i-swipeout-button",
       slot: "button"
     }, [_c('view', {
-      staticClass: "i-swipeout-demo-button",
+      staticClass: "i-swipeout-button-item",
       staticStyle: {
         "width": "60px",
         "background-color": "#f5f5f5"
@@ -489,8 +489,6 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       }
     }, [_c('i-icon', {
       staticStyle: {
-        "line-height": "90px",
-        "margin-left": "18px",
         "color": "#80848f"
       },
       attrs: {

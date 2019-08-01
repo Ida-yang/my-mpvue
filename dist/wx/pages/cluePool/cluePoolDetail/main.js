@@ -156,7 +156,6 @@ if (false) {(function () {
 //
 //
 //
-//
 
 
 
@@ -177,7 +176,7 @@ if (false) {(function () {
             showDetele: false,
             deleteActions: [{
                 name: '删除',
-                color: '#ed3f14'
+                color: '#f56c6c'
             }],
 
             activeBar: ''
@@ -224,6 +223,8 @@ if (false) {(function () {
                         } else {
                             el.followImg = '';
                         }
+                        el.followContent = el.followContent.replace(/\n/g, '<br/>');
+                        el.followContent = '<div>' + el.followContent + '</div>';
                     });
 
                     _this.followData = info;
@@ -432,11 +433,16 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "title": item.contacts[0].name,
         "extra": item.state,
         "thumb": item.portrait,
-        "mpcomid": '7_' + index
+        "mpcomid": '8_' + index
       }
     }, [_c('view', {
       slot: "content"
-    }, [_vm._v(_vm._s(item.followContent))]), _vm._v(" "), _c('view', {
+    }, [_c('rich-text', {
+      attrs: {
+        "nodes": item.followContent,
+        "mpcomid": '7_' + index
+      }
+    })], 1), _vm._v(" "), _c('view', {
       slot: "footer"
     }, [_c('span', {
       staticClass: "bgc_span"
@@ -455,63 +461,63 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     return _c('i-cell-group', {
       key: item.id,
       attrs: {
-        "mpcomid": '10_' + index
+        "mpcomid": '11_' + index
       }
     }, [_c('i-cell', {
       attrs: {
         "title": "联系人",
         "value": item.name,
-        "mpcomid": '8_' + index
+        "mpcomid": '9_' + index
       }
     }), _vm._v(" "), _c('i-cell', {
       attrs: {
         "title": "手机号码",
         "value": item.phone,
-        "mpcomid": '9_' + index
+        "mpcomid": '10_' + index
       }
     })], 1)
   })) : _vm._e(), _vm._v(" "), (_vm.activeName == 'third') ? _c('view', {
     staticClass: "font_size_12"
   }, [_c('i-cell-group', {
     attrs: {
-      "mpcomid": '16'
+      "mpcomid": '17'
     }
   }, [_c('i-cell', {
     attrs: {
       "title": "公司名称",
       "value": _vm.cluePoolDetail.name,
-      "mpcomid": '11'
+      "mpcomid": '12'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "负责人",
       "value": _vm.cluePoolDetail.privateUser[0].private_employee,
-      "mpcomid": '12'
+      "mpcomid": '13'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "线索状态",
       "value": _vm.cluePoolDetail.state,
-      "mpcomid": '13'
+      "mpcomid": '14'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "未联系天数",
       "value": _vm.cluePoolDetail.dayNum,
-      "mpcomid": '14'
+      "mpcomid": '15'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "创建时间",
       "value": _vm.cluePoolDetail.createTime,
-      "mpcomid": '15'
+      "mpcomid": '16'
     }
   })], 1)], 1) : _vm._e(), _vm._v(" "), _c('i-tab-bar', {
     staticClass: "bottom_btn",
     attrs: {
       "current": _vm.activeBar,
       "eventid": '1',
-      "mpcomid": '20'
+      "mpcomid": '21'
     },
     on: {
       "change": _vm.changeBar
@@ -522,7 +528,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "group",
       "current-icon": "group",
       "title": "领取",
-      "mpcomid": '17'
+      "mpcomid": '18'
     }
   }), _vm._v(" "), _c('i-tab-bar-item', {
     key: "distribute",
@@ -530,7 +536,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "share",
       "current-icon": "share",
       "title": "分配",
-      "mpcomid": '18'
+      "mpcomid": '19'
     }
   }), _vm._v(" "), _c('i-tab-bar-item', {
     key: "trash",
@@ -538,7 +544,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "trash",
       "current-icon": "trash",
       "title": "删除",
-      "mpcomid": '19'
+      "mpcomid": '20'
     }
   })], 1), _vm._v(" "), _c('i-action-sheet', {
     attrs: {
@@ -547,7 +553,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "show-cancel": "",
       "mask-closable": false,
       "eventid": '2',
-      "mpcomid": '21'
+      "mpcomid": '22'
     },
     on: {
       "cancel": _vm.cancelDelete,
@@ -566,12 +572,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("确定吗？")]), _vm._v(" "), _c('text', [_vm._v("删除后无法恢复哦")])])]), _vm._v(" "), _c('i-toast', {
     attrs: {
       "id": "toast",
-      "mpcomid": '22'
+      "mpcomid": '23'
     }
   }), _vm._v(" "), _c('i-message', {
     attrs: {
       "id": "message",
-      "mpcomid": '23'
+      "mpcomid": '24'
     }
   })], 1)
 }

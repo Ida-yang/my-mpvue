@@ -557,10 +557,10 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }, [_c('view', {
       staticClass: "cell_footer"
     }, [_vm._v("\n                    " + _vm._s('负责人：' + item.privateUser[0].private_employee) + "\n                       |   \n                    " + _vm._s('状态：' + item.state) + "\n                       |   \n                    " + _vm._s('未联系天数：' + item.dayNum) + "\n                ")])])], 1), _vm._v(" "), _c('view', {
-      staticClass: "i-swipeout-demo-button-group",
+      staticClass: "i-swipeout-button",
       slot: "button"
     }, [_c('view', {
-      staticClass: "i-swipeout-demo-button",
+      staticClass: "i-swipeout-button-item",
       staticStyle: {
         "width": "60px",
         "background-color": "#f5f5f5"
@@ -575,8 +575,6 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       }
     }, [_c('i-icon', {
       staticStyle: {
-        "line-height": "90px",
-        "margin-left": "18px",
         "color": "#80848f"
       },
       attrs: {

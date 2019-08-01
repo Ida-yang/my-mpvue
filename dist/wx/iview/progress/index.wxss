@@ -48,10 +48,10 @@
     animation:i-progress-active 2s ease-in-out infinite
 }
 .i-progress-wrong .i-progress-bg{
-    background-color:#ed3f14
+    background-color:#f56c6c
 }
 .i-progress-wrong .i-progress-text{
-    color:#ed3f14
+    color:#f56c6c
 }
 .i-progress-success .i-progress-bg{
     background-color:#19be6b

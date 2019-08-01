@@ -43,7 +43,7 @@
 .i-cell-request::after{
     content: '*';
     margin-left: 6px;
-    color: #ed3f14
+    color: #f56c6c
 }
 .i-cell-desc{
     line-height:1.2;

@@ -12,7 +12,7 @@
             <i-cell title="性别" :value="updateList.sex" is-link i-class="simple_cell" @click="cellFocus($event,2)"></i-cell>
             <i-input v-model="updateList.remark" title="备注" right type="textarea" maxlength="200" @input="handleInput($event,7)" />
         </i-panel>
-        <p class="request_tip"><span style="color:#ed3f14"> * </span>为必填项</p>
+        <p class="request_tip"><span style="color:#f56c6c"> * </span>为必填项</p>
         
         <!-- 编辑 -->
         <i-button @click="updateContact" type="ghost" :long="true" class="bottom_btn">确定</i-button>

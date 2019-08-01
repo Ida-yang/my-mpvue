@@ -12,6 +12,20 @@
         <i-tab key="third" title="相关信息" class="_i-tab data-v-cb0edee4"></i-tab>
       </i-tabs>
     </i-panel>
+    <view wx:if="{{activeName == 'first'}}" class="_view data-v-cb0edee4 follow_view">
+      <view wx:key="item.id" key="{{item.id}}" wx:for="{{followData}}" wx:for-index="index" wx:for-item="item" class="_view data-v-cb0edee4">
+        <i-panel title="{{item.createTime}}" i-class="vice_panel" class="_i-panel data-v-cb0edee4"></i-panel>
+        <i-fiche full isContent isFooter title="{{item.contacts[0].name}}" extra="{{item.state}}" thumb="{{item.portrait}}" class="_i-fiche data-v-cb0edee4">
+          <view slot="content" class="_view data-v-cb0edee4">
+            <rich-text nodes="{{item.followContent}}" class="_rich-text data-v-cb0edee4"></rich-text>
+          </view>
+          <view slot="footer" class="_view data-v-cb0edee4"><label class="_span data-v-cb0edee4 bgc_span">{{item.followType}}</label> <label wx:if="{{item.contactTime}}" class="_span data-v-cb0edee4">    </label> <label class="_span data-v-cb0edee4 bgc_span" wx:if="{{item.contactTime}}">{{item.contactTime}}</label>      <label class="_span data-v-cb0edee4">{{item.inputType}}</label>
+            <view class="_br data-v-cb0edee4"></view>
+            <image wx:if="{{item.followImg}}" mode="scaleToFill" src="{{item.followImg}}" class="_image data-v-cb0edee4 follow_image"></image>
+          </view>
+        </i-fiche>
+      </view>
+    </view>
     <view wx:if="{{activeName == 'second'}}" class="_view data-v-cb0edee4 font_size_12">
       <i-cell-group class="_i-cell-group data-v-cb0edee4">
         <i-cell title="公司名称" value="{{customerPoolDetail.pName}}" class="_i-cell data-v-cb0edee4"></i-cell>

@@ -25,7 +25,7 @@
             <i-input v-model="updateList.our_signatorieName" title="我方签约人" right maxlength="50" disabled />
             <i-input v-model="updateList.remarks" title="备注" right type="textarea" maxlength="200" @input="handleInput($event,3)" />
         </i-panel>
-        <p class="request_tip"><span style="color:#ed3f14"> * </span>为必填项</p>
+        <p class="request_tip"><span style="color:#f56c6c"> * </span>为必填项</p>
 
         <!-- 修改 -->
         <i-button @click="addAgreement" type="ghost" :long="true" class="bottom_btn">确定</i-button>

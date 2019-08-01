@@ -568,10 +568,10 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }, [_vm._v("\n                    负责人：" + _vm._s(item.private_employee) + "\n                      |  \n                    预计成交金额： " + _vm._s(item.opportunity_achievement) + "\n                ")]), _vm._v(" "), _c('view', {
       staticClass: "cell_footer"
     }, [_vm._v("\n                    预计成交时间：" + _vm._s(item.opportunity_deal) + "\n                      |  \n                    阶段：" + _vm._s(item.opportunityProgress[0].progress_name) + "\n                ")])], 1)], 1), _vm._v(" "), _c('view', {
-      staticClass: "i-swipeout-demo-button-group",
+      staticClass: "i-swipeout-button",
       slot: "button"
     }, [_c('view', {
-      staticClass: "i-swipeout-demo-button",
+      staticClass: "i-swipeout-button-item",
       staticStyle: {
         "width": "60px",
         "background-color": "#f5f5f5"
@@ -586,8 +586,6 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       }
     }, [_c('i-icon', {
       staticStyle: {
-        "line-height": "114px",
-        "margin-left": "18px",
         "color": "#80848f"
       },
       attrs: {

@@ -10,7 +10,7 @@
       <i-button type="ghost" long="{{true}}" bindtap="handleProxy" i-class="followimg_btn" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-button data-v-d1b7baf8">上传图片</i-button>
     </i-panel>
     <image wx:if="{{followImg}}" mode="aspectFit" src="{{followImg}}" class="_image data-v-d1b7baf8 fullwidth_img"></image>
-    <view class="_p data-v-d1b7baf8 request_tip"><label style="color:#ed3f14" class="_span data-v-d1b7baf8"> * </label>为必填项</view>
+    <view class="_p data-v-d1b7baf8 request_tip"><label style="color:#f56c6c" class="_span data-v-d1b7baf8"> * </label>为必填项</view>
     <i-button type="ghost" long="{{true}}" bindtap="handleProxy" class="_i-button data-v-d1b7baf8 bottom_btn" data-eventid="{{'5'}}" data-comkey="{{$k}}">确定</i-button>
     <i-action-sheet visible="{{showtype}}" actions="{{typeList}}" bindchange="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-d1b7baf8"></i-action-sheet>
     <i-action-sheet visible="{{showcontact}}" actions="{{contactList}}" bindchange="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-d1b7baf8"></i-action-sheet>

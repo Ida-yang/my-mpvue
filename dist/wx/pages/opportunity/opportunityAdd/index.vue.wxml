@@ -15,7 +15,7 @@
       </i-cell>
       <i-input value="{{addList.opportunity_remarks}}" bindchange="handleProxy" title="备注" right type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-input data-v-e3e2ac1c"></i-input>
     </i-panel>
-    <view class="_p data-v-e3e2ac1c request_tip"><label style="color:#ed3f14" class="_span data-v-e3e2ac1c"> * </label>为必填项</view>
+    <view class="_p data-v-e3e2ac1c request_tip"><label style="color:#f56c6c" class="_span data-v-e3e2ac1c"> * </label>为必填项</view>
     <i-button bindtap="handleProxy" type="ghost" long="{{true}}" class="_i-button data-v-e3e2ac1c bottom_btn" data-eventid="{{'6'}}" data-comkey="{{$k}}">确定</i-button>
     <i-action-sheet visible="{{showContact}}" actions="{{contactList}}" bindchange="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-e3e2ac1c"></i-action-sheet>
     <i-message id="message" class="_i-message data-v-e3e2ac1c"></i-message>

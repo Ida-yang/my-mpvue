@@ -26,6 +26,20 @@
                 <i-button @click="reSet" type="ghost" size="small" long="true" class="reset_btn">重置</i-button>
             </view>
         </i-drawer>
+        
+        <i-cell-group>
+            <i-cell i-class="pool_cell" v-for="item in tableData" :key="item.id" :title="item.back_plan + '：' + item.price" :label="item.customerName" @click="topayDetail($event,item)">
+                <view class="cell_footer">
+                    {{'负责人：' + item.private_employee}}
+                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                    {{'状态：' + item.checkState}}
+                    &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                    {{'类型：' + item.type}}
+                </view>
+            </i-cell>
+        </i-cell-group>
+
+        <i-load-more v-if="noMore" tip="我是有底线的" :loading="false" />
     </div>
 </template>
 
@@ -131,6 +145,18 @@
                                 _this.noMore = true
                             }
                         }
+
+                        _this.tableData.forEach(el => {
+                            if(el.checkStatus == 0){
+                                el.checkState = '待审核'
+                            }else if(el.checkStatus == 1){
+                                el.checkState = '审核中'
+                            }else if(el.checkStatus == 2){
+                                el.checkState = '已审核'
+                            }else if(el.checkStatus == 3){
+                                el.checkState = '未通过'
+                            }
+                        });
                     }
                 })
             },

@@ -5,6 +5,7 @@
       "i-tab-bar-item": "../../iview/tab-bar-item/index",
       "i-panel": "../../iview/panel/index",
       "i-button": "../../iview/button/index",
+      "i-input": "../../iview/input/index",
       "i-toast": "../../iview/toast/index",
       "i-message": "../../iview/message/index",
       "i-drawer": "../../iview/drawer/index",

@@ -6066,7 +6066,10 @@ var information = {
     agreementPoolNameData: '',
     payplanData: '',
     payinfoData: '',
-    payCollectionDetailData: ''
+    payCollectionDetailData: '',
+    noteaddData: '',
+    noteupdateData: '',
+    noteDetailData: ''
 };
 
 var config = {

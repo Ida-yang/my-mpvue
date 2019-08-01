@@ -19,7 +19,7 @@
             <view v-for="item in followData" :key="item.id">
                 <i-panel :title="item.createTime" i-class="vice_panel"></i-panel>
                 <i-fiche full isContent isFooter :title="item.contacts[0].name" :extra="item.state" :thumb="item.portrait">
-                    <view slot="content">{{item.followContent}}</view>
+                    <view slot="content"><rich-text :nodes="item.followContent" /></view>
                     <view slot="footer">
                         <span class="bgc_span">{{item.followType}}</span>
                         <span v-if="item.contactTime">&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -31,7 +31,6 @@
                     </view>
                 </i-fiche>
             </view>
-            
         </view>
 
         <view v-if="activeName == 'second'" class="font_size_12">
@@ -90,7 +89,7 @@
                 deleteActions:[
                     {
                         name: '删除',
-                        color: '#ed3f14'
+                        color: '#f56c6c'
                     }
                 ],
 
@@ -138,6 +137,8 @@
                             }else{
                                 el.followImg = ''
                             }
+                            el.followContent = el.followContent.replace(/\n/g, '<br/>')
+                            el.followContent = '<div>' + el.followContent + '</div>'
                         });
 
                         _this.followData = info

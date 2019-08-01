@@ -20,7 +20,9 @@
       <view wx:key="item.id" key="{{item.id}}" wx:for="{{followData}}" wx:for-index="index" wx:for-item="item" class="_view data-v-e68491b8">
         <i-panel title="{{item.createTime}}" i-class="vice_panel" class="_i-panel data-v-e68491b8"></i-panel>
         <i-fiche full isContent isFooter title="{{item.contacts[0].name}}" thumb="{{item.portrait}}" class="_i-fiche data-v-e68491b8">
-          <view slot="content" class="_view data-v-e68491b8">{{item.followContent}}</view>
+          <view slot="content" class="_view data-v-e68491b8">
+            <rich-text nodes="{{item.followContent}}" class="_rich-text data-v-e68491b8"></rich-text>
+          </view>
           <view slot="footer" class="_view data-v-e68491b8"><label class="_span data-v-e68491b8 bgc_span">{{item.followType}}</label> <label wx:if="{{item.contactTime}}" class="_span data-v-e68491b8">    </label> <label class="_span data-v-e68491b8 bgc_span" wx:if="{{item.contactTime}}">{{item.contactTime}}</label>      <label class="_span data-v-e68491b8">{{item.inputType}}</label>
             <view class="_br data-v-e68491b8"></view>
             <image wx:if="{{item.followImg}}" mode="scaleToFill" src="{{item.followImg}}" class="_image data-v-e68491b8 follow_image"></image>
@@ -68,6 +70,12 @@
         <view style="color: #444;font-size: 16px" class="_view data-v-e68491b8">确定吗？</view> <text class="_text data-v-e68491b8">删除后无法恢复哦</text>
       </view>
     </i-action-sheet>
+    <i-modal title="请填写审核意见" visible="{{showSure}}" bindok="handleProxy" bindcancel="handleProxy" data-eventid="{{'9'}}" data-comkey="{{$k}}" class="_i-modal data-v-e68491b8">
+      <i-input value="{{remarks}}" bindchange="handleProxy" right type="textarea" request maxlength="200" bindinput="handleProxy" data-eventid="{{'8'}}" data-comkey="{{$k}}" class="_i-input data-v-e68491b8"></i-input>
+    </i-modal>
+    <i-modal title="请填写审核意见" visible="{{showRefuse}}" bindok="handleProxy" bindcancel="handleProxy" data-eventid="{{'11'}}" data-comkey="{{$k}}" class="_i-modal data-v-e68491b8">
+      <i-input value="{{remarks}}" bindchange="handleProxy" right type="textarea" request maxlength="200" bindinput="handleProxy" data-eventid="{{'10'}}" data-comkey="{{$k}}" class="_i-input data-v-e68491b8"></i-input>
+    </i-modal>
     <i-toast id="toast" class="_i-toast data-v-e68491b8"></i-toast>
     <i-message id="message" class="_i-message data-v-e68491b8"></i-message>
   </view>

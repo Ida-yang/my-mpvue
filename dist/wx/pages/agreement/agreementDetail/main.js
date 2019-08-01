@@ -175,6 +175,13 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -199,8 +206,12 @@ if (false) {(function () {
             showDetele: false,
             deleteActions: [{
                 name: '删除',
-                color: '#ed3f14'
-            }]
+                color: '#f56c6c'
+            }],
+
+            showSure: false,
+            showRefuse: false,
+            remarks: ''
         };
     },
     onShow: function onShow() {
@@ -292,6 +303,8 @@ if (false) {(function () {
                         } else {
                             el.followImg = '';
                         }
+                        el.followContent = el.followContent.replace(/\n/g, '<br/>');
+                        el.followContent = '<div>' + el.followContent + '</div>';
                     });
 
                     _this.followData = info;
@@ -329,6 +342,115 @@ if (false) {(function () {
                 success: function success(res) {
                     __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.payinfoData = res.data;
                     _this.payInfoData = res.data;
+                }
+            });
+        },
+        handleClick: function handleClick(e, val) {
+            if (val == 1) {
+                this.showSure = true;
+            } else if (val == 2) {
+                this.showRefuse = true;
+            }
+        },
+        cancelClick: function cancelClick(e, val) {
+            if (val == 1) {
+                this.showSure = false;
+            } else if (val == 2) {
+                this.showRefuse = false;
+            }
+        },
+        handleInput: function handleInput(e) {
+            this.remarks = e.mp.detail;
+        },
+        adopt: function adopt() {
+            var _this = this;
+            var data = {
+                id: this.agreementDetail.contract_id,
+                recordId: this.agreementDetail.examineRecordId,
+                status: 1,
+                remarks: this.remarks,
+                pId: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.pId
+            };
+
+            var flag = false;
+            if (!data.remarks) {
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '审批意见不能为空',
+                    type: 'error'
+                });
+                flag = true;
+            }
+            if (flag) return;
+
+            wx.request({
+                method: 'post',
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'examineRecord/auditExamine.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                data: data,
+                header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    if (res.data.code && res.data.code == '200') {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: '审批成功',
+                            type: 'success'
+                        });
+                        _this.remarks = '';
+                        _this.showSure = false;
+                        _this.loadData();
+                    } else {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: res.data.msg,
+                            type: 'error'
+                        });
+                    }
+                }
+            });
+        },
+        refuse: function refuse() {
+            var _this = this;
+            var data = {
+                id: this.agreementDetail.contract_id,
+                recordId: this.agreementDetail.examineRecordId,
+                status: 2,
+                remarks: this.remarks,
+                pId: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.pId
+            };
+
+            var flag = false;
+            if (!data.remarks) {
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '审批意见不能为空',
+                    type: 'error'
+                });
+                flag = true;
+            }
+            if (flag) return;
+
+            wx.request({
+                method: 'post',
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'examineRecord/auditExamine.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                data: data,
+                header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    if (res.data.code && res.data.code == '200') {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: '审批成功',
+                            type: 'success'
+                        });
+                        _this.remarks = '';
+                        _this.showRefuse = false;
+                        _this.loadData();
+                    } else {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: res.data.msg,
+                            type: 'error'
+                        });
+                    }
                 }
             });
         },
@@ -448,7 +570,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "mpcomid": '0'
     },
     on: {
-      "click": _vm.handleClick
+      "click": function($event) {
+        _vm.handleClick($event, 1)
+      }
     }
   }, [_vm._v("通过")]), _vm._v(" "), _c('i-button', {
     staticClass: "flex_btn",
@@ -459,7 +583,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "mpcomid": '1'
     },
     on: {
-      "click": _vm.handleClick
+      "click": function($event) {
+        _vm.handleClick($event, 2)
+      }
     }
   }, [_vm._v("拒绝")])], 1) : _vm._e(), _vm._v(" "), _c('i-cell', {
     attrs: {
@@ -522,11 +648,16 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "isFooter": "",
         "title": item.contacts[0].name,
         "thumb": item.portrait,
-        "mpcomid": '10_' + index
+        "mpcomid": '11_' + index
       }
     }, [_c('view', {
       slot: "content"
-    }, [_vm._v(_vm._s(item.followContent))]), _vm._v(" "), _c('view', {
+    }, [_c('rich-text', {
+      attrs: {
+        "nodes": item.followContent,
+        "mpcomid": '10_' + index
+      }
+    })], 1), _vm._v(" "), _c('view', {
       slot: "footer"
     }, [_c('span', {
       staticClass: "bgc_span"
@@ -543,79 +674,79 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "font_size_12"
   }, [_c('i-cell-group', {
     attrs: {
-      "mpcomid": '23'
+      "mpcomid": '24'
     }
   }, [_c('i-cell', {
     attrs: {
       "title": "公司名称",
       "value": _vm.agreementDetail.poolName,
-      "mpcomid": '11'
+      "mpcomid": '12'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "客户签约人",
       "value": _vm.agreementDetail.signatories,
-      "mpcomid": '12'
+      "mpcomid": '13'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "电话",
       "value": _vm.agreementDetail.phone,
-      "mpcomid": '13'
+      "mpcomid": '14'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "合同类型",
       "value": _vm.agreementDetail.contract_type,
-      "mpcomid": '14'
+      "mpcomid": '15'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "合同开始时间",
       "value": _vm.agreementDetail.start_date,
-      "mpcomid": '15'
+      "mpcomid": '16'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "合同结束时间",
       "value": _vm.agreementDetail.end_date,
-      "mpcomid": '16'
+      "mpcomid": '17'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "合同金额",
       "value": _vm.agreementDetail.amount,
-      "mpcomid": '17'
+      "mpcomid": '18'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "关联商机",
       "value": _vm.agreementDetail.opportunity_name,
-      "mpcomid": '18'
+      "mpcomid": '19'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "创建时间",
       "value": _vm.agreementDetail.create_time,
-      "mpcomid": '19'
+      "mpcomid": '20'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "我方签约人",
       "value": _vm.agreementDetail.our_signatories,
-      "mpcomid": '20'
+      "mpcomid": '21'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "部门",
       "value": _vm.agreementDetail.deptname,
-      "mpcomid": '21'
+      "mpcomid": '22'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "机构",
       "value": _vm.agreementDetail.parentname,
-      "mpcomid": '22'
+      "mpcomid": '23'
     }
   })], 1)], 1) : _vm._e(), _vm._v(" "), (_vm.activeName == 'third') ? _c('view', {
     staticClass: "font_size_12"
@@ -624,7 +755,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "full": "",
       "desc": "",
       "title": "回款计划",
-      "mpcomid": '25'
+      "mpcomid": '26'
     }
   }, [_c('span', {
     attrs: {
@@ -642,7 +773,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "title": item.stage,
         "value": item.price + '元',
         "label": '预计回款日期：' + item.date,
-        "mpcomid": '24_' + index
+        "mpcomid": '25_' + index
       },
       slot: "content"
     })
@@ -653,7 +784,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "full": "",
       "desc": "",
       "title": "回款信息",
-      "mpcomid": '27'
+      "mpcomid": '28'
     }
   }, [_c('span', {
     attrs: {
@@ -670,7 +801,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "i-class": "card_cell",
         "title": item.back_plan,
         "label": '回款日期：' + item.createTime,
-        "mpcomid": '26_' + index
+        "mpcomid": '27_' + index
       },
       slot: "content"
     }, [_c('view', {
@@ -683,7 +814,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "current": _vm.activeBar,
       "eventid": '6',
-      "mpcomid": '31'
+      "mpcomid": '32'
     },
     on: {
       "change": _vm.changeBar
@@ -694,7 +825,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "brush",
       "current-icon": "brush",
       "title": "写跟进",
-      "mpcomid": '28'
+      "mpcomid": '29'
     }
   }), _vm._v(" "), _c('i-tab-bar-item', {
     key: "addressbook",
@@ -702,7 +833,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "addressbook",
       "current-icon": "addressbook",
       "title": "打电话",
-      "mpcomid": '29'
+      "mpcomid": '30'
     }
   }), _vm._v(" "), _c('i-tab-bar-item', {
     key: "trash",
@@ -710,7 +841,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "trash",
       "current-icon": "trash",
       "title": "删除",
-      "mpcomid": '30'
+      "mpcomid": '31'
     }
   })], 1), _vm._v(" "), _c('i-action-sheet', {
     attrs: {
@@ -719,7 +850,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "show-cancel": "",
       "mask-closable": false,
       "eventid": '7',
-      "mpcomid": '32'
+      "mpcomid": '33'
     },
     on: {
       "cancel": _vm.cancelDelete,
@@ -735,15 +866,79 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "color": "#444",
       "font-size": "16px"
     }
-  }, [_vm._v("确定吗？")]), _vm._v(" "), _c('text', [_vm._v("删除后无法恢复哦")])])]), _vm._v(" "), _c('i-toast', {
+  }, [_vm._v("确定吗？")]), _vm._v(" "), _c('text', [_vm._v("删除后无法恢复哦")])])]), _vm._v(" "), _c('i-modal', {
+    attrs: {
+      "title": "请填写审核意见",
+      "visible": _vm.showSure,
+      "eventid": '9',
+      "mpcomid": '35'
+    },
+    on: {
+      "ok": _vm.adopt,
+      "cancel": function($event) {
+        _vm.cancelClick($event, 1)
+      }
+    }
+  }, [_c('i-input', {
+    attrs: {
+      "right": "",
+      "type": "textarea",
+      "request": "",
+      "maxlength": "200",
+      "eventid": '8',
+      "mpcomid": '34'
+    },
+    on: {
+      "input": _vm.handleInput
+    },
+    model: {
+      value: (_vm.remarks),
+      callback: function($$v) {
+        _vm.remarks = $$v
+      },
+      expression: "remarks"
+    }
+  })], 1), _vm._v(" "), _c('i-modal', {
+    attrs: {
+      "title": "请填写审核意见",
+      "visible": _vm.showRefuse,
+      "eventid": '11',
+      "mpcomid": '37'
+    },
+    on: {
+      "ok": _vm.refuse,
+      "cancel": function($event) {
+        _vm.cancelClick($event, 2)
+      }
+    }
+  }, [_c('i-input', {
+    attrs: {
+      "right": "",
+      "type": "textarea",
+      "request": "",
+      "maxlength": "200",
+      "eventid": '10',
+      "mpcomid": '36'
+    },
+    on: {
+      "input": _vm.handleInput
+    },
+    model: {
+      value: (_vm.remarks),
+      callback: function($$v) {
+        _vm.remarks = $$v
+      },
+      expression: "remarks"
+    }
+  })], 1), _vm._v(" "), _c('i-toast', {
     attrs: {
       "id": "toast",
-      "mpcomid": '33'
+      "mpcomid": '38'
     }
   }), _vm._v(" "), _c('i-message', {
     attrs: {
       "id": "message",
-      "mpcomid": '34'
+      "mpcomid": '39'
     }
   })], 1)
 }

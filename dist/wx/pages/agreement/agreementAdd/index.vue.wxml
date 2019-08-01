@@ -25,7 +25,7 @@
       <i-input value="{{addList.our_signatorieName}}" bindchange="handleProxy" title="我方签约人" right maxlength="50" disabled data-eventid="{{'8'}}" data-comkey="{{$k}}" class="_i-input data-v-c103f6f8"></i-input>
       <i-input value="{{addList.remarks}}" bindchange="handleProxy" title="备注" right type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'9'}}" data-comkey="{{$k}}" class="_i-input data-v-c103f6f8"></i-input>
     </i-panel>
-    <view class="_p data-v-c103f6f8 request_tip"><label style="color:#ed3f14" class="_span data-v-c103f6f8"> * </label>为必填项</view>
+    <view class="_p data-v-c103f6f8 request_tip"><label style="color:#f56c6c" class="_span data-v-c103f6f8"> * </label>为必填项</view>
     <i-button bindtap="handleProxy" type="ghost" long="{{true}}" class="_i-button data-v-c103f6f8 bottom_btn" data-eventid="{{'10'}}" data-comkey="{{$k}}">确定</i-button>
     <i-action-sheet visible="{{showType}}" actions="{{typeList}}" bindchange="handleProxy" data-eventid="{{'11'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-c103f6f8"></i-action-sheet>
     <i-action-sheet visible="{{showOppo}}" actions="{{oppoList}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" data-eventid="{{'12'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-c103f6f8"></i-action-sheet>

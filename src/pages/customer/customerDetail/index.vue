@@ -18,7 +18,7 @@
             <view v-for="item in followData" :key="item.id">
                 <i-panel :title="item.createTime" i-class="vice_panel"></i-panel>
                 <i-fiche full isContent isFooter :title="item.contacts[0].name" :extra="item.state" :thumb="item.portrait">
-                    <view slot="content">{{item.followContent}}</view>
+                    <view slot="content"><rich-text :nodes="item.followContent" /></view>
                     <view slot="footer">
                         <span class="bgc_span">{{item.followType}}</span>
                         <span v-if="item.contactTime">&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -151,7 +151,6 @@
                     },
                     success:function(res) {
                         let info = res.data.map.success
-                        // _this.followData = res.data.map.success
                         info.forEach(el => {
                             if(el.userImagName){
                                 el.portrait = config.sourcehost + 'upload/' + config.userData.cId + '/' + el.userImagName
@@ -164,6 +163,8 @@
                             }else{
                                 el.followImg = ''
                             }
+                            el.followContent = el.followContent.replace(/\n/g, '<br/>')
+                            el.followContent = '<div>' + el.followContent + '</div>'
                         });
 
                         _this.followData = info

@@ -43,6 +43,7 @@
             
 
         <div style="margin-top:100px;"></div>
+        <i-input v-model="addList.opportunity_remarks" title="备注" right type="textarea" maxlength="200" @input="handleInput()" />
 
         <rich-text :nodes="nodesText" />
 
@@ -143,7 +144,7 @@
                 actions2: [
                     {
                         name: '删除',
-                        color: '#ed3f14'
+                        color: '#f56c6c'
                     }
                 ],
 

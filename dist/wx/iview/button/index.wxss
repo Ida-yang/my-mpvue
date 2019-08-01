@@ -61,7 +61,7 @@
 }
 .i-btn-error{
     color:#fff!important;
-    background:#ed3f14!important
+    background:#f56c6c!important
 }
 .i-btn-info{
     color:#fff!important;

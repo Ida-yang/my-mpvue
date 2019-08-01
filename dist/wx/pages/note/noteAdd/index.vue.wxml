@@ -1,5 +1,11 @@
 <template name="2fee4bce">
   <view class="_div data-v-b5117d4c">
-    <i-panel title="{{current}}" class="_i-panel data-v-b5117d4c"></i-panel>
+    <i-panel title=" " class="_i-panel data-v-b5117d4c"></i-panel>
+    <i-panel title=" " class="_i-panel data-v-b5117d4c"></i-panel>
+    <i-input value="{{addList.noteType}}" bindchange="handleProxy" title="便签类别" right disabled maxlength="20" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-b5117d4c"></i-input>
+    <i-input value="{{addList.name}}" bindchange="handleProxy" right type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-input data-v-b5117d4c"></i-input>
+    <i-button bindtap="handleProxy" type="ghost" long="{{true}}" class="_i-button data-v-b5117d4c bottom_btn" data-eventid="{{'2'}}" data-comkey="{{$k}}">确定</i-button>
+    <i-message id="message" class="_i-message data-v-b5117d4c"></i-message>
+    <i-toast id="toast" class="_i-toast data-v-b5117d4c"></i-toast>
   </view>
 </template>

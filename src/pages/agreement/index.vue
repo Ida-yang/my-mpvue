@@ -54,9 +54,9 @@
                     </view>
                 </i-cell>
             </view>
-            <view slot="button" class="i-swipeout-demo-button-group">
-                <view class="i-swipeout-demo-button" style="width:60px;background-color:#f5f5f5" @click="toUpdateAgreement($event,item)">
-                    <i-icon size="24" type="editor" style="line-height:114px;margin-left:18px;color:#80848f"></i-icon>
+            <view slot="button" class="i-swipeout-button">
+                <view class="i-swipeout-button-item" style="width:60px;background-color:#f5f5f5" @click="toUpdateAgreement($event,item)">
+                    <i-icon size="24" type="editor" style="color:#80848f"></i-icon>
                 </view>
             </view>
         </i-swipeout>
@@ -268,6 +268,8 @@
 
 <style>
     .agreement_wrap{
+        background-color: #fcfcfc;
         margin-top: 40px;
+        margin-bottom: 40px
     }
 </style>

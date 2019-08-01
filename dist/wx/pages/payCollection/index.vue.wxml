@@ -19,5 +19,13 @@
         <i-button bindtap="handleProxy" type="ghost" size="small" long="true" class="_i-button data-v-3b5ecfd8 reset_btn" data-eventid="{{'6'}}" data-comkey="{{$k}}">重置</i-button>
       </view>
     </i-drawer>
+    <i-cell-group class="_i-cell-group data-v-3b5ecfd8">
+      <i-cell i-class="pool_cell" wx:key="item.id" key="{{item.id}}" title="{{item.back_plan + '：' + item.price}}" label="{{item.customerName}}" bindtap="handleProxy" data-eventid="{{'8_'+index}}" data-comkey="{{$k}}" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-3b5ecfd8">
+        <view class="_view data-v-3b5ecfd8 cell_footer">
+          {{'负责人：' + item.private_employee}}    |    {{'状态：' + item.checkState}}    |    {{'类型：' + item.type}}
+        </view>
+      </i-cell>
+    </i-cell-group>
+    <i-load-more wx:if="{{noMore}}" tip="我是有底线的" loading="{{false}}" class="_i-load-more data-v-3b5ecfd8"></i-load-more>
   </view>
 </template>

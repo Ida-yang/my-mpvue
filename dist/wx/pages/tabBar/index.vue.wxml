@@ -24,35 +24,36 @@
       </i-step>
     </i-steps>
     <view style="margin-top:100px;" class="_div data-v-d483bbb4"></view>
+    <i-input value="{{addList.opportunity_remarks}}" bindchange="handleProxy" title="备注" right type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-input data-v-d483bbb4"></i-input>
     <rich-text nodes="{{nodesText}}" class="_rich-text data-v-d483bbb4"></rich-text>
     <i-card title="卡片标题" class="_i-card data-v-d483bbb4">
       <view slot="content" class="_view data-v-d483bbb4">内容不错</view>
       <view slot="footer" class="_view data-v-d483bbb4">尾部内容</view>
     </i-card>
-    <i-button type="ghost" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">错误</i-button>
+    <i-button type="ghost" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">错误</i-button>
     <i-toast id="toast" class="_i-toast data-v-d483bbb4"></i-toast>
-    <i-button type="ghost" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">成功提醒</i-button>
+    <i-button type="ghost" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">成功提醒</i-button>
     <i-message id="message" class="_i-message data-v-d483bbb4"></i-message>
-    <i-button bindtap="handleProxy" type="ghost" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">右边弹出</i-button>
-    <i-drawer mode="right" visible="{{showRight}}" bindclose="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-drawer data-v-d483bbb4">
+    <i-button bindtap="handleProxy" type="ghost" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">右边弹出</i-button>
+    <i-drawer mode="right" visible="{{showRight}}" bindclose="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-drawer data-v-d483bbb4">
       <view class="_view data-v-d483bbb4 demo-container"> 单击遮罩层关闭 </view>
     </i-drawer>
-    <i-page current="{{page}}" total="5" bindchange="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-page data-v-d483bbb4">
+    <i-page current="{{page}}" total="5" bindchange="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_i-page data-v-d483bbb4">
       <view slot="prev" class="_view data-v-d483bbb4">Prev</view>
       <view slot="next" class="_view data-v-d483bbb4">Next</view>
     </i-page>
     <view class="_view data-v-d483bbb4">
-      <i-button type="ghost" bindtap="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">一般用法</i-button>
-      <i-button type="ghost" bindtap="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">带有提示、异步</i-button>
+      <i-button type="ghost" bindtap="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">一般用法</i-button>
+      <i-button type="ghost" bindtap="handleProxy" data-eventid="{{'8'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">带有提示、异步</i-button>
     </view>
-    <i-action-sheet visible="{{actionSheet1}}" actions="{{actions1}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" data-eventid="{{'8'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-d483bbb4"></i-action-sheet>
-    <i-action-sheet visible="{{actionSheet2}}" actions="{{actions2}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'9'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-d483bbb4">
+    <i-action-sheet visible="{{actionSheet1}}" actions="{{actions1}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" data-eventid="{{'9'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-d483bbb4"></i-action-sheet>
+    <i-action-sheet visible="{{actionSheet2}}" actions="{{actions2}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'10'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-d483bbb4">
       <view slot="header" style="padding: 16px" class="_view data-v-d483bbb4">
         <view style="color: #444;font-size: 16px" class="_view data-v-d483bbb4">确定吗？</view> <text class="_text data-v-d483bbb4">删除后无法恢复哦</text>
       </view>
     </i-action-sheet>
-    <i-button type="ghost" bindtap="handleProxy" data-eventid="{{'10'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">普通对话框</i-button>
-    <i-modal title="标题" visible="{{modelvisible}}" bindok="handleProxy" bindcancel="handleProxy" data-eventid="{{'11'}}" data-comkey="{{$k}}" class="_i-modal data-v-d483bbb4">
+    <i-button type="ghost" bindtap="handleProxy" data-eventid="{{'11'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">普通对话框</i-button>
+    <i-modal title="标题" visible="{{modelvisible}}" bindok="handleProxy" bindcancel="handleProxy" data-eventid="{{'12'}}" data-comkey="{{$k}}" class="_i-modal data-v-d483bbb4">
       <view class="_view data-v-d483bbb4">一些文本</view>
       <view class="_view data-v-d483bbb4">一些文本</view>
       <view class="_view data-v-d483bbb4">一些文本</view>
@@ -63,17 +64,17 @@
       <view class="_view data-v-d483bbb4">一些文本</view>
       <view class="_view data-v-d483bbb4">一些文本</view>
     </i-modal>
-    <i-button type="warning" bindtap="handleProxy" data-eventid="{{'12'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">上传图片</i-button>
+    <i-button type="warning" bindtap="handleProxy" data-eventid="{{'13'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">上传图片</i-button>
     <i-cell title="只显示箭头" is-link i-class="index_cell" class="_i-cell data-v-d483bbb4">
       <i-datetime-picker class="_i-datetime-picker data-v-d483bbb4 index_picker"></i-datetime-picker>
     </i-cell>
     <view class="_view data-v-d483bbb4 section">
       <view class="_view data-v-d483bbb4 section__title">日期选择器</view>
-      <picker mode="date" value="{{date222}}" start="2015-09-01" end="2017-09-01" bindchange="handleProxy" data-eventid="{{'13'}}" data-comkey="{{$k}}" class="_picker data-v-d483bbb4">
+      <picker mode="date" value="{{date222}}" start="2015-09-01" end="2017-09-01" bindchange="handleProxy" data-eventid="{{'14'}}" data-comkey="{{$k}}" class="_picker data-v-d483bbb4">
         <view class="_view data-v-d483bbb4 picker"> 当前选择: {{date222}}
         </view>
       </picker>
     </view>
-    <i-button type="success" bindtap="handleProxy" data-eventid="{{'14'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">进入小程序</i-button>
+    <i-button type="success" bindtap="handleProxy" data-eventid="{{'15'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">进入小程序</i-button>
   </view>
 </template>

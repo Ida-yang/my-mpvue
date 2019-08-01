@@ -11,7 +11,6 @@
       "i-icon": "../../iview/icon/index",
       "i-input": "../../iview/input/index",
       "i-drawer": "../../iview/drawer/index",
-      "i-button": "../../iview/button/index",
-      "i-swipeout": "../../iview/swipeout/index"
+      "i-button": "../../iview/button/index"
     }
 }

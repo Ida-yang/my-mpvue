@@ -626,7 +626,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "request_tip"
   }, [_c('span', {
     staticStyle: {
-      "color": "#ed3f14"
+      "color": "#f56c6c"
     }
   }, [_vm._v(" * ")]), _vm._v("为必填项")]), _vm._v(" "), _c('i-button', {
     staticClass: "bottom_btn",
