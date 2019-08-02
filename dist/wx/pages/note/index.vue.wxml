@@ -1,4 +1,4 @@
-<template name="9c52edca">
+<template name="5bb44099">
   <view class="_div data-v-22785fcc note_wrap">
     <view class="_view data-v-22785fcc search_view">
       <i-icon type="other" size="18" color="#80848f" class="_i-icon data-v-22785fcc search_icon" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}"></i-icon>

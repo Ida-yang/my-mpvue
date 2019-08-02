@@ -3,10 +3,11 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": false,
-		"postcss": true,
+		"postcss": false,
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false,
+		"uglifyFileName": true,
 		"checkInvalidKey": true
 	},
 	"miniprogramRoot": "dist/wx/",
@@ -33,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 3,
 			"list": [
 				{
 					"id": 0,
@@ -59,7 +60,7 @@
 				{
 					"id": 3,
 					"name": "首页调试",
-					"pathName": "pages/module/main",
+					"pathName": "pages/index/main",
 					"query": "",
 					"scene": null
 				}

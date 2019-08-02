@@ -1,4 +1,4 @@
-<template name="805b9208">
+<template name="51ab6f3e">
   <view class="_view data-v-5bd85957 login_content">
     <view class="_view data-v-5bd85957 login_view">
       <i-panel i-class="login_label" title="{{current}}" class="_i-panel data-v-5bd85957"></i-panel>

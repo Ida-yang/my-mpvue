@@ -1,16 +1,29 @@
 @import "../../common/vendor.wxss";
 
-.userinfo.data-v-5307a380 {
+.index_wrap.data-v-5307a380 {
+  background-color: #f5f5f5;
+}
+.sale_view.data-v-5307a380 {
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
 }
-.userinfo-avatar.data-v-5307a380 {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.sale_wrap_item.data-v-5307a380 {
+  flex: 0 0 50%;
+  height: 120rpx;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border: 0rpx solid #f0f0f0;
+  border-bottom-width: 1rpx;
+  box-sizing: border-box;
 }
-.userinfo-nickname.data-v-5307a380 {
-  color: #aaa;
+.sale_wrap_item.data-v-5307a380:nth-child(2n) {
+  border-left-width: 1rpx;
+}
+.p1.data-v-5307a380 {
+  line-height: 60rpx;
+}
+.sale_wrap_item ._p.data-v-5307a380 {
+  font-size: 24rpx;
 }

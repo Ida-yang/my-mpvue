@@ -1,11 +1,13 @@
 {
     "navigationBarTitleText": "首页",
     "usingComponents": {
+        "i-panel": "../../iview/panel/index",
+        "i-tabs": "../../../iview/tabs/index",
+        "i-tab": "../../../iview/tab/index",
         "i-tab-bar": "../../iview/tab-bar/index",
         "i-tab-bar-item": "../../iview/tab-bar-item/index",
-        "i-panel": "../../iview/panel/index",
         "i-button": "../../iview/button/index",
-        "i-avatar": "../../iview/avatar/index"
+        "i-icon": "../../iview/icon/index"
     }
 }
   

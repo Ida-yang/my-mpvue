@@ -111,6 +111,64 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -118,29 +176,25 @@ if (false) {(function () {
 /* harmony default export */ __webpack_exports__["a"] = ({
     data: function data() {
         return {
-            userInfo: {
-                nickName: '云纵CRM'
-            },
-            current: 'homepage',
-
-            userAvator: ''
+            activeName1: 'first',
+            activeName2: 'first'
         };
     },
-
-
-    components: {
-        card: __WEBPACK_IMPORTED_MODULE_0__components_card__["a" /* default */]
+    onShow: function onShow() {
+        this.loadData();
     },
+
 
     methods: {
-        bindViewTap: function bindViewTap() {
-            var url = '../logs/main';
-            global.mpvue.navigateTo({ url: url });
+        loadData: function loadData() {
+            var _this = this;
+        },
+        tabClick1: function tabClick1(e) {
+            this.activeName = e.target.key;
+        },
+        tabClick2: function tabClick2(e) {
+            this.activeName = e.target.key;
         }
-    },
-
-    mounted: function mounted() {
-        this.userAvator = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].userData.portrait;
     }
 });
 
@@ -152,40 +206,126 @@ if (false) {(function () {
 "use strict";
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "userinfo",
+    staticClass: "index_wrap"
+  }, [_c('i-tabs', {
     attrs: {
-      "eventid": '0'
+      "current": _vm.activeName1,
+      "eventid": '0',
+      "mpcomid": '3'
     },
     on: {
-      "click": _vm.bindViewTap
+      "change": _vm.tabClick1
     }
-  }, [_c('i-avatar', {
+  }, [_c('i-tab', {
+    key: "first",
     attrs: {
-      "src": _vm.userAvator,
-      "size": "default",
+      "title": "本月",
       "mpcomid": '0'
     }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "userinfo-nickname"
-  }, [_c('card', {
+  }), _vm._v(" "), _c('i-tab', {
+    key: "second",
     attrs: {
-      "text": _vm.userInfo.nickName,
+      "title": "本季",
       "mpcomid": '1'
     }
-  })], 1)], 1), _vm._v(" "), _c('div', {
-    staticClass: "container"
-  }, [_c('i-button', {
+  }), _vm._v(" "), _c('i-tab', {
+    key: "third",
     attrs: {
-      "type": "subject",
-      "eventid": '1',
+      "title": "本年",
       "mpcomid": '2'
+    }
+  })], 1), _vm._v(" "), _c('view', {
+    staticClass: "sale_view"
+  }, [_c('view', {
+    staticClass: "sale_wrap_item"
+  }, [_c('p', {
+    staticClass: "p1"
+  }, [_vm._v("销售目标")]), _vm._v(" "), _c('p', [_vm._v("100")])], 1), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item"
+  }, [_c('p', {
+    staticClass: "p1"
+  }, [_vm._v("预计当月签约金额")]), _vm._v(" "), _c('p', [_vm._v("100")])], 1), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item"
+  }, [_c('p', {
+    staticClass: "p1"
+  }, [_vm._v("签约金额")]), _vm._v(" "), _c('p', [_vm._v("100")])], 1), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item"
+  }, [_c('p', {
+    staticClass: "p1"
+  }, [_vm._v("差额")]), _vm._v(" "), _c('p', [_vm._v("100")])], 1), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item"
+  }, [_c('p', {
+    staticClass: "p1"
+  }, [_vm._v("收款金额")]), _vm._v(" "), _c('p', [_vm._v("100")])], 1), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item"
+  }, [_c('p', {
+    staticClass: "p1"
+  }, [_vm._v("应收金额")]), _vm._v(" "), _c('p', [_vm._v("100")])], 1)]), _vm._v(" "), _c('i-panel', {
+    staticClass: "small_panel",
+    attrs: {
+      "title": "销售简报",
+      "mpcomid": '9'
+    }
+  }, [_c('i-tabs', {
+    attrs: {
+      "current": _vm.activeName2,
+      "eventid": '1',
+      "mpcomid": '8'
     },
     on: {
-      "click": _vm.bindViewTap
+      "change": _vm.tabClick2
     }
-  }, [_vm._v("查看登录日志")])], 1)])
+  }, [_c('i-tab', {
+    key: "first",
+    attrs: {
+      "title": "今天",
+      "mpcomid": '4'
+    }
+  }), _vm._v(" "), _c('i-tab', {
+    key: "second",
+    attrs: {
+      "title": "本周",
+      "mpcomid": '5'
+    }
+  }), _vm._v(" "), _c('i-tab', {
+    key: "third",
+    attrs: {
+      "title": "本月",
+      "mpcomid": '6'
+    }
+  }), _vm._v(" "), _c('i-tab', {
+    key: "fourth",
+    attrs: {
+      "title": "上月",
+      "mpcomid": '7'
+    }
+  })], 1)], 1), _vm._v(" "), _c('view', {
+    staticClass: "sale_view"
+  }, [_c('view', {
+    staticClass: "sale_wrap_item"
+  }, [_c('p', {
+    staticClass: "p1"
+  }, [_vm._v("线索")]), _vm._v(" "), _c('p', [_vm._v("100")])], 1), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item"
+  }, [_c('p', {
+    staticClass: "p1"
+  }, [_vm._v("新增线索")]), _vm._v(" "), _c('p', [_vm._v("100")])], 1), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item"
+  }, [_c('p', {
+    staticClass: "p1"
+  }, [_vm._v("客户")]), _vm._v(" "), _c('p', [_vm._v("100")])], 1), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item"
+  }, [_c('p', {
+    staticClass: "p1"
+  }, [_vm._v("新增客户")]), _vm._v(" "), _c('p', [_vm._v("100")])], 1), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item"
+  }, [_c('p', {
+    staticClass: "p1"
+  }, [_vm._v("新增商机")]), _vm._v(" "), _c('p', [_vm._v("100")])], 1), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item"
+  }, [_c('p', {
+    staticClass: "p1"
+  }, [_vm._v("新增跟进记录")]), _vm._v(" "), _c('p', [_vm._v("100")])], 1)])], 1)
 }
 var staticRenderFns = []
 render._withStripped = true

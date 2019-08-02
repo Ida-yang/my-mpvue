@@ -1,4 +1,4 @@
-<template name="24b50120">
+<template name="655e4ee2">
   <view class="_div data-v-642a5b64 clue_follow">
     <i-panel title="{{followData.name}}" class="_i-panel data-v-642a5b64">
       <i-cell title="联系方式" value="{{followList.followType}}" is-link request i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-cell data-v-642a5b64"></i-cell>
