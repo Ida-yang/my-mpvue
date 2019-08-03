@@ -1,35 +1,49 @@
 <template>
     <div class="index_wrap">
-        <i-tabs :current="activeName1" @change="tabClick1">
-            <i-tab key="first" title="本月"></i-tab>
-            <i-tab key="second" title="上月"></i-tab>
-            <i-tab key="third" title="本年"></i-tab>
-        </i-tabs>
+        <i-panel title="目标简报" class="small_panel">
+            <i-tabs :current="activeName1" @change="tabClick1">
+                <i-tab key="first" title="本月"></i-tab>
+                <i-tab key="second" title="上月"></i-tab>
+                <i-tab key="third" title="本年"></i-tab>
+            </i-tabs>
+        </i-panel>
 
         <view class="sale_view">
             <view class="sale_wrap_item_one">
-                <p class="p1">销售目标</p>
-                <p>{{amountData.target}}</p>
+                <view class="item_one_view">
+                    <p class="p1">销售目标</p>
+                    <p>{{amountData.target}}</p>
+                </view>
             </view>
             <view class="sale_wrap_item_one">
-                <p class="p1">预计金额</p>
-                <p>{{amountData.opportunity_achievement}}</p>
+                <view class="item_one_view">
+                    <p class="p1">预计金额</p>
+                    <p>{{amountData.opportunity_achievement}}</p>
+                </view>
             </view>
             <view class="sale_wrap_item_one">
-                <p class="p1">完成金额</p>
-                <p>{{amountData.deal}}</p>
+                <view class="item_one_view">
+                    <p class="p1">完成金额</p>
+                    <p>{{amountData.deal}}</p>
+                </view>
             </view>
             <view class="sale_wrap_item_one">
-                <p class="p1">差&nbsp;&nbsp;&nbsp;&nbsp;额</p>
-                <p>{{amountData.difference}}</p>
+                <view class="item_one_view">
+                    <p class="p1">差&nbsp;&nbsp;&nbsp;&nbsp;额</p>
+                    <p>{{amountData.difference}}</p>
+                </view>
             </view>
             <view class="sale_wrap_item_one">
-                <p class="p1">回款金额</p>
-                <p>{{amountData.back}}</p>
+                <view class="item_one_view">
+                    <p class="p1">回款金额</p>
+                    <p>{{amountData.back}}</p>
+                </view>
             </view>
             <view class="sale_wrap_item_one">
-                <p class="p1">计划回款金额</p>
-                <p>{{amountData.backPlan}}</p>
+                <view class="item_one_view">
+                    <p class="p1">计划回款金额</p>
+                    <p>{{amountData.backPlan}}</p>
+                </view>
             </view>
         </view>
 
@@ -124,10 +138,6 @@
                 <span>{{item.opportunity_achievement}}</span>
             </view>
         </view>
-
-        <!-- <div class="container">
-            <i-button type="subject" @click="bindViewTap">查看登录日志</i-button>
-        </div> -->
     </div>
 </template>
 
@@ -151,10 +161,6 @@
         //         return showHtm;
         //     }
         // },
-        // legend: {
-        //     data: ['加载失败'],
-        //     bottom: 30
-        // },
         calculable: true,
         series: [
             {
@@ -166,8 +172,6 @@
                 width: '80%',
                 minSize: '30%',
                 sort: 'descending',
-                // sort: 'none',
-                // gap: 2,
                 label: {
                     show: true,
                     position: 'inside'
@@ -189,8 +193,7 @@
         });
         canvas.setChart(chart);
         chart.setOption(option,true);
-        
-        // console.log(this.next,'333333333')
+
         return chart; // 返回 chart 后可以自动绑定触摸操作
     }
 
@@ -375,7 +378,7 @@
         height: 60px;
         background-color: rgb(255, 255, 255);
         padding-top: 5px;
-        padding-left: 30px;
+        padding-left: 60px;
         box-sizing: border-box
     }
     .p1{

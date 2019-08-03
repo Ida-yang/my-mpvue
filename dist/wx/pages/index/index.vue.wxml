@@ -1,34 +1,48 @@
 <import src="/modules/mpvue-echarts/src/echarts.vue.wxml" /><template name="91fcfdb6">
   <view class="_div data-v-5307a380 index_wrap">
-    <i-tabs current="{{activeName1}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-5307a380">
-      <i-tab key="first" title="本月" class="_i-tab data-v-5307a380"></i-tab>
-      <i-tab key="second" title="上月" class="_i-tab data-v-5307a380"></i-tab>
-      <i-tab key="third" title="本年" class="_i-tab data-v-5307a380"></i-tab>
-    </i-tabs>
+    <i-panel title="目标简报" class="_i-panel data-v-5307a380 small_panel">
+      <i-tabs current="{{activeName1}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-5307a380">
+        <i-tab key="first" title="本月" class="_i-tab data-v-5307a380"></i-tab>
+        <i-tab key="second" title="上月" class="_i-tab data-v-5307a380"></i-tab>
+        <i-tab key="third" title="本年" class="_i-tab data-v-5307a380"></i-tab>
+      </i-tabs>
+    </i-panel>
     <view class="_view data-v-5307a380 sale_view">
       <view class="_view data-v-5307a380 sale_wrap_item_one">
-        <view class="_p data-v-5307a380 p1">销售目标</view>
-        <view class="_p data-v-5307a380">{{amountData.target}}</view>
+        <view class="_view data-v-5307a380 item_one_view">
+          <view class="_p data-v-5307a380 p1">销售目标</view>
+          <view class="_p data-v-5307a380">{{amountData.target}}</view>
+        </view>
       </view>
       <view class="_view data-v-5307a380 sale_wrap_item_one">
-        <view class="_p data-v-5307a380 p1">预计金额</view>
-        <view class="_p data-v-5307a380">{{amountData.opportunity_achievement}}</view>
+        <view class="_view data-v-5307a380 item_one_view">
+          <view class="_p data-v-5307a380 p1">预计金额</view>
+          <view class="_p data-v-5307a380">{{amountData.opportunity_achievement}}</view>
+        </view>
       </view>
       <view class="_view data-v-5307a380 sale_wrap_item_one">
-        <view class="_p data-v-5307a380 p1">完成金额</view>
-        <view class="_p data-v-5307a380">{{amountData.deal}}</view>
+        <view class="_view data-v-5307a380 item_one_view">
+          <view class="_p data-v-5307a380 p1">完成金额</view>
+          <view class="_p data-v-5307a380">{{amountData.deal}}</view>
+        </view>
       </view>
       <view class="_view data-v-5307a380 sale_wrap_item_one">
-        <view class="_p data-v-5307a380 p1">差    额</view>
-        <view class="_p data-v-5307a380">{{amountData.difference}}</view>
+        <view class="_view data-v-5307a380 item_one_view">
+          <view class="_p data-v-5307a380 p1">差    额</view>
+          <view class="_p data-v-5307a380">{{amountData.difference}}</view>
+        </view>
       </view>
       <view class="_view data-v-5307a380 sale_wrap_item_one">
-        <view class="_p data-v-5307a380 p1">回款金额</view>
-        <view class="_p data-v-5307a380">{{amountData.back}}</view>
+        <view class="_view data-v-5307a380 item_one_view">
+          <view class="_p data-v-5307a380 p1">回款金额</view>
+          <view class="_p data-v-5307a380">{{amountData.back}}</view>
+        </view>
       </view>
       <view class="_view data-v-5307a380 sale_wrap_item_one">
-        <view class="_p data-v-5307a380 p1">计划回款金额</view>
-        <view class="_p data-v-5307a380">{{amountData.backPlan}}</view>
+        <view class="_view data-v-5307a380 item_one_view">
+          <view class="_p data-v-5307a380 p1">计划回款金额</view>
+          <view class="_p data-v-5307a380">{{amountData.backPlan}}</view>
+        </view>
       </view>
     </view>
     <i-panel title="销售简报" class="_i-panel data-v-5307a380 small_panel">
@@ -103,7 +117,7 @@
         <i-tab key="4" title="预计下月" class="_i-tab data-v-5307a380"></i-tab>
       </i-tabs>
     </i-panel>
-    <view class="_div data-v-5307a380 index_funnel"><template canvasId="demo-canvas" data="{{...$root[$kk+'16'], $root}}" is="179bc827"></template></view>
+    <view class="_div data-v-5307a380 index_funnel"><template canvasId="demo-canvas" data="{{...$root[$kk+'17'], $root}}" is="179bc827"></template></view>
     <view class="_view data-v-5307a380 index_table">
       <view class="_view data-v-5307a380 index_table_th"><label class="_span data-v-5307a380">商机阶段</label> <label class="_span data-v-5307a380">机会数量</label> <label class="_span data-v-5307a380">预计合同金额</label></view>
       <view class="_view data-v-5307a380 index_table_td" wx:key="index" key="{{index}}" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item"><label class="_span data-v-5307a380">{{item.name + '(' + item.proportion + ')'}}</label> <label class="_span data-v-5307a380">{{item.value}}</label> <label class="_span data-v-5307a380">{{item.opportunity_achievement}}</label></view>

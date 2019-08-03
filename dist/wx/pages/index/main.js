@@ -228,6 +228,16 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -248,10 +258,6 @@ var option = { //ECharts 配置项
     //         return showHtm;
     //     }
     // },
-    // legend: {
-    //     data: ['加载失败'],
-    //     bottom: 30
-    // },
     calculable: true,
     series: [{
         name: '数量',
@@ -262,8 +268,6 @@ var option = { //ECharts 配置项
         width: '80%',
         minSize: '30%',
         sort: 'descending',
-        // sort: 'none',
-        // gap: 2,
         label: {
             show: true,
             position: 'inside'
@@ -285,7 +289,6 @@ function initChart(canvas, width, height) {
     canvas.setChart(chart);
     chart.setOption(option, true);
 
-    // console.log(this.next,'333333333')
     return chart; // 返回 chart 后可以自动绑定触摸操作
 }
 
@@ -458,6 +461,12 @@ function initChart(canvas, width, height) {
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "index_wrap"
+  }, [_c('i-panel', {
+    staticClass: "small_panel",
+    attrs: {
+      "title": "目标简报",
+      "mpcomid": '4'
+    }
   }, [_c('i-tabs', {
     attrs: {
       "current": _vm.activeName1,
@@ -485,43 +494,55 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "title": "本年",
       "mpcomid": '2'
     }
-  })], 1), _vm._v(" "), _c('view', {
+  })], 1)], 1), _vm._v(" "), _c('view', {
     staticClass: "sale_view"
   }, [_c('view', {
     staticClass: "sale_wrap_item_one"
+  }, [_c('view', {
+    staticClass: "item_one_view"
   }, [_c('p', {
     staticClass: "p1"
-  }, [_vm._v("销售目标")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.target))])], 1), _vm._v(" "), _c('view', {
+  }, [_vm._v("销售目标")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.target))])], 1)]), _vm._v(" "), _c('view', {
     staticClass: "sale_wrap_item_one"
+  }, [_c('view', {
+    staticClass: "item_one_view"
   }, [_c('p', {
     staticClass: "p1"
-  }, [_vm._v("预计金额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.opportunity_achievement))])], 1), _vm._v(" "), _c('view', {
+  }, [_vm._v("预计金额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.opportunity_achievement))])], 1)]), _vm._v(" "), _c('view', {
     staticClass: "sale_wrap_item_one"
+  }, [_c('view', {
+    staticClass: "item_one_view"
   }, [_c('p', {
     staticClass: "p1"
-  }, [_vm._v("完成金额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.deal))])], 1), _vm._v(" "), _c('view', {
+  }, [_vm._v("完成金额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.deal))])], 1)]), _vm._v(" "), _c('view', {
     staticClass: "sale_wrap_item_one"
+  }, [_c('view', {
+    staticClass: "item_one_view"
   }, [_c('p', {
     staticClass: "p1"
-  }, [_vm._v("差    额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.difference))])], 1), _vm._v(" "), _c('view', {
+  }, [_vm._v("差    额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.difference))])], 1)]), _vm._v(" "), _c('view', {
     staticClass: "sale_wrap_item_one"
+  }, [_c('view', {
+    staticClass: "item_one_view"
   }, [_c('p', {
     staticClass: "p1"
-  }, [_vm._v("回款金额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.back))])], 1), _vm._v(" "), _c('view', {
+  }, [_vm._v("回款金额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.back))])], 1)]), _vm._v(" "), _c('view', {
     staticClass: "sale_wrap_item_one"
+  }, [_c('view', {
+    staticClass: "item_one_view"
   }, [_c('p', {
     staticClass: "p1"
-  }, [_vm._v("计划回款金额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.backPlan))])], 1)]), _vm._v(" "), _c('i-panel', {
+  }, [_vm._v("计划回款金额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.backPlan))])], 1)])]), _vm._v(" "), _c('i-panel', {
     staticClass: "small_panel",
     attrs: {
       "title": "销售简报",
-      "mpcomid": '9'
+      "mpcomid": '10'
     }
   }, [_c('i-tabs', {
     attrs: {
       "current": _vm.activeName2,
       "eventid": '1',
-      "mpcomid": '8'
+      "mpcomid": '9'
     },
     on: {
       "change": _vm.tabClick2
@@ -530,25 +551,25 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     key: "1",
     attrs: {
       "title": "今天",
-      "mpcomid": '4'
+      "mpcomid": '5'
     }
   }), _vm._v(" "), _c('i-tab', {
     key: "3",
     attrs: {
       "title": "本周",
-      "mpcomid": '5'
+      "mpcomid": '6'
     }
   }), _vm._v(" "), _c('i-tab', {
     key: "4",
     attrs: {
       "title": "本月",
-      "mpcomid": '6'
+      "mpcomid": '7'
     }
   }), _vm._v(" "), _c('i-tab', {
     key: "5",
     attrs: {
       "title": "上月",
-      "mpcomid": '7'
+      "mpcomid": '8'
     }
   })], 1)], 1), _vm._v(" "), _c('view', {
     staticClass: "sale_view"
@@ -580,13 +601,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "small_panel",
     attrs: {
       "title": "商机漏斗",
-      "mpcomid": '15'
+      "mpcomid": '16'
     }
   }, [_c('i-tabs', {
     attrs: {
       "current": _vm.activeName3,
       "eventid": '2',
-      "mpcomid": '14'
+      "mpcomid": '15'
     },
     on: {
       "change": _vm.tabClick3
@@ -595,25 +616,25 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     key: "1",
     attrs: {
       "title": "预计7天",
-      "mpcomid": '10'
+      "mpcomid": '11'
     }
   }), _vm._v(" "), _c('i-tab', {
     key: "2",
     attrs: {
       "title": "预计15天",
-      "mpcomid": '11'
+      "mpcomid": '12'
     }
   }), _vm._v(" "), _c('i-tab', {
     key: "3",
     attrs: {
       "title": "预计当月",
-      "mpcomid": '12'
+      "mpcomid": '13'
     }
   }), _vm._v(" "), _c('i-tab', {
     key: "4",
     attrs: {
       "title": "预计下月",
-      "mpcomid": '13'
+      "mpcomid": '14'
     }
   })], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "index_funnel"
@@ -622,7 +643,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "echarts": _vm.echarts,
       "onInit": _vm.onInit,
       "canvasId": "demo-canvas",
-      "mpcomid": '16'
+      "mpcomid": '17'
     }
   })], 1), _vm._v(" "), _c('view', {
     staticClass: "index_table"
