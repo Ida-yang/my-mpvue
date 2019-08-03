@@ -173,7 +173,6 @@
                     deptid: config.userData.private_deptid,
                     type: '合同',
                 }
-                console.log(data)
 
                 let flag = false
                 if(!data.pay_type_id){

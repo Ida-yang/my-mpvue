@@ -2,3 +2,7 @@
 .card {
   padding: 20rpx;
 }
+.ec-canvas.data-v-1f4f024c {
+  width: 100%;
+  height: 100%;
+}

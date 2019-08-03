@@ -128,6 +128,8 @@
                     remarks: this.planList.remarks,
                     remind_date: this.planList.remind_date,
                     pId: config.userData.pId,
+                    secondid: config.userData.second_id,
+                    deptid: config.userData.private_deptid,
                 }
                 let flag = false
                 if(!data.date){

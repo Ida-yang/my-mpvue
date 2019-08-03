@@ -1,4 +1,4 @@
-<template name="5af7e382">
+<template name="1a4e95c0">
   <view class="_div data-v-78f73224 clue_detail">
     <i-cell title="{{clueData.name}}" class="_i-cell data-v-78f73224">
       <view class="_p data-v-78f73224 cell_info">联系人姓名：  {{clueContact.coName}}</view>

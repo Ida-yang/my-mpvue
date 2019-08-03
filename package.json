@@ -23,7 +23,6 @@
     "build": "node build/build.js wx"
   },
   "dependencies": {
-    "echarts": "^4.2.1",
     "mpvue": "^2.0.0",
     "mpvue-echarts": "^0.3.1"
   },

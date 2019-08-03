@@ -123,6 +123,7 @@
                 }else if(this.searchList.powerid == '14'){
                     data.deptid = config.userData.private_deptid
                 }
+                
                 wx.request({
                     method:'post',
                     url: config.defaulthost + 'back/queryForList.do?cId=' + config.userData.cId,  //接口地址

@@ -1,69 +1,112 @@
-<template name="48dab967">
+<import src="/modules/mpvue-echarts/src/echarts.vue.wxml" /><template name="91fcfdb6">
   <view class="_div data-v-5307a380 index_wrap">
     <i-tabs current="{{activeName1}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-5307a380">
       <i-tab key="first" title="本月" class="_i-tab data-v-5307a380"></i-tab>
-      <i-tab key="second" title="本季" class="_i-tab data-v-5307a380"></i-tab>
+      <i-tab key="second" title="上月" class="_i-tab data-v-5307a380"></i-tab>
       <i-tab key="third" title="本年" class="_i-tab data-v-5307a380"></i-tab>
     </i-tabs>
     <view class="_view data-v-5307a380 sale_view">
-      <view class="_view data-v-5307a380 sale_wrap_item">
+      <view class="_view data-v-5307a380 sale_wrap_item_one">
         <view class="_p data-v-5307a380 p1">销售目标</view>
-        <view class="_p data-v-5307a380">100</view>
+        <view class="_p data-v-5307a380">{{amountData.target}}</view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item">
-        <view class="_p data-v-5307a380 p1">预计当月签约金额</view>
-        <view class="_p data-v-5307a380">100</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_one">
+        <view class="_p data-v-5307a380 p1">预计金额</view>
+        <view class="_p data-v-5307a380">{{amountData.opportunity_achievement}}</view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item">
-        <view class="_p data-v-5307a380 p1">签约金额</view>
-        <view class="_p data-v-5307a380">100</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_one">
+        <view class="_p data-v-5307a380 p1">完成金额</view>
+        <view class="_p data-v-5307a380">{{amountData.deal}}</view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item">
-        <view class="_p data-v-5307a380 p1">差额</view>
-        <view class="_p data-v-5307a380">100</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_one">
+        <view class="_p data-v-5307a380 p1">差    额</view>
+        <view class="_p data-v-5307a380">{{amountData.difference}}</view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item">
-        <view class="_p data-v-5307a380 p1">收款金额</view>
-        <view class="_p data-v-5307a380">100</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_one">
+        <view class="_p data-v-5307a380 p1">回款金额</view>
+        <view class="_p data-v-5307a380">{{amountData.back}}</view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item">
-        <view class="_p data-v-5307a380 p1">应收金额</view>
-        <view class="_p data-v-5307a380">100</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_one">
+        <view class="_p data-v-5307a380 p1">计划回款金额</view>
+        <view class="_p data-v-5307a380">{{amountData.backPlan}}</view>
       </view>
     </view>
     <i-panel title="销售简报" class="_i-panel data-v-5307a380 small_panel">
       <i-tabs current="{{activeName2}}" bindchange="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-tabs data-v-5307a380">
-        <i-tab key="first" title="今天" class="_i-tab data-v-5307a380"></i-tab>
-        <i-tab key="second" title="本周" class="_i-tab data-v-5307a380"></i-tab>
-        <i-tab key="third" title="本月" class="_i-tab data-v-5307a380"></i-tab>
-        <i-tab key="fourth" title="上月" class="_i-tab data-v-5307a380"></i-tab>
+        <i-tab key="1" title="今天" class="_i-tab data-v-5307a380"></i-tab>
+        <i-tab key="3" title="本周" class="_i-tab data-v-5307a380"></i-tab>
+        <i-tab key="4" title="本月" class="_i-tab data-v-5307a380"></i-tab>
+        <i-tab key="5" title="上月" class="_i-tab data-v-5307a380"></i-tab>
       </i-tabs>
     </i-panel>
     <view class="_view data-v-5307a380 sale_view">
-      <view class="_view data-v-5307a380 sale_wrap_item">
-        <view class="_p data-v-5307a380 p1">线索</view>
-        <view class="_p data-v-5307a380">100</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_two">
+        <view class="_view data-v-5307a380 item_two_view1">
+          <image src="../../static/images/clue.png" style="width:24px;height:24px;" class="_image data-v-5307a380"></image>
+        </view>
+        <view class="_view data-v-5307a380 item_two_view2">
+          <view class="_p data-v-5307a380">{{saleData.customertwoNum}}</view>
+          <view class="_p data-v-5307a380">线索</view>
+        </view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item">
-        <view class="_p data-v-5307a380 p1">新增线索</view>
-        <view class="_p data-v-5307a380">100</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_two">
+        <view class="_view data-v-5307a380 item_two_view1">
+          <image src="../../static/images/clue.png" style="width:24px;height:24px;" class="_image data-v-5307a380"></image>
+        </view>
+        <view class="_view data-v-5307a380 item_two_view2">
+          <view class="_p data-v-5307a380">{{saleData.customertwoAddNum}}</view>
+          <view class="_p data-v-5307a380">新增线索</view>
+        </view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item">
-        <view class="_p data-v-5307a380 p1">客户</view>
-        <view class="_p data-v-5307a380">100</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_two">
+        <view class="_view data-v-5307a380 item_two_view1">
+          <image src="../../static/images/customer.png" style="width:24px;height:24px;" class="_image data-v-5307a380"></image>
+        </view>
+        <view class="_view data-v-5307a380 item_two_view2">
+          <view class="_p data-v-5307a380">{{saleData.customerpoolNum}}</view>
+          <view class="_p data-v-5307a380">客户</view>
+        </view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item">
-        <view class="_p data-v-5307a380 p1">新增客户</view>
-        <view class="_p data-v-5307a380">100</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_two">
+        <view class="_view data-v-5307a380 item_two_view1">
+          <image src="../../static/images/customer.png" style="width:24px;height:24px;" class="_image data-v-5307a380"></image>
+        </view>
+        <view class="_view data-v-5307a380 item_two_view2">
+          <view class="_p data-v-5307a380">{{saleData.customerpoolAddNum}}</view>
+          <view class="_p data-v-5307a380">新增客户</view>
+        </view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item">
-        <view class="_p data-v-5307a380 p1">新增商机</view>
-        <view class="_p data-v-5307a380">100</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_two">
+        <view class="_view data-v-5307a380 item_two_view1">
+          <image src="../../static/images/opportunity.png" style="width:24px;height:24px;" class="_image data-v-5307a380"></image>
+        </view>
+        <view class="_view data-v-5307a380 item_two_view2">
+          <view class="_p data-v-5307a380">{{saleData.opportunityAddNum}}</view>
+          <view class="_p data-v-5307a380">新增商机</view>
+        </view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item">
-        <view class="_p data-v-5307a380 p1">新增跟进记录</view>
-        <view class="_p data-v-5307a380">100</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_two">
+        <view class="_view data-v-5307a380 item_two_view1">
+          <image src="../../static/images/opportunity.png" style="width:24px;height:24px;" class="_image data-v-5307a380"></image>
+        </view>
+        <view class="_view data-v-5307a380 item_two_view2">
+          <view class="_p data-v-5307a380">{{saleData.followNum}}</view>
+          <view class="_p data-v-5307a380">新增跟进记录</view>
+        </view>
       </view>
+    </view>
+    <i-panel title="商机漏斗" class="_i-panel data-v-5307a380 small_panel">
+      <i-tabs current="{{activeName3}}" bindchange="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-tabs data-v-5307a380">
+        <i-tab key="1" title="预计7天" class="_i-tab data-v-5307a380"></i-tab>
+        <i-tab key="2" title="预计15天" class="_i-tab data-v-5307a380"></i-tab>
+        <i-tab key="3" title="预计当月" class="_i-tab data-v-5307a380"></i-tab>
+        <i-tab key="4" title="预计下月" class="_i-tab data-v-5307a380"></i-tab>
+      </i-tabs>
+    </i-panel>
+    <view class="_div data-v-5307a380 index_funnel"><template canvasId="demo-canvas" data="{{...$root[$kk+'16'], $root}}" is="179bc827"></template></view>
+    <view class="_view data-v-5307a380 index_table">
+      <view class="_view data-v-5307a380 index_table_th"><label class="_span data-v-5307a380">商机阶段</label> <label class="_span data-v-5307a380">机会数量</label> <label class="_span data-v-5307a380">预计合同金额</label></view>
+      <view class="_view data-v-5307a380 index_table_td" wx:key="index" key="{{index}}" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item"><label class="_span data-v-5307a380">{{item.name + '(' + item.proportion + ')'}}</label> <label class="_span data-v-5307a380">{{item.value}}</label> <label class="_span data-v-5307a380">{{item.opportunity_achievement}}</label></view>
     </view>
   </view>
 </template>

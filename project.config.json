@@ -8,7 +8,14 @@
 		"newFeature": true,
 		"autoAudits": false,
 		"uglifyFileName": true,
-		"checkInvalidKey": true
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
@@ -16,6 +23,7 @@
 	"projectname": "my-mpvue",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"libVersion": "2.8.0",
 	"condition": {
 		"search": {
 			"current": -1,

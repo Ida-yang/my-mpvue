@@ -1,1 +1,1 @@
-<import src="/pages/clue/clueFollow/index.vue.wxml" /><template is="655e4ee2" data="{{ ...$root['0'], $root }}"/>
+<import src="/pages/clue/clueFollow/index.vue.wxml" /><template is="24b50120" data="{{ ...$root['0'], $root }}"/>
