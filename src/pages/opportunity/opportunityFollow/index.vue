@@ -76,6 +76,8 @@
                     imgName:'',
                 }
 
+                this.contactList = []
+
                 let data = {
                     customerpool_id: this.followData.customerpool_id,
                     page: 1,

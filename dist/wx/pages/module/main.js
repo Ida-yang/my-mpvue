@@ -2,14 +2,14 @@ require("../../common/manifest.js")
 require("../../common/vendor.js")
 global.webpackJsonpMpvue([26],{
 
-/***/ 234:
+/***/ 243:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(244);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 235:
+/***/ 244:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(237);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_619bc6d4_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_619bc6d4_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(247);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(236)
+  __webpack_require__(245)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,18 +72,24 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 236:
+/***/ 245:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 237:
+/***/ 246:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -242,6 +248,11 @@ if (false) {(function () {
             var url = '../payCollection/main';
             global.mpvue.navigateTo({ url: url });
         },
+        toFollow: function toFollow() {
+            console.log('去跟进记录');
+            var url = '../follow/main';
+            global.mpvue.navigateTo({ url: url });
+        },
         toOutwork: function toOutwork() {
             console.log('去外勤');
             var url = '../outwork/main';
@@ -262,7 +273,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 238:
+/***/ 247:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -365,11 +376,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }), _vm._v(" "), _c('i-grid', {
     attrs: {
       "i-class": "module_view",
-      "mpcomid": '38'
+      "mpcomid": '41'
     }
   }, [_c('i-row', {
     attrs: {
-      "mpcomid": '37'
+      "mpcomid": '40'
     }
   }, [_c('i-grid-item', {
     attrs: {
@@ -563,32 +574,17 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "mpcomid": '35'
     }
-  }, [_vm._v("应收回款")])], 1)], 1)], 1), _vm._v(" "), _c('i-panel', {
-    staticClass: "small_panel",
-    attrs: {
-      "title": "办公",
-      "mpcomid": '39'
-    }
-  }), _vm._v(" "), _c('i-grid', {
-    attrs: {
-      "i-class": "module_view",
-      "mpcomid": '50'
-    }
-  }, [_c('i-row', {
-    attrs: {
-      "mpcomid": '49'
-    }
-  }, [_c('i-grid-item', {
+  }, [_vm._v("应收回款")])], 1), _vm._v(" "), _c('i-grid-item', {
     attrs: {
       "eventid": '11',
-      "mpcomid": '42'
+      "mpcomid": '39'
     },
     on: {
-      "click": _vm.toOutwork
+      "click": _vm.toFollow
     }
   }, [_c('i-grid-icon', {
     attrs: {
-      "mpcomid": '40'
+      "mpcomid": '37'
     }
   }, [_c('image', {
     staticStyle: {
@@ -596,19 +592,34 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "height": "20px"
     },
     attrs: {
-      "src": "../../static/images/outwork.png"
+      "src": "../../static/images/payCollection.png"
     }
   })]), _vm._v(" "), _c('i-grid-label', {
     attrs: {
-      "mpcomid": '41'
+      "mpcomid": '38'
     }
-  }, [_vm._v("外勤")])], 1), _vm._v(" "), _c('i-grid-item', {
+  }, [_vm._v("跟进记录")])], 1)], 1)], 1), _vm._v(" "), _c('i-panel', {
+    staticClass: "small_panel",
+    attrs: {
+      "title": "办公",
+      "mpcomid": '42'
+    }
+  }), _vm._v(" "), _c('i-grid', {
+    attrs: {
+      "i-class": "module_view",
+      "mpcomid": '53'
+    }
+  }, [_c('i-row', {
+    attrs: {
+      "mpcomid": '52'
+    }
+  }, [_c('i-grid-item', {
     attrs: {
       "eventid": '12',
       "mpcomid": '45'
     },
     on: {
-      "click": _vm.toTask
+      "click": _vm.toOutwork
     }
   }, [_c('i-grid-icon', {
     attrs: {
@@ -620,19 +631,19 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "height": "20px"
     },
     attrs: {
-      "src": "../../static/images/task.png"
+      "src": "../../static/images/outwork.png"
     }
   })]), _vm._v(" "), _c('i-grid-label', {
     attrs: {
       "mpcomid": '44'
     }
-  }, [_vm._v("任务")])], 1), _vm._v(" "), _c('i-grid-item', {
+  }, [_vm._v("外勤")])], 1), _vm._v(" "), _c('i-grid-item', {
     attrs: {
       "eventid": '13',
       "mpcomid": '48'
     },
     on: {
-      "click": _vm.toNote
+      "click": _vm.toTask
     }
   }, [_c('i-grid-icon', {
     attrs: {
@@ -644,11 +655,35 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "height": "20px"
     },
     attrs: {
-      "src": "../../static/images/note.png"
+      "src": "../../static/images/task.png"
     }
   })]), _vm._v(" "), _c('i-grid-label', {
     attrs: {
       "mpcomid": '47'
+    }
+  }, [_vm._v("任务")])], 1), _vm._v(" "), _c('i-grid-item', {
+    attrs: {
+      "eventid": '14',
+      "mpcomid": '51'
+    },
+    on: {
+      "click": _vm.toNote
+    }
+  }, [_c('i-grid-icon', {
+    attrs: {
+      "mpcomid": '49'
+    }
+  }, [_c('image', {
+    staticStyle: {
+      "width": "20px",
+      "height": "20px"
+    },
+    attrs: {
+      "src": "../../static/images/note.png"
+    }
+  })]), _vm._v(" "), _c('i-grid-label', {
+    attrs: {
+      "mpcomid": '50'
     }
   }, [_vm._v("便签")])], 1)], 1)], 1)], 1)
 }
@@ -665,4 +700,4 @@ if (false) {
 
 /***/ })
 
-},[234]);
+},[243]);

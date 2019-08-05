@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "跟进记录",
+    "usingComponents": {
+      "i-panel": "../../iview/panel/index",
+      "i-input": "../../iview/input/index",
+      "i-icon": "../../iview/icon/index",
+      "i-fiche": "../../iview/fiche/index",
+      "i-load-more": "../../iview/load-more/index",
+      "i-drawer": "../../iview/drawer/index",
+      "i-button": "../../iview/button/index"
+    }
+}

@@ -74,6 +74,12 @@
                     </i-grid-icon>
                     <i-grid-label>应收回款</i-grid-label>
                 </i-grid-item>
+                <i-grid-item @click="toFollow">
+                    <i-grid-icon>
+                        <image src="../../static/images/payCollection.png" style="width:20px;height:20px;" />
+                    </i-grid-icon>
+                    <i-grid-label>跟进记录</i-grid-label>
+                </i-grid-item>
             </i-row>
         </i-grid>
         <i-panel title="办公" class="small_panel"></i-panel>
@@ -158,6 +164,12 @@
                 const url = '../payCollection/main'
                 mpvue.navigateTo({ url })
             },
+            toFollow(){
+                console.log('去跟进记录')
+                const url = '../follow/main'
+                mpvue.navigateTo({ url })
+            },
+
             toOutwork(){
                 console.log('去外勤')
                 const url = '../outwork/main'

@@ -1,4 +1,4 @@
-<template name="41931455">
+<template name="2a3e375a">
   <view class="_div data-v-619bc6d4 module_content">
     <i-panel title="常用" class="_i-panel data-v-619bc6d4 small_panel"></i-panel>
     <i-grid i-class="module_view" class="_i-grid data-v-619bc6d4">
@@ -74,24 +74,30 @@
           </i-grid-icon>
           <i-grid-label class="_i-grid-label data-v-619bc6d4">应收回款</i-grid-label>
         </i-grid-item>
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'11'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+          <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
+            <image src="../../static/images/payCollection.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
+          </i-grid-icon>
+          <i-grid-label class="_i-grid-label data-v-619bc6d4">跟进记录</i-grid-label>
+        </i-grid-item>
       </i-row>
     </i-grid>
     <i-panel title="办公" class="_i-panel data-v-619bc6d4 small_panel"></i-panel>
     <i-grid i-class="module_view" class="_i-grid data-v-619bc6d4">
       <i-row class="_i-row data-v-619bc6d4">
-        <i-grid-item bindtap="handleProxy" data-eventid="{{'11'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'12'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
           <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
             <image src="../../static/images/outwork.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
           </i-grid-icon>
           <i-grid-label class="_i-grid-label data-v-619bc6d4">外勤</i-grid-label>
         </i-grid-item>
-        <i-grid-item bindtap="handleProxy" data-eventid="{{'12'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'13'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
           <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
             <image src="../../static/images/task.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
           </i-grid-icon>
           <i-grid-label class="_i-grid-label data-v-619bc6d4">任务</i-grid-label>
         </i-grid-item>
-        <i-grid-item bindtap="handleProxy" data-eventid="{{'13'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
+        <i-grid-item bindtap="handleProxy" data-eventid="{{'14'}}" data-comkey="{{$k}}" class="_i-grid-item data-v-619bc6d4">
           <i-grid-icon class="_i-grid-icon data-v-619bc6d4">
             <image src="../../static/images/note.png" style="width:20px;height:20px;" class="_image data-v-619bc6d4"></image>
           </i-grid-icon>

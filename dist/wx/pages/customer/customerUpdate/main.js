@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([31],{
+global.webpackJsonpMpvue([32],{
 
 /***/ 152:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {

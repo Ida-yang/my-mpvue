@@ -42,12 +42,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
 					"name": "单页调试",
-					"pathName": "pages/note/main",
+					"pathName": "pages/follow/main",
 					"query": "",
 					"scene": null
 				},

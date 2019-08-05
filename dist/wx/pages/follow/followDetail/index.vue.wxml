@@ -1,0 +1,27 @@
+<template name="50051c42">
+  <view class="_div data-v-79399e24 follow_detail_wrap">
+    <i-cell title="{{curent}}" class="_i-cell data-v-79399e24">
+      <view class="_p data-v-79399e24 cell_info">商机编号：  {{curent}}</view>
+      <view class="_p data-v-79399e24 cell_info">预计成交金额：  {{curent}}   |   时间：  {{curent}}</view>
+    </i-cell>
+    <i-panel title=" " class="_i-panel data-v-79399e24">
+      <i-tabs current="{{activeName}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-79399e24">
+        <i-tab key="first" title="跟进记录" class="_i-tab data-v-79399e24"></i-tab>
+      </i-tabs>
+    </i-panel>
+    <view wx:if="{{activeName == 'first'}}" class="_view data-v-79399e24 follow_view">
+      <view wx:key="item.id" key="{{item.id}}" wx:for="{{followData}}" wx:for-index="index" wx:for-item="item" class="_view data-v-79399e24">
+        <i-panel title="{{item.createTime}}" i-class="vice_panel" class="_i-panel data-v-79399e24"></i-panel>
+        <i-fiche full isContent isFooter title="{{item.contacts[0].name}}" extra="{{item.state}}" thumb="{{item.portrait}}" class="_i-fiche data-v-79399e24">
+          <view slot="content" class="_view data-v-79399e24">
+            <rich-text nodes="{{item.followContent}}" class="_rich-text data-v-79399e24"></rich-text>
+          </view>
+          <view slot="footer" class="_view data-v-79399e24"><label class="_span data-v-79399e24 bgc_span">{{item.followType}}</label> <label wx:if="{{item.contactTime}}" class="_span data-v-79399e24">    </label> <label class="_span data-v-79399e24 bgc_span" wx:if="{{item.contactTime}}">{{item.contactTime}}</label>      <label class="_span data-v-79399e24">{{item.inputType}}</label>
+            <view class="_br data-v-79399e24"></view>
+            <image wx:if="{{item.followImg}}" mode="scaleToFill" src="{{item.followImg}}" class="_image data-v-79399e24 follow_image"></image>
+          </view>
+        </i-fiche>
+      </view>
+    </view>
+  </view>
+</template>

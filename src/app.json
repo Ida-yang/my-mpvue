@@ -57,6 +57,9 @@
     "pages/payCollection/main",
     "pages/payCollection/payCollectionDetail/main",
 
+    "pages/follow/main",
+    "pages/follow/followDetail/main",
+
     "pages/outwork/main",
     "pages/outwork/outworkAdd/main",
     "pages/outwork/outworkUpdate/main",
