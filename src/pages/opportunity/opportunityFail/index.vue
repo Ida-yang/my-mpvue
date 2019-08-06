@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="oppo_fail_wrap">
         <!-- <i-panel :title="current"></i-panel> -->
         <i-checkbox-group :current="checkItem" @change="itemChange">
             <i-checkbox v-for="item in failReasonList" position="right" :key="item.id" :value="item.name" :label="item.id">
@@ -123,5 +123,8 @@
     }
 </script>
 
-<style scoped>
+<style>
+    .oppo_fail_wrap{
+        margin-bottom: 40px
+    }
 </style>

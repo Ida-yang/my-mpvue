@@ -1,5 +1,5 @@
 <template name="f36f460a">
-  <view class="_div data-v-23c342e2">
+  <view class="_div data-v-23c342e2 oppo_stage_wrap">
     <i-panel title=" " class="_i-panel data-v-23c342e2"></i-panel>
     <i-panel title="{{opportunityInfo.name}}" class="_i-panel data-v-23c342e2"></i-panel>
     <i-steps current="{{stepIndex}}" direction="vertical" i-class="stage_steps" class="_i-steps data-v-23c342e2">

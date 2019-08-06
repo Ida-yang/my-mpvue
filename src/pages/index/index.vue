@@ -9,40 +9,58 @@
         </i-panel>
 
         <view class="sale_view">
-            <view class="sale_wrap_item_one">
-                <view class="item_one_view">
-                    <p class="p1">销售目标</p>
+            <view class="sale_wrap_item_two">
+                <view class="item_two_view1">
+                    <image src="../../static/images/saleTarget.png" style="width:24px;height:24px;" />
+                </view>
+                <view class="item_two_view2">
                     <p>{{amountData.target}}</p>
+                    <p>销售目标</p>
                 </view>
             </view>
-            <view class="sale_wrap_item_one">
-                <view class="item_one_view">
-                    <p class="p1">预计金额</p>
+            <view class="sale_wrap_item_two">
+                <view class="item_two_view1">
+                    <image src="../../static/images/estMoney.png" style="width:24px;height:24px;" />
+                </view>
+                <view class="item_two_view2">
                     <p>{{amountData.opportunity_achievement}}</p>
+                    <p>预计金额</p>
                 </view>
             </view>
-            <view class="sale_wrap_item_one">
-                <view class="item_one_view">
-                    <p class="p1">完成金额</p>
+            <view class="sale_wrap_item_two">
+                <view class="item_two_view1">
+                    <image src="../../static/images/successMoney.png" style="width:24px;height:24px;" />
+                </view>
+                <view class="item_two_view2">
                     <p>{{amountData.deal}}</p>
+                    <p>完成金额</p>
                 </view>
             </view>
-            <view class="sale_wrap_item_one">
-                <view class="item_one_view">
-                    <p class="p1">差&nbsp;&nbsp;&nbsp;&nbsp;额</p>
+            <view class="sale_wrap_item_two">
+                <view class="item_two_view1">
+                    <image src="../../static/images/difference.png" style="width:24px;height:24px;" />
+                </view>
+                <view class="item_two_view2">
                     <p>{{amountData.difference}}</p>
+                    <p>差&nbsp;&nbsp;&nbsp;&nbsp;额</p>
                 </view>
             </view>
-            <view class="sale_wrap_item_one">
-                <view class="item_one_view">
-                    <p class="p1">回款金额</p>
+            <view class="sale_wrap_item_two">
+                <view class="item_two_view1">
+                    <image src="../../static/images/backMoney.png" style="width:24px;height:24px;" />
+                </view>
+                <view class="item_two_view2">
                     <p>{{amountData.back}}</p>
+                    <p>回款金额</p>
                 </view>
             </view>
-            <view class="sale_wrap_item_one">
-                <view class="item_one_view">
-                    <p class="p1">计划回款金额</p>
+            <view class="sale_wrap_item_two">
+                <view class="item_two_view1">
+                    <image src="../../static/images/planMoney.png" style="width:24px;height:24px;" />
+                </view>
+                <view class="item_two_view2">
                     <p>{{amountData.backPlan}}</p>
+                    <p>计划回款金额</p>
                 </view>
             </view>
         </view>
@@ -104,7 +122,7 @@
             </view>
             <view class="sale_wrap_item_two">
                 <view class="item_two_view1">
-                    <image src="../../static/images/opportunity.png" style="width:24px;height:24px;" />
+                    <image src="../../static/images/follow.png" style="width:24px;height:24px;" />
                 </view>
                 <view class="item_two_view2">
                     <p>{{saleData.followNum}}</p>

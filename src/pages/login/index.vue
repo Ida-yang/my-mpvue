@@ -1,13 +1,17 @@
 <template>
     <view class="login_content">
         <view class="login_view">
-            <i-panel i-class="login_label" :title="current"></i-panel>
-            <i-panel i-class="login_welcome" title="欢迎您登录"></i-panel>
+            <!-- <i-panel i-class="login_label" :title="current"></i-panel>
+            <i-panel i-class="login_welcome" title="欢迎您登录"></i-panel> -->
+            <image class="login_logo" src="../../static/images/logo.png" style="width:80px;height:80px;" />
 
             <i-input :value="account" type="text" maxlength="11" right title="登录账号" mode="wrapped" i-class="login_input" @input="handinput($event,1)" />
             <i-input :value="password" type="password" maxlength="16" right title="登录密码" mode="wrapped" i-class="login_input" @input="handinput($event,2)" />
             
-            <i-button @click="toLogin" type="ghost" i-class="login_submit">登录</i-button>
+            <view class="login_submit">
+                <i-button @click="toLogin" type="ghost" i-class="login_btn">登录</i-button>
+                <i-button @click="toExperience" type="ghost" i-class="experience_btn">体验</i-button>
+            </view>
 
             <i-message id="message" />
             <i-toast id="toast" />
@@ -109,6 +113,60 @@
                     }
                 })
             },
+            toExperience(){
+                const _this = this
+                let data = {
+                    public_username: '18933916278',
+                    public_password: '123456'
+                }
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'tologin.do',  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    success: function (res) {
+                        if(res.data.code && res.data.code == "200"){
+                            $Message({
+                                content: '登录成功',
+                                type: 'success'
+                            });
+                            let info = res.data.map.success
+                            if(info.imgUrl){
+                                info.portrait = config.sourcehost + 'upload/' + info.cId + '/' + info.imgUrl
+                            }else{
+                                info.portrait = config.sourcehost + 'upload/staticImg/avatar.jpg'
+                            }
+                            config.userData = info
+                            let cookie = res.header["Set-Cookie"]
+                            let sessionPos = cookie.indexOf(",")
+                            let JSESSIONID = cookie.substring(0, sessionPos)
+                            let rememberMe = cookie.substring(sessionPos+1)
+                            if(JSESSIONID !== undefined && JSESSIONID !== null){
+                                let startPos = JSESSIONID.indexOf("JSESSIONID=")
+                                let endPos = JSESSIONID.indexOf(";")
+                                if(startPos != -1){
+                                    config.SESSIONID = JSESSIONID.substring(startPos, endPos)
+                                }
+                            }
+                            if(rememberMe !== undefined && rememberMe !== null){
+                                let sessionRem = rememberMe.indexOf("rememberMe=")
+                                if(sessionRem != -1){
+                                    config.rememberMe = rememberMe
+                                }
+                            }
+                            _this.toIndex()
+                        }else{
+                            $Message({
+                                content: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
+            },
             setLocalStorage(){
                 wx.setStorage({
                     key:"yzCRMaccount",
@@ -169,7 +227,10 @@
     }
     .login_view{
         flex: 1;
-        /* background-color: rgba(0, 0, 0, 0.3); */
+        margin-bottom: 100px
+    }
+    .login_logo{
+        margin-left: calc(50% - 40px)
     }
     .login_label{
         font-size: 24px;
@@ -190,5 +251,11 @@
     .login_submit{
         width: 70vw;
         margin: 25px auto !important;
+        display: flex;
+        align-items: center
+    }
+    .experience_btn,.login_btn{
+        flex: 1;
+        width: calc(35vw - 20px)
     }
 </style>

@@ -38,5 +38,6 @@
         </view>
       </i-fiche>
     </view>
+    <i-load-more wx:if="{{noMore}}" tip="我是有底线的" loading="{{false}}" class="_i-load-more data-v-721b49d9"></i-load-more>
   </view>
 </template>

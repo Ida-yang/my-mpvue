@@ -1,8 +1,0 @@
-{
-    "navigationBarTitleText": "客户跟进记录",
-    "usingComponents": {
-      "i-panel": "../../../iview/panel/index",
-      "i-icon": "../../../iview/icon/index",
-      "i-fiche": "../../../iview/fiche/index"
-    }
-}

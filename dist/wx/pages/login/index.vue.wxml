@@ -1,11 +1,13 @@
 <template name="51ab6f3e">
   <view class="_view data-v-5bd85957 login_content">
     <view class="_view data-v-5bd85957 login_view">
-      <i-panel i-class="login_label" title="{{current}}" class="_i-panel data-v-5bd85957"></i-panel>
-      <i-panel i-class="login_welcome" title="欢迎您登录" class="_i-panel data-v-5bd85957"></i-panel>
+      <image class="_image data-v-5bd85957 login_logo" src="../../static/images/logo.png" style="width:80px;height:80px;"></image>
       <i-input value="{{account}}" type="text" maxlength="11" right title="登录账号" mode="wrapped" i-class="login_input" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-5bd85957"></i-input>
       <i-input value="{{password}}" type="password" maxlength="16" right title="登录密码" mode="wrapped" i-class="login_input" bindinput="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-input data-v-5bd85957"></i-input>
-      <i-button bindtap="handleProxy" type="ghost" i-class="login_submit" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-button data-v-5bd85957">登录</i-button>
+      <view class="_view data-v-5bd85957 login_submit">
+        <i-button bindtap="handleProxy" type="ghost" i-class="login_btn" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-button data-v-5bd85957">登录</i-button>
+        <i-button bindtap="handleProxy" type="ghost" i-class="experience_btn" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-button data-v-5bd85957">体验</i-button>
+      </view>
       <i-message id="message" class="_i-message data-v-5bd85957"></i-message>
       <i-toast id="toast" class="_i-toast data-v-5bd85957"></i-toast>
     </view>

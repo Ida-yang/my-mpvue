@@ -8,40 +8,58 @@
       </i-tabs>
     </i-panel>
     <view class="_view data-v-5307a380 sale_view">
-      <view class="_view data-v-5307a380 sale_wrap_item_one">
-        <view class="_view data-v-5307a380 item_one_view">
-          <view class="_p data-v-5307a380 p1">销售目标</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_two">
+        <view class="_view data-v-5307a380 item_two_view1">
+          <image src="../../static/images/saleTarget.png" style="width:24px;height:24px;" class="_image data-v-5307a380"></image>
+        </view>
+        <view class="_view data-v-5307a380 item_two_view2">
           <view class="_p data-v-5307a380">{{amountData.target}}</view>
+          <view class="_p data-v-5307a380">销售目标</view>
         </view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item_one">
-        <view class="_view data-v-5307a380 item_one_view">
-          <view class="_p data-v-5307a380 p1">预计金额</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_two">
+        <view class="_view data-v-5307a380 item_two_view1">
+          <image src="../../static/images/estMoney.png" style="width:24px;height:24px;" class="_image data-v-5307a380"></image>
+        </view>
+        <view class="_view data-v-5307a380 item_two_view2">
           <view class="_p data-v-5307a380">{{amountData.opportunity_achievement}}</view>
+          <view class="_p data-v-5307a380">预计金额</view>
         </view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item_one">
-        <view class="_view data-v-5307a380 item_one_view">
-          <view class="_p data-v-5307a380 p1">完成金额</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_two">
+        <view class="_view data-v-5307a380 item_two_view1">
+          <image src="../../static/images/successMoney.png" style="width:24px;height:24px;" class="_image data-v-5307a380"></image>
+        </view>
+        <view class="_view data-v-5307a380 item_two_view2">
           <view class="_p data-v-5307a380">{{amountData.deal}}</view>
+          <view class="_p data-v-5307a380">完成金额</view>
         </view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item_one">
-        <view class="_view data-v-5307a380 item_one_view">
-          <view class="_p data-v-5307a380 p1">差    额</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_two">
+        <view class="_view data-v-5307a380 item_two_view1">
+          <image src="../../static/images/difference.png" style="width:24px;height:24px;" class="_image data-v-5307a380"></image>
+        </view>
+        <view class="_view data-v-5307a380 item_two_view2">
           <view class="_p data-v-5307a380">{{amountData.difference}}</view>
+          <view class="_p data-v-5307a380">差    额</view>
         </view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item_one">
-        <view class="_view data-v-5307a380 item_one_view">
-          <view class="_p data-v-5307a380 p1">回款金额</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_two">
+        <view class="_view data-v-5307a380 item_two_view1">
+          <image src="../../static/images/backMoney.png" style="width:24px;height:24px;" class="_image data-v-5307a380"></image>
+        </view>
+        <view class="_view data-v-5307a380 item_two_view2">
           <view class="_p data-v-5307a380">{{amountData.back}}</view>
+          <view class="_p data-v-5307a380">回款金额</view>
         </view>
       </view>
-      <view class="_view data-v-5307a380 sale_wrap_item_one">
-        <view class="_view data-v-5307a380 item_one_view">
-          <view class="_p data-v-5307a380 p1">计划回款金额</view>
+      <view class="_view data-v-5307a380 sale_wrap_item_two">
+        <view class="_view data-v-5307a380 item_two_view1">
+          <image src="../../static/images/planMoney.png" style="width:24px;height:24px;" class="_image data-v-5307a380"></image>
+        </view>
+        <view class="_view data-v-5307a380 item_two_view2">
           <view class="_p data-v-5307a380">{{amountData.backPlan}}</view>
+          <view class="_p data-v-5307a380">计划回款金额</view>
         </view>
       </view>
     </view>
@@ -101,7 +119,7 @@
       </view>
       <view class="_view data-v-5307a380 sale_wrap_item_two">
         <view class="_view data-v-5307a380 item_two_view1">
-          <image src="../../static/images/opportunity.png" style="width:24px;height:24px;" class="_image data-v-5307a380"></image>
+          <image src="../../static/images/follow.png" style="width:24px;height:24px;" class="_image data-v-5307a380"></image>
         </view>
         <view class="_view data-v-5307a380 item_two_view2">
           <view class="_p data-v-5307a380">{{saleData.followNum}}</view>

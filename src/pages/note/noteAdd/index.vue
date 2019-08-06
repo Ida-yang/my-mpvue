@@ -2,7 +2,8 @@
     <div>
         <i-panel title=" "></i-panel>
         <i-panel title=" "></i-panel>
-        <i-input v-model="addList.noteType" title="便签类别" right disabled maxlength="20" @input="handleInput" />
+        <i-cell title="便签类别" :value="addList.noteType" request is-link i-class="simple_cell" @click="cellFocus($event,1)"></i-cell>
+        <i-cell title="便签类别" :value="addList.noteType" request is-link i-class="simple_cell" @click="cellFocus($event,2)"></i-cell>
         <i-input v-model="addList.name" right type="textarea" maxlength="200" @input="handleInput" />
 
         <!-- 新增 -->
@@ -26,7 +27,11 @@
                     name:'',
                     noteType:'',
                     noteId:'',
-                }
+                },
+
+                searchList:{
+                    typeid:'',
+                },
             }
         },
 
@@ -36,15 +41,51 @@
 
         methods: {
             loadData(){
-                let info = config.information.noteaddData
-
-                this.addList = {
-                    name:'',
-                    noteType: info.name,
-                    noteId: info.id
+                const _this = this
+                let data = {
+                    pId: config.userData.pId
                 }
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'noteType/getNote.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success: function (res) {
+                        let info = res.data
+                        _this.typeList = info
+
+                        _this.loadNote()
+                    }
+                })
+            },
+            loadNote(){
+                const _this = this
+                let data = {
+                    pId: config.userData.pId,
+                    parentid: this.searchList.typeid
+                }
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'noteType/getNoteTypeByParentId.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success: function (res) {
+                        let info = res.data
+                        _this.tableData = info
+                    }
+                })
             },
             handleInput(){},
+            cellFocus(e,val){
+                if(val == 1){}
+            },
             addNote(){
                 const _this = this
                 let data = {}

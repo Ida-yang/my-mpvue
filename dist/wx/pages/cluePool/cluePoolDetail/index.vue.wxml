@@ -35,10 +35,12 @@
     <view wx:if="{{activeName == 'third'}}" class="_view data-v-36929c6e font_size_12">
       <i-cell-group class="_i-cell-group data-v-36929c6e">
         <i-cell title="公司名称" value="{{cluePoolDetail.name}}" class="_i-cell data-v-36929c6e"></i-cell>
-        <i-cell title="负责人" value="{{cluePoolDetail.privateUser[0].private_employee}}" class="_i-cell data-v-36929c6e"></i-cell>
         <i-cell title="线索状态" value="{{cluePoolDetail.state}}" class="_i-cell data-v-36929c6e"></i-cell>
         <i-cell title="未联系天数" value="{{cluePoolDetail.dayNum}}" class="_i-cell data-v-36929c6e"></i-cell>
         <i-cell title="创建时间" value="{{cluePoolDetail.createTime}}" class="_i-cell data-v-36929c6e"></i-cell>
+        <i-cell title="前负责人" value="{{cluePoolDetail.privateUser[0].private_employee}}" class="_i-cell data-v-36929c6e"></i-cell>
+        <i-cell title="部门" value="{{cluePoolDetail.deptname}}" class="_i-cell data-v-36929c6e"></i-cell>
+        <i-cell title="机构" value="{{cluePoolDetail.parentname}}" class="_i-cell data-v-36929c6e"></i-cell>
       </i-cell-group>
     </view>
     <i-tab-bar current="{{activeBar}}" bindchange="handleProxy" class="_i-tab-bar data-v-36929c6e bottom_btn" data-eventid="{{'1'}}" data-comkey="{{$k}}">

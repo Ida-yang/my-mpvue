@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "暂未开放",
+    "usingComponents": {
+      "i-panel": "../../iview/panel/index"
+    }
+}

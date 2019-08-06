@@ -59,6 +59,12 @@
 .i-progress-success .i-progress-text{
     color:#19be6b
 }
+.i-progress-info .i-progress-bg{
+    background-color:rgb(144, 147, 153)
+}
+/* .i-progress-info .i-progress-text{
+    color:#19be6b
+} */
 @keyframes i-progress-active{
     0%{
         opacity:.3;

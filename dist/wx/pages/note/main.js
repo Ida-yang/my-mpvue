@@ -2,14 +2,14 @@ require("../../common/manifest.js")
 require("../../common/vendor.js")
 global.webpackJsonpMpvue([25],{
 
-/***/ 248:
+/***/ 249:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(250);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 249:
+/***/ 250:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(251);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_22785fcc_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_22785fcc_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(253);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(250)
+  __webpack_require__(251)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,14 +72,14 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 250:
+/***/ 251:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 251:
+/***/ 252:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -155,8 +155,8 @@ if (false) {(function () {
             isValue: false,
             searchCriteria: false,
 
-            multiIndex: [0, 0],
-            multiArray: [['个人便签', '公司公告'], []]
+            optionIndex: '0',
+            optionArray: ['个人便签']
         };
     },
     onShow: function onShow() {
@@ -187,13 +187,6 @@ if (false) {(function () {
                 success: function success(res) {
                     var info = res.data;
                     _this.typeList = info;
-
-                    var itemArr = [];
-                    info.forEach(function (el) {
-                        itemArr.push(el.name);
-                    });
-
-                    _this.multiArray[1] = itemArr;
 
                     _this.loadData();
                 }
@@ -255,45 +248,14 @@ if (false) {(function () {
             this.typeActive = '-1';
             this.loadData();
         },
-        changeType: function changeType(e) {
+        toAddNote: function toAddNote(e) {
             console.log(e);
-            this.multiIndex = e.target.value;
-        },
-        columnChange: function columnChange(e) {
-            // console.log('修改的列为', e.mp.detail.column, '，值为', e.mp.detail.value);
-            var _this = this;
-            var column = e.mp.detail.column;
-            var value = e.mp.detail.value;
-            // var data = {
-            //     multiArray: this.multiArray,
-            //     multiIndex: this.multiIndex
-            // };
-            this.multiIndex[column] = value;
-            switch (column) {
-                case 0:
-                    switch (_this.multiIndex[0]) {
-                        case 0:
-                            console.log(_this.multiArray[1]);
-                            _this.multiArray[1] = ['爬行动物', '爬行动物', '爬行动物'];
-                            break;
-                        case 1:
-                            console.log(_this.multiArray[1]);
-                            _this.multiArray[1] = ['鱼', '两栖动物', '爬行动物'];
-                            break;
-                    }
-                    _this.multiIndex[1] = 0;
-                    break;
-                case 1:
-                    console.log(_this.multiArray[1]);
-                    break;
-            }
-            // this.multiArray = data.multiArray
-            // this.multiIndex = data.multiIndex
-        },
-        toAddNote: function toAddNote() {
-            var url = 'noteAdd/main';
-            __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.noteaddData = {};
-            global.mpvue.navigateTo({ url: url });
+            var index = e.target.value;
+            this.optionArray.forEach(function (el, i) {
+                if (i == index) {}
+            });
+            // const url = 'noteAdd/main'
+            // mpvue.navigateTo({ url })
         },
         todeleteNote: function todeleteNote(e, val) {
             console.log(e, val);
@@ -303,7 +265,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 252:
+/***/ 253:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -421,14 +383,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     })], 1)])])
   }), _vm._v(" "), _c('picker', {
     attrs: {
-      "mode": "multiSelector",
-      "value": _vm.multiIndex,
-      "range": _vm.multiArray,
+      "value": _vm.optionIndex,
+      "range": _vm.optionArray,
       "eventid": '5'
     },
     on: {
-      "change": _vm.changeType,
-      "columnchange": _vm.columnChange
+      "change": _vm.toAddNote
     }
   }, [_c('view', {
     staticClass: "picker"
@@ -454,4 +414,4 @@ if (false) {
 
 /***/ })
 
-},[248]);
+},[249]);

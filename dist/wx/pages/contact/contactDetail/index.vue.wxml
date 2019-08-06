@@ -34,8 +34,10 @@
         <i-cell title="邮箱" value="{{contactDetail.email}}" class="_i-cell data-v-daddbce0"></i-cell>
         <i-cell title="微信" value="{{contactDetail.wechat}}" class="_i-cell data-v-daddbce0"></i-cell>
         <i-cell title="性别" value="{{contactDetail.sex}}" class="_i-cell data-v-daddbce0"></i-cell>
-        <i-cell title="负责人" value="{{contactDetail.private_employee}}" class="_i-cell data-v-daddbce0"></i-cell>
         <i-cell title="创建时间" value="{{contactDetail.createTime}}" class="_i-cell data-v-daddbce0"></i-cell>
+        <i-cell title="负责人" value="{{contactDetail.private_employee}}" class="_i-cell data-v-daddbce0"></i-cell>
+        <i-cell title="部门" value="{{contactDetail.deptname}}" class="_i-cell data-v-daddbce0"></i-cell>
+        <i-cell title="机构" value="{{contactDetail.parentname}}" class="_i-cell data-v-daddbce0"></i-cell>
       </i-cell-group>
     </view>
     <view wx:if="{{activeName == 'third'}}" class="_view data-v-daddbce0 font_size_12">

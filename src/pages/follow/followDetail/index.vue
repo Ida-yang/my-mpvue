@@ -1,8 +1,9 @@
 <template>
     <div class="follow_detail_wrap">
-        <i-cell :title="curent">
-            <p class="cell_info">商机编号：&nbsp;&nbsp;{{curent}}</p>
-            <p class="cell_info">预计成交金额：&nbsp;&nbsp;{{curent}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;时间：&nbsp;&nbsp;{{curent}}</p>
+        <i-cell :title="numData.corporateName">
+            <p class="cell_info">总联系人：{{numData.contactsTotal}}人&nbsp;&nbsp;|&nbsp;&nbsp;联系过其中：{{numData.contactsIng}}人</p>
+            <p class="cell_info">总联系次数：{{numData.contactsNum}}次&nbsp;&nbsp;|&nbsp;&nbsp;最近联系：&nbsp;&nbsp;{{numData.contact_time}}</p>
+            <p class="cell_info">距上次联系天数：{{numData.distanceDayNum}}天</p>
         </i-cell>
 
         <i-panel title=" ">
@@ -44,6 +45,8 @@
                 customertwoId:'',
                 customerpool_id:'',
 
+                numData:{},
+
                 activeName:'first',
 
                 followData:[]
@@ -57,15 +60,39 @@
         methods:{
             loadData(){
                 let info = config.information.followDetailData
-                console.log(info)
+                
                 if(info.customertwo_id){
                     this.customertwoId = info.customertwoId
+                    this.customerpool_id = ''
                     this.loadClueFollow()
                 }
                 if(info.customerpool_id){
                     this.customerpool_id = info.customerpool_id
+                    this.customertwoId = ''
                     this.loadCusFollow()
                 }
+
+                this.loadOther()
+            },
+            loadOther(){
+                const _this = this
+                let data = {
+                    customerPoolId: this.customerpool_id,
+                    customertwoId: this.customertwoId
+                }
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'follow/getFollowForSmallProcedures.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        _this.numData = res.data
+                    }
+                })
             },
             loadClueFollow(){
                 const _this = this

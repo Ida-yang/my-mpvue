@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="oppo_stage_wrap">
         <i-panel title=" "></i-panel>
         <i-panel :title="opportunityInfo.name"></i-panel>
         <i-steps :current="stepIndex" direction="vertical" i-class="stage_steps">
@@ -263,6 +263,9 @@
 </script>
 
 <style>
+    .oppo_stage_wrap{
+        margin-bottom: 50px
+    }
     .stage_steps{
         margin-top: 20px;
     }

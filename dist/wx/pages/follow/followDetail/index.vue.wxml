@@ -1,8 +1,9 @@
 <template name="50051c42">
   <view class="_div data-v-79399e24 follow_detail_wrap">
-    <i-cell title="{{curent}}" class="_i-cell data-v-79399e24">
-      <view class="_p data-v-79399e24 cell_info">商机编号：  {{curent}}</view>
-      <view class="_p data-v-79399e24 cell_info">预计成交金额：  {{curent}}   |   时间：  {{curent}}</view>
+    <i-cell title="{{numData.corporateName}}" class="_i-cell data-v-79399e24">
+      <view class="_p data-v-79399e24 cell_info">总联系人：{{numData.contactsTotal}}人  |  联系过其中：{{numData.contactsIng}}人</view>
+      <view class="_p data-v-79399e24 cell_info">总联系次数：{{numData.contactsNum}}次  |  最近联系：  {{numData.contact_time}}</view>
+      <view class="_p data-v-79399e24 cell_info">距上次联系天数：{{numData.distanceDayNum}}天</view>
     </i-cell>
     <i-panel title=" " class="_i-panel data-v-79399e24">
       <i-tabs current="{{activeName}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-79399e24">

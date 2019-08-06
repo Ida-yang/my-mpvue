@@ -33,6 +33,9 @@
           </view>
           <view class="_view data-v-0c6f7a01 cell_footer"> 预计成交时间：{{item.opportunity_deal}}   |   阶段：{{item.opportunityProgress[0].progress_name}}
           </view>
+          <view class="_view data-v-0c6f7a01 cell_footer">
+            <i-progress percent="{{item.progress_probability}}" status="{{item.status}}" class="_i-progress data-v-0c6f7a01"></i-progress>
+          </view>
         </i-cell>
       </view>
       <view slot="button" class="_view data-v-0c6f7a01 i-swipeout-button">

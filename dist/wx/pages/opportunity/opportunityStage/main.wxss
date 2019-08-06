@@ -1,5 +1,8 @@
 @import "../../../common/vendor.wxss";
 
+.oppo_stage_wrap {
+  margin-bottom: 100rpx;
+}
 .stage_steps {
   margin-top: 40rpx;
 }

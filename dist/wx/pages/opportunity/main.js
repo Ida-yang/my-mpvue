@@ -2,14 +2,14 @@ require("../../common/manifest.js")
 require("../../common/vendor.js")
 global.webpackJsonpMpvue([20],{
 
-/***/ 273:
+/***/ 279:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(280);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 274:
+/***/ 280:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(276);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_0c6f7a01_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_0c6f7a01_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(283);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(275)
+  __webpack_require__(281)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,18 +72,21 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 275:
+/***/ 281:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 276:
+/***/ 282:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+//
+//
+//
 //
 //
 //
@@ -247,6 +250,18 @@ if (false) {(function () {
                 },
                 success: function success(res) {
                     var info = res.data.map.success;
+                    info.forEach(function (el) {
+                        el.progress_probability = parseInt(el.opportunityProgress[0].progress_probability);
+                        if (el.progress_probability == 100) {
+                            el.status = 'success';
+                        } else if (el.progress_probability == 0) {
+                            el.status = 'wrong';
+                        } else if (el.progress_probability !== 100 && el.progress_probability >= 50) {
+                            el.status = 'normal';
+                        } else {
+                            el.status = 'info';
+                        }
+                    });
                     if (_this.init === true) {
                         _this.tableData = info;
                         _this.init = false;
@@ -350,7 +365,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 277:
+/***/ 283:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -538,7 +553,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       attrs: {
         "i-class": "i-swipeout-demo-item",
         "operateWidth": 60,
-        "mpcomid": '13_' + index
+        "mpcomid": '14_' + index
       }
     }, [_c('view', {
       attrs: {
@@ -555,7 +570,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "i-class": "cell_content",
         "title": item.opportunity_name,
         "label": item.customerpool[0].name,
-        "mpcomid": '11_' + index
+        "mpcomid": '12_' + index
       }
     }, [_c('wxs', {
       attrs: {
@@ -567,7 +582,15 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       staticClass: "cell_footer"
     }, [_vm._v("\n                    负责人：" + _vm._s(item.private_employee) + "\n                      |  \n                    预计成交金额： " + _vm._s(item.opportunity_achievement) + "\n                ")]), _vm._v(" "), _c('view', {
       staticClass: "cell_footer"
-    }, [_vm._v("\n                    预计成交时间：" + _vm._s(item.opportunity_deal) + "\n                      |  \n                    阶段：" + _vm._s(item.opportunityProgress[0].progress_name) + "\n                ")])], 1)], 1), _vm._v(" "), _c('view', {
+    }, [_vm._v("\n                    预计成交时间：" + _vm._s(item.opportunity_deal) + "\n                      |  \n                    阶段：" + _vm._s(item.opportunityProgress[0].progress_name) + "\n                ")]), _vm._v(" "), _c('view', {
+      staticClass: "cell_footer"
+    }, [_c('i-progress', {
+      attrs: {
+        "percent": item.progress_probability,
+        "status": item.status,
+        "mpcomid": '11_' + index
+      }
+    })], 1)], 1)], 1), _vm._v(" "), _c('view', {
       staticClass: "i-swipeout-button",
       slot: "button"
     }, [_c('view', {
@@ -591,14 +614,14 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       attrs: {
         "size": "24",
         "type": "editor",
-        "mpcomid": '12_' + index
+        "mpcomid": '13_' + index
       }
     })], 1)])])
   }), _vm._v(" "), (_vm.noMore) ? _c('i-load-more', {
     attrs: {
       "tip": "我是有底线的",
       "loading": false,
-      "mpcomid": '14'
+      "mpcomid": '15'
     }
   }) : _vm._e(), _vm._v(" "), _c('i-button', {
     staticClass: "bottom_btn",
@@ -606,7 +629,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "type": "ghost",
       "long": true,
       "eventid": '12',
-      "mpcomid": '15'
+      "mpcomid": '16'
     },
     on: {
       "click": _vm.toAddOpportunity
@@ -626,4 +649,4 @@ if (false) {
 
 /***/ })
 
-},[273]);
+},[279]);

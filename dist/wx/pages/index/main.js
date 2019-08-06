@@ -1,15 +1,15 @@
 require("../../common/manifest.js")
 require("../../common/vendor.js")
-global.webpackJsonpMpvue([29],{
+global.webpackJsonpMpvue([30],{
 
-/***/ 186:
+/***/ 187:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(188);
 
 
 
@@ -25,16 +25,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 187:
+/***/ 188:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(189);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_5307a380_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_5307a380_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(227);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(188)
+  __webpack_require__(189)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -79,14 +79,14 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 188:
+/***/ 189:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 189:
+/***/ 190:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -95,6 +95,24 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__static_echarts_min_js__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__static_echarts_min_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__static_echarts_min_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mpvue_echarts__ = __webpack_require__(11);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -454,7 +472,7 @@ function initChart(canvas, width, height) {
 
 /***/ }),
 
-/***/ 226:
+/***/ 227:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -497,42 +515,30 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   })], 1)], 1), _vm._v(" "), _c('view', {
     staticClass: "sale_view"
   }, [_c('view', {
-    staticClass: "sale_wrap_item_one"
-  }, [_c('view', {
-    staticClass: "item_one_view"
-  }, [_c('p', {
-    staticClass: "p1"
-  }, [_vm._v("销售目标")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.target))])], 1)]), _vm._v(" "), _c('view', {
-    staticClass: "sale_wrap_item_one"
-  }, [_c('view', {
-    staticClass: "item_one_view"
-  }, [_c('p', {
-    staticClass: "p1"
-  }, [_vm._v("预计金额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.opportunity_achievement))])], 1)]), _vm._v(" "), _c('view', {
-    staticClass: "sale_wrap_item_one"
-  }, [_c('view', {
-    staticClass: "item_one_view"
-  }, [_c('p', {
-    staticClass: "p1"
-  }, [_vm._v("完成金额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.deal))])], 1)]), _vm._v(" "), _c('view', {
-    staticClass: "sale_wrap_item_one"
-  }, [_c('view', {
-    staticClass: "item_one_view"
-  }, [_c('p', {
-    staticClass: "p1"
-  }, [_vm._v("差    额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.difference))])], 1)]), _vm._v(" "), _c('view', {
-    staticClass: "sale_wrap_item_one"
-  }, [_c('view', {
-    staticClass: "item_one_view"
-  }, [_c('p', {
-    staticClass: "p1"
-  }, [_vm._v("回款金额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.back))])], 1)]), _vm._v(" "), _c('view', {
-    staticClass: "sale_wrap_item_one"
-  }, [_c('view', {
-    staticClass: "item_one_view"
-  }, [_c('p', {
-    staticClass: "p1"
-  }, [_vm._v("计划回款金额")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.amountData.backPlan))])], 1)])]), _vm._v(" "), _c('i-panel', {
+    staticClass: "sale_wrap_item_two"
+  }, [_vm._m(0), _vm._v(" "), _c('view', {
+    staticClass: "item_two_view2"
+  }, [_c('p', [_vm._v(_vm._s(_vm.amountData.target))]), _vm._v(" "), _c('p', [_vm._v("销售目标")])], 1)]), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item_two"
+  }, [_vm._m(1), _vm._v(" "), _c('view', {
+    staticClass: "item_two_view2"
+  }, [_c('p', [_vm._v(_vm._s(_vm.amountData.opportunity_achievement))]), _vm._v(" "), _c('p', [_vm._v("预计金额")])], 1)]), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item_two"
+  }, [_vm._m(2), _vm._v(" "), _c('view', {
+    staticClass: "item_two_view2"
+  }, [_c('p', [_vm._v(_vm._s(_vm.amountData.deal))]), _vm._v(" "), _c('p', [_vm._v("完成金额")])], 1)]), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item_two"
+  }, [_vm._m(3), _vm._v(" "), _c('view', {
+    staticClass: "item_two_view2"
+  }, [_c('p', [_vm._v(_vm._s(_vm.amountData.difference))]), _vm._v(" "), _c('p', [_vm._v("差    额")])], 1)]), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item_two"
+  }, [_vm._m(4), _vm._v(" "), _c('view', {
+    staticClass: "item_two_view2"
+  }, [_c('p', [_vm._v(_vm._s(_vm.amountData.back))]), _vm._v(" "), _c('p', [_vm._v("回款金额")])], 1)]), _vm._v(" "), _c('view', {
+    staticClass: "sale_wrap_item_two"
+  }, [_vm._m(5), _vm._v(" "), _c('view', {
+    staticClass: "item_two_view2"
+  }, [_c('p', [_vm._v(_vm._s(_vm.amountData.backPlan))]), _vm._v(" "), _c('p', [_vm._v("计划回款金额")])], 1)])]), _vm._v(" "), _c('i-panel', {
     staticClass: "small_panel",
     attrs: {
       "title": "销售简报",
@@ -575,27 +581,27 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "sale_view"
   }, [_c('view', {
     staticClass: "sale_wrap_item_two"
-  }, [_vm._m(0), _vm._v(" "), _c('view', {
+  }, [_vm._m(6), _vm._v(" "), _c('view', {
     staticClass: "item_two_view2"
   }, [_c('p', [_vm._v(_vm._s(_vm.saleData.customertwoNum))]), _vm._v(" "), _c('p', [_vm._v("线索")])], 1)]), _vm._v(" "), _c('view', {
     staticClass: "sale_wrap_item_two"
-  }, [_vm._m(1), _vm._v(" "), _c('view', {
+  }, [_vm._m(7), _vm._v(" "), _c('view', {
     staticClass: "item_two_view2"
   }, [_c('p', [_vm._v(_vm._s(_vm.saleData.customertwoAddNum))]), _vm._v(" "), _c('p', [_vm._v("新增线索")])], 1)]), _vm._v(" "), _c('view', {
     staticClass: "sale_wrap_item_two"
-  }, [_vm._m(2), _vm._v(" "), _c('view', {
+  }, [_vm._m(8), _vm._v(" "), _c('view', {
     staticClass: "item_two_view2"
   }, [_c('p', [_vm._v(_vm._s(_vm.saleData.customerpoolNum))]), _vm._v(" "), _c('p', [_vm._v("客户")])], 1)]), _vm._v(" "), _c('view', {
     staticClass: "sale_wrap_item_two"
-  }, [_vm._m(3), _vm._v(" "), _c('view', {
+  }, [_vm._m(9), _vm._v(" "), _c('view', {
     staticClass: "item_two_view2"
   }, [_c('p', [_vm._v(_vm._s(_vm.saleData.customerpoolAddNum))]), _vm._v(" "), _c('p', [_vm._v("新增客户")])], 1)]), _vm._v(" "), _c('view', {
     staticClass: "sale_wrap_item_two"
-  }, [_vm._m(4), _vm._v(" "), _c('view', {
+  }, [_vm._m(10), _vm._v(" "), _c('view', {
     staticClass: "item_two_view2"
   }, [_c('p', [_vm._v(_vm._s(_vm.saleData.opportunityAddNum))]), _vm._v(" "), _c('p', [_vm._v("新增商机")])], 1)]), _vm._v(" "), _c('view', {
     staticClass: "sale_wrap_item_two"
-  }, [_vm._m(5), _vm._v(" "), _c('view', {
+  }, [_vm._m(11), _vm._v(" "), _c('view', {
     staticClass: "item_two_view2"
   }, [_c('p', [_vm._v(_vm._s(_vm.saleData.followNum))]), _vm._v(" "), _c('p', [_vm._v("新增跟进记录")])], 1)])]), _vm._v(" "), _c('i-panel', {
     staticClass: "small_panel",
@@ -647,7 +653,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   })], 1), _vm._v(" "), _c('view', {
     staticClass: "index_table"
-  }, [_vm._m(6), _vm._v(" "), _vm._l((_vm.tableData), function(item, index) {
+  }, [_vm._m(12), _vm._v(" "), _vm._l((_vm.tableData), function(item, index) {
     return _c('view', {
       key: index,
       staticClass: "index_table_td"
@@ -663,6 +669,78 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
       "height": "24px"
     },
     attrs: {
+      "src": "../../static/images/saleTarget.png"
+    }
+  })])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('view', {
+    staticClass: "item_two_view1"
+  }, [_c('image', {
+    staticStyle: {
+      "width": "24px",
+      "height": "24px"
+    },
+    attrs: {
+      "src": "../../static/images/estMoney.png"
+    }
+  })])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('view', {
+    staticClass: "item_two_view1"
+  }, [_c('image', {
+    staticStyle: {
+      "width": "24px",
+      "height": "24px"
+    },
+    attrs: {
+      "src": "../../static/images/successMoney.png"
+    }
+  })])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('view', {
+    staticClass: "item_two_view1"
+  }, [_c('image', {
+    staticStyle: {
+      "width": "24px",
+      "height": "24px"
+    },
+    attrs: {
+      "src": "../../static/images/difference.png"
+    }
+  })])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('view', {
+    staticClass: "item_two_view1"
+  }, [_c('image', {
+    staticStyle: {
+      "width": "24px",
+      "height": "24px"
+    },
+    attrs: {
+      "src": "../../static/images/backMoney.png"
+    }
+  })])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('view', {
+    staticClass: "item_two_view1"
+  }, [_c('image', {
+    staticStyle: {
+      "width": "24px",
+      "height": "24px"
+    },
+    attrs: {
+      "src": "../../static/images/planMoney.png"
+    }
+  })])
+},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('view', {
+    staticClass: "item_two_view1"
+  }, [_c('image', {
+    staticStyle: {
+      "width": "24px",
+      "height": "24px"
+    },
+    attrs: {
       "src": "../../static/images/clue.png"
     }
   })])
@@ -723,7 +801,7 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
       "height": "24px"
     },
     attrs: {
-      "src": "../../static/images/opportunity.png"
+      "src": "../../static/images/follow.png"
     }
   })])
 },function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -743,4 +821,4 @@ if (false) {
 
 /***/ })
 
-},[186]);
+},[187]);

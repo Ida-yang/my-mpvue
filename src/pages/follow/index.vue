@@ -51,6 +51,8 @@
                 </view>
             </i-fiche>
         </view>
+
+        <i-load-more v-if="noMore" tip="我是有底线的" :loading="false" />
     </view>
 </template>
 
@@ -234,9 +236,10 @@
                     page: 1,
                     limit: 10,
                 }
-                this.originActive = '-1'
+                this.modelActive = '-1'
                 this.powerActive = '1'
                 this.timeActive = '-1'
+                this.keyTypeActive = '-1'
                 this.init = true
                 this.noMore = false
                 this.loadData()

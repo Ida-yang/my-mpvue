@@ -55,6 +55,9 @@
                         &nbsp;&nbsp;|&nbsp;&nbsp;
                         阶段：{{item.opportunityProgress[0].progress_name}}
                     </view>
+                    <view class="cell_footer">
+                        <i-progress :percent="item.progress_probability" :status="item.status"></i-progress>
+                    </view>
                 </i-cell>
             </view>
             <view slot="button" class="i-swipeout-button">
@@ -178,6 +181,18 @@
                     },
                     success: function (res) {
                         let info = res.data.map.success
+                        info.forEach(el => {
+                            el.progress_probability = parseInt(el.opportunityProgress[0].progress_probability)
+                            if(el.progress_probability == 100){
+                                el.status = 'success'
+                            }else if(el.progress_probability == 0){
+                                el.status = 'wrong'
+                            }else if(el.progress_probability !== 100 && el.progress_probability >= 50){
+                                el.status = 'normal'
+                            }else{
+                                el.status = 'info'
+                            }
+                        });
                         if(_this.init === true){
                             _this.tableData = info
                             _this.init = false

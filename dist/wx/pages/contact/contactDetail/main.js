@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([41],{
+global.webpackJsonpMpvue([43],{
 
 /***/ 122:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -86,6 +86,8 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
+//
+//
 //
 //
 //
@@ -450,7 +452,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "font_size_12"
   }, [_c('i-cell-group', {
     attrs: {
-      "mpcomid": '18'
+      "mpcomid": '20'
     }
   }, [_c('i-cell', {
     attrs: {
@@ -496,15 +498,27 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
-      "title": "负责人",
-      "value": _vm.contactDetail.private_employee,
+      "title": "创建时间",
+      "value": _vm.contactDetail.createTime,
       "mpcomid": '16'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
-      "title": "创建时间",
-      "value": _vm.contactDetail.createTime,
+      "title": "负责人",
+      "value": _vm.contactDetail.private_employee,
       "mpcomid": '17'
+    }
+  }), _vm._v(" "), _c('i-cell', {
+    attrs: {
+      "title": "部门",
+      "value": _vm.contactDetail.deptname,
+      "mpcomid": '18'
+    }
+  }), _vm._v(" "), _c('i-cell', {
+    attrs: {
+      "title": "机构",
+      "value": _vm.contactDetail.parentname,
+      "mpcomid": '19'
     }
   })], 1)], 1) : _vm._e(), _vm._v(" "), (_vm.activeName == 'third') ? _c('view', {
     staticClass: "font_size_12"
@@ -512,7 +526,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "full": "",
       "title": "商机",
-      "mpcomid": '20'
+      "mpcomid": '22'
     }
   }, _vm._l((_vm.opportunityData), function(item, index) {
     return _c('i-cell', {
@@ -521,7 +535,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "i-class": "card_cell",
         "title": item.opportunity_name,
         "label": item.opportunity_time,
-        "mpcomid": '19_' + index
+        "mpcomid": '21_' + index
       },
       slot: "content"
     }, [_c('view', {
@@ -543,7 +557,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "full": "",
       "title": "合同",
-      "mpcomid": '22'
+      "mpcomid": '24'
     }
   }, _vm._l((_vm.agreementData), function(item, index) {
     return _c('i-cell', {
@@ -552,7 +566,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "i-class": "card_cell",
         "title": item.contract_name,
         "label": item.start_date,
-        "mpcomid": '21_' + index
+        "mpcomid": '23_' + index
       },
       slot: "content"
     }, [_c('view', {
@@ -573,7 +587,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "current": _vm.activeBar,
       "eventid": '1',
-      "mpcomid": '25'
+      "mpcomid": '27'
     },
     on: {
       "change": _vm.changeBar
@@ -584,7 +598,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "addressbook",
       "current-icon": "addressbook",
       "title": "打电话",
-      "mpcomid": '23'
+      "mpcomid": '25'
     }
   }), _vm._v(" "), _c('i-tab-bar-item', {
     key: "trash",
@@ -592,7 +606,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "trash",
       "current-icon": "trash",
       "title": "删除",
-      "mpcomid": '24'
+      "mpcomid": '26'
     }
   })], 1), _vm._v(" "), _c('i-action-sheet', {
     attrs: {
@@ -601,7 +615,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "show-cancel": "",
       "mask-closable": false,
       "eventid": '2',
-      "mpcomid": '26'
+      "mpcomid": '28'
     },
     on: {
       "cancel": _vm.cancelDelete,
@@ -620,12 +634,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("确定吗？")]), _vm._v(" "), _c('text', [_vm._v("删除后无法恢复哦")])])]), _vm._v(" "), _c('i-toast', {
     attrs: {
       "id": "toast",
-      "mpcomid": '27'
+      "mpcomid": '29'
     }
   }), _vm._v(" "), _c('i-message', {
     attrs: {
       "id": "message",
-      "mpcomid": '28'
+      "mpcomid": '30'
     }
   })], 1)
 }

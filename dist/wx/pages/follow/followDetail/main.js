@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([62],{
+global.webpackJsonpMpvue([32],{
 
 /***/ 177:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -23,7 +23,7 @@ app.$mount();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(180);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_79399e24_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(436);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_79399e24_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(181);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
@@ -119,6 +119,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -129,6 +130,8 @@ if (false) {(function () {
 
             customertwoId: '',
             customerpool_id: '',
+
+            numData: {},
 
             activeName: 'first',
 
@@ -143,15 +146,39 @@ if (false) {(function () {
     methods: {
         loadData: function loadData() {
             var info = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.followDetailData;
-            console.log(info);
+
             if (info.customertwo_id) {
                 this.customertwoId = info.customertwoId;
+                this.customerpool_id = '';
                 this.loadClueFollow();
             }
             if (info.customerpool_id) {
                 this.customerpool_id = info.customerpool_id;
+                this.customertwoId = '';
                 this.loadCusFollow();
             }
+
+            this.loadOther();
+        },
+        loadOther: function loadOther() {
+            var _this = this;
+            var data = {
+                customerPoolId: this.customerpool_id,
+                customertwoId: this.customertwoId
+            };
+
+            wx.request({
+                method: 'post',
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'follow/getFollowForSmallProcedures.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                data: data,
+                header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    _this.numData = res.data;
+                }
+            });
         },
         loadClueFollow: function loadClueFollow() {
             var _this = this;
@@ -233,7 +260,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 436:
+/***/ 181:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -242,14 +269,16 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "follow_detail_wrap"
   }, [_c('i-cell', {
     attrs: {
-      "title": _vm.curent,
+      "title": _vm.numData.corporateName,
       "mpcomid": '0'
     }
   }, [_c('p', {
     staticClass: "cell_info"
-  }, [_vm._v("商机编号：  " + _vm._s(_vm.curent))]), _vm._v(" "), _c('p', {
+  }, [_vm._v("总联系人：" + _vm._s(_vm.numData.contactsTotal) + "人  |  联系过其中：" + _vm._s(_vm.numData.contactsIng) + "人")]), _vm._v(" "), _c('p', {
     staticClass: "cell_info"
-  }, [_vm._v("预计成交金额：  " + _vm._s(_vm.curent) + "   |   时间：  " + _vm._s(_vm.curent))])], 1), _vm._v(" "), _c('i-panel', {
+  }, [_vm._v("总联系次数：" + _vm._s(_vm.numData.contactsNum) + "次  |  最近联系：  " + _vm._s(_vm.numData.contact_time))]), _vm._v(" "), _c('p', {
+    staticClass: "cell_info"
+  }, [_vm._v("距上次联系天数：" + _vm._s(_vm.numData.distanceDayNum) + "天")])], 1), _vm._v(" "), _c('i-panel', {
     attrs: {
       "title": " ",
       "mpcomid": '3'

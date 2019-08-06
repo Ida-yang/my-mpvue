@@ -42,8 +42,10 @@
                 <i-cell title="邮箱" :value="contactDetail.email"></i-cell>
                 <i-cell title="微信" :value="contactDetail.wechat"></i-cell>
                 <i-cell title="性别" :value="contactDetail.sex"></i-cell>
-                <i-cell title="负责人" :value="contactDetail.private_employee"></i-cell>
                 <i-cell title="创建时间" :value="contactDetail.createTime"></i-cell>
+                <i-cell title="负责人" :value="contactDetail.private_employee"></i-cell>
+                <i-cell title="部门" :value="contactDetail.deptname"></i-cell>
+                <i-cell title="机构" :value="contactDetail.parentname"></i-cell>
             </i-cell-group>
         </view>
 

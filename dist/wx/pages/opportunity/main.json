@@ -12,6 +12,7 @@
       "i-input": "../../iview/input/index",
       "i-drawer": "../../iview/drawer/index",
       "i-button": "../../iview/button/index",
-      "i-swipeout": "../../iview/swipeout/index"
+      "i-swipeout": "../../iview/swipeout/index",
+      "i-progress": "../../iview/progress/index"
     }
 }

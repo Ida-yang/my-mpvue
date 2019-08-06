@@ -9,6 +9,10 @@
 }
 .login_view {
   flex: 1;
+  margin-bottom: 200rpx;
+}
+.login_logo {
+  margin-left: calc(50% - 80rpx);
 }
 .login_label {
   font-size: 48rpx;
@@ -30,4 +34,11 @@
 .login_submit {
   width: 70vw;
   margin: 50rpx auto !important;
+  display: flex;
+  align-items: center;
+}
+.experience_btn,
+.login_btn {
+  flex: 1;
+  width: calc(35vw - 40rpx);
 }

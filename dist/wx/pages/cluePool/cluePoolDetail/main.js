@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([51],{
+global.webpackJsonpMpvue([53],{
 
 /***/ 100:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -9,6 +9,8 @@ global.webpackJsonpMpvue([51],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
+//
+//
 //
 //
 //
@@ -403,7 +405,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "font_size_12"
   }, [_c('i-cell-group', {
     attrs: {
-      "mpcomid": '17'
+      "mpcomid": '19'
     }
   }, [_c('i-cell', {
     attrs: {
@@ -413,34 +415,46 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
-      "title": "负责人",
-      "value": _vm.cluePoolDetail.privateUser[0].private_employee,
-      "mpcomid": '13'
-    }
-  }), _vm._v(" "), _c('i-cell', {
-    attrs: {
       "title": "线索状态",
       "value": _vm.cluePoolDetail.state,
-      "mpcomid": '14'
+      "mpcomid": '13'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "未联系天数",
       "value": _vm.cluePoolDetail.dayNum,
-      "mpcomid": '15'
+      "mpcomid": '14'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "创建时间",
       "value": _vm.cluePoolDetail.createTime,
+      "mpcomid": '15'
+    }
+  }), _vm._v(" "), _c('i-cell', {
+    attrs: {
+      "title": "前负责人",
+      "value": _vm.cluePoolDetail.privateUser[0].private_employee,
       "mpcomid": '16'
+    }
+  }), _vm._v(" "), _c('i-cell', {
+    attrs: {
+      "title": "部门",
+      "value": _vm.cluePoolDetail.deptname,
+      "mpcomid": '17'
+    }
+  }), _vm._v(" "), _c('i-cell', {
+    attrs: {
+      "title": "机构",
+      "value": _vm.cluePoolDetail.parentname,
+      "mpcomid": '18'
     }
   })], 1)], 1) : _vm._e(), _vm._v(" "), _c('i-tab-bar', {
     staticClass: "bottom_btn",
     attrs: {
       "current": _vm.activeBar,
       "eventid": '1',
-      "mpcomid": '21'
+      "mpcomid": '23'
     },
     on: {
       "change": _vm.changeBar
@@ -451,7 +465,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "group",
       "current-icon": "group",
       "title": "领取",
-      "mpcomid": '18'
+      "mpcomid": '20'
     }
   }), _vm._v(" "), _c('i-tab-bar-item', {
     key: "distribute",
@@ -459,7 +473,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "share",
       "current-icon": "share",
       "title": "分配",
-      "mpcomid": '19'
+      "mpcomid": '21'
     }
   }), _vm._v(" "), _c('i-tab-bar-item', {
     key: "trash",
@@ -467,7 +481,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "trash",
       "current-icon": "trash",
       "title": "删除",
-      "mpcomid": '20'
+      "mpcomid": '22'
     }
   })], 1), _vm._v(" "), _c('i-action-sheet', {
     attrs: {
@@ -476,7 +490,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "show-cancel": "",
       "mask-closable": false,
       "eventid": '2',
-      "mpcomid": '22'
+      "mpcomid": '24'
     },
     on: {
       "cancel": _vm.cancelDelete,
@@ -495,12 +509,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("确定吗？")]), _vm._v(" "), _c('text', [_vm._v("删除后无法恢复哦")])])]), _vm._v(" "), _c('i-toast', {
     attrs: {
       "id": "toast",
-      "mpcomid": '23'
+      "mpcomid": '25'
     }
   }), _vm._v(" "), _c('i-message', {
     attrs: {
       "id": "message",
-      "mpcomid": '24'
+      "mpcomid": '26'
     }
   })], 1)
 }

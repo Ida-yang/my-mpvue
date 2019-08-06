@@ -36,10 +36,12 @@
         <view v-if="activeName == 'second'" class="font_size_12">
             <i-cell-group>
                 <i-cell title="公司名称" :value="customerData.pName"></i-cell>
-                <i-cell title="负责人" :value="customerData.privateUser[0].private_employee"></i-cell>
                 <i-cell title="客户状态" :value="customerData.source"></i-cell>
                 <i-cell title="未联系天数" :value="customerData.dayNum"></i-cell>
                 <i-cell title="创建时间" :value="customerData.createTime"></i-cell>
+                <i-cell title="负责人" :value="customerData.privateUser[0].private_employee"></i-cell>
+                <i-cell title="部门" :value="customerData.deptname"></i-cell>
+                <i-cell title="机构" :value="customerData.parentname"></i-cell>
             </i-cell-group>
         </view>
 

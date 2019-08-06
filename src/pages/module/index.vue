@@ -85,19 +85,19 @@
         <i-panel title="办公" class="small_panel"></i-panel>
         <i-grid i-class="module_view">
             <i-row>
-                <i-grid-item @click="toOutwork">
+                <i-grid-item @click="toNotYet">
                     <i-grid-icon>
                         <image src="../../static/images/outwork.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>外勤</i-grid-label>
                 </i-grid-item>
-                <i-grid-item @click="toTask">
+                <i-grid-item @click="toNotYet">
                     <i-grid-icon>
                         <image src="../../static/images/task.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
                     <i-grid-label>任务</i-grid-label>
                 </i-grid-item>
-                <i-grid-item @click="toNote">
+                <i-grid-item @click="toNotYet">
                     <i-grid-icon>
                         <image src="../../static/images/note.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
@@ -183,6 +183,12 @@
             toNote(){
                 console.log('去便签')
                 const url = '../note/main'
+                mpvue.navigateTo({ url })
+            },
+
+            toNotYet(){
+                console.log('去暂未开放')
+                const url = '../notYet/main'
                 mpvue.navigateTo({ url })
             },
         },

@@ -73,7 +73,9 @@
     "pages/note/main",
     "pages/note/noteAdd/main",
     "pages/note/noteUpdate/main",
-    "pages/note/noteDetail/main"
+    "pages/note/noteDetail/main",
+    
+    "pages/notYet/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

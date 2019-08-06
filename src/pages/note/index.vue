@@ -39,15 +39,15 @@
         </i-swipeout>
         
         <!-- 新增 -->
-        <picker mode="multiSelector" @change="changeType" @columnchange="columnChange" :value="multiIndex" :range="multiArray">
+        <picker @change="toAddNote" :value="optionIndex" :range="optionArray">
             <view class="picker">
-            <!-- 当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}} -->
                 <i-button type="ghost" :long="true" class="bottom_btn">新增</i-button>
             </view>
         </picker>
         
+        
     </div>
-</template>
+</template> 
 
 <script>
     import config from '../../config'
@@ -69,8 +69,8 @@
                 isValue:false,
                 searchCriteria:false,
 
-                multiIndex:[0,0],
-                multiArray:[['个人便签','公司公告'],[]]
+                optionIndex:'0',
+                optionArray:['个人便签']
             }
         },
 
@@ -100,13 +100,6 @@
                     success: function (res) {
                         let info = res.data
                         _this.typeList = info
-
-                        let itemArr = []
-                        info.forEach(el => {
-                            itemArr.push(el.name)
-                        });
-
-                        _this.multiArray[1] = itemArr
 
                         _this.loadData()
                     }
@@ -168,47 +161,18 @@
                 this.typeActive = '-1'
                 this.loadData()
             },
+            
 
-            changeType(e){
+            toAddNote(e){
                 console.log(e)
-                this.multiIndex = e.target.value
-            },
-            columnChange(e){
-                // console.log('修改的列为', e.mp.detail.column, '，值为', e.mp.detail.value);
-                const _this = this
-                let column = e.mp.detail.column
-                let value = e.mp.detail.value
-                // var data = {
-                //     multiArray: this.multiArray,
-                //     multiIndex: this.multiIndex
-                // };
-                this.multiIndex[column] = value;
-                switch (column) {
-                case 0:
-                    switch (_this.multiIndex[0]) {
-                    case 0:
-                        console.log(_this.multiArray[1])
-                        _this.multiArray[1] = ['爬行动物','爬行动物','爬行动物'];
-                        break;
-                    case 1:
-                        console.log(_this.multiArray[1])
-                        _this.multiArray[1] = ['鱼', '两栖动物', '爬行动物'];
-                        break;
+                let index = e.target.value
+                this.optionArray.forEach((el,i) => {
+                    if(i == index){
+                        
                     }
-                    _this.multiIndex[1] = 0;
-                    break;
-                case 1:
-                    console.log(_this.multiArray[1])
-                    break;
-                }
-                // this.multiArray = data.multiArray
-                // this.multiIndex = data.multiIndex
-            },
-
-            toAddNote(){
-                const url = 'noteAdd/main'
-                config.information.noteaddData = {}
-                mpvue.navigateTo({ url })
+                });
+                // const url = 'noteAdd/main'
+                // mpvue.navigateTo({ url })
             },
             todeleteNote(e,val){
                 console.log(e,val)

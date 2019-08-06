@@ -42,10 +42,12 @@
         <view v-if="activeName == 'third'" class="font_size_12">
             <i-cell-group>
                 <i-cell title="公司名称" :value="clueData.name"></i-cell>
-                <i-cell title="负责人" :value="clueData.privateUser[0].private_employee"></i-cell>
                 <i-cell title="线索状态" :value="clueData.state"></i-cell>
                 <i-cell title="未联系天数" :value="clueData.dayNum"></i-cell>
                 <i-cell title="创建时间" :value="clueData.createTime"></i-cell>
+                <i-cell title="负责人" :value="clueData.privateUser[0].private_employee"></i-cell>
+                <i-cell title="部门" :value="clueData.deptname"></i-cell>
+                <i-cell title="机构" :value="clueData.parentname"></i-cell>
             </i-cell-group>
         </view>
 

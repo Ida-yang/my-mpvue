@@ -47,7 +47,7 @@
 				{
 					"id": 0,
 					"name": "单页调试",
-					"pathName": "pages/follow/main",
+					"pathName": "pages/note/main",
 					"query": "",
 					"scene": null
 				},
