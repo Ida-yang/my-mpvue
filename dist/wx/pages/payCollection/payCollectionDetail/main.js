@@ -200,6 +200,7 @@ if (false) {(function () {
 
             var data = {
                 recordId: this.payCollectionDetail.examineRecordId,
+                checkStatus: this.payCollectionDetail.checkStatus,
                 pId: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.pId
             };
 
@@ -445,13 +446,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("拒绝")])], 1) : _vm._e(), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": '审核状态：' + _vm.payCollectionDetail.checkState,
-      "is-link": "",
       "i-class": "cell_link",
-      "eventid": '2',
       "mpcomid": '2'
-    },
-    on: {
-      "click": _vm.toPayState
     }
   })], 1), _vm._v(" "), _c('i-panel', {
     attrs: {
@@ -461,7 +457,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('i-tabs', {
     attrs: {
       "current": _vm.activeName,
-      "eventid": '3',
+      "eventid": '2',
       "mpcomid": '7'
     },
     on: {
@@ -470,7 +466,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('i-tab', {
     key: "first",
     attrs: {
-      "title": "审批历史",
+      "title": "审核历史",
       "mpcomid": '4'
     }
   }), _vm._v(" "), _c('i-tab', {
@@ -618,7 +614,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "title": "请填写审核意见",
       "visible": _vm.showSure,
-      "eventid": '5',
+      "eventid": '4',
       "mpcomid": '27'
     },
     on: {
@@ -633,7 +629,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "type": "textarea",
       "request": "",
       "maxlength": "200",
-      "eventid": '4',
+      "eventid": '3',
       "mpcomid": '26'
     },
     on: {
@@ -650,7 +646,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "title": "请填写审核意见",
       "visible": _vm.showRefuse,
-      "eventid": '7',
+      "eventid": '6',
       "mpcomid": '29'
     },
     on: {
@@ -665,7 +661,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "type": "textarea",
       "request": "",
       "maxlength": "200",
-      "eventid": '6',
+      "eventid": '5',
       "mpcomid": '28'
     },
     on: {

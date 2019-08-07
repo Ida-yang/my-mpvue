@@ -1,6 +1,70 @@
 <template>
-    <div>
-        <i-panel :title="current"></i-panel>
+    <div class="out_work_wrap">
+        <!-- <i-panel :title="current"></i-panel> -->
+        <!-- 查询 -->
+        <view class="search_view">
+            <view class="search_box">
+                <i-icon type="search" size="16" color="#80848f" class="search_icon" />
+                <i-input v-model="searchList.searchName" maxlength="50" i-class="search_input" @input="handleInput($event,1)" />
+                <i-icon v-if="isValue" type="close" size="14" color="#80848f" class="search_icon" @click="closeSearch" />
+            </view>
+            <span class="search_btn" @click="search">搜索</span>
+            <i-icon type="other" size="18" color="#80848f" class="search_icon" @click="queryCriteria" />
+        </view>
+        <i-drawer mode="right" :visible="searchCriteria" @close="queryCriteria">
+            <view class="search_container">
+                <i-panel title="数据授权" i-class="query_label">
+                    <view class="query_view">
+                        <span class="queryBtn" :class="[index == powerActive ? 'isActive':'']" v-for="(item,index) in powerList" :key="item.label" @click="checkCriteria(item,index,1)">{{item.name}}</span>
+                    </view>
+                </i-panel>
+                <i-panel title="任务时间" i-class="query_label">
+                    <view class="query_view">
+                        <span class="queryBtn" :class="[index == timeActive ? 'isActive':'']" v-for="(item,index) in timeList" :key="item.label" @click="checkCriteria(item,index,2)">{{item.name}}</span>
+                    </view>
+                </i-panel>
+                <i-panel title="任务状态" i-class="query_label">
+                    <view class="query_view">
+                        <span class="queryBtn" :class="[index == stateActive ? 'isActive':'']" v-for="(item,index) in stateList" :key="item.label" @click="checkCriteria(item,index,3)">{{item.name}}</span>
+                    </view>
+                </i-panel>
+                <i-button @click="reSet" type="ghost" size="small" long="true" class="reset_btn">重置</i-button>
+            </view>
+        </i-drawer>
+
+        <!-- 列表 -->
+        <i-swipeout i-class="i-swipeout-demo-item" :operateWidth="60" v-for="item in tableData" :key="item.id">
+            <view slot="content" @click="toVisitDetail($event,item)">
+                <i-cell 
+                    i-class="cell_content" 
+                    :title="item.visitTheme"
+                    :label="item.customerName">
+                    <wxs module="tools" src="./../utils/comming.wxs" />
+                    <view class="cell_footer">
+                        拜访对象：{{item.contactsName}}
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        时间： {{item.visitTime}}
+                    </view>
+                    <view class="cell_footer">
+                        负责人：{{item.private_employee}}
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        审核状态：{{item.auditStatus}}
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        状态：{{item.state}}
+                    </view>
+                </i-cell>
+            </view>
+            <view slot="button" class="i-swipeout-button">
+                <view class="i-swipeout-button-item" style="width:60px;background-color:#f5f5f5" @click="toUpdateVisit($event,item)">
+                    <i-icon size="24" type="editor" style="color:#80848f"></i-icon>
+                </view>
+            </view>
+        </i-swipeout>
+
+        <i-load-more v-if="noMore" tip="我是有底线的" :loading="false" />
+
+        <!-- 新增 -->
+        <i-button @click="toAddVisit" type="ghost" :long="true" class="bottom_btn">新增</i-button>
     </div>
 </template>
 
@@ -24,6 +88,34 @@
                     page:1,
                     limit:10,
                 },
+
+                powerList:[
+                    {label:'11',name:'全部'},
+                    {label:'12',name:'我的'},
+                    {label:'13',name:'本组'},
+                    {label:'14',name:'本机构'},
+                ],
+                powerActive: '1',
+                timeList:[
+                    {label:'2',name:'昨天'},
+                    {label:'1',name:'今天'},
+                    {label:'5',name:'明天'},
+                    {label:'3',name:'本周'},
+                    {label:'6',name:'本月'},
+                    {label:'7',name:'上月'},
+                    {label:'8',name:'下月'},
+                ],
+                timeActive:'-1',
+                stateList:[
+                    {label:'1',name:'未完成'},
+                    {label:'2',name:'已完成'},
+                    {label:'3',name:'作废'},
+                ],
+                stateActive: '-1',
+                
+
+                isValue:false,
+                searchCriteria:false,
             }
         },
 
@@ -54,10 +146,12 @@
                 const _this = this
                 let data = {
                     searchName: this.searchList.searchName,
-                    state: this.searchList.state,
                     example: this.searchList.example,
                     page: this.searchList.page,
                     limit: this.searchList.limit,
+                }
+                if(this.searchList.state){
+                    data.state = this.searchList.state
                 }
                 if(this.searchList.powerid == '11'){
                     data.pId = ''
@@ -70,7 +164,7 @@
                 }
                 wx.request({
                     method:'post',
-                    url: config.defaulthost + 'isit/selectVisit.do?cId=' + config.userData.cId,  //接口地址
+                    url: config.defaulthost + 'visit/selectVisit.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
                         "Content-Type": "application/x-www-form-urlencoded",
@@ -105,9 +199,82 @@
                     }
                 })
             },
+            handleInput(e,val){
+                if(val === 1){
+                    this.searchList.searchName = e.mp.detail
+                }
+                if(e.mp.detail){
+                    this.isValue = true
+                }else{
+                    this.isValue = false
+                }
+            },
+            closeSearch(){
+                this.searchList.searchName = ''
+                this.isValue = false
+                this.search()
+            },
+            search(){
+                this.init = true
+                this.noMore = false
+                this.searchList.page = 1
+                this.loadData()
+            },
+            queryCriteria(){
+                this.searchCriteria = !this.searchCriteria
+            },
+            checkCriteria(item,index,val){
+                if(val === 1){
+                    this.powerActive = index
+                    this.searchList.powerid = item.label
+                }else if(val === 2){
+                    this.timeActive = index
+                    this.searchList.example = item.label
+                }else if(val === 3){
+                    this.stateActive = index
+                    this.searchList.state = item.name
+                }
+                this.search()
+            },
+            reSet(){
+                this.searchList = {
+                    searchName:'',
+                    state:'',
+                    example:'',
+                    powerid:'12',
+                    page:1,
+                    limit:10,
+                }
+                this.stateActive = '-1'
+                this.powerActive = '1'
+                this.timeActive = '-1'
+                this.init = true
+                this.noMore = false
+                this.loadData()
+            },
+
+            toAddVisit(){
+                const url = 'outworkAdd/main'
+                mpvue.navigateTo({ url })
+            },
+            toUpdateVisit(e,val){
+                const url = 'outworkUpdate/main'
+                config.information.outworkupdateData = val
+                mpvue.navigateTo({ url })
+            },
+            toVisitDetail(e,val){
+                const url = 'outworkDetail/main'
+                config.information.outworkDetailData = val
+                mpvue.navigateTo({ url })
+            },
         },
     }
 </script>
 
-<style scoped>
+<style>
+    .out_work_wrap{
+        background-color: #fcfcfc;
+        margin-top: 40px;
+        margin-bottom: 40px
+    }
 </style>

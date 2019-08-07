@@ -9,12 +9,12 @@
                 <i-button class="flex_btn" type="subject" size="small" @click="handleClick($event,1)">通过</i-button>
                 <i-button class="flex_btn" type="ghost" size="small" @click="handleClick($event,2)">拒绝</i-button>
             </view>
-            <i-cell :title="'审核状态：' + payCollectionDetail.checkState" is-link @click="toPayState" i-class="cell_link"></i-cell>
+            <i-cell :title="'审核状态：' + payCollectionDetail.checkState" i-class="cell_link"></i-cell>
         </i-cell>
 
         <i-panel title=" ">
             <i-tabs :current="activeName" @change="tabClick">
-                <i-tab key="first" title="审批历史"></i-tab>
+                <i-tab key="first" title="审核历史"></i-tab>
                 <i-tab key="second" title="基本信息"></i-tab>
                 <i-tab key="third" title="相关信息"></i-tab>
             </i-tabs>
@@ -112,6 +112,7 @@
 
                 let data = {
                     recordId: this.payCollectionDetail.examineRecordId,
+                    checkStatus: this.payCollectionDetail.checkStatus,
                     pId: config.userData.pId
                 }
 

@@ -8,33 +8,27 @@
     "pages/approval/main",
     "pages/mine/main",
     "pages/logs/main",
-
     "pages/clue/main",
     "pages/clue/clueAdd/main",
     "pages/clue/clueUpdate/main",
     "pages/clue/clueDetail/main",
     "pages/clue/clueFollow/main",
-
     "pages/cluePool/main",
     "pages/cluePool/cluePoolDetail/main",
     "pages/cluePool/userList/main",
-
     "pages/customer/main",
     "pages/customer/customerAdd/main",
     "pages/customer/customerUpdate/main",
     "pages/customer/customerDetail/main",
     "pages/customer/customerFollow/main",
-
     "pages/customerPool/main",
     "pages/customerPool/customerPoolDetail/main",
     "pages/customerPool/userList/main",
-
     "pages/contact/main",
     "pages/contact/contactAdd/main",
     "pages/contact/contactUpdate/main",
     "pages/contact/contactDetail/main",
     "pages/contact/clueandCustomer/main",
-
     "pages/opportunity/main",
     "pages/opportunity/opportunityAdd/main",
     "pages/opportunity/opportunityUpdate/main",
@@ -43,7 +37,6 @@
     "pages/opportunity/opportunityFollow/main",
     "pages/opportunity/opportunityStage/main",
     "pages/opportunity/opportunityFail/main",
-
     "pages/agreement/main",
     "pages/agreement/agreementAdd/main",
     "pages/agreement/agreementUpdate/main",
@@ -53,28 +46,22 @@
     "pages/agreement/agreementState/main",
     "pages/agreement/paymentPlan/main",
     "pages/agreement/paymentInfo/main",
-
     "pages/payCollection/main",
     "pages/payCollection/payCollectionDetail/main",
-
     "pages/follow/main",
     "pages/follow/followDetail/main",
-
     "pages/outwork/main",
     "pages/outwork/outworkAdd/main",
     "pages/outwork/outworkUpdate/main",
     "pages/outwork/outworkDetail/main",
-
     "pages/task/main",
     "pages/task/taskAdd/main",
     "pages/task/taskUpdate/main",
     "pages/task/taskDetail/main",
-
     "pages/note/main",
     "pages/note/noteAdd/main",
     "pages/note/noteUpdate/main",
     "pages/note/noteDetail/main",
-    
     "pages/notYet/main"
   ],
   "window": {
@@ -88,30 +75,35 @@
     "backgroundColor": "#ffffff",
     "selectedColor": "#ff6333",
     "borderStyle": "white",
-
-    "list": [{
-      "text": "首页",
-      "pagePath": "pages/index/main",
-      "iconPath": "static/tabs/01-1.png",
-      "selectedIconPath": "static/tabs/01-2.png"
-    }, {
-      "text": "功能",
-      "pagePath": "pages/module/main",
-      "iconPath": "static/tabs/03-1.png",
-      "selectedIconPath": "static/tabs/03-2.png"
-    }],
-
-    "items": [{
-      "name": "首页",
-      "pagePath": "pages/index/main",
-      "icon": "static/tabs/01-1.png",
-      "activeIcon": "static/tabs/01-2.png"
-    }, {
-      "name": "功能",
-      "pagePath": "pages/module/main",
-      "icon": "static/tabs/03-1.png",
-      "activeIcon": "static/tabs/03-2.png"
-    }],
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/main",
+        "iconPath": "static/tabs/01-1.png",
+        "selectedIconPath": "static/tabs/01-2.png"
+      },
+      {
+        "text": "功能",
+        "pagePath": "pages/module/main",
+        "iconPath": "static/tabs/03-1.png",
+        "selectedIconPath": "static/tabs/03-2.png"
+      }
+    ],
+    "items": [
+      {
+        "name": "首页",
+        "pagePath": "pages/index/main",
+        "icon": "static/tabs/01-1.png",
+        "activeIcon": "static/tabs/01-2.png"
+      },
+      {
+        "name": "功能",
+        "pagePath": "pages/module/main",
+        "icon": "static/tabs/03-1.png",
+        "activeIcon": "static/tabs/03-2.png"
+      }
+    ],
     "position": "bottom"
-  }
+  },
+  "sitemapLocation": "sitemap35.json"
 }

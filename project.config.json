@@ -46,8 +46,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "单页调试",
-					"pathName": "pages/note/main",
+					"name": "单页模式",
+					"pathName": "pages/outwork/main",
 					"query": "",
 					"scene": null
 				},

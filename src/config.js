@@ -37,6 +37,10 @@ const information = {
     payplanData: '',
     payinfoData: '',
     payCollectionDetailData: '',
+    outworkupdateData:'',
+    outworkDetailData:'',
+    taskupdateData:'',
+    taskDetailData:'',
     noteupdateData:'',
     noteDetailData:'',
 }

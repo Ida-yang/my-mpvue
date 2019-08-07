@@ -8,11 +8,11 @@
         <i-button class="_i-button data-v-a9c26748 flex_btn" type="subject" size="small" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">通过</i-button>
         <i-button class="_i-button data-v-a9c26748 flex_btn" type="ghost" size="small" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">拒绝</i-button>
       </view>
-      <i-cell title="{{'审核状态：' + payCollectionDetail.checkState}}" is-link bindtap="handleProxy" i-class="cell_link" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-cell data-v-a9c26748"></i-cell>
+      <i-cell title="{{'审核状态：' + payCollectionDetail.checkState}}" i-class="cell_link" class="_i-cell data-v-a9c26748"></i-cell>
     </i-cell>
     <i-panel title=" " class="_i-panel data-v-a9c26748">
-      <i-tabs current="{{activeName}}" bindchange="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-tabs data-v-a9c26748">
-        <i-tab key="first" title="审批历史" class="_i-tab data-v-a9c26748"></i-tab>
+      <i-tabs current="{{activeName}}" bindchange="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-tabs data-v-a9c26748">
+        <i-tab key="first" title="审核历史" class="_i-tab data-v-a9c26748"></i-tab>
         <i-tab key="second" title="基本信息" class="_i-tab data-v-a9c26748"></i-tab>
         <i-tab key="third" title="相关信息" class="_i-tab data-v-a9c26748"></i-tab>
       </i-tabs>
@@ -53,11 +53,11 @@
         </i-cell>
       </i-card>
     </view>
-    <i-modal title="请填写审核意见" visible="{{showSure}}" bindok="handleProxy" bindcancel="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-modal data-v-a9c26748">
-      <i-input value="{{remarks}}" bindchange="handleProxy" right type="textarea" request maxlength="200" bindinput="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-input data-v-a9c26748"></i-input>
+    <i-modal title="请填写审核意见" visible="{{showSure}}" bindok="handleProxy" bindcancel="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-modal data-v-a9c26748">
+      <i-input value="{{remarks}}" bindchange="handleProxy" right type="textarea" request maxlength="200" bindinput="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-input data-v-a9c26748"></i-input>
     </i-modal>
-    <i-modal title="请填写审核意见" visible="{{showRefuse}}" bindok="handleProxy" bindcancel="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-modal data-v-a9c26748">
-      <i-input value="{{remarks}}" bindchange="handleProxy" right type="textarea" request maxlength="200" bindinput="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_i-input data-v-a9c26748"></i-input>
+    <i-modal title="请填写审核意见" visible="{{showRefuse}}" bindok="handleProxy" bindcancel="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_i-modal data-v-a9c26748">
+      <i-input value="{{remarks}}" bindchange="handleProxy" right type="textarea" request maxlength="200" bindinput="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-input data-v-a9c26748"></i-input>
     </i-modal>
     <i-toast id="toast" class="_i-toast data-v-a9c26748"></i-toast>
     <i-message id="message" class="_i-message data-v-a9c26748"></i-message>
