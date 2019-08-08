@@ -65,11 +65,15 @@
 
         <!-- 新增 -->
         <i-button @click="toAddVisit" type="ghost" :long="true" class="bottom_btn">新增</i-button>
+
+    
+        <i-toast id="toast" />
     </div>
 </template>
 
 <script>
     import config from '../../config'
+    import { $Toast } from '../../../dist/wx/iview/base/index'
 
     export default {
         data () {
@@ -258,9 +262,16 @@
                 mpvue.navigateTo({ url })
             },
             toUpdateVisit(e,val){
-                const url = 'outworkUpdate/main'
-                config.information.outworkupdateData = val
-                mpvue.navigateTo({ url })
+                if(val.checkStatus == 2 || val.state == '已完成' || val.state == '作废'){
+                    $Toast({
+                        content: '不可编辑',
+                        type: 'warning'
+                    });
+                }else{
+                    const url = 'outworkUpdate/main'
+                    config.information.outworkupdateData = val
+                    mpvue.navigateTo({ url })
+                }
             },
             toVisitDetail(e,val){
                 const url = 'outworkDetail/main'

@@ -85,7 +85,7 @@
         <i-panel title="办公" class="small_panel"></i-panel>
         <i-grid i-class="module_view">
             <i-row>
-                <i-grid-item @click="toNotYet">
+                <i-grid-item @click="toOutwork">
                     <i-grid-icon>
                         <image src="../../static/images/outwork.png" style="width:20px;height:20px;" />
                     </i-grid-icon>

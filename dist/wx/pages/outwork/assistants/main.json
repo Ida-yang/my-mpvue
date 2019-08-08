@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "选择协助人员",
+    "usingComponents": {
+        "i-panel": "../../../iview/panel/index",
+        "i-button": "../../../iview/button/index",
+        "i-input": "../../../iview/input/index",
+        "i-checkbox-group": "../../../iview/checkbox-group/index",
+        "i-checkbox": "../../../iview/checkbox/index",
+        "i-message": "../../../iview/message/index",
+        "i-toast": "../../../iview/toast/index"
+    }
+}

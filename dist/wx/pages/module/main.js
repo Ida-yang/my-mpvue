@@ -1,6 +1,6 @@
 require("../../common/manifest.js")
 require("../../common/vendor.js")
-global.webpackJsonpMpvue([27],{
+global.webpackJsonpMpvue([30],{
 
 /***/ 244:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -624,7 +624,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "mpcomid": '45'
     },
     on: {
-      "click": _vm.toNotYet
+      "click": _vm.toOutwork
     }
   }, [_c('i-grid-icon', {
     attrs: {

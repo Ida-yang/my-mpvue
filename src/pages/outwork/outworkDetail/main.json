@@ -18,6 +18,7 @@
       "i-steps": "../../../iview/steps/index",
       "i-step": "../../../iview/step/index",
       "i-fiche": "../../../iview/fiche/index",
-      "i-modal": "../../../iview/modal/index"
+      "i-modal": "../../../iview/modal/index",
+      "i-rate": "../../../iview/rate/index"
     }
 }

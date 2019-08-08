@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([19],{
+global.webpackJsonpMpvue([22],{
 
 /***/ 284:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -171,6 +171,7 @@ if (false) {(function () {
         },
         loadContact: function loadContact() {
             var _this = this;
+            this.contactList = [];
             var data = {
                 customerpool_id: this.addList.customerpool_id
             };

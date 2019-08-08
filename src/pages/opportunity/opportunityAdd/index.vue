@@ -84,6 +84,7 @@
             },
             loadContact(){
                 const _this = this
+                this.contactList = []
                 let data = {
                     customerpool_id: this.addList.customerpool_id
                 }

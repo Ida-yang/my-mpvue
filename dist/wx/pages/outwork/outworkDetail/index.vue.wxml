@@ -8,7 +8,7 @@
         <i-button class="_i-button data-v-f3b2a5e4 flex_btn" type="subject" size="small" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">通过</i-button>
         <i-button class="_i-button data-v-f3b2a5e4 flex_btn" type="ghost" size="small" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">拒绝</i-button>
       </view>
-      <i-cell title="{{'审核状态：' + outworkData.auditStatus}}" i-class="cell_link" class="_i-cell data-v-f3b2a5e4"></i-cell>
+      <i-cell title="{{'审核状态：' + outworkData.checkState}}" i-class="cell_link" class="_i-cell data-v-f3b2a5e4"></i-cell>
     </i-cell>
     <i-panel title=" " class="_i-panel data-v-f3b2a5e4">
       <i-tabs current="{{activeName}}" bindchange="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-tabs data-v-f3b2a5e4">
@@ -48,16 +48,36 @@
           <view class="_p data-v-f3b2a5e4">签到时间：{{outworkData.timeCheck || ''}}</view>
           <view class="_p data-v-f3b2a5e4">签到地址：{{outworkData.addressCheck || ''}}</view>
           <view class="_br data-v-f3b2a5e4"></view>
-          <image wx:if="{{outworkData.photoCheck}}" mode="scaleToFill" src="{{outworkData.photoCheck}}" class="_image data-v-f3b2a5e4 follow_image"></image>
+          <image wx:if="{{outworkData.photoName}}" mode="scaleToFill" src="{{outworkData.photoName}}" class="_image data-v-f3b2a5e4 follow_image"></image>
+        </view>
+      </i-card>
+      <view class="_view data-v-f3b2a5e4 detail_module"></view>
+      <i-card full isContent title="打分" extra="{{outworkData.state}}" class="_i-card data-v-f3b2a5e4">
+        <view slot="content" class="_view data-v-f3b2a5e4">
+          <i-rate bindchange="handleProxy" value="{{starIndex}}" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-rate data-v-f3b2a5e4">
+            {{scoreIndex}}
+          </i-rate>
         </view>
       </i-card>
     </view>
-    <i-tab-bar current="{{activeBar}}" bindchange="handleProxy" class="_i-tab-bar data-v-f3b2a5e4 bottom_btn" data-eventid="{{'3'}}" data-comkey="{{$k}}">
+    <i-tab-bar current="{{activeBar}}" bindchange="handleProxy" class="_i-tab-bar data-v-f3b2a5e4 bottom_btn" data-eventid="{{'4'}}" data-comkey="{{$k}}">
       <i-tab-bar-item key="coordinates" icon="coordinates" current-icon="coordinates" title="签到" class="_i-tab-bar-item data-v-f3b2a5e4"></i-tab-bar-item>
+      <i-tab-bar-item key="success" icon="success" current-icon="success" title="已完成" class="_i-tab-bar-item data-v-f3b2a5e4"></i-tab-bar-item>
       <i-tab-bar-item key="collection" icon="collection" current-icon="collection" title="打分" class="_i-tab-bar-item data-v-f3b2a5e4"></i-tab-bar-item>
       <i-tab-bar-item key="more" icon="more" current-icon="more" title="更多" class="_i-tab-bar-item data-v-f3b2a5e4"></i-tab-bar-item>
     </i-tab-bar>
-    <i-action-sheet visible="{{showMore}}" actions="{{moreActions}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-f3b2a5e4"></i-action-sheet>
+    <i-modal title="请填写审核意见" visible="{{showSure}}" bindok="handleProxy" bindcancel="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_i-modal data-v-f3b2a5e4">
+      <i-input value="{{remarks}}" bindchange="handleProxy" right type="textarea" request maxlength="200" bindinput="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-input data-v-f3b2a5e4"></i-input>
+    </i-modal>
+    <i-modal title="请填写审核意见" visible="{{showRefuse}}" bindok="handleProxy" bindcancel="handleProxy" data-eventid="{{'8'}}" data-comkey="{{$k}}" class="_i-modal data-v-f3b2a5e4">
+      <i-input value="{{remarks}}" bindchange="handleProxy" right type="textarea" request maxlength="200" bindinput="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-input data-v-f3b2a5e4"></i-input>
+    </i-modal>
+    <i-action-sheet visible="{{showMore}}" actions="{{moreActions}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'9'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-f3b2a5e4"></i-action-sheet>
+    <i-action-sheet visible="{{showDetele}}" actions="{{deleteActions}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'10'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-f3b2a5e4">
+      <view slot="header" style="padding: 16px" class="_view data-v-f3b2a5e4">
+        <view style="color: #444;font-size: 16px" class="_view data-v-f3b2a5e4">确定吗？</view> <text class="_text data-v-f3b2a5e4">删除后无法恢复哦</text>
+      </view>
+    </i-action-sheet>
     <i-toast id="toast" class="_i-toast data-v-f3b2a5e4"></i-toast>
     <i-message id="message" class="_i-message data-v-f3b2a5e4"></i-message>
   </view>

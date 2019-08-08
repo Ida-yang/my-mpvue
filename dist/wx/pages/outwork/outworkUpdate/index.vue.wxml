@@ -1,5 +1,26 @@
 <template name="141462a0">
-  <view class="_div data-v-fc6ed0f4">
-    <i-panel title="{{current}}" class="_i-panel data-v-fc6ed0f4"></i-panel>
+  <view class="_div data-v-fc6ed0f4 add_or_update_wrap">
+    <i-panel title=" " class="_i-panel data-v-fc6ed0f4"></i-panel>
+    <i-panel title=" " class="_i-panel data-v-fc6ed0f4">
+      <i-cell title="拜访公司" value="{{updateList.customerName}}" request is-link i-class="simple_cell" class="_i-cell data-v-fc6ed0f4"></i-cell>
+      <i-cell title="拜访时间" request is-link i-class="simple_cell" class="_i-cell data-v-fc6ed0f4">
+        <i-datetime-picker slot="footer" value="{{updateList.visitTime}}" bindchange="handleProxy" class="_i-datetime-picker data-v-fc6ed0f4 cell_picker" data-eventid="{{'0'}}" data-comkey="{{$k}}"></i-datetime-picker>
+      </i-cell>
+      <i-cell title="结束时间" request is-link i-class="simple_cell" class="_i-cell data-v-fc6ed0f4">
+        <i-datetime-picker slot="footer" value="{{updateList.endTime}}" bindchange="handleProxy" class="_i-datetime-picker data-v-fc6ed0f4 cell_picker" data-eventid="{{'1'}}" data-comkey="{{$k}}"></i-datetime-picker>
+      </i-cell>
+      <i-cell title="提醒时间" request is-link i-class="simple_cell" class="_i-cell data-v-fc6ed0f4">
+        <i-datetime-picker slot="footer" value="{{updateList.remindTime}}" bindchange="handleProxy" class="_i-datetime-picker data-v-fc6ed0f4 cell_picker" data-eventid="{{'2'}}" data-comkey="{{$k}}"></i-datetime-picker>
+      </i-cell>
+      <i-cell title="拜访对象" value="{{updateList.contact}}" request is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-cell data-v-fc6ed0f4"></i-cell>
+      <i-input value="{{updateList.visitTheme}}" bindchange="handleProxy" title="拜访主题" right request type="number" maxlength="50" bindinput="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-input data-v-fc6ed0f4"></i-input>
+      <i-input value="{{updateList.visitObjective}}" bindchange="handleProxy" title="拜访目的" right request type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-input data-v-fc6ed0f4"></i-input>
+      <i-cell title="协助人员" value="{{updateList.assistants}}" is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_i-cell data-v-fc6ed0f4"></i-cell>
+      <i-input value="{{updateList.remarks}}" bindchange="handleProxy" title="备注" right type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-input data-v-fc6ed0f4"></i-input>
+    </i-panel>
+    <i-button bindtap="handleProxy" type="ghost" long="{{true}}" class="_i-button data-v-fc6ed0f4 bottom_btn" data-eventid="{{'8'}}" data-comkey="{{$k}}">确定</i-button>
+    <i-action-sheet visible="{{showContact}}" actions="{{contactList}}" bindchange="handleProxy" data-eventid="{{'9'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-fc6ed0f4"></i-action-sheet>
+    <i-message id="message" class="_i-message data-v-fc6ed0f4"></i-message>
+    <i-toast id="toast" class="_i-toast data-v-fc6ed0f4"></i-toast>
   </view>
 </template>

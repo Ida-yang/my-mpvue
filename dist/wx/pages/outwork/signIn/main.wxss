@@ -1,0 +1,27 @@
+@import "../../../common/vendor.wxss";
+
+.sign_in_wrap {
+  margin-bottom: 80rpx;
+}
+.sign_in_view {
+  margin: 100rpx 0;
+  text-align: center;
+  line-height: 60rpx;
+}
+.sign_in_view .p2 {
+  font-size: 28rpx;
+}
+.sign_in_photo {
+  margin-left: calc(50vw - 70rpx);
+  width: 140rpx;
+  height: 140rpx;
+  border: 1rpx solid #707070;
+  border-radius: 50%;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.sign_in_img {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}

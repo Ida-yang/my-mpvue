@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([17],{
+global.webpackJsonpMpvue([20],{
 
 /***/ 294:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -129,7 +129,8 @@ if (false) {(function () {
         loadData: function loadData() {
             var _this = this;
             this.confirmData = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.failReason;
-            console.log(this.confirmData);
+            this.checkItem = [];
+            this.checkItemID = [];
 
             this.failReasonList = [];
             var data = {

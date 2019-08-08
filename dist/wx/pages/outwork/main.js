@@ -1,15 +1,15 @@
 require("../../common/manifest.js")
 require("../../common/vendor.js")
-global.webpackJsonpMpvue([12],{
+global.webpackJsonpMpvue([13],{
 
-/***/ 319:
+/***/ 329:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(320);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(330);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 320:
+/***/ 330:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(322);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_9aaf55e6_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(323);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(332);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_9aaf55e6_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(333);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(321)
+  __webpack_require__(331)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,18 +72,20 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 321:
+/***/ 331:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 322:
+/***/ 332:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
 //
 //
 //
@@ -154,6 +156,10 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+
 
 
 
@@ -327,9 +333,16 @@ if (false) {(function () {
             global.mpvue.navigateTo({ url: url });
         },
         toUpdateVisit: function toUpdateVisit(e, val) {
-            var url = 'outworkUpdate/main';
-            __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.outworkupdateData = val;
-            global.mpvue.navigateTo({ url: url });
+            if (val.checkStatus == 2 || val.state == '已完成' || val.state == '作废') {
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '不可编辑',
+                    type: 'warning'
+                });
+            } else {
+                var url = 'outworkUpdate/main';
+                __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.outworkupdateData = val;
+                global.mpvue.navigateTo({ url: url });
+            }
         },
         toVisitDetail: function toVisitDetail(e, val) {
             var url = 'outworkDetail/main';
@@ -341,7 +354,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 323:
+/***/ 333:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -580,7 +593,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.toAddVisit
     }
-  }, [_vm._v("新增")])], 2)
+  }, [_vm._v("新增")]), _vm._v(" "), _c('i-toast', {
+    attrs: {
+      "id": "toast",
+      "mpcomid": '15'
+    }
+  })], 2)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -595,4 +613,4 @@ if (false) {
 
 /***/ })
 
-},[319]);
+},[329]);

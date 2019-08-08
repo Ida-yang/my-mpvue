@@ -41,7 +41,8 @@
             loadData(){
                 const _this = this
                 this.confirmData = config.information.failReason
-                console.log(this.confirmData)
+                this.checkItem = []
+                this.checkItemID = []
 
                 this.failReasonList = []
                 let data = {

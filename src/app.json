@@ -64,6 +64,9 @@
     "pages/outwork/outworkAdd/main",
     "pages/outwork/outworkUpdate/main",
     "pages/outwork/outworkDetail/main",
+    "pages/outwork/signIn/main",
+    "pages/outwork/customers/main",
+    "pages/outwork/assistants/main",
 
     "pages/task/main",
     "pages/task/taskAdd/main",

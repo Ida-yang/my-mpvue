@@ -39,6 +39,8 @@ const information = {
     payCollectionDetailData: '',
     outworkupdateData:'',
     outworkDetailData:'',
+    outworkPoolName:'',
+    outworkAssistants:'',
     taskupdateData:'',
     taskDetailData:'',
     noteupdateData:'',

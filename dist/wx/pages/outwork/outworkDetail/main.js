@@ -1,15 +1,15 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([10],{
+global.webpackJsonpMpvue([11],{
 
-/***/ 329:
+/***/ 339:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(330);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(340);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 330:
+/***/ 340:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(332);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_f3b2a5e4_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(342);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_f3b2a5e4_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(343);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(443)
+  __webpack_require__(341)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,13 +72,44 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 332:
+/***/ 341:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 342:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -163,7 +194,6 @@ if (false) {(function () {
         return {
             current: '外勤详情',
 
-            visitId: '',
             outworkData: {},
             authority: false,
 
@@ -174,7 +204,22 @@ if (false) {(function () {
 
             activeBar: '',
             showMore: false,
-            moreActions: [{ name: '未完成' }, { name: '已完成' }, { name: '作废' }, { name: '删除' }]
+            moreActions: [{ name: '未完成' }, { name: '作废' }, { name: '删除' }],
+            showDetele: false,
+            deleteActions: [{
+                name: '删除',
+                color: '#f56c6c'
+            }],
+
+            showSure: false,
+            showRefuse: false,
+            remarks: '',
+
+            starIndex: 0,
+            scoreIndex: 0,
+
+            nowTime: ''
+
         };
     },
     onShow: function onShow() {
@@ -186,16 +231,13 @@ if (false) {(function () {
         loadData: function loadData() {
             var info = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.outworkDetailData;
             this.outworkData = info;
-            this.visitId = info.id;
 
-            // this.loadVisit()
-            this.loadState();
-            this.loadAudit();
+            this.loadVisit();
         },
         loadVisit: function loadVisit() {
             var _this = this;
             var data = {
-                id: this.visitId
+                id: this.outworkData.id
             };
 
             wx.request({
@@ -208,17 +250,24 @@ if (false) {(function () {
                 },
                 success: function success(res) {
                     var info = res.data.map.visit;
-                    info.forEach(function (el) {
-                        if (el.checkStatus == 0) {
-                            el.checkState = '待审核';
-                        } else if (el.checkStatus == 1) {
-                            el.checkState = '审核中';
-                        } else if (el.checkStatus == 2) {
-                            el.checkState = '已审核';
-                        } else if (el.checkStatus == 3) {
-                            el.checkState = '未通过';
-                        }
-                    });
+                    if (info.checkStatus == 0) {
+                        info.checkState = '待审核';
+                    } else if (info.checkStatus == 1) {
+                        info.checkState = '审核中';
+                    } else if (info.checkStatus == 2) {
+                        info.checkState = '已审核';
+                    } else if (info.checkStatus == 3) {
+                        info.checkState = '未通过';
+                    }
+
+                    if (info.photoCheck) {
+                        info.photoName = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].sourcehost + 'upload/' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId + '/' + info.photoCheck;
+                    }
+
+                    if (info.score) {
+                        _this.starIndex = parseInt(info.score);
+                        _this.scoreIndex = _this.starIndex * 2;
+                    }
                     _this.outworkData = info;
 
                     _this.loadState();
@@ -291,6 +340,132 @@ if (false) {(function () {
                 }
             });
         },
+        loadTime: function loadTime() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var hour = date.getHours();
+            var min = date.getMinutes();
+            var sec = date.getSeconds();
+
+            month = month < 10 ? "0" + month : month;
+            day = day < 10 ? "0" + day : day;
+            hour = hour < 10 ? "0" + hour : hour;
+            min = min < 10 ? "0" + min : min;
+            sec = sec < 10 ? "0" + sec : sec;
+
+            this.nowTime = year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec;
+        },
+        handleClick: function handleClick(e, val) {
+            if (val == 1) {
+                this.showSure = true;
+            } else if (val == 2) {
+                this.showRefuse = true;
+            }
+        },
+        cancelClick: function cancelClick(e, val) {
+            if (val == 1) {
+                this.showSure = false;
+            } else if (val == 2) {
+                this.showRefuse = false;
+            }
+        },
+        handleInput: function handleInput(e) {
+            this.remarks = e.mp.detail;
+        },
+        adopt: function adopt() {
+            var _this = this;
+            var data = {
+                id: this.outworkData.id,
+                recordId: this.outworkData.examineRecordId,
+                status: 1,
+                remarks: this.remarks,
+                pId: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.pId
+            };
+
+            var flag = false;
+            if (!data.remarks) {
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '审批意见不能为空',
+                    type: 'warning'
+                });
+                flag = true;
+            }
+            if (flag) return;
+
+            wx.request({
+                method: 'post',
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'examineRecord/auditExamine.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                data: data,
+                header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    if (res.data.code && res.data.code == '200') {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: '审批成功',
+                            type: 'success'
+                        });
+                        _this.remarks = '';
+                        _this.showSure = false;
+                        _this.loadData();
+                    } else {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: res.data.msg,
+                            type: 'error'
+                        });
+                    }
+                }
+            });
+        },
+        refuse: function refuse() {
+            var _this = this;
+            var data = {
+                id: this.outworkData.id,
+                recordId: this.outworkData.examineRecordId,
+                status: 2,
+                remarks: this.remarks,
+                pId: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.pId
+            };
+
+            var flag = false;
+            if (!data.remarks) {
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '审批意见不能为空',
+                    type: 'error'
+                });
+                flag = true;
+            }
+            if (flag) return;
+
+            wx.request({
+                method: 'post',
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'examineRecord/auditExamine.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                data: data,
+                header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    if (res.data.code && res.data.code == '200') {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: '审批成功',
+                            type: 'success'
+                        });
+                        _this.remarks = '';
+                        _this.showRefuse = false;
+                        _this.loadVisit();
+                    } else {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: res.data.msg,
+                            type: 'error'
+                        });
+                    }
+                }
+            });
+        },
         tabClick: function tabClick(e) {
             this.activeName = e.target.key;
         },
@@ -298,9 +473,11 @@ if (false) {(function () {
             var key = val.target.key;
             this.activeBar = key;
             if (key == 'coordinates') {
-                this.toSignIn();
+                this.signIn();
+            } else if (key == 'success') {
+                this.complete();
             } else if (key == 'collection') {
-                this.toscore();
+                this.score();
             } else if (key == 'more') {
                 this.showMore = true;
             }
@@ -311,31 +488,265 @@ if (false) {(function () {
         changeOption: function changeOption(val) {
             var index = val.target.index;
             if (index === 0) {
-                this.toSignIn();
+                this.incomplete();
             } else if (index === 1) {
-                this.toSignIn();
+                this.nullify();
             } else if (index === 2) {
-                this.toSignIn();
-            } else if (index === 3) {
-                this.toSignIn();
+                if (this.outworkData.state == '已完成' || this.outworkData.state == '作废' || this.outworkData.checkStatus == 2) {
+                    Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                        content: '不可删除',
+                        type: 'warning'
+                    });
+                } else {
+                    this.showDetele = true;
+                }
             }
             this.showMore = false;
         },
-        toSignIn: function toSignIn() {},
-        toscore: function toscore() {}
+        cancelDelete: function cancelDelete() {
+            this.showDetele = false;
+        },
+        incomplete: function incomplete() {
+            var _this = this;
+            if (this.outworkData.state == '已完成') {
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '该外勤已经是完成状态',
+                    type: 'warning'
+                });
+            } else {
+                this.loadTime();
+
+                var data = {
+                    id: this.outworkData.id,
+                    state: '已完成',
+                    updateTime: this.nowTime
+                };
+
+                wx.request({
+                    method: 'post',
+                    url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'visit/updateVisitState.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                    data: data,
+                    header: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                    },
+                    success: function success(res) {
+                        if (res.data.code && res.data.code == "200") {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                                content: '已修改为未完成',
+                                type: 'success'
+                            });
+                            _this.loadVisit();
+                        } else {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                                content: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                    }
+                });
+            }
+        },
+        complete: function complete() {
+            var _this = this;
+            if (!this.outworkData.timeCheck) {
+                // console.log('没有签到')
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '该外勤未签到',
+                    type: 'warning'
+                });
+            } else if (this.outworkData.state == '已完成') {
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '该外勤已完成',
+                    type: 'warning'
+                });
+            } else {
+                this.loadTime();
+
+                var data = {
+                    id: this.outworkData.id,
+                    state: '已完成',
+                    updateTime: this.nowTime
+                };
+
+                wx.request({
+                    method: 'post',
+                    url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'visit/updateVisitState.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                    data: data,
+                    header: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                    },
+                    success: function success(res) {
+                        if (res.data.code && res.data.code == "200") {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                                content: '已完成',
+                                type: 'success'
+                            });
+                            _this.loadVisit();
+                        } else {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                                content: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                    }
+                });
+            }
+        },
+        nullify: function nullify() {
+            var _this = this;
+
+            if (this.outworkData.state == '已完成') {
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '该外勤已经是完成状态',
+                    type: 'warning'
+                });
+            } else {
+                this.loadTime();
+
+                var data = {
+                    id: this.outworkData.id,
+                    state: '已完成',
+                    updateTime: this.nowTime
+                };
+
+                wx.request({
+                    method: 'post',
+                    url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'visit/updateVisitState.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                    data: data,
+                    header: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                    },
+                    success: function success(res) {
+                        if (res.data.code && res.data.code == "200") {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                                content: '作废成功',
+                                type: 'success'
+                            });
+                            _this.loadVisit();
+                        } else {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                                content: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                    }
+                });
+            }
+        },
+        deleteOutwork: function deleteOutwork() {
+            var _this = this;
+            var data = {
+                id: this.outworkData.id
+            };
+
+            wx.request({
+                method: 'post',
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'visit/deleteVisit.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                data: data,
+                header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    if (res.data.success && res.data.success == true) {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: '删除成功',
+                            type: 'success'
+                        });
+                        _this.tooutwork();
+                    } else if (res.data.msg && res.data.msg == 'error') {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                            content: '对不起，您没有此权限',
+                            type: 'error'
+                        });
+                        _this.cancelDelete();
+                    } else {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: res.data.msg,
+                            type: 'error'
+                        });
+                    }
+                }
+            });
+        },
+        signIn: function signIn() {
+            if (this.outworkData.timeCheck) {
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '该外勤已签到',
+                    type: 'warning'
+                });
+            } else if (this.outworkData.checkStatus !== 2) {
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '该外勤非已审核状态',
+                    type: 'warning'
+                });
+            } else {
+                var url = '../signIn/main';
+                global.mpvue.navigateTo({ url: url });
+            }
+        },
+        changeStar: function changeStar(e) {
+            var index = e.target.index;
+            this.starIndex = index;
+            this.scoreIndex = index * 2;
+        },
+        score: function score() {
+            var _this = this;
+            if (this.outworkData.state !== '已完成') {
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '该外勤不是完成状态',
+                    type: 'warning'
+                });
+            } else if (this.scoreIndex == 0) {
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '请先选择评分等级',
+                    type: 'warning'
+                });
+            } else {
+                var data = {
+                    id: this.outworkData.id,
+                    score: this.scoreIndex.toString()
+                };
+
+                wx.request({
+                    method: 'post',
+                    url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'visit/updateVisit.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                    data: data,
+                    header: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                    },
+                    success: function success(res) {
+                        if (res.data.code && res.data.code == "200") {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                                content: '打分成功',
+                                type: 'success'
+                            });
+                            _this.loadVisit();
+                        } else {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                                content: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                    }
+                });
+            }
+        },
+        tooutwork: function tooutwork() {
+            wx.navigateBack({
+                delta: 1
+            });
+        }
     }
 });
 
 /***/ }),
 
-/***/ 443:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 444:
+/***/ 343:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -383,7 +794,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }, [_vm._v("拒绝")])], 1) : _vm._e(), _vm._v(" "), _c('i-cell', {
     attrs: {
-      "title": '审核状态：' + _vm.outworkData.auditStatus,
+      "title": '审核状态：' + _vm.outworkData.checkState,
       "i-class": "cell_link",
       "mpcomid": '2'
     }
@@ -523,18 +934,39 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }
   }, [_c('view', {
     slot: "content"
-  }, [_c('p', [_vm._v("签到时间：" + _vm._s(_vm.outworkData.timeCheck || ''))]), _vm._v(" "), _c('p', [_vm._v("签到地址：" + _vm._s(_vm.outworkData.addressCheck || ''))]), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.outworkData.photoCheck) ? _c('image', {
+  }, [_c('p', [_vm._v("签到时间：" + _vm._s(_vm.outworkData.timeCheck || ''))]), _vm._v(" "), _c('p', [_vm._v("签到地址：" + _vm._s(_vm.outworkData.addressCheck || ''))]), _vm._v(" "), _c('br'), _vm._v(" "), (_vm.outworkData.photoName) ? _c('image', {
     staticClass: "follow_image",
     attrs: {
       "mode": "scaleToFill",
-      "src": _vm.outworkData.photoCheck
+      "src": _vm.outworkData.photoName
     }
-  }) : _vm._e()], 1)])], 1) : _vm._e(), _vm._v(" "), _c('i-tab-bar', {
+  }) : _vm._e()], 1)]), _vm._v(" "), _c('view', {
+    staticClass: "detail_module"
+  }), _vm._v(" "), _c('i-card', {
+    attrs: {
+      "full": "",
+      "isContent": "",
+      "title": "打分",
+      "extra": _vm.outworkData.state,
+      "mpcomid": '23'
+    }
+  }, [_c('view', {
+    slot: "content"
+  }, [_c('i-rate', {
+    attrs: {
+      "value": _vm.starIndex,
+      "eventid": '3',
+      "mpcomid": '22'
+    },
+    on: {
+      "change": _vm.changeStar
+    }
+  }, [_vm._v("\n                    " + _vm._s(_vm.scoreIndex) + "\n                ")])], 1)])], 1) : _vm._e(), _vm._v(" "), _c('i-tab-bar', {
     staticClass: "bottom_btn",
     attrs: {
       "current": _vm.activeBar,
-      "eventid": '3',
-      "mpcomid": '25'
+      "eventid": '4',
+      "mpcomid": '28'
     },
     on: {
       "change": _vm.changeBar
@@ -545,7 +977,15 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "coordinates",
       "current-icon": "coordinates",
       "title": "签到",
-      "mpcomid": '22'
+      "mpcomid": '24'
+    }
+  }), _vm._v(" "), _c('i-tab-bar-item', {
+    key: "success",
+    attrs: {
+      "icon": "success",
+      "current-icon": "success",
+      "title": "已完成",
+      "mpcomid": '25'
     }
   }), _vm._v(" "), _c('i-tab-bar-item', {
     key: "collection",
@@ -553,7 +993,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "collection",
       "current-icon": "collection",
       "title": "打分",
-      "mpcomid": '23'
+      "mpcomid": '26'
     }
   }), _vm._v(" "), _c('i-tab-bar-item', {
     key: "more",
@@ -561,7 +1001,71 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "icon": "more",
       "current-icon": "more",
       "title": "更多",
-      "mpcomid": '24'
+      "mpcomid": '27'
+    }
+  })], 1), _vm._v(" "), _c('i-modal', {
+    attrs: {
+      "title": "请填写审核意见",
+      "visible": _vm.showSure,
+      "eventid": '6',
+      "mpcomid": '30'
+    },
+    on: {
+      "ok": _vm.adopt,
+      "cancel": function($event) {
+        _vm.cancelClick($event, 1)
+      }
+    }
+  }, [_c('i-input', {
+    attrs: {
+      "right": "",
+      "type": "textarea",
+      "request": "",
+      "maxlength": "200",
+      "eventid": '5',
+      "mpcomid": '29'
+    },
+    on: {
+      "input": _vm.handleInput
+    },
+    model: {
+      value: (_vm.remarks),
+      callback: function($$v) {
+        _vm.remarks = $$v
+      },
+      expression: "remarks"
+    }
+  })], 1), _vm._v(" "), _c('i-modal', {
+    attrs: {
+      "title": "请填写审核意见",
+      "visible": _vm.showRefuse,
+      "eventid": '8',
+      "mpcomid": '32'
+    },
+    on: {
+      "ok": _vm.refuse,
+      "cancel": function($event) {
+        _vm.cancelClick($event, 2)
+      }
+    }
+  }, [_c('i-input', {
+    attrs: {
+      "right": "",
+      "type": "textarea",
+      "request": "",
+      "maxlength": "200",
+      "eventid": '7',
+      "mpcomid": '31'
+    },
+    on: {
+      "input": _vm.handleInput
+    },
+    model: {
+      value: (_vm.remarks),
+      callback: function($$v) {
+        _vm.remarks = $$v
+      },
+      expression: "remarks"
     }
   })], 1), _vm._v(" "), _c('i-action-sheet', {
     attrs: {
@@ -569,22 +1073,45 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "actions": _vm.moreActions,
       "show-cancel": "",
       "mask-closable": false,
-      "eventid": '4',
-      "mpcomid": '26'
+      "eventid": '9',
+      "mpcomid": '33'
     },
     on: {
       "cancel": _vm.cancelMore,
       "change": _vm.changeOption
     }
-  }), _vm._v(" "), _c('i-toast', {
+  }), _vm._v(" "), _c('i-action-sheet', {
+    attrs: {
+      "visible": _vm.showDetele,
+      "actions": _vm.deleteActions,
+      "show-cancel": "",
+      "mask-closable": false,
+      "eventid": '10',
+      "mpcomid": '34'
+    },
+    on: {
+      "cancel": _vm.cancelDelete,
+      "change": _vm.deleteOutwork
+    }
+  }, [_c('view', {
+    staticStyle: {
+      "padding": "16px"
+    },
+    slot: "header"
+  }, [_c('view', {
+    staticStyle: {
+      "color": "#444",
+      "font-size": "16px"
+    }
+  }, [_vm._v("确定吗？")]), _vm._v(" "), _c('text', [_vm._v("删除后无法恢复哦")])])]), _vm._v(" "), _c('i-toast', {
     attrs: {
       "id": "toast",
-      "mpcomid": '27'
+      "mpcomid": '35'
     }
   }), _vm._v(" "), _c('i-message', {
     attrs: {
       "id": "message",
-      "mpcomid": '28'
+      "mpcomid": '36'
     }
   })], 1)
 }
@@ -601,4 +1128,4 @@ if (false) {
 
 /***/ })
 
-},[329]);
+},[339]);
