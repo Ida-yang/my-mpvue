@@ -42,7 +42,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
@@ -53,8 +53,13 @@
 				},
 				{
 					"id": 1,
+<<<<<<< HEAD
 					"name": "pages/packageA/outwork/signIn/main",
 					"pathName": "pages/packageA/outwork/signIn/main",
+=======
+					"name": "pages/packageA/outwork/main",
+					"pathName": "pages/packageA/outwork/main",
+>>>>>>> f136c5f8b3505cc55e41d2a2d12daa4351f97070
 					"query": "",
 					"scene": null
 				},

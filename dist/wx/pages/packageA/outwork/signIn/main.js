@@ -133,13 +133,19 @@ var qqmapsdk = new QQMapWX({
         };
     },
     mounted: function mounted() {
+<<<<<<< HEAD:dist/wx/pages/packageA/outwork/signIn/main.js
         this.getmyLocation();
         // this.getuserLocation()
+=======
+        // this.getthisLocation()
+        this.getuserLocation();
+>>>>>>> f136c5f8b3505cc55e41d2a2d12daa4351f97070:dist/wx/pages/packageA/outwork/signIn/main.js
     },
 
 
     methods: {
         getuserLocation: function getuserLocation() {
+<<<<<<< HEAD:dist/wx/pages/packageA/outwork/signIn/main.js
             var _this = this;
             wx.getSetting({
                 success: function success(res) {
@@ -159,6 +165,24 @@ var qqmapsdk = new QQMapWX({
             });
         },
         getmyLocation: function getmyLocation() {
+=======
+            // wx.authorize({
+            //     scope: 'scope.userLocation',
+            //     success: (res) => {
+
+            //     },
+            // })
+            wx.getSetting({
+                success: function success(res) {
+                    console.log(res, 1111);
+                },
+                fail: function fail(err) {
+                    console.log(err, 2222);
+                }
+            });
+        },
+        getthisLocation: function getthisLocation() {
+>>>>>>> f136c5f8b3505cc55e41d2a2d12daa4351f97070:dist/wx/pages/packageA/outwork/signIn/main.js
             var _this = this;
             wx.getLocation({
                 type: 'gcj02',

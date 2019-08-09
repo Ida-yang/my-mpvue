@@ -46,31 +46,11 @@
         },
 
         mounted(){
-            this.getmyLocation()
-            // this.getuserLocation()
+            this.getuserLocation()
         },
 
         methods:{
             getuserLocation(){
-                const _this = this
-                wx.getSetting({
-                    success(res) {
-                        console.log(res)
-                        if (!res.authSetting['scope.userLocation']) {
-                            wx.authorize({
-                                scope: 'scope.userLocation',
-                                success (res) {
-                                    console.log(res)
-                                },
-                                fail(err){
-                                    console.log(err,111111)
-                                },
-                            })
-                        }
-                    }
-                })
-            },
-            getmyLocation(){
                 const _this = this
                 wx.getLocation({
                     type: 'gcj02',
@@ -175,6 +155,11 @@
                                             }
                                         }
                                     })
+                                }else{
+                                    wx.showModal({
+                                        title: '获取位置失败',
+                                        content: '需要获取您的地理位置，请确认手机位置信息已开启，否则地图无法使用',
+                                    })
                                 }
                             },
                             fail (res) {
@@ -192,7 +177,6 @@
                 const _this = this
                 wx.chooseLocation({
                     success (res) {
-                        console.log(res,11111)
                         if(res.address){
                             _this.address = res.address
                             _this.latitude = res.latitude
@@ -205,7 +189,6 @@
                                 },
                                 success (res) {
                                     //获取当前地址成功
-                                    console.log(res)
                                     _this.address = res.result.address
                                 },
                                 fail() {
@@ -287,7 +270,6 @@
                     sourceType: ['camera'],
                     success (res) {
                         // tempFilePath可以作为img标签的src属性显示图片
-                        console.log(res)
                         const tempFilePaths = res.tempFilePaths
                         _this.photoImg = res.tempFilePaths[0]
                         wx.uploadFile({
@@ -325,7 +307,6 @@
                     timeCheck: year + '-' +month + '-' + day + ' ' + hour + ':' + min + ':' + sec,
                     photoCheck: this.photoCheck,
                 }
-                console.log(data)
 
                 let flag = false
                 if(!data.photoCheck){
