@@ -1,6 +1,0 @@
-{
-    "navigationBarTitleText": "任务详情",
-    "usingComponents": {
-      "i-panel": "../../../iview/panel/index"
-    }
-}

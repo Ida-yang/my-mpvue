@@ -1,0 +1,6 @@
+@import "../../../../common/vendor.wxss";
+
+.contact_detail_wrap {
+  background-color: #f5f5f5;
+  margin-bottom: 100rpx;
+}

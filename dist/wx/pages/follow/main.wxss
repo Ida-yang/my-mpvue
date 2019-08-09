@@ -1,9 +1,0 @@
-@import "../../common/vendor.wxss";
-
-.follow_wrap {
-  background-color: #fcfcfc;
-  margin-top: 80rpx;
-}
-.follow_cus_p {
-  line-height: 48rpx;
-}

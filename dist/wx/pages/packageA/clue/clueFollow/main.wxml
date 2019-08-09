@@ -1,0 +1,1 @@
+<import src="/pages/packageA/clue/clueFollow/index.vue.wxml" /><template is="8d78f79c" data="{{ ...$root['0'], $root }}"/>

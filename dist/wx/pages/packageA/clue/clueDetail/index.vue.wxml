@@ -1,0 +1,55 @@
+<template name="a245ce5c">
+  <view class="_div data-v-35a33b54 clue_detail">
+    <i-cell title="{{clueData.name}}" class="_i-cell data-v-35a33b54">
+      <view class="_p data-v-35a33b54 cell_info">联系人姓名：  {{clueContact.coName}}</view>
+      <view class="_p data-v-35a33b54 cell_info">联系人手机：  {{clueContact.phone || '无'}}</view>
+      <view class="_p data-v-35a33b54 cell_info">详细地址：    {{clueData.address || '无'}}</view>
+    </i-cell>
+    <i-panel title=" " class="_i-panel data-v-35a33b54">
+      <i-tabs current="{{activeName}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-35a33b54">
+        <i-tab key="first" title="跟进记录" class="_i-tab data-v-35a33b54"></i-tab>
+        <i-tab key="second" title="联系人" class="_i-tab data-v-35a33b54"></i-tab>
+        <i-tab key="third" title="基本信息" class="_i-tab data-v-35a33b54"></i-tab>
+      </i-tabs>
+    </i-panel>
+    <view wx:if="{{activeName == 'first'}}" class="_view data-v-35a33b54 follow_view">
+      <view wx:key="item.id" key="{{item.id}}" wx:for="{{followData}}" wx:for-index="index" wx:for-item="item" class="_view data-v-35a33b54">
+        <i-panel title="{{item.createTime}}" i-class="vice_panel" class="_i-panel data-v-35a33b54"></i-panel>
+        <i-fiche full isContent isFooter title="{{item.contacts[0].name}}" extra="{{item.state}}" thumb="{{item.portrait}}" class="_i-fiche data-v-35a33b54">
+          <view slot="content" class="_view data-v-35a33b54">
+            <rich-text nodes="{{item.followContent}}" class="_rich-text data-v-35a33b54"></rich-text>
+          </view>
+          <view slot="footer" class="_view data-v-35a33b54"><label class="_span data-v-35a33b54 bgc_span">{{item.followType}}</label> <label wx:if="{{item.contactTime}}" class="_span data-v-35a33b54">    </label> <label class="_span data-v-35a33b54 bgc_span" wx:if="{{item.contactTime}}">{{item.contactTime}}</label>      <label class="_span data-v-35a33b54">{{item.inputType}}</label>
+            <view class="_br data-v-35a33b54"></view>
+            <image wx:if="{{item.followImg}}" mode="scaleToFill" src="{{item.followImg}}" class="_image data-v-35a33b54 follow_image"></image>
+          </view>
+        </i-fiche>
+      </view>
+    </view>
+    <view wx:if="{{activeName == 'second'}}" class="_view data-v-35a33b54 font_size_12">
+      <i-cell-group wx:key="item.id" key="{{item.id}}" wx:for="{{contactData}}" wx:for-index="index" wx:for-item="item" class="_i-cell-group data-v-35a33b54">
+        <i-cell title="联系人" value="{{item.name}}" class="_i-cell data-v-35a33b54"></i-cell>
+        <i-cell title="手机号码" value="{{item.phone}}" class="_i-cell data-v-35a33b54"></i-cell>
+      </i-cell-group>
+    </view>
+    <view wx:if="{{activeName == 'third'}}" class="_view data-v-35a33b54 font_size_12">
+      <i-cell-group class="_i-cell-group data-v-35a33b54">
+        <i-cell title="公司名称" value="{{clueData.name}}" class="_i-cell data-v-35a33b54"></i-cell>
+        <i-cell title="线索状态" value="{{clueData.state}}" class="_i-cell data-v-35a33b54"></i-cell>
+        <i-cell title="未联系天数" value="{{clueData.dayNum}}" class="_i-cell data-v-35a33b54"></i-cell>
+        <i-cell title="创建时间" value="{{clueData.createTime}}" class="_i-cell data-v-35a33b54"></i-cell>
+        <i-cell title="负责人" value="{{clueData.privateUser[0].private_employee}}" class="_i-cell data-v-35a33b54"></i-cell>
+        <i-cell title="部门" value="{{clueData.deptname}}" class="_i-cell data-v-35a33b54"></i-cell>
+        <i-cell title="机构" value="{{clueData.parentname}}" class="_i-cell data-v-35a33b54"></i-cell>
+      </i-cell-group>
+    </view>
+    <i-tab-bar current="{{activeBar}}" bindchange="handleProxy" class="_i-tab-bar data-v-35a33b54 bottom_btn" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+      <i-tab-bar-item key="brush" icon="brush" current-icon="brush" title="写跟进" class="_i-tab-bar-item data-v-35a33b54"></i-tab-bar-item>
+      <i-tab-bar-item key="addressbook" icon="addressbook" current-icon="addressbook" title="打电话" class="_i-tab-bar-item data-v-35a33b54"></i-tab-bar-item>
+      <i-tab-bar-item key="more" icon="more" current-icon="more" title="更多" class="_i-tab-bar-item data-v-35a33b54"></i-tab-bar-item>
+    </i-tab-bar>
+    <i-action-sheet visible="{{showOptions}}" actions="{{optionList}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-35a33b54"></i-action-sheet>
+    <i-toast id="toast" class="_i-toast data-v-35a33b54"></i-toast>
+    <i-message id="message" class="_i-message data-v-35a33b54"></i-message>
+  </view>
+</template>

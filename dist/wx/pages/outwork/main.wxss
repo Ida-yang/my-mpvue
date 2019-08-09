@@ -1,7 +1,0 @@
-@import "../../common/vendor.wxss";
-
-.out_work_wrap {
-  background-color: #fcfcfc;
-  margin-top: 80rpx;
-  margin-bottom: 80rpx;
-}

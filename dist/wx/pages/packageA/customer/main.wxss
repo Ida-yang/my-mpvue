@@ -1,0 +1,7 @@
+@import "../../../common/vendor.wxss";
+
+.customer_wrap {
+  background-color: #fcfcfc;
+  margin-top: 80rpx;
+  margin-bottom: 80rpx;
+}

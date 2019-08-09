@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "签到",
+    "usingComponents": {
+      "i-panel": "../../../../iview/panel/index",
+      "i-button": "../../../../iview/button/index",
+      "i-message": "../../../../iview/message/index",
+      "i-toast": "../../../../iview/toast/index"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "合同审批流程",
+    "usingComponents": {
+      "i-panel": "../../../../iview/panel/index",
+      "i-steps": "../../../../iview/steps/index",
+      "i-step": "../../../../iview/step/index",
+      "i-fiche": "../../../../iview/fiche/index"
+    }
+  }

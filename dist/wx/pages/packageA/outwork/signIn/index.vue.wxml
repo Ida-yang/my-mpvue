@@ -1,0 +1,17 @@
+<template name="200e60b6">
+  <view class="_div data-v-d963a198 sign_in_wrap">
+    <view class="_view data-v-d963a198"><map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="18" show-location style="width: 100%; height: 300px;" class="_map data-v-d963a198"></map></view>
+    <view class="_view data-v-d963a198 sign_in_view">
+      <view class="_p data-v-d963a198 p1">当前位置</view>
+      <view class="_p data-v-d963a198 p2">{{address}}  ></view>
+    </view>
+    <view class="_view data-v-d963a198 sign_in_photo" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+      <image src="../../../../static/images/photograph.png" class="_image data-v-d963a198 sign_in_img"></image>
+    </view>
+    <image wx:if="{{photoImg}}" mode="aspectFit" src="{{photoImg}}" class="_image data-v-d963a198 fullwidth_img"></image>
+    <view class="_view data-v-d963a198 detail_module"></view>
+    <i-button bindtap="handleProxy" type="ghost" long="{{true}}" class="_i-button data-v-d963a198 bottom_btn" data-eventid="{{'1'}}" data-comkey="{{$k}}">确定</i-button>
+    <i-message id="message" class="_i-message data-v-d963a198"></i-message>
+    <i-toast id="toast" class="_i-toast data-v-d963a198"></i-toast>
+  </view>
+</template>

@@ -1,15 +1,15 @@
 require("../../common/manifest.js")
 require("../../common/vendor.js")
-global.webpackJsonpMpvue([30],{
+global.webpackJsonpMpvue([63],{
 
-/***/ 244:
+/***/ 84:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(85);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 245:
+/***/ 85:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(247);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_619bc6d4_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_619bc6d4_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(88);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(246)
+  __webpack_require__(86)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,14 +72,14 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 246:
+/***/ 86:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 247:
+/***/ 87:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -210,62 +210,62 @@ if (false) {(function () {
     methods: {
         toClue: function toClue() {
             console.log('去线索');
-            var url = '../clue/main';
+            var url = '../packageA/clue/main';
             global.mpvue.navigateTo({ url: url });
         },
         toCluePool: function toCluePool() {
             console.log('去线索池');
-            var url = '../cluePool/main';
+            var url = '../packageA/cluePool/main';
             global.mpvue.navigateTo({ url: url });
         },
         toCustomer: function toCustomer() {
             console.log('去客户');
-            var url = '../customer/main';
+            var url = '../packageA/customer/main';
             global.mpvue.navigateTo({ url: url });
         },
         toCustomerPool: function toCustomerPool() {
             console.log('去客户池');
-            var url = '../customerPool/main';
+            var url = '../packageA/customerPool/main';
             global.mpvue.navigateTo({ url: url });
         },
         toContact: function toContact() {
             console.log('去联系人');
-            var url = '../contact/main';
+            var url = '../packageA/contact/main';
             global.mpvue.navigateTo({ url: url });
         },
         toOpportunity: function toOpportunity() {
             console.log('去商机');
-            var url = '../opportunity/main';
+            var url = '../packageA/opportunity/main';
             global.mpvue.navigateTo({ url: url });
         },
         toAgreement: function toAgreement() {
             console.log('去合同');
-            var url = '../agreement/main';
+            var url = '../packageA/agreement/main';
             global.mpvue.navigateTo({ url: url });
         },
         toPayCollection: function toPayCollection() {
             console.log('去应收回款');
-            var url = '../payCollection/main';
+            var url = '../packageA/payCollection/main';
             global.mpvue.navigateTo({ url: url });
         },
         toFollow: function toFollow() {
             console.log('去跟进记录');
-            var url = '../follow/main';
+            var url = '../packageA/follow/main';
             global.mpvue.navigateTo({ url: url });
         },
         toOutwork: function toOutwork() {
             console.log('去外勤');
-            var url = '../outwork/main';
+            var url = '../packageA/outwork/main';
             global.mpvue.navigateTo({ url: url });
         },
         toTask: function toTask() {
             console.log('去任务');
-            var url = '../task/main';
+            var url = '../packageA/task/main';
             global.mpvue.navigateTo({ url: url });
         },
         toNote: function toNote() {
             console.log('去便签');
-            var url = '../note/main';
+            var url = '../packageA/note/main';
             global.mpvue.navigateTo({ url: url });
         },
         toNotYet: function toNotYet() {
@@ -278,7 +278,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 248:
+/***/ 88:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -648,7 +648,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "mpcomid": '48'
     },
     on: {
-      "click": _vm.toNotYet
+      "click": _vm.toTask
     }
   }, [_c('i-grid-icon', {
     attrs: {
@@ -705,4 +705,4 @@ if (false) {
 
 /***/ })
 
-},[244]);
+},[84]);

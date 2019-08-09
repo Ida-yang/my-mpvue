@@ -91,7 +91,7 @@
                     </i-grid-icon>
                     <i-grid-label>外勤</i-grid-label>
                 </i-grid-item>
-                <i-grid-item @click="toNotYet">
+                <i-grid-item @click="toTask">
                     <i-grid-icon>
                         <image src="../../static/images/task.png" style="width:20px;height:20px;" />
                     </i-grid-icon>
@@ -126,63 +126,63 @@
             
             toClue(){
                 console.log('去线索')
-                const url = '../clue/main'
+                const url = '../packageA/clue/main'
                 mpvue.navigateTo({ url })
             },
             toCluePool(){
                 console.log('去线索池')
-                const url = '../cluePool/main'
+                const url = '../packageA/cluePool/main'
                 mpvue.navigateTo({ url })
             },
             toCustomer(){
                 console.log('去客户')
-                const url = '../customer/main'
+                const url = '../packageA/customer/main'
                 mpvue.navigateTo({ url })
             },
             toCustomerPool(){
                 console.log('去客户池')
-                const url = '../customerPool/main'
+                const url = '../packageA/customerPool/main'
                 mpvue.navigateTo({ url })
             },
             toContact(){
                 console.log('去联系人')
-                const url = '../contact/main'
+                const url = '../packageA/contact/main'
                 mpvue.navigateTo({ url })
             },
             toOpportunity(){
                 console.log('去商机')
-                const url = '../opportunity/main'
+                const url = '../packageA/opportunity/main'
                 mpvue.navigateTo({ url })
             },
             toAgreement(){
                 console.log('去合同')
-                const url = '../agreement/main'
+                const url = '../packageA/agreement/main'
                 mpvue.navigateTo({ url })
             },
             toPayCollection(){
                 console.log('去应收回款')
-                const url = '../payCollection/main'
+                const url = '../packageA/payCollection/main'
                 mpvue.navigateTo({ url })
             },
             toFollow(){
                 console.log('去跟进记录')
-                const url = '../follow/main'
+                const url = '../packageA/follow/main'
                 mpvue.navigateTo({ url })
             },
 
             toOutwork(){
                 console.log('去外勤')
-                const url = '../outwork/main'
+                const url = '../packageA/outwork/main'
                 mpvue.navigateTo({ url })
             },
             toTask(){
                 console.log('去任务')
-                const url = '../task/main'
+                const url = '../packageA/task/main'
                 mpvue.navigateTo({ url })
             },
             toNote(){
                 console.log('去便签')
-                const url = '../note/main'
+                const url = '../packageA/note/main'
                 mpvue.navigateTo({ url })
             },
 

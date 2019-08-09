@@ -1,7 +1,0 @@
-<template name="06451f35">
-  <view class="_div data-v-57c306be">
-    <view class="_p data-v-57c306be datetime-picker">
-      {{text}}
-    </view>
-  </view>
-</template>

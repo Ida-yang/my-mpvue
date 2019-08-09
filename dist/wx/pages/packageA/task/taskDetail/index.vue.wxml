@@ -1,0 +1,33 @@
+<template name="1b04b852">
+  <view class="_div data-v-bc6a4a58 task_detail_wrap">
+    <i-cell title="{{taskDetail.planningTheme}}" class="_i-cell data-v-bc6a4a58">
+      <view class="_p data-v-bc6a4a58 cell_info">关联客户  {{taskDetail.customerName}}</view>
+      <view class="_p data-v-bc6a4a58 cell_info">描述：  {{taskDetail.describe}}</view>
+    </i-cell>
+    <i-panel title=" " class="_i-panel data-v-bc6a4a58"></i-panel>
+    <view class="_view data-v-bc6a4a58 font_size_12">
+      <i-cell-group class="_i-cell-group data-v-bc6a4a58">
+        <i-cell title="开始时间" value="{{taskDetail.startTime}}" class="_i-cell data-v-bc6a4a58"></i-cell>
+        <i-cell title="结束时间" value="{{taskDetail.endTime}}" class="_i-cell data-v-bc6a4a58"></i-cell>
+        <i-cell title="提醒时间" value="{{taskDetail.remindTime}}" class="_i-cell data-v-bc6a4a58"></i-cell>
+        <i-cell title="状态" value="{{taskDetail.state}}" class="_i-cell data-v-bc6a4a58"></i-cell>
+        <i-cell title="负责人" value="{{taskDetail.private_employee}}" class="_i-cell data-v-bc6a4a58"></i-cell>
+        <i-cell title="部门" value="{{taskDetail.deptname}}" class="_i-cell data-v-bc6a4a58"></i-cell>
+        <i-cell title="机构" value="{{taskDetail.parentname}}" class="_i-cell data-v-bc6a4a58"></i-cell>
+      </i-cell-group>
+    </view>
+    <i-tab-bar current="{{activeBar}}" bindchange="handleProxy" class="_i-tab-bar data-v-bc6a4a58 bottom_btn" data-eventid="{{'0'}}" data-comkey="{{$k}}">
+      <i-tab-bar-item key="offline" icon="offline" current-icon="offline" title="未完成" class="_i-tab-bar-item data-v-bc6a4a58"></i-tab-bar-item>
+      <i-tab-bar-item key="success" icon="success" current-icon="success" title="已完成" class="_i-tab-bar-item data-v-bc6a4a58"></i-tab-bar-item>
+      <i-tab-bar-item key="more" icon="more" current-icon="more" title="更多" class="_i-tab-bar-item data-v-bc6a4a58"></i-tab-bar-item>
+    </i-tab-bar>
+    <i-action-sheet visible="{{showMore}}" actions="{{moreActions}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-bc6a4a58"></i-action-sheet>
+    <i-action-sheet visible="{{showDetele}}" actions="{{deleteActions}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-bc6a4a58">
+      <view slot="header" style="padding: 16px" class="_view data-v-bc6a4a58">
+        <view style="color: #444;font-size: 16px" class="_view data-v-bc6a4a58">确定吗？</view> <text class="_text data-v-bc6a4a58">删除后无法恢复哦</text>
+      </view>
+    </i-action-sheet>
+    <i-toast id="toast" class="_i-toast data-v-bc6a4a58"></i-toast>
+    <i-message id="message" class="_i-message data-v-bc6a4a58"></i-message>
+  </view>
+</template>

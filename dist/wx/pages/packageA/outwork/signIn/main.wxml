@@ -1,0 +1,1 @@
+<import src="/pages/packageA/outwork/signIn/index.vue.wxml" /><template is="200e60b6" data="{{ ...$root['0'], $root }}"/>
