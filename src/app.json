@@ -9,77 +9,82 @@
     "pages/mine/main",
     "pages/logs/main",
 
-    "pages/clue/main",
-    "pages/clue/clueAdd/main",
-    "pages/clue/clueUpdate/main",
-    "pages/clue/clueDetail/main",
-    "pages/clue/clueFollow/main",
-
-    "pages/cluePool/main",
-    "pages/cluePool/cluePoolDetail/main",
-    "pages/cluePool/userList/main",
-
-    "pages/customer/main",
-    "pages/customer/customerAdd/main",
-    "pages/customer/customerUpdate/main",
-    "pages/customer/customerDetail/main",
-    "pages/customer/customerFollow/main",
-
-    "pages/customerPool/main",
-    "pages/customerPool/customerPoolDetail/main",
-    "pages/customerPool/userList/main",
-
-    "pages/contact/main",
-    "pages/contact/contactAdd/main",
-    "pages/contact/contactUpdate/main",
-    "pages/contact/contactDetail/main",
-    "pages/contact/clueandCustomer/main",
-
-    "pages/opportunity/main",
-    "pages/opportunity/opportunityAdd/main",
-    "pages/opportunity/opportunityUpdate/main",
-    "pages/opportunity/opportunityDetail/main",
-    "pages/opportunity/customers/main",
-    "pages/opportunity/opportunityFollow/main",
-    "pages/opportunity/opportunityStage/main",
-    "pages/opportunity/opportunityFail/main",
-
-    "pages/agreement/main",
-    "pages/agreement/agreementAdd/main",
-    "pages/agreement/agreementUpdate/main",
-    "pages/agreement/agreementDetail/main",
-    "pages/agreement/customers/main",
-    "pages/agreement/agreementFollow/main",
-    "pages/agreement/agreementState/main",
-    "pages/agreement/paymentPlan/main",
-    "pages/agreement/paymentInfo/main",
-
-    "pages/payCollection/main",
-    "pages/payCollection/payCollectionDetail/main",
-
-    "pages/follow/main",
-    "pages/follow/followDetail/main",
-
-    "pages/outwork/main",
-    "pages/outwork/outworkAdd/main",
-    "pages/outwork/outworkUpdate/main",
-    "pages/outwork/outworkDetail/main",
-    "pages/outwork/signIn/main",
-    "pages/outwork/customers/main",
-    "pages/outwork/assistants/main",
-
-    "pages/task/main",
-    "pages/task/taskAdd/main",
-    "pages/task/taskUpdate/main",
-    "pages/task/taskDetail/main",
-
-    "pages/note/main",
-    "pages/note/noteAdd/main",
-    "pages/note/noteUpdate/main",
-    "pages/note/noteDetail/main",
-    
     "pages/notYet/main"
   ],
+  "subPackages": [{
+    "root": "pages/packageA/",
+    "pages": [
+      "clue/main",
+      "clue/clueAdd/main",
+      "clue/clueUpdate/main",
+      "clue/clueDetail/main",
+      "clue/clueFollow/main",
+
+      "cluePool/main",
+      "cluePool/cluePoolDetail/main",
+      "cluePool/userList/main",
+
+      "customer/main",
+      "customer/customerAdd/main",
+      "customer/customerUpdate/main",
+      "customer/customerDetail/main",
+      "customer/customerFollow/main",
+
+      "customerPool/main",
+      "customerPool/customerPoolDetail/main",
+      "customerPool/userList/main",
+
+      "contact/main",
+      "contact/contactAdd/main",
+      "contact/contactUpdate/main",
+      "contact/contactDetail/main",
+      "contact/clueandCustomer/main",
+
+      "opportunity/main",
+      "opportunity/opportunityAdd/main",
+      "opportunity/opportunityUpdate/main",
+      "opportunity/opportunityDetail/main",
+      "opportunity/customers/main",
+      "opportunity/opportunityFollow/main",
+      "opportunity/opportunityStage/main",
+      "opportunity/opportunityFail/main",
+
+      "agreement/main",
+      "agreement/agreementAdd/main",
+      "agreement/agreementUpdate/main",
+      "agreement/agreementDetail/main",
+      "agreement/customers/main",
+      "agreement/agreementFollow/main",
+      "agreement/agreementState/main",
+      "agreement/paymentPlan/main",
+      "agreement/paymentInfo/main",
+
+      "payCollection/main",
+      "payCollection/payCollectionDetail/main",
+
+      "follow/main",
+      "follow/followDetail/main",
+
+      "outwork/main",
+      "outwork/outworkAdd/main",
+      "outwork/outworkUpdate/main",
+      "outwork/outworkDetail/main",
+      "outwork/signIn/main",
+      "outwork/customers/main",
+      "outwork/assistants/main",
+
+      "task/main",
+      "task/taskAdd/main",
+      "task/taskUpdate/main",
+      "task/taskDetail/main",
+      "task/customers/main",
+
+      "note/main",
+      "note/noteAdd/main",
+      "note/noteUpdate/main",
+      "note/noteDetail/main"
+    ]
+    }],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ff6333",
@@ -116,5 +121,10 @@
       "activeIcon": "static/tabs/03-2.png"
     }],
     "position": "bottom"
+  },
+  "permission": {
+    "scope.userLocation": {
+     "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
   }
 }

@@ -1,0 +1,15 @@
+{
+    "navigationBarTitleText": "任务详情",
+    "usingComponents": {
+      "i-panel": "../../../../iview/panel/index",
+      "i-icon": "../../../../iview/icon/index",
+      "i-button": "../../../../iview/button/index",
+      "i-action-sheet": "../../../../iview/action-sheet/index",
+      "i-message": "../../../../iview/message/index",
+      "i-toast": "../../../../iview/toast/index",
+      "i-cell-group": "../../../../iview/cell-group/index",
+      "i-cell": "../../../../iview/cell/index",
+      "i-tab-bar": "../../../../iview/tab-bar/index",
+      "i-tab-bar-item": "../../../../iview/tab-bar-item/index"
+    }
+}

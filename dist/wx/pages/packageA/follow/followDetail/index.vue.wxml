@@ -1,0 +1,28 @@
+<template name="18af2992">
+  <view class="_div data-v-b0d53b58 follow_detail_wrap">
+    <i-cell title="{{numData.corporateName}}" class="_i-cell data-v-b0d53b58">
+      <view class="_p data-v-b0d53b58 cell_info">总联系人：{{numData.contactsTotal}}人  |  联系过其中：{{numData.contactsIng}}人</view>
+      <view class="_p data-v-b0d53b58 cell_info">总联系次数：{{numData.contactsNum}}次  |  最近联系：  {{numData.contact_time}}</view>
+      <view class="_p data-v-b0d53b58 cell_info">距上次联系天数：{{numData.distanceDayNum}}天</view>
+    </i-cell>
+    <i-panel title=" " class="_i-panel data-v-b0d53b58">
+      <i-tabs current="{{activeName}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-b0d53b58">
+        <i-tab key="first" title="跟进记录" class="_i-tab data-v-b0d53b58"></i-tab>
+      </i-tabs>
+    </i-panel>
+    <view wx:if="{{activeName == 'first'}}" class="_view data-v-b0d53b58 follow_view">
+      <view wx:key="item.id" key="{{item.id}}" wx:for="{{followData}}" wx:for-index="index" wx:for-item="item" class="_view data-v-b0d53b58">
+        <i-panel title="{{item.createTime}}" i-class="vice_panel" class="_i-panel data-v-b0d53b58"></i-panel>
+        <i-fiche full isContent isFooter title="{{item.contacts[0].name}}" extra="{{item.state}}" thumb="{{item.portrait}}" class="_i-fiche data-v-b0d53b58">
+          <view slot="content" class="_view data-v-b0d53b58">
+            <rich-text nodes="{{item.followContent}}" class="_rich-text data-v-b0d53b58"></rich-text>
+          </view>
+          <view slot="footer" class="_view data-v-b0d53b58"><label class="_span data-v-b0d53b58 bgc_span">{{item.followType}}</label> <label wx:if="{{item.contactTime}}" class="_span data-v-b0d53b58">    </label> <label class="_span data-v-b0d53b58 bgc_span" wx:if="{{item.contactTime}}">{{item.contactTime}}</label>      <label class="_span data-v-b0d53b58">{{item.inputType}}</label>
+            <view class="_br data-v-b0d53b58"></view>
+            <image wx:if="{{item.followImg}}" mode="scaleToFill" src="{{item.followImg}}" class="_image data-v-b0d53b58 follow_image"></image>
+          </view>
+        </i-fiche>
+      </view>
+    </view>
+  </view>
+</template>

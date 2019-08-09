@@ -20,29 +20,38 @@ const information = {
     clueupdateData: '',
     clueDetailData: '',
     cluePoolDetailData: '',
+
     customerupdateData: '',
     customerDetailData: '',
     customerPoolDetailData: '',
+
     contactupdateData: '',
     contactPoolNameData: '',
     contactDetailData: '',
+
     opportunityupdateData: '',
     opportunityPoolNameData: '',
     opportunityDetailData: '',
     failReason:'',
+
     agreementupdateData: '',
     agreementDetailData: '',
     agreementPoolNameData: '',
     followDetailData: '',
+
     payplanData: '',
     payinfoData: '',
     payCollectionDetailData: '',
+
     outworkupdateData:'',
     outworkDetailData:'',
     outworkPoolName:'',
     outworkAssistants:'',
+
     taskupdateData:'',
     taskDetailData:'',
+    taskPoolName:'',
+    
     noteupdateData:'',
     noteDetailData:'',
 }

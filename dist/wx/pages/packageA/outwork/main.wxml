@@ -1,0 +1,1 @@
+<import src="/pages/packageA/outwork/index.vue.wxml" /><template is="4e93e344" data="{{ ...$root['0'], $root }}"/>

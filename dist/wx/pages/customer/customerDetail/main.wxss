@@ -1,6 +1,0 @@
-@import "../../../common/vendor.wxss";
-
-.customer_detail {
-  background-color: #f5f5f5;
-  margin-bottom: 100rpx;
-}

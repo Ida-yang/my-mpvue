@@ -46,15 +46,15 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "单页模式",
-					"pathName": "pages/outwork/main",
+					"name": "pages/packageA/task/main",
+					"pathName": "pages/packageA/task/main",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": 1,
-					"name": "pages/outwork/signIn/main",
-					"pathName": "pages/outwork/signIn/main",
+					"name": "pages/packageA/outwork/signIn/main",
+					"pathName": "pages/packageA/outwork/signIn/main",
 					"query": "",
 					"scene": null
 				},

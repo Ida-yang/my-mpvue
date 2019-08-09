@@ -1,5 +1,0 @@
-@import "../../common/vendor.wxss";
-
-.pay_wrap {
-  margin-top: 80rpx;
-}

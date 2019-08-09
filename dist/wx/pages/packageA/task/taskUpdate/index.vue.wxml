@@ -1,0 +1,22 @@
+<template name="16a6a2ca">
+  <view class="_div data-v-c5267568 add_or_update_wrap">
+    <i-panel title=" " class="_i-panel data-v-c5267568"></i-panel>
+    <i-panel title=" " class="_i-panel data-v-c5267568">
+      <i-cell title="关联客户" value="{{updateList.customerName}}" request is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-cell data-v-c5267568"></i-cell>
+      <i-cell title="开始时间" request is-link i-class="simple_cell" class="_i-cell data-v-c5267568">
+        <i-datetime-picker slot="footer" value="{{updateList.startTime}}" bindchange="handleProxy" class="_i-datetime-picker data-v-c5267568 cell_picker" data-eventid="{{'1'}}" data-comkey="{{$k}}"></i-datetime-picker>
+      </i-cell>
+      <i-cell title="结束时间" request is-link i-class="simple_cell" class="_i-cell data-v-c5267568">
+        <i-datetime-picker slot="footer" value="{{updateList.endTime}}" bindchange="handleProxy" class="_i-datetime-picker data-v-c5267568 cell_picker" data-eventid="{{'2'}}" data-comkey="{{$k}}"></i-datetime-picker>
+      </i-cell>
+      <i-cell title="提醒时间" request is-link i-class="simple_cell" class="_i-cell data-v-c5267568">
+        <i-datetime-picker slot="footer" value="{{updateList.remindTime}}" bindchange="handleProxy" class="_i-datetime-picker data-v-c5267568 cell_picker" data-eventid="{{'3'}}" data-comkey="{{$k}}"></i-datetime-picker>
+      </i-cell>
+      <i-input value="{{updateList.planningTheme}}" bindchange="handleProxy" title="任务主题" right request maxlength="50" bindinput="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-input data-v-c5267568"></i-input>
+      <i-input value="{{updateList.describe}}" bindchange="handleProxy" title="描述" right request type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-input data-v-c5267568"></i-input>
+    </i-panel>
+    <i-button bindtap="handleProxy" type="ghost" long="{{true}}" class="_i-button data-v-c5267568 bottom_btn" data-eventid="{{'6'}}" data-comkey="{{$k}}">确定</i-button>
+    <i-message id="message" class="_i-message data-v-c5267568"></i-message>
+    <i-toast id="toast" class="_i-toast data-v-c5267568"></i-toast>
+  </view>
+</template>

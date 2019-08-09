@@ -1,0 +1,11 @@
+<template name="4a962456">
+  <view class="_div data-v-7743d866 add_or_update_wrap">
+    <i-input value="{{poolName}}" type="text" maxlength="50" placeholder="输入公司名称查询" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-7743d866"></i-input>
+    <i-radio-group current="{{cheakItem}}" bindchange="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-radio-group data-v-7743d866">
+      <i-radio wx:key="item.id" key="{{item.id}}" position="right" value="{{item.name}}" label="{{item.id}}" wx:for="{{itemList}}" wx:for-index="index" wx:for-item="item" class="_i-radio data-v-7743d866"></i-radio>
+    </i-radio-group>
+    <i-button bindtap="handleProxy" type="ghost" long="{{true}}" class="_i-button data-v-7743d866 bottom_btn" data-eventid="{{'2'}}" data-comkey="{{$k}}">确定</i-button>
+    <i-toast id="toast" class="_i-toast data-v-7743d866"></i-toast>
+    <i-message id="message" class="_i-message data-v-7743d866"></i-message>
+  </view>
+</template>

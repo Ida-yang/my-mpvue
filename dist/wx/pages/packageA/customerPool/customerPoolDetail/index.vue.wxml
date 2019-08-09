@@ -1,0 +1,82 @@
+<template name="e84d851c">
+  <view class="_div data-v-3fc44e18 customer_pool_detail">
+    <i-cell title="{{customerPoolDetail.name}}" class="_i-cell data-v-3fc44e18">
+      <view class="_p data-v-3fc44e18 cell_info">联系人姓名：  {{customerPoolContact.coName}}</view>
+      <view class="_p data-v-3fc44e18 cell_info">联系人手机：  {{customerPoolContact.phone || '无'}}</view>
+      <view class="_p data-v-3fc44e18 cell_info">详细地址：    {{customerPoolDetail.address || '无'}}</view>
+    </i-cell>
+    <i-panel title=" " class="_i-panel data-v-3fc44e18">
+      <i-tabs current="{{activeName}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-3fc44e18">
+        <i-tab key="first" title="跟进记录" class="_i-tab data-v-3fc44e18"></i-tab>
+        <i-tab key="second" title="基本信息" class="_i-tab data-v-3fc44e18"></i-tab>
+        <i-tab key="third" title="相关信息" class="_i-tab data-v-3fc44e18"></i-tab>
+      </i-tabs>
+    </i-panel>
+    <view wx:if="{{activeName == 'first'}}" class="_view data-v-3fc44e18 follow_view">
+      <view wx:key="item.id" key="{{item.id}}" wx:for="{{followData}}" wx:for-index="index" wx:for-item="item" class="_view data-v-3fc44e18">
+        <i-panel title="{{item.createTime}}" i-class="vice_panel" class="_i-panel data-v-3fc44e18"></i-panel>
+        <i-fiche full isContent isFooter title="{{item.contacts[0].name}}" extra="{{item.state}}" thumb="{{item.portrait}}" class="_i-fiche data-v-3fc44e18">
+          <view slot="content" class="_view data-v-3fc44e18">
+            <rich-text nodes="{{item.followContent}}" class="_rich-text data-v-3fc44e18"></rich-text>
+          </view>
+          <view slot="footer" class="_view data-v-3fc44e18"><label class="_span data-v-3fc44e18 bgc_span">{{item.followType}}</label> <label wx:if="{{item.contactTime}}" class="_span data-v-3fc44e18">    </label> <label class="_span data-v-3fc44e18 bgc_span" wx:if="{{item.contactTime}}">{{item.contactTime}}</label>      <label class="_span data-v-3fc44e18">{{item.inputType}}</label>
+            <view class="_br data-v-3fc44e18"></view>
+            <image wx:if="{{item.followImg}}" mode="scaleToFill" src="{{item.followImg}}" class="_image data-v-3fc44e18 follow_image"></image>
+          </view>
+        </i-fiche>
+      </view>
+    </view>
+    <view wx:if="{{activeName == 'second'}}" class="_view data-v-3fc44e18 font_size_12">
+      <i-cell-group class="_i-cell-group data-v-3fc44e18">
+        <i-cell title="公司名称" value="{{customerPoolDetail.pName}}" class="_i-cell data-v-3fc44e18"></i-cell>
+        <i-cell title="客户状态" value="{{customerPoolDetail.source}}" class="_i-cell data-v-3fc44e18"></i-cell>
+        <i-cell title="未联系天数" value="{{customerPoolDetail.dayNum}}" class="_i-cell data-v-3fc44e18"></i-cell>
+        <i-cell title="创建时间" value="{{customerPoolDetail.createTime}}" class="_i-cell data-v-3fc44e18"></i-cell>
+        <i-cell title="前负责人" value="{{customerPoolDetail.privateUser[0].private_employee}}" class="_i-cell data-v-3fc44e18"></i-cell>
+        <i-cell title="部门" value="{{customerPoolDetail.deptname}}" class="_i-cell data-v-3fc44e18"></i-cell>
+        <i-cell title="机构" value="{{customerPoolDetail.parentname}}" class="_i-cell data-v-3fc44e18"></i-cell>
+      </i-cell-group>
+    </view>
+    <view wx:if="{{activeName == 'third'}}" class="_view data-v-3fc44e18 font_size_12">
+      <i-card full title="联系人" class="_i-card data-v-3fc44e18">
+        <i-cell slot="content" i-class="card_cell" wx:key="item.id" key="{{item.id}}" title="{{item.name}}" value="{{item.phone}}" wx:for="{{contactData}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-3fc44e18"></i-cell>
+      </i-card>
+      <view class="_view data-v-3fc44e18 detail_module"></view>
+      <i-card full title="商机" class="_i-card data-v-3fc44e18">
+        <i-cell slot="content" i-class="card_cell" wx:key="item.id" key="{{item.id}}" title="{{item.opportunity_name}}" label="{{item.opportunity_time}}" wx:for="{{opportunityData}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-3fc44e18">
+          <view slot="footer" class="_view data-v-3fc44e18"><label style="font-size:11px;color:#80848f" class="_span data-v-3fc44e18">{{item.opportunity_achievement}}</label>
+            <view class="_br data-v-3fc44e18"></view> <label style="font-size:11px;color:#80848f" class="_span data-v-3fc44e18">{{item.opportunityProgress[0].progress_name}}</label>
+          </view>
+        </i-cell>
+      </i-card>
+      <view class="_view data-v-3fc44e18 detail_module"></view>
+      <i-card full title="合同" class="_i-card data-v-3fc44e18">
+        <i-cell slot="content" i-class="card_cell" wx:key="item.id" key="{{item.id}}" title="{{item.contract_name}}" label="{{item.start_date}}" wx:for="{{agreementData}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-3fc44e18">
+          <view slot="footer" class="_view data-v-3fc44e18"><label style="font-size:11px;color:#80848f" class="_span data-v-3fc44e18">{{item.amount}}</label>
+            <view class="_br data-v-3fc44e18"></view> <label style="font-size:11px;color:#80848f" class="_span data-v-3fc44e18">{{item.contract_type}}</label>
+          </view>
+        </i-cell>
+      </i-card>
+      <view class="_view data-v-3fc44e18 detail_module"></view>
+      <i-card full title="任务" class="_i-card data-v-3fc44e18">
+        <i-cell slot="content" i-class="card_cell" wx:key="item.id" key="{{item.id}}" title="{{item.theme}}" label="{{item.startTime}}" wx:for="{{outWordAddTaskDara}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-3fc44e18">
+          <view slot="footer" class="_view data-v-3fc44e18"><label style="font-size:11px;color:#80848f" class="_span data-v-3fc44e18">{{item.type}}</label>
+            <view class="_br data-v-3fc44e18"></view> <label style="font-size:11px;color:#80848f" class="_span data-v-3fc44e18">{{item.state}}</label>
+          </view>
+        </i-cell>
+      </i-card>
+    </view>
+    <i-tab-bar current="{{activeBar}}" bindchange="handleProxy" class="_i-tab-bar data-v-3fc44e18 bottom_btn" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+      <i-tab-bar-item key="receive" icon="group" current-icon="group" title="领取" class="_i-tab-bar-item data-v-3fc44e18"></i-tab-bar-item>
+      <i-tab-bar-item key="distribute" icon="share" current-icon="share" title="分配" class="_i-tab-bar-item data-v-3fc44e18"></i-tab-bar-item>
+      <i-tab-bar-item key="trash" icon="trash" current-icon="trash" title="删除" class="_i-tab-bar-item data-v-3fc44e18"></i-tab-bar-item>
+    </i-tab-bar>
+    <i-action-sheet visible="{{showDetele}}" actions="{{deleteActions}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-3fc44e18">
+      <view slot="header" style="padding: 16px" class="_view data-v-3fc44e18">
+        <view style="color: #444;font-size: 16px" class="_view data-v-3fc44e18">确定吗？</view> <text class="_text data-v-3fc44e18">删除后无法恢复哦</text>
+      </view>
+    </i-action-sheet>
+    <i-toast id="toast" class="_i-toast data-v-3fc44e18"></i-toast>
+    <i-message id="message" class="_i-message data-v-3fc44e18"></i-message>
+  </view>
+</template>

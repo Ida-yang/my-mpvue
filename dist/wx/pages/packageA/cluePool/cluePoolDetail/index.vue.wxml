@@ -1,0 +1,59 @@
+<template name="0453abd2">
+  <view class="_div data-v-69e1aad4 clue_pool_detail">
+    <i-cell title="{{cluePoolDetail.name}}" class="_i-cell data-v-69e1aad4">
+      <view class="_p data-v-69e1aad4 cell_info">联系人姓名：  {{cluePoolContact.coName}}</view>
+      <view class="_p data-v-69e1aad4 cell_info">联系人手机：  {{cluePoolContact.phone || '无'}}</view>
+      <view class="_p data-v-69e1aad4 cell_info">详细地址：    {{cluePoolDetail.address || '无'}}</view>
+    </i-cell>
+    <i-panel title=" " class="_i-panel data-v-69e1aad4">
+      <i-tabs current="{{activeName}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-69e1aad4">
+        <i-tab key="first" title="跟进记录" class="_i-tab data-v-69e1aad4"></i-tab>
+        <i-tab key="second" title="联系人" class="_i-tab data-v-69e1aad4"></i-tab>
+        <i-tab key="third" title="基本信息" class="_i-tab data-v-69e1aad4"></i-tab>
+      </i-tabs>
+    </i-panel>
+    <view wx:if="{{activeName == 'first'}}" class="_view data-v-69e1aad4 follow_view">
+      <view wx:key="item.id" key="{{item.id}}" wx:for="{{followData}}" wx:for-index="index" wx:for-item="item" class="_view data-v-69e1aad4">
+        <i-panel title="{{item.createTime}}" i-class="vice_panel" class="_i-panel data-v-69e1aad4"></i-panel>
+        <i-fiche full isContent isFooter title="{{item.contacts[0].name}}" extra="{{item.state}}" thumb="{{item.portrait}}" class="_i-fiche data-v-69e1aad4">
+          <view slot="content" class="_view data-v-69e1aad4">
+            <rich-text nodes="{{item.followContent}}" class="_rich-text data-v-69e1aad4"></rich-text>
+          </view>
+          <view slot="footer" class="_view data-v-69e1aad4"><label class="_span data-v-69e1aad4 bgc_span">{{item.followType}}</label> <label wx:if="{{item.contactTime}}" class="_span data-v-69e1aad4">    </label> <label class="_span data-v-69e1aad4 bgc_span" wx:if="{{item.contactTime}}">{{item.contactTime}}</label>      <label class="_span data-v-69e1aad4">{{item.inputType}}</label>
+            <view class="_br data-v-69e1aad4"></view>
+            <image wx:if="{{item.followImg}}" mode="scaleToFill" src="{{item.followImg}}" class="_image data-v-69e1aad4 follow_image"></image>
+          </view>
+        </i-fiche>
+      </view>
+    </view>
+    <view wx:if="{{activeName == 'second'}}" class="_view data-v-69e1aad4 font_size_12">
+      <i-cell-group wx:key="item.id" key="{{item.id}}" wx:for="{{contactData}}" wx:for-index="index" wx:for-item="item" class="_i-cell-group data-v-69e1aad4">
+        <i-cell title="联系人" value="{{item.name}}" class="_i-cell data-v-69e1aad4"></i-cell>
+        <i-cell title="手机号码" value="{{item.phone}}" class="_i-cell data-v-69e1aad4"></i-cell>
+      </i-cell-group>
+    </view>
+    <view wx:if="{{activeName == 'third'}}" class="_view data-v-69e1aad4 font_size_12">
+      <i-cell-group class="_i-cell-group data-v-69e1aad4">
+        <i-cell title="公司名称" value="{{cluePoolDetail.name}}" class="_i-cell data-v-69e1aad4"></i-cell>
+        <i-cell title="线索状态" value="{{cluePoolDetail.state}}" class="_i-cell data-v-69e1aad4"></i-cell>
+        <i-cell title="未联系天数" value="{{cluePoolDetail.dayNum}}" class="_i-cell data-v-69e1aad4"></i-cell>
+        <i-cell title="创建时间" value="{{cluePoolDetail.createTime}}" class="_i-cell data-v-69e1aad4"></i-cell>
+        <i-cell title="前负责人" value="{{cluePoolDetail.privateUser[0].private_employee}}" class="_i-cell data-v-69e1aad4"></i-cell>
+        <i-cell title="部门" value="{{cluePoolDetail.deptname}}" class="_i-cell data-v-69e1aad4"></i-cell>
+        <i-cell title="机构" value="{{cluePoolDetail.parentname}}" class="_i-cell data-v-69e1aad4"></i-cell>
+      </i-cell-group>
+    </view>
+    <i-tab-bar current="{{activeBar}}" bindchange="handleProxy" class="_i-tab-bar data-v-69e1aad4 bottom_btn" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+      <i-tab-bar-item key="receive" icon="group" current-icon="group" title="领取" class="_i-tab-bar-item data-v-69e1aad4"></i-tab-bar-item>
+      <i-tab-bar-item key="distribute" icon="share" current-icon="share" title="分配" class="_i-tab-bar-item data-v-69e1aad4"></i-tab-bar-item>
+      <i-tab-bar-item key="trash" icon="trash" current-icon="trash" title="删除" class="_i-tab-bar-item data-v-69e1aad4"></i-tab-bar-item>
+    </i-tab-bar>
+    <i-action-sheet visible="{{showDetele}}" actions="{{deleteActions}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-69e1aad4">
+      <view slot="header" style="padding: 16px" class="_view data-v-69e1aad4">
+        <view style="color: #444;font-size: 16px" class="_view data-v-69e1aad4">确定吗？</view> <text class="_text data-v-69e1aad4">删除后无法恢复哦</text>
+      </view>
+    </i-action-sheet>
+    <i-toast id="toast" class="_i-toast data-v-69e1aad4"></i-toast>
+    <i-message id="message" class="_i-message data-v-69e1aad4"></i-message>
+  </view>
+</template>

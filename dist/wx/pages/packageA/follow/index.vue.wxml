@@ -1,0 +1,43 @@
+<template name="9a4a0ff0">
+  <view class="_view data-v-5576cab3 follow_wrap">
+    <view class="_view data-v-5576cab3 search_view">
+      <view class="_view data-v-5576cab3 search_box">
+        <i-icon type="search" size="16" color="#80848f" class="_i-icon data-v-5576cab3 search_icon"></i-icon>
+        <i-input value="{{searchList.searchName}}" bindchange="handleProxy" maxlength="50" i-class="search_input" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-5576cab3"></i-input>
+        <i-icon wx:if="{{isValue}}" type="close" size="14" color="#80848f" class="_i-icon data-v-5576cab3 search_icon" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}"></i-icon>
+      </view> <label class="_span data-v-5576cab3 search_btn" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}">搜索</label>
+      <i-icon type="other" size="18" color="#80848f" class="_i-icon data-v-5576cab3 search_icon" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}"></i-icon>
+    </view>
+    <i-drawer mode="right" visible="{{searchCriteria}}" bindclose="handleProxy" data-eventid="{{'9'}}" data-comkey="{{$k}}" class="_i-drawer data-v-5576cab3">
+      <view class="_view data-v-5576cab3 search_container">
+        <i-panel title="数据授权" i-class="query_label" class="_i-panel data-v-5576cab3">
+          <view class="_view data-v-5576cab3 query_view"><label class="_span data-v-5576cab3 queryBtn {{[index == powerActive ? 'isActive' : '']}}" wx:key="item.label" key="{{item.label}}" bindtap="handleProxy" data-eventid="{{'4_'+index}}" data-comkey="{{$k}}" wx:for="{{powerList}}" wx:for-index="index" wx:for-item="item">{{item.name}}</label></view>
+        </i-panel>
+        <i-panel title="模块" i-class="query_label" class="_i-panel data-v-5576cab3">
+          <view class="_view data-v-5576cab3 query_view"><label class="_span data-v-5576cab3 queryBtn {{[index == modelActive ? 'isActive' : '']}}" wx:key="item.label" key="{{item.label}}" bindtap="handleProxy" data-eventid="{{'5_'+index}}" data-comkey="{{$k}}" wx:for="{{modelList}}" wx:for-index="index" wx:for-item="item">{{item.name}}</label></view>
+        </i-panel>
+        <i-panel title="跟进时间" i-class="query_label" class="_i-panel data-v-5576cab3">
+          <view class="_view data-v-5576cab3 query_view"><label class="_span data-v-5576cab3 queryBtn {{[index == timeActive ? 'isActive' : '']}}" wx:key="item.label" key="{{item.label}}" bindtap="handleProxy" data-eventid="{{'6_'+index}}" data-comkey="{{$k}}" wx:for="{{timeList}}" wx:for-index="index" wx:for-item="item">{{item.name}}</label></view>
+        </i-panel>
+        <i-panel title="跟进类型" i-class="query_label" class="_i-panel data-v-5576cab3">
+          <view class="_view data-v-5576cab3 query_view"><label class="_span data-v-5576cab3 queryBtn {{[index == keyTypeActive ? 'isActive' : '']}}" wx:key="item.label" key="{{item.label}}" bindtap="handleProxy" data-eventid="{{'7_'+index}}" data-comkey="{{$k}}" wx:for="{{keyTypeList}}" wx:for-index="index" wx:for-item="item">{{item.name}}</label></view>
+        </i-panel>
+        <i-button bindtap="handleProxy" type="ghost" size="small" long="true" class="_i-button data-v-5576cab3 reset_btn" data-eventid="{{'8'}}" data-comkey="{{$k}}">重置</i-button>
+      </view>
+    </i-drawer>
+    <view wx:key="item.id" key="{{item.id}}" wx:for="{{followData}}" wx:for-index="index" wx:for-item="item" class="_view data-v-5576cab3">
+      <i-panel title="{{item.createTime}}" i-class="vice_panel" class="_i-panel data-v-5576cab3"></i-panel>
+      <i-fiche full isContent isFooter title="{{item.contacts[0].name}}" extra="{{item.state}}" thumb="{{item.portrait}}" bindtap="handleProxy" data-eventid="{{'10_'+index}}" data-comkey="{{$k}}" class="_i-fiche data-v-5576cab3">
+        <view slot="content" class="_view data-v-5576cab3">
+          <rich-text nodes="{{item.followContent}}" class="_rich-text data-v-5576cab3"></rich-text>
+        </view>
+        <view slot="footer" class="_view data-v-5576cab3">
+          <view class="_p data-v-5576cab3 follow_cus_p">{{item.poolname}}</view> <label class="_span data-v-5576cab3 bgc_span">{{item.followType}}</label> <label wx:if="{{item.contactTime}}" class="_span data-v-5576cab3">    </label> <label class="_span data-v-5576cab3 bgc_span" wx:if="{{item.contactTime}}">{{item.contactTime}}</label>      <label class="_span data-v-5576cab3">{{item.inputType}}</label>
+          <view class="_br data-v-5576cab3"></view>
+          <image wx:if="{{item.followImg}}" mode="scaleToFill" src="{{item.followImg}}" class="_image data-v-5576cab3 follow_image"></image>
+        </view>
+      </i-fiche>
+    </view>
+    <i-load-more wx:if="{{noMore}}" tip="我是有底线的" loading="{{false}}" class="_i-load-more data-v-5576cab3"></i-load-more>
+  </view>
+</template>

@@ -1,0 +1,12 @@
+{
+    "navigationBarTitleText": "选择公司名称",
+    "usingComponents": {
+      "i-panel": "../../../../iview/panel/index",
+      "i-button": "../../../../iview/button/index",
+      "i-input": "../../../../iview/input/index",
+      "i-radio-group": "../../../../iview/radio-group/index",
+      "i-radio": "../../../../iview/radio/index",
+      "i-message": "../../../../iview/message/index",
+      "i-toast": "../../../../iview/toast/index"
+    }
+}

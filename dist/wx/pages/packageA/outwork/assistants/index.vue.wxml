@@ -1,0 +1,10 @@
+<template name="148edf89">
+  <view class="_div data-v-1d8a64f2 oppo_fail_wrap">
+    <i-checkbox-group current="{{checkItem}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-checkbox-group data-v-1d8a64f2">
+      <i-checkbox position="right" wx:key="item.id" key="{{item.id}}" value="{{item.name}}" label="{{item.id}}" wx:for="{{personList}}" wx:for-index="index" wx:for-item="item" class="_i-checkbox data-v-1d8a64f2"></i-checkbox>
+    </i-checkbox-group>
+    <i-button bindtap="handleProxy" type="ghost" long="{{true}}" class="_i-button data-v-1d8a64f2 bottom_btn" data-eventid="{{'1'}}" data-comkey="{{$k}}">确定</i-button>
+    <i-toast id="toast" class="_i-toast data-v-1d8a64f2"></i-toast>
+    <i-message id="message" class="_i-message data-v-1d8a64f2"></i-message>
+  </view>
+</template>

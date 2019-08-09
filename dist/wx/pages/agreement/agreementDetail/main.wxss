@@ -1,6 +1,0 @@
-@import "../../../common/vendor.wxss";
-
-.agree_detail_wrap.data-v-e68491b8 {
-  background-color: #f5f5f5;
-  margin-bottom: 100rpx;
-}
