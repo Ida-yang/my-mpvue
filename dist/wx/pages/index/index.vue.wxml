@@ -137,8 +137,9 @@
     </i-panel>
     <view class="_div data-v-5307a380 index_funnel"><template canvasId="demo-canvas" data="{{...$root[$kk+'17'], $root}}" is="2c1447b6"></template></view>
     <view class="_view data-v-5307a380 index_table">
-      <view class="_view data-v-5307a380 index_table_th"><label class="_span data-v-5307a380">商机阶段</label> <label class="_span data-v-5307a380">机会数量</label> <label class="_span data-v-5307a380">预计合同金额</label></view>
-      <view class="_view data-v-5307a380 index_table_td" wx:key="index" key="{{index}}" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item"><label class="_span data-v-5307a380">{{item.name + '(' + item.proportion + ')'}}</label> <label class="_span data-v-5307a380">{{item.value}}</label> <label class="_span data-v-5307a380">{{item.opportunity_achievement}}</label></view>
+      <view class="_view data-v-5307a380 index_table_th"><label style="flex:1.5" class="_span data-v-5307a380">商机阶段</label> <label style="flex:1" class="_span data-v-5307a380">机会数量</label> <label style="flex:1" class="_span data-v-5307a380">预计成交金额</label></view>
+      <view class="_view data-v-5307a380 index_table_td" wx:key="index" key="{{index}}" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item"><label style="flex:1.5" class="_span data-v-5307a380">{{item.name + '(' + item.proportion + ')'}}</label> <label style="padding-left:42px;box-sizing:border-box;flex:1" class="_span data-v-5307a380">{{item.value}}</label> <label style="flex:1" class="_span data-v-5307a380">{{item.opportunity_achievement}}</label></view>
+      <view class="_view data-v-5307a380 index_table_foot"><label style="flex:1.5" class="_span data-v-5307a380">合计</label> <label style="padding-left:42px;box-sizing:border-box;flex:1" class="_span data-v-5307a380"></label> <label style="flex:1" class="_span data-v-5307a380">{{totalMoney}}</label></view>
     </view>
   </view>
 </template>

@@ -146,14 +146,19 @@
 
         <view class="index_table">
             <view class="index_table_th">
-                <span>商机阶段</span>
-                <span>机会数量</span>
-                <span>预计合同金额</span>
+                <span style="flex:1.5">商机阶段</span>
+                <span style="flex:1">机会数量</span>
+                <span style="flex:1">预计成交金额</span>
             </view>
             <view class="index_table_td" v-for="(item,index) in tableData" :key="index">
-                <span>{{item.name + '(' + item.proportion + ')'}}</span>
-                <span>{{item.value}}</span>
-                <span>{{item.opportunity_achievement}}</span>
+                <span style="flex:1.5">{{item.name + '(' + item.proportion + ')'}}</span>
+                <span style="padding-left:42px;box-sizing:border-box;flex:1">{{item.value}}</span>
+                <span style="flex:1">{{item.opportunity_achievement}}</span>
+            </view>
+            <view class="index_table_foot">
+                <span style="flex:1.5">合计</span>
+                <span style="padding-left:42px;box-sizing:border-box;flex:1"></span>
+                <span style="flex:1">{{totalMoney}}</span>
             </view>
         </view>
     </div>
@@ -241,6 +246,7 @@
                 onInit: initChart,
 
                 tableData:[],
+                totalMoney:'',
             }
         },
 
@@ -324,11 +330,19 @@
                     success: function (res) {
                         let info = res.data.reverse()
                         option.series[0].data = []
+                        let num = new Number()
                         info.forEach((el,i) => {
                             option.series[0].data.push(
                                 {value:i,name:el.name + '(' + el.value + ')',label:el.value}
                             )
+                            if(el.name !== '成功签约' && el.name !== '失败关闭'){
+                                let val = el.opportunity_achievement.replace(new RegExp(',','g'),'')
+                                val = parseFloat(val)
+                                num += val
+                            }
                         });
+                        
+                        _this.totalMoney = num
 
                         _this.tableData = info.reverse()
 
@@ -446,10 +460,9 @@
         background-color: #f8f8f8
     }
     .index_table_th span{
-        flex: 1;
         font-size: 14px;
-        font-weight: bold;
-        padding-left: 10px;
+        font-weight: 500;
+        padding: 10px;
         box-sizing: border-box
     }
     .index_table_td{
@@ -459,9 +472,20 @@
         border-bottom: 1rpx solid #f0f0f0
     }
     .index_table_td span{
-        flex: 1;
         font-size: 13px;
-        padding-left: 10px;
+        padding: 5px 10px;
+        box-sizing: border-box
+    }
+    .index_table_foot{
+        display: flex;
+        align-items: center;
+        height: 32px;
+        background-color: #fcfcfc;
+        border-bottom: 1rpx solid #f0f0f0
+    }
+    .index_table_foot span{
+        font-size: 13px;
+        padding: 5px 10px;
         box-sizing: border-box
     }
 </style>

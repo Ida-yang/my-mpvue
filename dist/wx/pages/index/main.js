@@ -256,6 +256,11 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -335,7 +340,8 @@ function initChart(canvas, width, height) {
             echarts: __WEBPACK_IMPORTED_MODULE_2__static_echarts_min_js___default.a,
             onInit: initChart,
 
-            tableData: []
+            tableData: [],
+            totalMoney: ''
         };
     },
     onShow: function onShow() {
@@ -419,9 +425,17 @@ function initChart(canvas, width, height) {
                 success: function success(res) {
                     var info = res.data.reverse();
                     option.series[0].data = [];
+                    var num = new Number();
                     info.forEach(function (el, i) {
                         option.series[0].data.push({ value: i, name: el.name + '(' + el.value + ')', label: el.value });
+                        if (el.name !== '成功签约' && el.name !== '失败关闭') {
+                            var val = el.opportunity_achievement.replace(new RegExp(',', 'g'), '');
+                            val = parseFloat(val);
+                            num += val;
+                        }
                     });
+
+                    _this.totalMoney = num;
 
                     _this.tableData = info.reverse();
 
@@ -657,8 +671,38 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     return _c('view', {
       key: index,
       staticClass: "index_table_td"
-    }, [_c('span', [_vm._v(_vm._s(item.name + '(' + item.proportion + ')'))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.value))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.opportunity_achievement))])])
-  })], 2)], 1)
+    }, [_c('span', {
+      staticStyle: {
+        "flex": "1.5"
+      }
+    }, [_vm._v(_vm._s(item.name + '(' + item.proportion + ')'))]), _vm._v(" "), _c('span', {
+      staticStyle: {
+        "padding-left": "42px",
+        "box-sizing": "border-box",
+        "flex": "1"
+      }
+    }, [_vm._v(_vm._s(item.value))]), _vm._v(" "), _c('span', {
+      staticStyle: {
+        "flex": "1"
+      }
+    }, [_vm._v(_vm._s(item.opportunity_achievement))])])
+  }), _vm._v(" "), _c('view', {
+    staticClass: "index_table_foot"
+  }, [_c('span', {
+    staticStyle: {
+      "flex": "1.5"
+    }
+  }, [_vm._v("合计")]), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "padding-left": "42px",
+      "box-sizing": "border-box",
+      "flex": "1"
+    }
+  }), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "flex": "1"
+    }
+  }, [_vm._v(_vm._s(_vm.totalMoney))])])], 2)], 1)
 }
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('view', {
@@ -807,7 +851,19 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
 },function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('view', {
     staticClass: "index_table_th"
-  }, [_c('span', [_vm._v("商机阶段")]), _vm._v(" "), _c('span', [_vm._v("机会数量")]), _vm._v(" "), _c('span', [_vm._v("预计合同金额")])])
+  }, [_c('span', {
+    staticStyle: {
+      "flex": "1.5"
+    }
+  }, [_vm._v("商机阶段")]), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "flex": "1"
+    }
+  }, [_vm._v("机会数量")]), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "flex": "1"
+    }
+  }, [_vm._v("预计成交金额")])])
 }]
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
