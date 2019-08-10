@@ -1,4 +1,4 @@
-<template name="18af2992">
+<template name="55918a33">
   <view class="_div data-v-b0d53b58 follow_detail_wrap">
     <i-cell title="{{numData.corporateName}}" class="_i-cell data-v-b0d53b58">
       <view class="_p data-v-b0d53b58 cell_info">总联系人：{{numData.contactsTotal}}人  |  联系过其中：{{numData.contactsIng}}人</view>

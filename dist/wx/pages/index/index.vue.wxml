@@ -1,4 +1,4 @@
-<import src="/modules/mpvue-echarts/src/echarts.vue.wxml" /><template name="8a318e30">
+<import src="/modules/mpvue-echarts/src/echarts.vue.wxml" /><template name="48dab967">
   <view class="_div data-v-5307a380 index_wrap">
     <i-panel title="目标简报" class="_i-panel data-v-5307a380 small_panel">
       <i-tabs current="{{activeName1}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-5307a380">
@@ -135,7 +135,7 @@
         <i-tab key="4" title="预计下月" class="_i-tab data-v-5307a380"></i-tab>
       </i-tabs>
     </i-panel>
-    <view class="_div data-v-5307a380 index_funnel"><template canvasId="demo-canvas" data="{{...$root[$kk+'17'], $root}}" is="83cba278"></template></view>
+    <view class="_div data-v-5307a380 index_funnel"><template canvasId="demo-canvas" data="{{...$root[$kk+'17'], $root}}" is="2c1447b6"></template></view>
     <view class="_view data-v-5307a380 index_table">
       <view class="_view data-v-5307a380 index_table_th"><label class="_span data-v-5307a380">商机阶段</label> <label class="_span data-v-5307a380">机会数量</label> <label class="_span data-v-5307a380">预计合同金额</label></view>
       <view class="_view data-v-5307a380 index_table_td" wx:key="index" key="{{index}}" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item"><label class="_span data-v-5307a380">{{item.name + '(' + item.proportion + ')'}}</label> <label class="_span data-v-5307a380">{{item.value}}</label> <label class="_span data-v-5307a380">{{item.opportunity_achievement}}</label></view>

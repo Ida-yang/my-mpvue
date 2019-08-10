@@ -1,4 +1,4 @@
-<template name="1d32a0ad">
+<template name="40bed04e">
   <view class="_div data-v-9e9f292e oppo_fail_wrap">
     <i-checkbox-group current="{{checkItem}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-checkbox-group data-v-9e9f292e">
       <i-checkbox position="right" wx:key="item.id" key="{{item.id}}" value="{{item.name}}" label="{{item.id}}" wx:for="{{failReasonList}}" wx:for-index="index" wx:for-item="item" class="_i-checkbox data-v-9e9f292e"></i-checkbox>

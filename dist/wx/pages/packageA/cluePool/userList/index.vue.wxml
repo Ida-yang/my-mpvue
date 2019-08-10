@@ -1,4 +1,4 @@
-<template name="1f56a875">
+<template name="70eabd56">
   <view class="_div data-v-5a342337 add_or_update_wrap">
     <i-input value="{{searchNames}}" type="text" maxlength="50" placeholder="输入用户名称查询" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-5a342337"></i-input>
     <i-radio-group current="{{cheakItem}}" bindchange="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-radio-group data-v-5a342337">

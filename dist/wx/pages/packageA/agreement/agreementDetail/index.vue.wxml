@@ -1,4 +1,4 @@
-<template name="75ca0e64">
+<template name="28fec6a2">
   <view class="_div data-v-2882c40a agree_detail_wrap">
     <i-cell title="{{agreementDetail.contract_name}}" class="_i-cell data-v-2882c40a">
       <view class="_p data-v-2882c40a cell_info">合同编号：  {{agreementDetail.contract_number}}</view>

@@ -1,4 +1,4 @@
-<template name="22df6caa">
+<template name="3c8a0e2a">
   <view class="_div data-v-06165fe9 oppo_stage_wrap">
     <i-panel title=" " class="_i-panel data-v-06165fe9"></i-panel>
     <i-panel title="{{opportunityInfo.name}}" class="_i-panel data-v-06165fe9"></i-panel>

@@ -1,4 +1,4 @@
-<template name="5ece7178">
+<template name="26c9a44e">
   <view class="_div data-v-26921cf4 out_work_detail_wrap">
     <i-cell title="{{outworkData.visitTheme}}" class="_i-cell data-v-26921cf4">
       <view class="_p data-v-26921cf4 cell_info">拜访公司：  {{outworkData.customerName}}</view>

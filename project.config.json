@@ -42,24 +42,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/packageA/task/main",
-					"pathName": "pages/packageA/task/main",
+					"name": "pages/packageA/note/main",
+					"pathName": "pages/packageA/note/main",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": 1,
-<<<<<<< HEAD
-					"name": "pages/packageA/outwork/signIn/main",
-					"pathName": "pages/packageA/outwork/signIn/main",
-=======
 					"name": "pages/packageA/outwork/main",
 					"pathName": "pages/packageA/outwork/main",
->>>>>>> f136c5f8b3505cc55e41d2a2d12daa4351f97070
 					"query": "",
 					"scene": null
 				},

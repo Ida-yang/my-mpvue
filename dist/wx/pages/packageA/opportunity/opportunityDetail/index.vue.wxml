@@ -1,4 +1,4 @@
-<template name="71e1e1e0">
+<template name="39bea57e">
   <view class="_div data-v-f32dc648 oppo_detail_wrap">
     <i-cell title="{{opportunityDetail.opportunity_name}}" class="_i-cell data-v-f32dc648">
       <view class="_p data-v-f32dc648 cell_info">商机编号：  {{opportunityDetail.opportunity_number}}</view>

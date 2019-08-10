@@ -1,4 +1,4 @@
-<template name="ab01f96c">
+<template name="4e24dc6b">
   <view class="_div data-v-314525cc">
     <i-panel title=" " class="_i-panel data-v-314525cc"></i-panel>
     <i-panel title="{{clueData.name}}" class="_i-panel data-v-314525cc">

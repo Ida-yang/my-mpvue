@@ -1,4 +1,4 @@
-<template name="7e863974">
+<template name="31baf1b2">
   <view class="_div data-v-2424ae82 add_or_update_wrap">
     <i-panel title=" " class="_i-panel data-v-2424ae82"></i-panel>
     <i-panel title="{{agreementName}}" class="_i-panel data-v-2424ae82">

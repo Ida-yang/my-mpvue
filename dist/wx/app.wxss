@@ -229,3 +229,6 @@
 .white_bg {
   background-color: #fff;
 }
+.note_input {
+  min-height: 600rpx !important;
+}

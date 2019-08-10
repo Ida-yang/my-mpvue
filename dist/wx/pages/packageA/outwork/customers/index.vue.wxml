@@ -1,4 +1,4 @@
-<template name="f148d006">
+<template name="4e20a644">
   <view class="_div data-v-31b992f9 add_or_update_wrap">
     <i-input value="{{poolName}}" type="text" maxlength="50" placeholder="输入公司名称查询" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-31b992f9"></i-input>
     <i-radio-group current="{{cheakItem}}" bindchange="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-radio-group data-v-31b992f9">

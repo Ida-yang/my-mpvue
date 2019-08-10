@@ -290,4 +290,9 @@
   .white_bg{
     background-color: #fff;
   }
+
+  /* 便签输入框 */
+  .note_input{
+    min-height: 300px !important;
+  }
 </style>

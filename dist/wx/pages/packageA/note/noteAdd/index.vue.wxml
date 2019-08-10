@@ -1,11 +1,11 @@
-<template name="256af1fc">
+<template name="60a3947b">
   <view class="_div data-v-fb7d9298">
     <i-panel title=" " class="_i-panel data-v-fb7d9298"></i-panel>
-    <i-panel title=" " class="_i-panel data-v-fb7d9298"></i-panel>
-    <i-cell title="便签类别" value="{{addList.noteType}}" request is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-cell data-v-fb7d9298"></i-cell>
-    <i-cell title="便签类别" value="{{addList.noteType}}" request is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-fb7d9298"></i-cell>
-    <i-input value="{{addList.name}}" bindchange="handleProxy" right type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-input data-v-fb7d9298"></i-input>
+    <i-cell title="{{addList.noteType1}}" i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-cell data-v-fb7d9298"></i-cell>
+    <i-cell title="便签类别" value="{{addList.noteType2}}" request is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-fb7d9298"></i-cell>
+    <i-input value="{{addList.name}}" bindchange="handleProxy" type="textarea" maxlength="110" bindinput="handleProxy" i-input-class="note_input" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-input data-v-fb7d9298"></i-input>
     <i-button bindtap="handleProxy" type="ghost" long="{{true}}" class="_i-button data-v-fb7d9298 bottom_btn" data-eventid="{{'3'}}" data-comkey="{{$k}}">确定</i-button>
+    <i-action-sheet visible="{{showType}}" actions="{{typeList}}" bindchange="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-fb7d9298"></i-action-sheet>
     <i-message id="message" class="_i-message data-v-fb7d9298"></i-message>
     <i-toast id="toast" class="_i-toast data-v-fb7d9298"></i-toast>
   </view>

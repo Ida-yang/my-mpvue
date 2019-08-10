@@ -1,4 +1,4 @@
-<template name="61b4cef4">
+<template name="b9446932">
   <view class="_div data-v-1c939342 pay_detail_wrap">
     <i-cell title="{{payCollectionDetail.customerName}}" class="_i-cell data-v-1c939342">
       <view class="_p data-v-1c939342 cell_info">回款金额：  {{payCollectionDetail.price + '元'}}</view>

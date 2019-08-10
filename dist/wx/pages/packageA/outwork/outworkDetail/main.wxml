@@ -1,1 +1,1 @@
-<import src="/pages/packageA/outwork/outworkDetail/index.vue.wxml" /><template is="5ece7178" data="{{ ...$root['0'], $root }}"/>
+<import src="/pages/packageA/outwork/outworkDetail/index.vue.wxml" /><template is="26c9a44e" data="{{ ...$root['0'], $root }}"/>

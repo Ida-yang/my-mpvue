@@ -97,7 +97,7 @@
                     </i-grid-icon>
                     <i-grid-label>任务</i-grid-label>
                 </i-grid-item>
-                <i-grid-item @click="toNotYet">
+                <i-grid-item @click="toNote">
                     <i-grid-icon>
                         <image src="../../static/images/note.png" style="width:20px;height:20px;" />
                     </i-grid-icon>

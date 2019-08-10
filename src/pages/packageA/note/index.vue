@@ -2,12 +2,12 @@
     <div class="note_wrap">
         <!-- 查询 -->
         <view class="search_view">
-            <!-- <view class="search_box">
+            <view class="search_box">
                 <i-icon type="search" size="16" color="#80848f" class="search_icon" />
                 <i-input v-model="searchList.searchName" maxlength="50" i-class="search_input" @input="handleInput($event,1)" />
                 <i-icon v-if="isValue" type="close" size="14" color="#80848f" class="search_icon" @click="closeSearch" />
             </view>
-            <span class="search_btn" @click="search">搜索</span> -->
+            <span class="search_btn" @click="search">搜索</span>
             <i-icon type="other" size="18" color="#80848f" class="search_icon" @click="queryCriteria" />
         </view>
         <i-drawer mode="right" :visible="searchCriteria" @close="queryCriteria">
@@ -23,11 +23,11 @@
 
         <!-- 列表 -->
         <i-swipeout i-class="i-swipeout-demo-item" :operateWidth="60" v-for="item in tableData" :key="item.id">
-            <view slot="content">
-                <i-cell i-class="cell_content" >
-                    <rich-text :nodes="item.name" />
+            <view slot="content" @click="toUpdateNote($event,item)">
+                <i-cell i-class="cell_content" :title="item.title">
+                    <!-- <rich-text :nodes="item.title" /> -->
                     <view class="cell_footer">
-                        创建时间：{{item.opportunity_deal}}
+                        {{item.createTime}}
                     </view>
                 </i-cell>
             </view>
@@ -39,18 +39,15 @@
         </i-swipeout>
         
         <!-- 新增 -->
-        <picker @change="toAddNote" :value="optionIndex" :range="optionArray">
-            <view class="picker">
-                <i-button type="ghost" :long="true" class="bottom_btn">新增</i-button>
-            </view>
-        </picker>
-        
-        
+        <i-button type="ghost" :long="true" class="bottom_btn" @click="toAddNote">新增</i-button>
+
+        <i-message id="message" />
     </div>
 </template> 
 
 <script>
     import config from '../../../config'
+    import { $Message } from '../../../../dist/wx/iview/base/index'
 
     export default {
         data () {
@@ -109,7 +106,8 @@
                 const _this = this
                 let data = {
                     pId: config.userData.pId,
-                    parentid: this.searchList.typeid
+                    parentid: this.searchList.typeid,
+                    name: this.searchList.searchName
                 }
                 wx.request({
                     method:'post',
@@ -121,6 +119,26 @@
                     },
                     success: function (res) {
                         let info = res.data
+
+                        info.forEach(el => {
+                            let starIndex = el.name.indexOf('<p>')
+                            let endIndex = el.name.indexOf('</p>')
+                            let title = el.name.slice(starIndex,endIndex)
+
+                            let reg = new RegExp('[\u4e00-\u9fa5]+$','g')
+                            let str = title
+                            let values = str.match(/[\u4e00-\u9fa5]/g)
+                            if(values){
+                                str = str.match(/[\u4e00-\u9fa5]/g).join("")
+                            }else{
+                                str = str.replace(/[0-9]/g, '')
+                                str = str.replace('</p>', '')
+                                str = str.replace('<p>', '')
+                                str = str.replace('.', '')
+                            }
+
+                            el.title = str
+                        });
                         _this.tableData = info
                     }
                 })
@@ -163,19 +181,45 @@
             },
             
 
-            toAddNote(e){
-                console.log(e)
-                let index = e.target.value
-                this.optionArray.forEach((el,i) => {
-                    if(i == index){
-                        
-                    }
-                });
-                // const url = 'noteAdd/main'
-                // mpvue.navigateTo({ url })
+            toAddNote(){
+                const url = 'noteAdd/main'
+                mpvue.navigateTo({ url })
+            },
+            toUpdateNote(e,val){
+                const url = 'noteUpdate/main'
+                config.information.noteupdateData = val
+                mpvue.navigateTo({ url })
             },
             todeleteNote(e,val){
-                console.log(e,val)
+                const _this = this
+                let data = {
+                    id: val.id,
+                    pId: config.userData.pId
+                }
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'noteType/deleteNoteTypeById.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success: function (res) {
+                        if(res.data.code && res.data.code == "200"){
+                            $Message({
+                                content: '删除成功',
+                                type: 'success'
+                            });
+                            _this.loadData()
+                        }else{
+                            $Message({
+                                content: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
             }
         },
     }

@@ -1,34 +1,36 @@
-<template name="48fb3d49">
+<template name="0d3c6270">
   <view class="_div data-v-1e448118 note_wrap">
     <view class="_view data-v-1e448118 search_view">
-      <i-icon type="other" size="18" color="#80848f" class="_i-icon data-v-1e448118 search_icon" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}"></i-icon>
+      <view class="_view data-v-1e448118 search_box">
+        <i-icon type="search" size="16" color="#80848f" class="_i-icon data-v-1e448118 search_icon"></i-icon>
+        <i-input value="{{searchList.searchName}}" bindchange="handleProxy" maxlength="50" i-class="search_input" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-1e448118"></i-input>
+        <i-icon wx:if="{{isValue}}" type="close" size="14" color="#80848f" class="_i-icon data-v-1e448118 search_icon" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}"></i-icon>
+      </view> <label class="_span data-v-1e448118 search_btn" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}">搜索</label>
+      <i-icon type="other" size="18" color="#80848f" class="_i-icon data-v-1e448118 search_icon" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}"></i-icon>
     </view>
-    <i-drawer mode="right" visible="{{searchCriteria}}" bindclose="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-drawer data-v-1e448118">
+    <i-drawer mode="right" visible="{{searchCriteria}}" bindclose="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_i-drawer data-v-1e448118">
       <view class="_view data-v-1e448118 search_container">
         <i-panel title="个人便签" i-class="query_label" class="_i-panel data-v-1e448118">
-          <view class="_view data-v-1e448118 query_view"><label class="_span data-v-1e448118 queryBtn {{[index == typeActive ? 'isActive' : '']}}" wx:key="item.id" key="{{item.id}}" bindtap="handleProxy" data-eventid="{{'1_'+index}}" data-comkey="{{$k}}" wx:for="{{typeList}}" wx:for-index="index" wx:for-item="item">{{item.name}}</label></view>
+          <view class="_view data-v-1e448118 query_view"><label class="_span data-v-1e448118 queryBtn {{[index == typeActive ? 'isActive' : '']}}" wx:key="item.id" key="{{item.id}}" bindtap="handleProxy" data-eventid="{{'4_'+index}}" data-comkey="{{$k}}" wx:for="{{typeList}}" wx:for-index="index" wx:for-item="item">{{item.name}}</label></view>
         </i-panel>
-        <i-button bindtap="handleProxy" type="ghost" size="small" long="true" class="_i-button data-v-1e448118 reset_btn" data-eventid="{{'2'}}" data-comkey="{{$k}}">重置</i-button>
+        <i-button bindtap="handleProxy" type="ghost" size="small" long="true" class="_i-button data-v-1e448118 reset_btn" data-eventid="{{'5'}}" data-comkey="{{$k}}">重置</i-button>
       </view>
     </i-drawer>
     <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{60}}" wx:key="item.id" key="{{item.id}}" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item" class="_i-swipeout data-v-1e448118">
-      <view slot="content" class="_view data-v-1e448118">
-        <i-cell i-class="cell_content" class="_i-cell data-v-1e448118">
-          <rich-text nodes="{{item.name}}" class="_rich-text data-v-1e448118"></rich-text>
-          <view class="_view data-v-1e448118 cell_footer"> 创建时间：{{item.opportunity_deal}}
+      <view slot="content" bindtap="handleProxy" data-eventid="{{'7_'+index}}" data-comkey="{{$k}}" class="_view data-v-1e448118">
+        <i-cell i-class="cell_content" title="{{item.title}}" class="_i-cell data-v-1e448118">
+          <view class="_view data-v-1e448118 cell_footer">
+            {{item.createTime}}
           </view>
         </i-cell>
       </view>
       <view slot="button" class="_view data-v-1e448118 i-swipeout-button">
-        <view class="_view data-v-1e448118 i-swipeout-button-item" style="width:60px;background-color:#f56c6c" bindtap="handleProxy" data-eventid="{{'4_'+index}}" data-comkey="{{$k}}">
+        <view class="_view data-v-1e448118 i-swipeout-button-item" style="width:60px;background-color:#f56c6c" bindtap="handleProxy" data-eventid="{{'8_'+index}}" data-comkey="{{$k}}">
           <i-icon size="24" type="trash" style="color:#fff" class="_i-icon data-v-1e448118"></i-icon>
         </view>
       </view>
     </i-swipeout>
-    <picker bindchange="handleProxy" value="{{optionIndex}}" range="{{optionArray}}" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_picker data-v-1e448118">
-      <view class="_view data-v-1e448118 picker">
-        <i-button type="ghost" long="{{true}}" class="_i-button data-v-1e448118 bottom_btn">新增</i-button>
-      </view>
-    </picker>
+    <i-button type="ghost" long="{{true}}" class="_i-button data-v-1e448118 bottom_btn" bindtap="handleProxy" data-eventid="{{'9'}}" data-comkey="{{$k}}">新增</i-button>
+    <i-message id="message" class="_i-message data-v-1e448118"></i-message>
   </view>
 </template>

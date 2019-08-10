@@ -1,4 +1,4 @@
-<import src="/components/card.vue.wxml" /><template name="0debcb16">
+<import src="/components/card.vue.wxml" /><template name="58750e16">
   <view class="_div data-v-28f6c4d2">
     <swiper wx:if="{{imgUrls.length > 0}}" indidator-dots="imgUrls.length > 1" class="_swiper data-v-28f6c4d2">
       <block wx:key="index" key="{{index}}" wx:for="{{imgUrls}}" wx:for-index="index" wx:for-item="item">
@@ -8,7 +8,7 @@
       </block>
     </swiper>
     <view class="_ul data-v-28f6c4d2 container log-list">
-      <view wx:key="index" key="{{index}}" class="_li data-v-28f6c4d2 log-item {{[aa ? 'red' : '']}}" wx:for="{{logs}}" wx:for-index="index" wx:for-item="log"><template data="{{...$root[$kk+'1_'+index], $root}}" is="481368ce"></template></view>
+      <view wx:key="index" key="{{index}}" class="_li data-v-28f6c4d2 log-item {{[aa ? 'red' : '']}}" wx:for="{{logs}}" wx:for-index="index" wx:for-item="log"><template data="{{...$root[$kk+'1_'+index], $root}}" is="199afd0d"></template></view>
     </view>
   </view>
 </template>

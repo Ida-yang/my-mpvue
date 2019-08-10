@@ -672,7 +672,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "mpcomid": '51'
     },
     on: {
-      "click": _vm.toNotYet
+      "click": _vm.toNote
     }
   }, [_c('i-grid-icon', {
     attrs: {

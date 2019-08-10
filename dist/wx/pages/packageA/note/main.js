@@ -84,6 +84,8 @@ if (false) {(function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
 //
 //
 //
@@ -131,10 +133,7 @@ if (false) {(function () {
 //
 //
 //
-//
-//
-//
-//
+
 
 
 
@@ -196,7 +195,8 @@ if (false) {(function () {
             var _this = this;
             var data = {
                 pId: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.pId,
-                parentid: this.searchList.typeid
+                parentid: this.searchList.typeid,
+                name: this.searchList.searchName
             };
             wx.request({
                 method: 'post',
@@ -208,6 +208,26 @@ if (false) {(function () {
                 },
                 success: function success(res) {
                     var info = res.data;
+
+                    info.forEach(function (el) {
+                        var starIndex = el.name.indexOf('<p>');
+                        var endIndex = el.name.indexOf('</p>');
+                        var title = el.name.slice(starIndex, endIndex);
+
+                        var reg = new RegExp('[\u4E00-\u9FA5]+$', 'g');
+                        var str = title;
+                        var values = str.match(/[\u4e00-\u9fa5]/g);
+                        if (values) {
+                            str = str.match(/[\u4e00-\u9fa5]/g).join("");
+                        } else {
+                            str = str.replace(/[0-9]/g, '');
+                            str = str.replace('</p>', '');
+                            str = str.replace('<p>', '');
+                            str = str.replace('.', '');
+                        }
+
+                        el.title = str;
+                    });
                     _this.tableData = info;
                 }
             });
@@ -248,17 +268,45 @@ if (false) {(function () {
             this.typeActive = '-1';
             this.loadData();
         },
-        toAddNote: function toAddNote(e) {
-            console.log(e);
-            var index = e.target.value;
-            this.optionArray.forEach(function (el, i) {
-                if (i == index) {}
-            });
-            // const url = 'noteAdd/main'
-            // mpvue.navigateTo({ url })
+        toAddNote: function toAddNote() {
+            var url = 'noteAdd/main';
+            global.mpvue.navigateTo({ url: url });
+        },
+        toUpdateNote: function toUpdateNote(e, val) {
+            var url = 'noteUpdate/main';
+            __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.noteupdateData = val;
+            global.mpvue.navigateTo({ url: url });
         },
         todeleteNote: function todeleteNote(e, val) {
-            console.log(e, val);
+            var _this = this;
+            var data = {
+                id: val.id,
+                pId: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.pId
+            };
+
+            wx.request({
+                method: 'post',
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'noteType/deleteNoteTypeById.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                data: data,
+                header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    if (res.data.code && res.data.code == "200") {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: '删除成功',
+                            type: 'success'
+                        });
+                        _this.loadData();
+                    } else {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: res.data.msg,
+                            type: 'error'
+                        });
+                    }
+                }
+            });
         }
     }
 });
@@ -274,14 +322,63 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "note_wrap"
   }, [_c('view', {
     staticClass: "search_view"
+  }, [_c('view', {
+    staticClass: "search_box"
   }, [_c('i-icon', {
+    staticClass: "search_icon",
+    attrs: {
+      "type": "search",
+      "size": "16",
+      "color": "#80848f",
+      "mpcomid": '0'
+    }
+  }), _vm._v(" "), _c('i-input', {
+    attrs: {
+      "maxlength": "50",
+      "i-class": "search_input",
+      "eventid": '0',
+      "mpcomid": '1'
+    },
+    on: {
+      "input": function($event) {
+        _vm.handleInput($event, 1)
+      }
+    },
+    model: {
+      value: (_vm.searchList.searchName),
+      callback: function($$v) {
+        _vm.searchList.searchName = $$v
+      },
+      expression: "searchList.searchName"
+    }
+  }), _vm._v(" "), (_vm.isValue) ? _c('i-icon', {
+    staticClass: "search_icon",
+    attrs: {
+      "type": "close",
+      "size": "14",
+      "color": "#80848f",
+      "eventid": '1',
+      "mpcomid": '2'
+    },
+    on: {
+      "click": _vm.closeSearch
+    }
+  }) : _vm._e()], 1), _vm._v(" "), _c('span', {
+    staticClass: "search_btn",
+    attrs: {
+      "eventid": '2'
+    },
+    on: {
+      "click": _vm.search
+    }
+  }, [_vm._v("搜索")]), _vm._v(" "), _c('i-icon', {
     staticClass: "search_icon",
     attrs: {
       "type": "other",
       "size": "18",
       "color": "#80848f",
-      "eventid": '0',
-      "mpcomid": '0'
+      "eventid": '3',
+      "mpcomid": '3'
     },
     on: {
       "click": _vm.queryCriteria
@@ -290,8 +387,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "mode": "right",
       "visible": _vm.searchCriteria,
-      "eventid": '3',
-      "mpcomid": '3'
+      "eventid": '6',
+      "mpcomid": '6'
     },
     on: {
       "close": _vm.queryCriteria
@@ -302,7 +399,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "title": "个人便签",
       "i-class": "query_label",
-      "mpcomid": '1'
+      "mpcomid": '4'
     }
   }, [_c('view', {
     staticClass: "query_view"
@@ -312,7 +409,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       staticClass: "queryBtn",
       class: [index == _vm.typeActive ? 'isActive' : ''],
       attrs: {
-        "eventid": '1_' + index
+        "eventid": '4_' + index
       },
       on: {
         "click": function($event) {
@@ -326,8 +423,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "type": "ghost",
       "size": "small",
       "long": "true",
-      "eventid": '2',
-      "mpcomid": '2'
+      "eventid": '5',
+      "mpcomid": '5'
     },
     on: {
       "click": _vm.reSet
@@ -338,23 +435,27 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       attrs: {
         "i-class": "i-swipeout-demo-item",
         "operateWidth": 60,
-        "mpcomid": '7_' + index
+        "mpcomid": '9_' + index
       }
     }, [_c('view', {
+      attrs: {
+        "eventid": '7_' + index
+      },
+      on: {
+        "click": function($event) {
+          _vm.toUpdateNote($event, item)
+        }
+      },
       slot: "content"
     }, [_c('i-cell', {
       attrs: {
         "i-class": "cell_content",
-        "mpcomid": '5_' + index
+        "title": item.title,
+        "mpcomid": '7_' + index
       }
-    }, [_c('rich-text', {
-      attrs: {
-        "nodes": item.name,
-        "mpcomid": '4_' + index
-      }
-    }), _vm._v(" "), _c('view', {
+    }, [_c('view', {
       staticClass: "cell_footer"
-    }, [_vm._v("\n                    创建时间：" + _vm._s(item.opportunity_deal) + "\n                ")])], 1)], 1), _vm._v(" "), _c('view', {
+    }, [_vm._v("\n                    " + _vm._s(item.createTime) + "\n                ")])])], 1), _vm._v(" "), _c('view', {
       staticClass: "i-swipeout-button",
       slot: "button"
     }, [_c('view', {
@@ -364,7 +465,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "background-color": "#f56c6c"
       },
       attrs: {
-        "eventid": '4_' + index
+        "eventid": '8_' + index
       },
       on: {
         "click": function($event) {
@@ -378,28 +479,26 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       attrs: {
         "size": "24",
         "type": "trash",
-        "mpcomid": '6_' + index
+        "mpcomid": '8_' + index
       }
     })], 1)])])
-  }), _vm._v(" "), _c('picker', {
-    attrs: {
-      "value": _vm.optionIndex,
-      "range": _vm.optionArray,
-      "eventid": '5'
-    },
-    on: {
-      "change": _vm.toAddNote
-    }
-  }, [_c('view', {
-    staticClass: "picker"
-  }, [_c('i-button', {
+  }), _vm._v(" "), _c('i-button', {
     staticClass: "bottom_btn",
     attrs: {
       "type": "ghost",
       "long": true,
-      "mpcomid": '8'
+      "eventid": '9',
+      "mpcomid": '10'
+    },
+    on: {
+      "click": _vm.toAddNote
     }
-  }, [_vm._v("新增")])], 1)])], 2)
+  }, [_vm._v("新增")]), _vm._v(" "), _c('i-message', {
+    attrs: {
+      "id": "message",
+      "mpcomid": '11'
+    }
+  })], 2)
 }
 var staticRenderFns = []
 render._withStripped = true

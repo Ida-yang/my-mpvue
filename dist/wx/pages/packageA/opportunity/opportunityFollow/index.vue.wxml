@@ -1,4 +1,4 @@
-<template name="7c484d40">
+<template name="24f1cebe">
   <view class="_div data-v-de60ef88 add_or_update_wrap">
     <i-panel title="{{followData.opportunity_name}}" class="_i-panel data-v-de60ef88">
       <i-cell title="联系方式" value="{{followList.followType}}" is-link request i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-cell data-v-de60ef88"></i-cell>

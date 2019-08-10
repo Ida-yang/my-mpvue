@@ -1,4 +1,4 @@
-<template name="35cc8e32">
+<template name="72e67548">
   <view class="_div data-v-53a1b3a3">
     <i-panel title=" " class="_i-panel data-v-53a1b3a3"></i-panel>
     <i-panel title="{{agreementData.contract_name}}" class="_i-panel data-v-53a1b3a3">

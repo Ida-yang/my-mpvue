@@ -1,4 +1,4 @@
-<template name="1b04b852">
+<template name="82aadd1a">
   <view class="_div data-v-bc6a4a58 task_detail_wrap">
     <i-cell title="{{taskDetail.planningTheme}}" class="_i-cell data-v-bc6a4a58">
       <view class="_p data-v-bc6a4a58 cell_info">关联客户  {{taskDetail.customerName}}</view>

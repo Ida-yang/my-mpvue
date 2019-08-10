@@ -1,4 +1,4 @@
-<import src="/modules/mpvue-echarts/src/echarts.vue.wxml" /><template name="22f29f78">
+<import src="/modules/mpvue-echarts/src/echarts.vue.wxml" /><template name="1f033fa5">
   <view class="_div data-v-d483bbb4">
     <i-notice-bar icon="systemprompt" loop class="_i-notice-bar data-v-d483bbb4"> 2018年世界杯,将于6月14日至7月15日举行;2018年世界杯,将于6月14日至7月15日举行; </i-notice-bar>
     <i-panel title="基本用法" class="_i-panel data-v-d483bbb4"></i-panel>
@@ -9,6 +9,6 @@
       <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" dot title="My" class="_i-tab-bar-item data-v-d483bbb4"></i-tab-bar-item>
     </i-tab-bar>
     <i-button type="success" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-button data-v-d483bbb4">进入小程序</i-button>
-    <view class="_div data-v-d483bbb4 home-funnel"><template canvasId="demo-canvas" data="{{...$root[$kk+'8'], $root}}" is="83cba278"></template></view>
+    <view class="_div data-v-d483bbb4 home-funnel"><template canvasId="demo-canvas" data="{{...$root[$kk+'8'], $root}}" is="2c1447b6"></template></view>
   </view>
 </template>

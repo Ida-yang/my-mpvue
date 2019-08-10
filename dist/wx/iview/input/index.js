@@ -1,7 +1,7 @@
 Component({
     behaviors: ['wx://form-field'],
 
-    externalClasses: ['i-class'],
+    externalClasses: ['i-class','i-input-class'],
 
     properties: {
         title: {
@@ -44,22 +44,9 @@ Component({
             type: Number,
             value: -1
         },
-        row: {
-            type: String,
-            value: '5'
-        }
-    },
-
-    mounted(){
-        this.loadRow()
     },
 
     methods: {
-        loadRow(){
-            // if(this.data.row){
-                console.log(this.data.row)
-            // }
-        },
         handleInputChange(event) {
             const { detail } = event;
             const { value } = detail;

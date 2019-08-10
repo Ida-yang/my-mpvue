@@ -1,4 +1,4 @@
-<template name="e84d851c">
+<template name="aeda96da">
   <view class="_div data-v-3fc44e18 customer_pool_detail">
     <i-cell title="{{customerPoolDetail.name}}" class="_i-cell data-v-3fc44e18">
       <view class="_p data-v-3fc44e18 cell_info">联系人姓名：  {{customerPoolContact.coName}}</view>

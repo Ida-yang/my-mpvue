@@ -133,56 +133,12 @@ var qqmapsdk = new QQMapWX({
         };
     },
     mounted: function mounted() {
-<<<<<<< HEAD:dist/wx/pages/packageA/outwork/signIn/main.js
-        this.getmyLocation();
-        // this.getuserLocation()
-=======
-        // this.getthisLocation()
         this.getuserLocation();
->>>>>>> f136c5f8b3505cc55e41d2a2d12daa4351f97070:dist/wx/pages/packageA/outwork/signIn/main.js
     },
 
 
     methods: {
         getuserLocation: function getuserLocation() {
-<<<<<<< HEAD:dist/wx/pages/packageA/outwork/signIn/main.js
-            var _this = this;
-            wx.getSetting({
-                success: function success(res) {
-                    console.log(res);
-                    if (!res.authSetting['scope.userLocation']) {
-                        wx.authorize({
-                            scope: 'scope.userLocation',
-                            success: function success(res) {
-                                console.log(res);
-                            },
-                            fail: function fail(err) {
-                                console.log(err, 111111);
-                            }
-                        });
-                    }
-                }
-            });
-        },
-        getmyLocation: function getmyLocation() {
-=======
-            // wx.authorize({
-            //     scope: 'scope.userLocation',
-            //     success: (res) => {
-
-            //     },
-            // })
-            wx.getSetting({
-                success: function success(res) {
-                    console.log(res, 1111);
-                },
-                fail: function fail(err) {
-                    console.log(err, 2222);
-                }
-            });
-        },
-        getthisLocation: function getthisLocation() {
->>>>>>> f136c5f8b3505cc55e41d2a2d12daa4351f97070:dist/wx/pages/packageA/outwork/signIn/main.js
             var _this = this;
             wx.getLocation({
                 type: 'gcj02',
@@ -286,6 +242,11 @@ var qqmapsdk = new QQMapWX({
                                         }
                                     }
                                 });
+                            } else {
+                                wx.showModal({
+                                    title: '获取位置失败',
+                                    content: '需要获取您的地理位置，请确认手机位置信息已开启，否则地图无法使用'
+                                });
                             }
                         },
                         fail: function fail(res) {
@@ -303,7 +264,6 @@ var qqmapsdk = new QQMapWX({
             var _this = this;
             wx.chooseLocation({
                 success: function success(res) {
-                    console.log(res, 11111);
                     if (res.address) {
                         _this.address = res.address;
                         _this.latitude = res.latitude;
@@ -316,7 +276,6 @@ var qqmapsdk = new QQMapWX({
                             },
                             success: function success(res) {
                                 //获取当前地址成功
-                                console.log(res);
                                 _this.address = res.result.address;
                             },
                             fail: function fail() {}
@@ -396,7 +355,6 @@ var qqmapsdk = new QQMapWX({
                 sourceType: ['camera'],
                 success: function success(res) {
                     // tempFilePath可以作为img标签的src属性显示图片
-                    console.log(res);
                     var tempFilePaths = res.tempFilePaths;
                     _this.photoImg = res.tempFilePaths[0];
                     wx.uploadFile({
@@ -434,7 +392,6 @@ var qqmapsdk = new QQMapWX({
                 timeCheck: year + '-' + month + '-' + day + ' ' + hour + ':' + min + ':' + sec,
                 photoCheck: this.photoCheck
             };
-            console.log(data);
 
             var flag = false;
             if (!data.photoCheck) {

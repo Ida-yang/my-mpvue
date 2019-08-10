@@ -107,6 +107,11 @@
       "pagePath": "pages/module/main",
       "iconPath": "static/tabs/03-1.png",
       "selectedIconPath": "static/tabs/03-2.png"
+    }, {
+      "text": "我的",
+      "pagePath": "pages/mine/main",
+      "iconPath": "static/tabs/05-1.png",
+      "selectedIconPath": "static/tabs/05-2.png"
     }],
 
     "items": [{
@@ -119,6 +124,11 @@
       "pagePath": "pages/module/main",
       "icon": "static/tabs/03-1.png",
       "activeIcon": "static/tabs/03-2.png"
+    }, {
+      "name": "我的",
+      "pagePath": "pages/mine/main",
+      "icon": "static/tabs/05-1.png",
+      "activeIcon": "static/tabs/05-2.png"
     }],
     "position": "bottom"
   },
