@@ -3,8 +3,8 @@
         <!-- <i-panel :title="current"></i-panel> -->
         <i-panel title=" "></i-panel>
         <i-panel :title="customerData.pName">
-            <i-cell title="客户来源" :value="updateList.source" is-link request i-class="simple_cell" @click="cueFocus(1)"></i-cell>
-            <i-cell title="客户分类" :value="updateList.levels" is-link request i-class="simple_cell" @click="cueFocus(2)"></i-cell>
+            <i-cell title="客户来源" :value="updateList.source" is-link request  i-class="simple_cell" i-cell-text="color_495060_text" @click="cueFocus(1)"></i-cell>
+            <i-cell title="客户分类" :value="updateList.levels" is-link request  i-class="simple_cell" i-cell-text="color_495060_text" @click="cueFocus(2)"></i-cell>
             <i-input v-model="updateList.poolName" title="公司名称" right request maxlength="50" @input="handleInput($event,2)" />
             <i-input v-model="updateList.contactsName" title="联系人" right request maxlength="20" @input="handleInput($event,3)" />
             <i-input v-model="updateList.phone" title="手机号码" right request type="number" maxlength="11" @input="handleInput($event,4)" />

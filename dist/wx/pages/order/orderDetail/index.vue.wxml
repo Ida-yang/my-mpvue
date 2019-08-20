@@ -1,0 +1,75 @@
+<template name="fbc005f4">
+  <view class="_div data-v-6fbeb1a8 order_detail_wrap">
+    <i-cell title="{{orderDetail.customerName}}" class="_i-cell data-v-6fbeb1a8">
+      <view class="_p data-v-6fbeb1a8 cell_info">订单编号：  {{orderDetail.orderNo}}</view>
+      <view class="_p data-v-6fbeb1a8 cell_info">负责人：  {{orderDetail.ascription}}   |   订单时间：  {{orderDetail.orderTime}}</view>
+      <view class="_view data-v-6fbeb1a8 btn_group" wx:if="{{authority}}">
+        <i-button class="_i-button data-v-6fbeb1a8 flex_btn" type="subject" size="small" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">通过</i-button>
+        <i-button class="_i-button data-v-6fbeb1a8 flex_btn" type="ghost" size="small" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">拒绝</i-button>
+      </view>
+      <i-cell title="{{'审核状态：' + orderDetail.auditStatus}}" i-class="cell_link" class="_i-cell data-v-6fbeb1a8"></i-cell>
+    </i-cell>
+    <i-panel title=" " class="_i-panel data-v-6fbeb1a8">
+      <i-tabs current="{{activeName}}" bindchange="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-tabs data-v-6fbeb1a8">
+        <i-tab key="first" title="订单详情" class="_i-tab data-v-6fbeb1a8"></i-tab>
+        <i-tab key="second" title="基本信息" class="_i-tab data-v-6fbeb1a8"></i-tab>
+        <i-tab key="third" title="审核信息" class="_i-tab data-v-6fbeb1a8"></i-tab>
+      </i-tabs>
+    </i-panel>
+    <view wx:if="{{activeName == 'first'}}" class="_view data-v-6fbeb1a8">
+      <view class="_view data-v-6fbeb1a8 order_pro" wx:key="item.id" key="{{item.id}}" wx:for="{{productsData}}" wx:for-index="index" wx:for-item="item">
+        <view class="_view data-v-6fbeb1a8 pro_head">
+          <image src="{{item.proImage}}" aspectFit class="_image data-v-6fbeb1a8 pro_image"></image>
+        </view>
+        <view class="_view data-v-6fbeb1a8 pro_content">
+          <view class="_view data-v-6fbeb1a8 detail_module"></view>
+          <view class="_view data-v-6fbeb1a8 pro_title">{{item.goodsName}}</view>
+          <view class="_view data-v-6fbeb1a8 pro_spec">{{item.title}}</view>
+          <view class="_view data-v-6fbeb1a8 pro_desc">{{item.describe}}</view>
+          <view class="_view data-v-6fbeb1a8 pro_foot">数量：{{item.num}}    单价：{{item.price}}   金额：{{item.amountOfMoney}}</view>
+        </view>
+      </view>
+      <view class="_view data-v-6fbeb1a8 detail_module"></view>
+      <i-card full desc title="金额信息" class="_i-card data-v-6fbeb1a8">
+        <i-cell slot="content" i-class="card_cell" title="销售金额" value="{{orderDetail.amountOfMoney}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+        <i-cell slot="content" i-class="card_cell" title="折扣额" value="{{orderDetail.discountAmount}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+        <i-cell slot="content" i-class="card_cell" title="折后金额" value="{{orderDetail.discountAfter}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+        <i-cell slot="content" i-class="card_cell" title="税额" value="{{orderDetail.taxAmount}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+        <i-cell slot="content" i-class="card_cell" title="税后金额" value="{{orderDetail.taxAfter}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+      </i-card>
+    </view>
+    <view wx:if="{{activeName == 'second'}}" class="_view data-v-6fbeb1a8">
+      <i-cell-group class="_i-cell-group data-v-6fbeb1a8">
+        <i-cell title="总金额" value="{{orderDetail.totalSum}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+        <i-cell title="联系人" value="{{orderDetail.contactsName}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+        <i-cell title="结算方式" value="{{orderDetail.settlement}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+        <i-cell title="交货方式" value="{{orderDetail.delivery}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+        <i-cell title="交货地址" value="{{orderDetail.deliveryAddress}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+        <i-cell title="创建时间" value="{{orderDetail.createTime}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+        <i-cell title="制单人" value="{{orderDetail.private_employee}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+        <i-cell title="业务员" value="{{orderDetail.ascription}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+        <i-cell title="部门" value="{{orderDetail.deptname}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+        <i-cell title="机构" value="{{orderDetail.parentname}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
+      </i-cell-group>
+    </view>
+    <view wx:if="{{activeName == 'third'}}" class="_view data-v-6fbeb1a8 white_bg">
+      <view class="_view data-v-6fbeb1a8 detail_module"></view>
+      <i-steps current="{{stepIndex}}" direction="vertical" i-class="stage_steps" class="_i-steps data-v-6fbeb1a8">
+        <i-step wx:key="item.orderId" key="{{item.orderId}}" status="{{item.stepStatus}}" icon="{{item.stepIcon}}" wx:for="{{auditLog}}" wx:for-index="index" wx:for-item="item" class="_i-step data-v-6fbeb1a8">
+          <i-fiche isContent isFooter slot="title" title="{{item.realname}}" extra="{{item.auditState}}" thumb="{{item.portrait}}" class="_i-fiche data-v-6fbeb1a8">
+            <view slot="content" class="_view data-v-6fbeb1a8">{{item.remarks}}</view>
+            <view slot="footer" class="_view data-v-6fbeb1a8">{{item.examineTime}}</view>
+          </i-fiche>
+        </i-step>
+      </i-steps>
+    </view>
+    <i-modal title="请填写审核意见" visible="{{showSure}}" bindok="handleProxy" bindcancel="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-modal data-v-6fbeb1a8">
+      <i-input value="{{remarks}}" bindchange="handleProxy" right type="textarea" request maxlength="200" bindinput="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-input data-v-6fbeb1a8"></i-input>
+    </i-modal>
+    <i-modal title="请填写审核意见" visible="{{showRefuse}}" bindok="handleProxy" bindcancel="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_i-modal data-v-6fbeb1a8">
+      <i-input value="{{remarks}}" bindchange="handleProxy" right type="textarea" request maxlength="200" bindinput="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-input data-v-6fbeb1a8"></i-input>
+    </i-modal>
+    <i-toast id="toast" class="_i-toast data-v-6fbeb1a8"></i-toast>
+    <i-message id="message" class="_i-message data-v-6fbeb1a8"></i-message>
+  </view>
+</template>

@@ -1,0 +1,42 @@
+<template name="7dc1e77e">
+  <view class="_div data-v-787adcb8">
+    <i-panel title=" " class="_i-panel data-v-787adcb8"></i-panel>
+    <i-panel title=" " class="_i-panel data-v-787adcb8">
+      <i-cell title="订单日期" request is-link i-class="simple_cell" i-cell-text="color_495060_text" class="_i-cell data-v-787adcb8">
+        <picker slot="footer" mode="date" value="{{addList.orderTime}}" start="{{nowDate}}" bindchange="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_picker data-v-787adcb8">
+          <view class="_view data-v-787adcb8 picker cell_picker">
+            {{addList.orderTime}}
+          </view>
+        </picker>
+      </i-cell>
+      <i-cell title="客户名称" value="{{addList.customerpoolName}}" request i-class="simple_cell" i-cell-text="color_495060_text" class="_i-cell data-v-787adcb8"></i-cell>
+      <i-cell title="结算方式" value="{{addList.settlement}}" request is-link i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-787adcb8"></i-cell>
+      <i-cell title="交货方式" value="{{addList.deliveryModeName}}" is-link i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-cell data-v-787adcb8"></i-cell>
+      <i-cell title="产品" value="{{addList.orderDetails}}" request is-link i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-cell data-v-787adcb8"></i-cell>
+      <view style="padding:0 8px" class="_view data-v-787adcb8">
+        <view wx:key="item.id" key="{{item.id}}" class="_view data-v-787adcb8 product_item" wx:for="{{productData}}" wx:for-index="index" wx:for-item="item">
+          <view style="margin-bottom:8px" class="_p data-v-787adcb8">{{item.tbGoods.goodsName}}</view>
+          <view class="_view data-v-787adcb8 product_item_c">
+            <image src="{{item.proImage}}" style="width:70px;height:70px" class="_image data-v-787adcb8"></image>
+            <view class="_view data-v-787adcb8 product_item_price">
+              <view style="margin-bottom:10px" class="_p data-v-787adcb8">{{item.title}}</view>
+              <view class="_p data-v-787adcb8"><label style="color:#e62c2c;" class="_span data-v-787adcb8">￥{{item.tbGoods.price}}</label> /{{item.tbGoods.unit}}</view>
+            </view>
+            <view class="_view data-v-787adcb8 product_item_counter"><label class="_span data-v-787adcb8 counter_btn {{item.countNum == 0 ? 'gray_color_text' : ''}}" bindtap="handleProxy" data-eventid="{{'4_'+index}}" data-comkey="{{$k}}">-</label> <input value="{{item.countNum}}" bindinput="handleProxy" class="_input data-v-787adcb8 counter_text" data-eventid="{{'5_'+index}}" data-comkey="{{$k}}" /> <label class="_span data-v-787adcb8 counter_btn" bindtap="handleProxy" data-eventid="{{'6_'+index}}" data-comkey="{{$k}}">+</label></view>
+          </view>
+        </view>
+      </view>
+      <i-cell title="销售金额" value="{{productInfo.totalAmount}}" i-class="simple_cell" i-cell-text="color_495060_text" class="_i-cell data-v-787adcb8"></i-cell>
+      <i-input value="{{productInfo.discountRate}}" bindchange="handleProxy" title="折扣率(%)" right type="number" maxlength="3" bindinput="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-input data-v-787adcb8"></i-input>
+      <i-input value="{{productInfo.taxRate}}" bindchange="handleProxy" title="税率(%)" right type="number" maxlength="3" bindinput="handleProxy" data-eventid="{{'8'}}" data-comkey="{{$k}}" class="_i-input data-v-787adcb8"></i-input>
+      <i-cell title="折税后金额" value="{{productInfo.realAmount}}" i-class="simple_cell" i-cell-text="color_495060_text" class="_i-cell data-v-787adcb8"></i-cell>
+      <i-input value="{{addList.deliveryAddress}}" bindchange="handleProxy" title="交货地址" right type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'9'}}" data-comkey="{{$k}}" class="_i-input data-v-787adcb8"></i-input>
+    </i-panel>
+    <view class="_p data-v-787adcb8 request_tip"><label style="color:#f56c6c" class="_span data-v-787adcb8"> * </label>为必填项</view>
+    <i-button bindtap="handleProxy" type="ghost" long="{{true}}" class="_i-button data-v-787adcb8 bottom_btn" data-eventid="{{'10'}}" data-comkey="{{$k}}">确定</i-button>
+    <i-action-sheet visible="{{showSettle}}" actions="{{settleList}}" bindchange="handleProxy" data-eventid="{{'11'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-787adcb8"></i-action-sheet>
+    <i-action-sheet visible="{{showMode}}" actions="{{modeList}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" data-eventid="{{'12'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-787adcb8"></i-action-sheet>
+    <i-message id="message" class="_i-message data-v-787adcb8"></i-message>
+    <i-toast id="toast" class="_i-toast data-v-787adcb8"></i-toast>
+  </view>
+</template>

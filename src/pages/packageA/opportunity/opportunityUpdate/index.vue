@@ -3,10 +3,10 @@
         <i-panel title=" "></i-panel>
         <i-panel :title="opportunityName">
             <i-input v-model="updateList.opportunity_name" title="商机名称" right request maxlength="20" @input="handleInput($event,1)" />
-            <i-cell title="公司名称" :value="updateList.poolName" request is-link i-class="simple_cell" @click="cellFocus($event,1)"></i-cell>
-            <i-cell title="客户决策人" :value="updateList.contact" request is-link i-class="simple_cell" @click="cellFocus($event,2)"></i-cell>
+            <i-cell title="公司名称" :value="updateList.poolName" request is-link  i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,1)"></i-cell>
+            <i-cell title="客户决策人" :value="updateList.contact" request is-link  i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,2)"></i-cell>
             <i-input v-model="updateList.opportunity_achievement" title="预计成交金额" right request type="number" maxlength="50" @input="handleInput($event,2)" />
-            <i-cell title="预计成交时间" request is-link i-class="simple_cell">
+            <i-cell title="预计成交时间" request is-link  i-class="simple_cell" i-cell-text="color_495060_text">
                 <picker slot="footer" mode="date" :value="updateList.opportunity_deal" :start="nowDate" @change="dealChange">
                     <view class="picker cell_picker">
                     {{updateList.opportunity_deal}}

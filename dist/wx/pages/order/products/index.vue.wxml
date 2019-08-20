@@ -1,0 +1,36 @@
+<template name="7d5248ce">
+  <view class="_div data-v-74545b2d order_product_wrap">
+    <view class="_view data-v-74545b2d order_search">
+      <i-icon type="search" size="16" color="#80848f" class="_i-icon data-v-74545b2d order_search_icon"></i-icon> <input value="{{searchList.searchName}}" bindinput="handleProxy" placeholder="请输入公司名称查询" maxlength="50" class="_input data-v-74545b2d order_search_input" confirm-type="search" bindconfirm="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" />
+      <i-icon wx:if="{{isValue}}" type="close" size="14" color="#80848f" class="_i-icon data-v-74545b2d order_search_icon" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}"></i-icon>
+    </view>
+    <view class="_view data-v-74545b2d order_product_content">
+      <scroll-view scroll-y class="_scroll-view data-v-74545b2d caption_wrap">
+        <i-collapse name="{{activename}}" accordion i-class="order_collapse" class="_i-collapse data-v-74545b2d">
+          <i-collapse-item title="全部商品" name="name1" i-class="order_collapse_item" bindcollapse="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-collapse-item data-v-74545b2d"></i-collapse-item>
+          <i-collapse-item wx:key="index" key="{{index}}" title="{{item.name}}" name="{{item.id}}" i-class="order_collapse_item" i-collapse-title-wrap="order_collapse_title" bindcollapse="handleProxy" data-eventid="{{'4_'+index}}" data-comkey="{{$k}}" wx:for="{{classData}}" wx:for-index="index" wx:for-item="item" class="_i-collapse-item data-v-74545b2d">
+            <view slot="content" class="_view data-v-74545b2d">
+              <view wx:key="i" key="{{i}}" class="_p data-v-74545b2d order_collapse_c_p {{el.active ? 'theme_color_text' : ''}}" bindtap="handleProxy" data-eventid="{{'3_'+index+'-'+i}}" data-comkey="{{$k}}" wx:for="{{item.next}}" wx:for-index="i" wx:for-item="el">{{el.name}}</view>
+            </view>
+          </i-collapse-item>
+        </i-collapse>
+      </scroll-view>
+      <scroll-view scroll-y class="_scroll-view data-v-74545b2d product_wrap">
+        <view wx:key="item.id" key="{{item.id}}" class="_view data-v-74545b2d product_item" wx:for="{{productData}}" wx:for-index="index" wx:for-item="item">
+          <view style="margin-bottom:8px" class="_p data-v-74545b2d">{{item.tbGoods.goodsName}}</view>
+          <view class="_view data-v-74545b2d product_item_c">
+            <image src="{{item.proImage}}" style="width:70px;height:70px" class="_image data-v-74545b2d"></image>
+            <view class="_view data-v-74545b2d product_item_price">
+              <view style="margin-bottom:10px" class="_p data-v-74545b2d">{{item.title}}</view>
+              <view class="_p data-v-74545b2d"><label style="color:#e62c2c;" class="_span data-v-74545b2d">￥{{item.tbGoods.price}}</label> /{{item.tbGoods.unit}}</view>
+            </view>
+            <view class="_view data-v-74545b2d product_item_counter"><label class="_span data-v-74545b2d counter_btn {{item.countNum == 0 ? 'gray_color_text' : ''}}" bindtap="handleProxy" data-eventid="{{'5_'+index}}" data-comkey="{{$k}}">-</label> <input value="{{item.countNum}}" bindinput="handleProxy" class="_input data-v-74545b2d counter_text" data-eventid="{{'6_'+index}}" data-comkey="{{$k}}" /> <label class="_span data-v-74545b2d counter_btn" bindtap="handleProxy" data-eventid="{{'7_'+index}}" data-comkey="{{$k}}">+</label></view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="_view data-v-74545b2d bottom_view"><label style="padding-left:15px" class="_span data-v-74545b2d">共 {{totalNumber}} 个</label>
+      <i-button bindtap="handleProxy" type="subject" i-class="inline_btn" data-eventid="{{'8'}}" data-comkey="{{$k}}" class="_i-button data-v-74545b2d">确定</i-button>
+    </view>
+  </view>
+</template>

@@ -2,14 +2,14 @@ require("../../../../common/manifest.js")
 require("../../../../common/vendor.js")
 global.webpackJsonpMpvue([12],{
 
-/***/ 339:
+/***/ 364:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(340);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(365);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 340:
+/***/ 365:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(342);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_26921cf4_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(343);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_26921cf4_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(368);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(341)
+  __webpack_require__(366)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,14 +72,14 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 341:
+/***/ 366:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 342:
+/***/ 367:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -410,7 +410,7 @@ if (false) {(function () {
                         });
                         _this.remarks = '';
                         _this.showSure = false;
-                        _this.loadData();
+                        _this.loadVisit();
                     } else {
                         Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
                             content: res.data.msg,
@@ -746,7 +746,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 343:
+/***/ 368:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -831,7 +831,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "mpcomid": '6'
     }
   })], 1)], 1), _vm._v(" "), (_vm.activeName == 'first') ? _c('view', {
-    staticClass: "white_bg font_size_12"
+    staticClass: "white_bg"
   }, [_c('view', {
     staticClass: "detail_module"
   }), _vm._v(" "), _c('i-steps', {
@@ -864,9 +864,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }, [_vm._v(_vm._s(item.remarks))]), _vm._v(" "), _c('view', {
       slot: "footer"
     }, [_vm._v(_vm._s(item.examineTime))])])], 1)
-  }))], 1) : _vm._e(), _vm._v(" "), (_vm.activeName == 'second') ? _c('view', {
-    staticClass: "font_size_12"
-  }, [_c('i-cell-group', {
+  }))], 1) : _vm._e(), _vm._v(" "), (_vm.activeName == 'second') ? _c('view', [_c('i-cell-group', {
     attrs: {
       "mpcomid": '20'
     }
@@ -922,9 +920,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "value": _vm.outworkData.parentname,
       "mpcomid": '19'
     }
-  })], 1)], 1) : _vm._e(), _vm._v(" "), (_vm.activeName == 'third') ? _c('view', {
-    staticClass: "font_size_12"
-  }, [_c('i-card', {
+  })], 1)], 1) : _vm._e(), _vm._v(" "), (_vm.activeName == 'third') ? _c('view', [_c('i-card', {
     attrs: {
       "full": "",
       "isContent": "",
@@ -1128,4 +1124,4 @@ if (false) {
 
 /***/ })
 
-},[339]);
+},[364]);

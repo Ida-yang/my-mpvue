@@ -2,20 +2,20 @@
     <div class="add_or_update_wrap">
         <i-panel title=" "></i-panel>
         <i-panel title=" ">
-            <i-cell title="拜访公司" :value="updateList.customerName" request is-link i-class="simple_cell"></i-cell>
-            <i-cell title="拜访时间" request is-link i-class="simple_cell">
+            <i-cell title="拜访公司" :value="updateList.customerName" request is-link  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
+            <i-cell title="拜访时间" request is-link  i-class="simple_cell" i-cell-text="color_495060_text">
                 <i-datetime-picker slot="footer" :value="updateList.visitTime" @change="dealChange($event,1)" class="cell_picker"></i-datetime-picker>
             </i-cell>
-            <i-cell title="结束时间" request is-link i-class="simple_cell">
+            <i-cell title="结束时间" request is-link  i-class="simple_cell" i-cell-text="color_495060_text">
                 <i-datetime-picker slot="footer" :value="updateList.endTime" @change="dealChange($event,2)" class="cell_picker"></i-datetime-picker>
             </i-cell>
-            <i-cell title="提醒时间" request is-link i-class="simple_cell">
+            <i-cell title="提醒时间" request is-link  i-class="simple_cell" i-cell-text="color_495060_text">
                 <i-datetime-picker slot="footer" :value="updateList.remindTime" @change="dealChange($event,3)" class="cell_picker"></i-datetime-picker>
             </i-cell>
-            <i-cell title="拜访对象" :value="updateList.contact" request is-link i-class="simple_cell" @click="cellFocus($event,1)"></i-cell>
+            <i-cell title="拜访对象" :value="updateList.contact" request is-link  i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,1)"></i-cell>
             <i-input v-model="updateList.visitTheme" title="拜访主题" right request maxlength="50" @input="handleInput($event,1)" />
             <i-input v-model="updateList.visitObjective" title="拜访目的" right request type="textarea" maxlength="200" @input="handleInput($event,2)" />
-            <i-cell title="协助人员" :value="updateList.assistants" is-link i-class="simple_cell" @click="cellFocus($event,2)"></i-cell>
+            <i-cell title="协助人员" :value="updateList.assistants" is-link  i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,2)"></i-cell>
             <i-input v-model="updateList.remarks" title="备注" right type="textarea" maxlength="200" @input="handleInput($event,3)" />
         </i-panel>
 

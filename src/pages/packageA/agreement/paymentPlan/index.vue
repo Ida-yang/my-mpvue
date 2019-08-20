@@ -4,16 +4,16 @@
         <i-panel :title="agreementData.contract_name">
             <i-input v-model="totalAmount" title="总金额" right maxlength="50" disabled />
             <i-input v-model="surplusAmount" title="剩余预计回款金额" right maxlength="50" disabled />
-            <i-cell title="回款阶段" :value="planList.stage" is-link request i-class="simple_cell" @click="optionFocus"></i-cell>
+            <i-cell title="回款阶段" :value="planList.stage" is-link request  i-class="simple_cell" i-cell-text="color_495060_text" @click="optionFocus"></i-cell>
             <i-input v-model="planList.price" title="预计回款金额" right request maxlength="50" @input="handleInput($event,1)" />
-            <i-cell title="预计回款时间" request is-link i-class="simple_cell">
+            <i-cell title="预计回款时间" request is-link  i-class="simple_cell" i-cell-text="color_495060_text">
                 <picker slot="footer" mode="date" :value="planList.date" :start="nowDate" @change="handleInput($event,2)">
                     <view class="picker cell_picker">
                     {{planList.date}}
                     </view>
                 </picker>
             </i-cell>
-            <i-cell title="提醒时间" is-link i-class="simple_cell">
+            <i-cell title="提醒时间" is-link  i-class="simple_cell" i-cell-text="color_495060_text">
                 <i-datetime-picker slot="footer" :value="planList.remind_date" @change="handleInput($event,3)" class="cell_picker"></i-datetime-picker>
             </i-cell>
             <i-input v-model="planList.remarks" title="备注" right type="textarea" maxlength="200" @input="handleInput($event,4)" />

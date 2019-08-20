@@ -15,7 +15,7 @@
             </i-tabs>
         </i-panel>
 
-        <view v-if="activeName == 'first'" class="follow_view">
+        <view v-if="activeName == 'first'" class="white_bg">
             <view v-for="item in followData" :key="item.id">
                 <i-panel :title="item.createTime" i-class="vice_panel"></i-panel>
                 <i-fiche full isContent isFooter :title="item.contacts[0].name" :extra="item.state" :thumb="item.portrait">
@@ -33,14 +33,14 @@
             </view>
         </view>
 
-        <view v-if="activeName == 'second'" class="font_size_12">
+        <view v-if="activeName == 'second'">
             <i-cell-group v-for="item in contactData" :key="item.id">
                 <i-cell title="联系人" :value="item.name"></i-cell>
                 <i-cell title="手机号码" :value="item.phone"></i-cell>
             </i-cell-group>
         </view>
 
-        <view v-if="activeName == 'third'" class="font_size_12">
+        <view v-if="activeName == 'third'">
             <i-cell-group>
                 <i-cell title="公司名称" :value="cluePoolDetail.name"></i-cell>
                 <i-cell title="线索状态" :value="cluePoolDetail.state"></i-cell>

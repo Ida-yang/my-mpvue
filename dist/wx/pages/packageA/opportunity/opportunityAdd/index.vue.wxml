@@ -3,10 +3,10 @@
     <i-panel title=" " class="_i-panel data-v-6aeb39cc"></i-panel>
     <i-panel title=" " class="_i-panel data-v-6aeb39cc">
       <i-input value="{{addList.opportunity_name}}" bindchange="handleProxy" title="商机名称" right request maxlength="20" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-6aeb39cc"></i-input>
-      <i-cell title="公司名称" value="{{addList.poolName}}" request is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-6aeb39cc"></i-cell>
-      <i-cell title="客户决策人" value="{{addList.contact}}" request is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-cell data-v-6aeb39cc"></i-cell>
+      <i-cell title="公司名称" value="{{addList.poolName}}" request is-link i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-6aeb39cc"></i-cell>
+      <i-cell title="客户决策人" value="{{addList.contact}}" request is-link i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-cell data-v-6aeb39cc"></i-cell>
       <i-input value="{{addList.opportunity_achievement}}" bindchange="handleProxy" title="预计成交金额" right request type="number" maxlength="50" bindinput="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-input data-v-6aeb39cc"></i-input>
-      <i-cell title="预计成交时间" request is-link i-class="simple_cell" class="_i-cell data-v-6aeb39cc">
+      <i-cell title="预计成交时间" request is-link i-class="simple_cell" i-cell-text="color_495060_text" class="_i-cell data-v-6aeb39cc">
         <picker slot="footer" mode="date" value="{{addList.opportunity_deal}}" start="{{nowDate}}" bindchange="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_picker data-v-6aeb39cc">
           <view class="_view data-v-6aeb39cc picker cell_picker">
             {{addList.opportunity_deal}}

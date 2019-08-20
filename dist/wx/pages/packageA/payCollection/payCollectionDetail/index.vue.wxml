@@ -17,7 +17,7 @@
         <i-tab key="third" title="相关信息" class="_i-tab data-v-1c939342"></i-tab>
       </i-tabs>
     </i-panel>
-    <view wx:if="{{activeName == 'first'}}" class="_view data-v-1c939342 white_bg font_size_12">
+    <view wx:if="{{activeName == 'first'}}" class="_view data-v-1c939342 white_bg">
       <view class="_view data-v-1c939342 detail_module"></view>
       <i-steps current="{{stepIndex}}" direction="vertical" i-class="stage_steps" class="_i-steps data-v-1c939342">
         <i-step wx:key="item.orderId" key="{{item.orderId}}" status="{{item.stepStatus}}" icon="{{item.stepIcon}}" wx:for="{{auditLog}}" wx:for-index="index" wx:for-item="item" class="_i-step data-v-1c939342">
@@ -28,7 +28,7 @@
         </i-step>
       </i-steps>
     </view>
-    <view wx:if="{{activeName == 'second'}}" class="_view data-v-1c939342 font_size_12">
+    <view wx:if="{{activeName == 'second'}}" class="_view data-v-1c939342">
       <i-cell-group class="_i-cell-group data-v-1c939342">
         <i-cell title="回款单号" value="{{payCollectionDetail.backNo}}" class="_i-cell data-v-1c939342"></i-cell>
         <i-cell title="客户名称" value="{{payCollectionDetail.customerName}}" class="_i-cell data-v-1c939342"></i-cell>
@@ -43,7 +43,7 @@
         <i-cell title="机构" value="{{payCollectionDetail.parentname}}" class="_i-cell data-v-1c939342"></i-cell>
       </i-cell-group>
     </view>
-    <view wx:if="{{activeName == 'third'}}" class="_view data-v-1c939342 font_size_12">
+    <view wx:if="{{activeName == 'third'}}" class="_view data-v-1c939342">
       <i-card full title="已回款信息" class="_i-card data-v-1c939342">
         <i-cell slot="content" i-class="card_cell" wx:key="item.id" key="{{item.id}}" title="{{item.back_plan}}" label="{{'回款日期：' + item.createTime}}" wx:for="{{payInfoData}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-1c939342">
           <view slot="footer" class="_view data-v-1c939342">

@@ -1,8 +1,8 @@
 <template>
     <div>
         <i-panel title=" "></i-panel>
-        <i-cell :title="addList.noteType1" i-class="simple_cell" @click="cellFocus($event,1)"></i-cell>
-        <i-cell title="便签类别" :value="addList.noteType2" request is-link i-class="simple_cell" @click="cellFocus($event,2)"></i-cell>
+        <i-cell :title="addList.noteType1"  i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,1)"></i-cell>
+        <i-cell title="便签类别" :value="addList.noteType2" request is-link  i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,2)"></i-cell>
         <i-input v-model="addList.name" type="textarea" maxlength="110" @input="handleInput" i-input-class="note_input" />
 
         <!-- 新增 -->

@@ -1,0 +1,32 @@
+@import "../../../common/vendor.wxss";
+
+.order_product_wrap {
+  background-color: #fafafa;
+  padding-top: 100rpx;
+  margin-bottom: 80rpx;
+}
+.order_product_content {
+  height: calc(100vh - 160rpx);
+  display: flex;
+}
+.caption_wrap {
+  flex: 1;
+  float: left;
+}
+.order_collapse {
+  font-size: 28rpx;
+}
+.order_collapse_item {
+  border-top: 0 !important;
+  line-height: 64rpx;
+}
+.order_collapse_title {
+  overflow: hidden;
+  height: 64rpx;
+}
+.order_collapse_c_p {
+  overflow: hidden;
+  padding-left: 20rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+}

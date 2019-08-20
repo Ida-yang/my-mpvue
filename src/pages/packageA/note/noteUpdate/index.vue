@@ -1,8 +1,8 @@
 <template>
     <div>
         <i-panel title=" "></i-panel>
-        <i-cell :title="updateList.noteType1" i-class="simple_cell"></i-cell>
-        <i-cell title="便签类别" :value="updateList.noteType2" request i-class="simple_cell"></i-cell>
+        <i-cell :title="updateList.noteType1"  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
+        <i-cell title="便签类别" :value="updateList.noteType2" request  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
         <i-input v-model="updateList.name" type="textarea" maxlength="110" @input="handleInput" i-input-class="note_input" />
 
         <!-- 修改 -->

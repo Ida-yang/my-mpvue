@@ -73,6 +73,7 @@
                         "Content-Type": "application/x-www-form-urlencoded"
                     },
                     success: function (res) {
+                        console.log(res)
                         if(res.data.code && res.data.code == "200"){
                             $Message({
                                 content: '登录成功',

@@ -2,26 +2,26 @@
     <div class="add_or_update_wrap">
         <i-panel title=" "></i-panel>
         <i-panel title=" ">
-            <i-cell title="合同类型" :value="addList.contract_type" request is-link i-class="simple_cell" @click="cellFocus($event,1)"></i-cell>
+            <i-cell title="合同类型" :value="addList.contract_type" request is-link  i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,1)"></i-cell>
             <i-input v-model="addList.contract_name" title="合同名称" right request maxlength="20" @input="handleInput($event,1)" />
-            <i-cell title="客户名称" :value="addList.customerpoolName" request is-link i-class="simple_cell" @click="cellFocus($event,2)"></i-cell>
-            <i-cell title="对应商机" :value="addList.opportunityName" is-link i-class="simple_cell" @click="cellFocus($event,3)"></i-cell>
+            <i-cell title="客户名称" :value="addList.customerpoolName" request is-link  i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,2)"></i-cell>
+            <i-cell title="对应商机" :value="addList.opportunityName" is-link  i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,3)"></i-cell>
             <i-input v-model="addList.amount" title="合同金额" right request type="number" maxlength="50" @input="handleInput($event,2)" />
-            <i-cell title="开始时间" request is-link i-class="simple_cell">
+            <i-cell title="开始时间" request is-link  i-class="simple_cell" i-cell-text="color_495060_text">
                 <picker slot="footer" mode="date" :value="addList.start_date" :start="nowDate" @change="dealChange($event,1)">
                     <view class="picker cell_picker">
                     {{addList.start_date}}
                     </view>
                 </picker>
             </i-cell>
-            <i-cell title="结束时间" request is-link i-class="simple_cell">
+            <i-cell title="结束时间" request is-link  i-class="simple_cell" i-cell-text="color_495060_text">
                 <picker slot="footer" mode="date" :value="addList.end_date" :start="nowDate" @change="dealChange($event,2)">
                     <view class="picker cell_picker">
                     {{addList.end_date}}
                     </view>
                 </picker>
             </i-cell>
-            <i-cell title="客户签约人" :value="addList.signatorieName" request is-link i-class="simple_cell" @click="cellFocus($event,4)"></i-cell>
+            <i-cell title="客户签约人" :value="addList.signatorieName" request is-link  i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,4)"></i-cell>
             <i-input v-model="addList.our_signatorieName" title="我方签约人" right maxlength="50" disabled />
             <i-input v-model="addList.remarks" title="备注" right type="textarea" maxlength="200" @input="handleInput($event,3)" />
         </i-panel>

@@ -2,20 +2,20 @@
   <view class="_div data-v-47301e98 add_or_update_wrap">
     <i-panel title=" " class="_i-panel data-v-47301e98"></i-panel>
     <i-panel title=" " class="_i-panel data-v-47301e98">
-      <i-cell title="拜访公司" value="{{addList.customerName}}" request is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-cell data-v-47301e98"></i-cell>
-      <i-cell title="拜访时间" request is-link i-class="simple_cell" class="_i-cell data-v-47301e98">
+      <i-cell title="拜访公司" value="{{addList.customerName}}" request is-link i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-cell data-v-47301e98"></i-cell>
+      <i-cell title="拜访时间" request is-link i-class="simple_cell" i-cell-text="color_495060_text" class="_i-cell data-v-47301e98">
         <i-datetime-picker slot="footer" value="{{addList.visitTime}}" bindchange="handleProxy" class="_i-datetime-picker data-v-47301e98 cell_picker" data-eventid="{{'1'}}" data-comkey="{{$k}}"></i-datetime-picker>
       </i-cell>
-      <i-cell title="结束时间" request is-link i-class="simple_cell" class="_i-cell data-v-47301e98">
+      <i-cell title="结束时间" request is-link i-class="simple_cell" i-cell-text="color_495060_text" class="_i-cell data-v-47301e98">
         <i-datetime-picker slot="footer" value="{{addList.endTime}}" bindchange="handleProxy" class="_i-datetime-picker data-v-47301e98 cell_picker" data-eventid="{{'2'}}" data-comkey="{{$k}}"></i-datetime-picker>
       </i-cell>
-      <i-cell title="提醒时间" request is-link i-class="simple_cell" class="_i-cell data-v-47301e98">
+      <i-cell title="提醒时间" request is-link i-class="simple_cell" i-cell-text="color_495060_text" class="_i-cell data-v-47301e98">
         <i-datetime-picker slot="footer" value="{{addList.remindTime}}" bindchange="handleProxy" class="_i-datetime-picker data-v-47301e98 cell_picker" data-eventid="{{'3'}}" data-comkey="{{$k}}"></i-datetime-picker>
       </i-cell>
-      <i-cell title="拜访对象" value="{{addList.contact}}" request is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-cell data-v-47301e98"></i-cell>
+      <i-cell title="拜访对象" value="{{addList.contact}}" request is-link i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-cell data-v-47301e98"></i-cell>
       <i-input value="{{addList.visitTheme}}" bindchange="handleProxy" title="拜访主题" right request maxlength="50" bindinput="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-input data-v-47301e98"></i-input>
       <i-input value="{{addList.visitObjective}}" bindchange="handleProxy" title="拜访目的" right request type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_i-input data-v-47301e98"></i-input>
-      <i-cell title="协助人员" value="{{addList.assistants}}" is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-cell data-v-47301e98"></i-cell>
+      <i-cell title="协助人员" value="{{addList.assistants}}" is-link i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-cell data-v-47301e98"></i-cell>
       <i-input value="{{addList.remarks}}" bindchange="handleProxy" title="备注" right type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'8'}}" data-comkey="{{$k}}" class="_i-input data-v-47301e98"></i-input>
     </i-panel>
     <i-button bindtap="handleProxy" type="ghost" long="{{true}}" class="_i-button data-v-47301e98 bottom_btn" data-eventid="{{'9'}}" data-comkey="{{$k}}">确定</i-button>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="add_or_update_wrap">
         <!-- <i-panel :title="current"></i-panel> -->
         <i-input :value="poolName" type="text" maxlength="50" placeholder="输入公司名称查询" @input="search" />
         <i-radio-group :current="cheakItem" @change="changeItem">
@@ -96,5 +96,5 @@
     }
 </script>
 
-<style scoped>
+<style>
 </style>

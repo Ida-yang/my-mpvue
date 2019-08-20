@@ -19,7 +19,7 @@
             </i-tabs>
         </i-panel>
 
-        <view v-if="activeName == 'first'" class="follow_view">
+        <view v-if="activeName == 'first'" class="white_bg">
             <view v-for="item in followData" :key="item.id">
                 <i-panel :title="item.createTime" i-class="vice_panel"></i-panel>
                 <i-fiche full isContent isFooter :title="item.contacts[0].name" :thumb="item.portrait">
@@ -37,7 +37,7 @@
             </view>
         </view>
 
-        <view v-if="activeName == 'second'" class="font_size_12">
+        <view v-if="activeName == 'second'">
             <i-cell-group>
                 <i-cell title="公司名称" :value="agreementDetail.poolName"></i-cell>
                 <i-cell title="客户签约人" :value="agreementDetail.signatories"></i-cell>
@@ -54,7 +54,7 @@
             </i-cell-group>
         </view>
 
-        <view v-if="activeName == 'third'" class="font_size_12">
+        <view v-if="activeName == 'third'">
             <i-card full desc title="回款计划">
                 <span slot="desc" @click="topayPlan">+</span>
                 <i-cell slot="content" i-class="card_cell" v-for="item in payPlanData" :key="item.id" :title="item.stage" :value="item.price + '元'" :label="'预计回款日期：' + item.date"></i-cell>
@@ -103,9 +103,9 @@
             return {
                 current: '合同详情',
 
+                infoData:{},
+
                 agreementDetail:{},
-                checkStatus:'',
-                examineRecordId:'',
                 authority:false,
 
                 activeName:'first',
@@ -136,37 +136,46 @@
         methods: {
             loadData(){
                 const _this = this
-                this.agreementDetail = config.information.agreementDetailData
-                // let info = config.information.agreementDetailData
-                // let data = {
-                //     contractId: info.contract_id
-                // }
+                this.infoData = config.information.agreementDetailData
+                
+                let data = {
+                    contractId: this.infoData.contract_id
+                }
 
-                // wx.request({
-                //     method:'post',
-                //     url: config.defaulthost + 'backPlan/selectBackPlanByContractId.do?cId=' + config.userData.cId,  //接口地址
-                //     data: data,
-                //     header:{
-                //         "Content-Type": "application/x-www-form-urlencoded",
-                //         'Cookie': config.SESSIONID
-                //     },
-                //     success:function(res) {
-                //         _this.agreementDetail = res.data
-                        _this.checkStatus = _this.agreementDetail.checkStatus
-                        _this.examineRecordId = _this.agreementDetail.examineRecordId
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'getContractById.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        let info = res.data
+
+                        if(info.checkStatus == 0){
+                            info.auditStatus = '未审核'
+                        }else if(info.checkStatus == 1){
+                            info.auditStatus = '审核中'
+                        }else if(info.checkStatus == 2){
+                            info.auditStatus = '已审核'
+                        }else if(info.checkStatus == 3){
+                            info.auditStatus = '未通过'
+                        }
+                        _this.agreementDetail = info
 
                         _this.loadState()
                         _this.loadFollows()
                         _this.loadMoneyBack()
-                //     }
-                // })
+                    }
+                })
             },
             loadState(){
                 const _this = this
 
                 let data = {
-                    checkStatus: this.checkStatus,
-                    recordId: this.examineRecordId,
+                    checkStatus: this.agreementDetail.checkStatus,
+                    recordId: this.agreementDetail.examineRecordId,
                     pId: config.userData.pId
                 }
 
@@ -181,7 +190,7 @@
                     success:function(res) {
                         let info = res.data
 
-                        if(info.isCheck == 1 && _this.checkStatus !== 2){
+                        if(info.isCheck == 1 && _this.agreementDetail.checkStatus !== 2){
                             _this.authority = true
                         }else{
                             _this.authority = false
@@ -192,7 +201,7 @@
             loadFollows(){
                 const _this = this
                 let data = {
-                    contract_id: this.agreementDetail.contract_id
+                    contract_id: this.infoData.contract_id
                 }
 
                 wx.request({
@@ -228,7 +237,7 @@
             loadMoneyBack(){
                 const _this = this
                 let data = {
-                    contract_id: this.agreementDetail.contract_id
+                    contract_id: this.infoData.contract_id
                 }
 
                 wx.request({

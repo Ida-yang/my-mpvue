@@ -16,7 +16,7 @@
         <i-tab key="third" title="相关信息" class="_i-tab data-v-2882c40a"></i-tab>
       </i-tabs>
     </i-panel>
-    <view wx:if="{{activeName == 'first'}}" class="_view data-v-2882c40a follow_view">
+    <view wx:if="{{activeName == 'first'}}" class="_view data-v-2882c40a white_bg">
       <view wx:key="item.id" key="{{item.id}}" wx:for="{{followData}}" wx:for-index="index" wx:for-item="item" class="_view data-v-2882c40a">
         <i-panel title="{{item.createTime}}" i-class="vice_panel" class="_i-panel data-v-2882c40a"></i-panel>
         <i-fiche full isContent isFooter title="{{item.contacts[0].name}}" thumb="{{item.portrait}}" class="_i-fiche data-v-2882c40a">
@@ -30,7 +30,7 @@
         </i-fiche>
       </view>
     </view>
-    <view wx:if="{{activeName == 'second'}}" class="_view data-v-2882c40a font_size_12">
+    <view wx:if="{{activeName == 'second'}}" class="_view data-v-2882c40a">
       <i-cell-group class="_i-cell-group data-v-2882c40a">
         <i-cell title="公司名称" value="{{agreementDetail.poolName}}" class="_i-cell data-v-2882c40a"></i-cell>
         <i-cell title="客户签约人" value="{{agreementDetail.signatories}}" class="_i-cell data-v-2882c40a"></i-cell>
@@ -46,7 +46,7 @@
         <i-cell title="机构" value="{{agreementDetail.parentname}}" class="_i-cell data-v-2882c40a"></i-cell>
       </i-cell-group>
     </view>
-    <view wx:if="{{activeName == 'third'}}" class="_view data-v-2882c40a font_size_12">
+    <view wx:if="{{activeName == 'third'}}" class="_view data-v-2882c40a">
       <i-card full desc title="回款计划" class="_i-card data-v-2882c40a"><label slot="desc" bindtap="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_span data-v-2882c40a">+</label>
         <i-cell slot="content" i-class="card_cell" wx:key="item.id" key="{{item.id}}" title="{{item.stage}}" value="{{item.price + '元'}}" label="{{'预计回款日期：' + item.date}}" wx:for="{{payPlanData}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-2882c40a"></i-cell>
       </i-card>

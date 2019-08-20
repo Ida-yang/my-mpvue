@@ -17,7 +17,7 @@
         <i-tab key="third" title="相关信息" class="_i-tab data-v-26921cf4"></i-tab>
       </i-tabs>
     </i-panel>
-    <view wx:if="{{activeName == 'first'}}" class="_view data-v-26921cf4 white_bg font_size_12">
+    <view wx:if="{{activeName == 'first'}}" class="_view data-v-26921cf4 white_bg">
       <view class="_view data-v-26921cf4 detail_module"></view>
       <i-steps current="{{stepIndex}}" direction="vertical" i-class="stage_steps" class="_i-steps data-v-26921cf4">
         <i-step wx:key="item.orderId" key="{{item.orderId}}" status="{{item.stepStatus}}" icon="{{item.stepIcon}}" wx:for="{{auditLog}}" wx:for-index="index" wx:for-item="item" class="_i-step data-v-26921cf4">
@@ -28,7 +28,7 @@
         </i-step>
       </i-steps>
     </view>
-    <view wx:if="{{activeName == 'second'}}" class="_view data-v-26921cf4 font_size_12">
+    <view wx:if="{{activeName == 'second'}}" class="_view data-v-26921cf4">
       <i-cell-group class="_i-cell-group data-v-26921cf4">
         <i-cell title="拜访时间" value="{{outworkData.visitTime}}" class="_i-cell data-v-26921cf4"></i-cell>
         <i-cell title="结束时间" value="{{outworkData.endTime}}" class="_i-cell data-v-26921cf4"></i-cell>
@@ -42,7 +42,7 @@
         <i-cell title="机构" value="{{outworkData.parentname}}" class="_i-cell data-v-26921cf4"></i-cell>
       </i-cell-group>
     </view>
-    <view wx:if="{{activeName == 'third'}}" class="_view data-v-26921cf4 font_size_12">
+    <view wx:if="{{activeName == 'third'}}" class="_view data-v-26921cf4">
       <i-card full isContent title="执行结果" extra="{{outworkData.state}}" class="_i-card data-v-26921cf4">
         <view slot="content" class="_view data-v-26921cf4">
           <view class="_p data-v-26921cf4">签到时间：{{outworkData.timeCheck || ''}}</view>

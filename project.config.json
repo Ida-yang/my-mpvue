@@ -1,11 +1,12 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": false,
 		"postcss": false,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"autoAudits": false,
 		"uglifyFileName": true,
 		"checkInvalidKey": true,
@@ -46,15 +47,15 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/packageA/note/main",
-					"pathName": "pages/packageA/note/main",
+					"name": "pages/order/main",
+					"pathName": "pages/order/main",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": 1,
-					"name": "pages/packageA/outwork/main",
-					"pathName": "pages/packageA/outwork/main",
+					"name": "pages/order/products/main",
+					"pathName": "pages/order/products/main",
 					"query": "",
 					"scene": null
 				},

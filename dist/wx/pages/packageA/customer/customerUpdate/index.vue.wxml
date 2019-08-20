@@ -2,8 +2,8 @@
   <view class="_div data-v-209fc928">
     <i-panel title=" " class="_i-panel data-v-209fc928"></i-panel>
     <i-panel title="{{customerData.pName}}" class="_i-panel data-v-209fc928">
-      <i-cell title="客户来源" value="{{updateList.source}}" is-link request i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-cell data-v-209fc928"></i-cell>
-      <i-cell title="客户分类" value="{{updateList.levels}}" is-link request i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-209fc928"></i-cell>
+      <i-cell title="客户来源" value="{{updateList.source}}" is-link request i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-cell data-v-209fc928"></i-cell>
+      <i-cell title="客户分类" value="{{updateList.levels}}" is-link request i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-209fc928"></i-cell>
       <i-input value="{{updateList.poolName}}" bindchange="handleProxy" title="公司名称" right request maxlength="50" bindinput="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-input data-v-209fc928"></i-input>
       <i-input value="{{updateList.contactsName}}" bindchange="handleProxy" title="联系人" right request maxlength="20" bindinput="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-input data-v-209fc928"></i-input>
       <i-input value="{{updateList.phone}}" bindchange="handleProxy" title="手机号码" right request type="number" maxlength="11" bindinput="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-input data-v-209fc928"></i-input>

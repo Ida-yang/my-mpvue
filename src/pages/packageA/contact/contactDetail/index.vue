@@ -15,7 +15,7 @@
             </i-tabs>
         </i-panel>
 
-        <view v-if="activeName == 'first'" class="follow_view">
+        <view v-if="activeName == 'first'" class="white_bg">
             <view v-for="item in followData" :key="item.id">
                 <i-panel :title="item.createTime" i-class="vice_panel"></i-panel>
                 <i-fiche full isContent isFooter :title="item.contacts[0].name" :extra="item.state" :thumb="item.portrait">
@@ -33,7 +33,7 @@
             </view>
         </view>
 
-        <view v-if="activeName == 'second'" class="font_size_12">
+        <view v-if="activeName == 'second'">
             <i-cell-group>
                 <i-cell title="公司名称" :value="contactDetail.poolname"></i-cell>
                 <i-cell title="是否为关键人" :value="contactDetail.isCrux"></i-cell>
@@ -49,7 +49,7 @@
             </i-cell-group>
         </view>
 
-        <view v-if="activeName == 'third'" class="font_size_12">
+        <view v-if="activeName == 'third'">
             <i-card full title="商机">
                 <i-cell slot="content" i-class="card_cell" v-for="item in opportunityData" :key="item.id" :title="item.opportunity_name" :label="item.opportunity_time">
                     <view slot="footer">

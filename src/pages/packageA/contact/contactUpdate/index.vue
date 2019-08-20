@@ -3,13 +3,13 @@
         <i-panel title=" "></i-panel>
         <i-panel :title="contactName">
             <i-input v-model="updateList.name" title="联系人" right request maxlength="20" @input="handleInput($event,1)" />
-            <i-cell title="公司名称" :value="updateList.poolName" is-link i-class="simple_cell" request @click="cellFocus($event,1)"></i-cell>
+            <i-cell title="公司名称" :value="updateList.poolName" is-link  i-class="simple_cell" i-cell-text="color_495060_text" request @click="cellFocus($event,1)"></i-cell>
             <i-input v-model="updateList.phone" title="手机号码" right request type="number" maxlength="11" @input="handleInput($event,2)" />
             <i-input v-model="updateList.telephone" title="电话" right type="number" maxlength="21" @input="handleInput($event,3)" />
             <i-input v-model="updateList.qq" title="QQ" right maxlength="50" @input="handleInput($event,4)" />
             <i-input v-model="updateList.email" title="邮箱" right maxlength="50" @input="handleInput($event,5)" />
             <i-input v-model="updateList.wechat" title="微信" right maxlength="50" @input="handleInput($event,6)" />
-            <i-cell title="性别" :value="updateList.sex" is-link i-class="simple_cell" @click="cellFocus($event,2)"></i-cell>
+            <i-cell title="性别" :value="updateList.sex" is-link  i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,2)"></i-cell>
             <i-input v-model="updateList.remark" title="备注" right type="textarea" maxlength="200" @input="handleInput($event,7)" />
         </i-panel>
         <p class="request_tip"><span style="color:#f56c6c"> * </span>为必填项</p>

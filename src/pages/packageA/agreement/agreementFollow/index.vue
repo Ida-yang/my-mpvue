@@ -2,9 +2,9 @@
     <div>
         <!-- <i-panel :title="current"></i-panel> -->
         <i-panel :title="followData.contract_name">
-            <i-cell title="联系方式" :value="followList.followType" is-link request i-class="simple_cell" @click="optionFocus($event,1)"></i-cell>
-            <i-cell title="联系人" :value="followList.contactsName" is-link request i-class="simple_cell" @click="optionFocus($event,2)"></i-cell>
-            <i-cell title="下次联系时间" is-link i-class="simple_cell">
+            <i-cell title="联系方式" :value="followList.followType" is-link request  i-class="simple_cell" i-cell-text="color_495060_text" @click="optionFocus($event,1)"></i-cell>
+            <i-cell title="联系人" :value="followList.contactsName" is-link request  i-class="simple_cell" i-cell-text="color_495060_text" @click="optionFocus($event,2)"></i-cell>
+            <i-cell title="下次联系时间" is-link  i-class="simple_cell" i-cell-text="color_495060_text">
                 <i-datetime-picker slot="footer" :value="followList.contactTime" @change="handleInput($event,2)" class="cell_picker"></i-datetime-picker>
             </i-cell>
             <i-input v-model="followList.followContent" title="跟进内容" right request type="textarea" maxlength="200" @input="handleInput($event,1)" />

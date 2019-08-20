@@ -7,7 +7,7 @@
         </i-cell>
 
         <i-panel title=" "></i-panel>
-        <view class="font_size_12">
+        <view>
             <i-cell-group>
                 <i-cell title="开始时间" :value="taskDetail.startTime"></i-cell>
                 <i-cell title="结束时间" :value="taskDetail.endTime"></i-cell>

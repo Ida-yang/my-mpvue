@@ -14,7 +14,7 @@
             </i-tabs>
         </i-panel>
 
-        <view v-if="activeName == 'first'" class="follow_view">
+        <view v-if="activeName == 'first'" class="white_bg">
             <view v-for="item in followData" :key="item.id">
                 <i-panel :title="item.createTime" i-class="vice_panel"></i-panel>
                 <i-fiche full isContent isFooter :title="item.contacts[0].name" :extra="item.state" :thumb="item.portrait">

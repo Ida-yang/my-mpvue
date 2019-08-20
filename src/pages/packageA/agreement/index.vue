@@ -60,6 +60,8 @@
             </view>
         </i-swipeout>
 
+        <i-load-more v-if="noMore" tip="我是有底线的" :loading="false" />
+
         <!-- 新增 -->
         <i-button @click="toAddAgreement" type="ghost" :long="true" class="bottom_btn">新增</i-button>
     </div>

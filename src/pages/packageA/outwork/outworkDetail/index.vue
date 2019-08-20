@@ -21,7 +21,7 @@
             </i-tabs>
         </i-panel>
 
-        <view v-if="activeName == 'first'" class="white_bg font_size_12">
+        <view v-if="activeName == 'first'" class="white_bg">
             <view class="detail_module"></view>
             <i-steps :current="stepIndex" direction="vertical" i-class="stage_steps">
                 <i-step v-for="item in auditLog" :key="item.orderId" :status="item.stepStatus" :icon="item.stepIcon">
@@ -33,7 +33,7 @@
             </i-steps>
         </view>
 
-        <view v-if="activeName == 'second'" class="font_size_12">
+        <view v-if="activeName == 'second'">
             <i-cell-group>
                 <i-cell title="拜访时间" :value="outworkData.visitTime"></i-cell>
                 <i-cell title="结束时间" :value="outworkData.endTime"></i-cell>
@@ -51,7 +51,7 @@
             </i-cell-group>
         </view>
 
-        <view v-if="activeName == 'third'" class="font_size_12">
+        <view v-if="activeName == 'third'">
             <i-card full isContent title="执行结果" :extra="outworkData.state">
                 <view slot="content">
                     <p>签到时间：{{outworkData.timeCheck || ''}}</p>
@@ -332,7 +332,7 @@
                             });
                             _this.remarks = ''
                             _this.showSure = false
-                            _this.loadData()
+                            _this.loadVisit()
                         }else{
                             $Message({
                                 content: res.data.msg,

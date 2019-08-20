@@ -4,16 +4,16 @@
     <i-panel title="{{agreementData.contract_name}}" class="_i-panel data-v-53a1b3a3">
       <i-input value="{{totalAmount}}" bindchange="handleProxy" title="总金额" right maxlength="50" disabled data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-53a1b3a3"></i-input>
       <i-input value="{{surplusAmount}}" bindchange="handleProxy" title="剩余预计回款金额" right maxlength="50" disabled data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-input data-v-53a1b3a3"></i-input>
-      <i-cell title="回款阶段" value="{{backList.back_plan_name}}" is-link request i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-cell data-v-53a1b3a3"></i-cell>
+      <i-cell title="回款阶段" value="{{backList.back_plan_name}}" is-link request i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-cell data-v-53a1b3a3"></i-cell>
       <i-input value="{{backList.price}}" bindchange="handleProxy" title="回款金额" right request maxlength="50" bindinput="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-input data-v-53a1b3a3"></i-input>
-      <i-cell title="回款时间" request is-link i-class="simple_cell" class="_i-cell data-v-53a1b3a3">
+      <i-cell title="回款时间" request is-link i-class="simple_cell" i-cell-text="color_495060_text" class="_i-cell data-v-53a1b3a3">
         <picker slot="footer" mode="date" value="{{backList.createTime}}" start="{{nowDate}}" bindchange="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_picker data-v-53a1b3a3">
           <view class="_view data-v-53a1b3a3 picker cell_picker">
             {{backList.createTime}}
           </view>
         </picker>
       </i-cell>
-      <i-cell title="回款方式" value="{{backList.pay_type_name}}" is-link request i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-cell data-v-53a1b3a3"></i-cell>
+      <i-cell title="回款方式" value="{{backList.pay_type_name}}" is-link request i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-cell data-v-53a1b3a3"></i-cell>
       <i-input value="{{backList.remarks}}" bindchange="handleProxy" title="备注" right type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_i-input data-v-53a1b3a3"></i-input>
     </i-panel>
     <view class="_p data-v-53a1b3a3 request_tip"><label style="color:#f56c6c" class="_span data-v-53a1b3a3"> * </label>为必填项</view>

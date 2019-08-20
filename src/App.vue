@@ -160,9 +160,6 @@
   .margin_card{
     margin: 10px 10px 0 10px !important
   }
-  .follow_view{
-    background-color: #fff
-  }
   .contact_span1{
     color: #80848f
   }
@@ -204,6 +201,21 @@
     width: 100%;
     z-index: 9
   }
+  /* 底部文本 */
+  .bottom_view{
+    width: 100vw;
+    height: 40px;
+    background-color: #fff;
+    border-top: 1rpx solid #f5f5f5;
+    font-size: 14px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    z-index: 9
+  }
   /* 跟进记录上传图片按钮 */
   .followimg_btn{
     margin-top: 30px !important
@@ -238,6 +250,9 @@
   }
   .simple_cell::after{
     display: initial !important
+  }
+  .color_495060_text{
+    color: #495060
   }
   /* 列表中picker组件 */
   .cell_picker{
@@ -283,7 +298,8 @@
     font-size: 12px !important
   }
   .add_or_update_wrap{
-    margin-bottom: 40px
+    margin-bottom: 40px;
+    padding-bottom: 10px
   }
 
   /* 白色背景 */
@@ -294,5 +310,102 @@
   /* 便签输入框 */
   .note_input{
     min-height: 300px !important;
+  }
+
+  /* 订单查询筛选 */
+  .order_search{
+    position: fixed;
+    top: 10px;
+    width: calc(100% - 30px);
+    background-color: #fff;
+    margin: 0px 15px 10px 15px;
+    border: 1rpx solid #f5f5f5;
+    border-radius: 4px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+  }
+  .order_search_input{
+    flex: 0 0 90%;
+    font-size: 14px;
+    height: 28px;
+    line-height: 28px;
+    padding: 2px 5px;
+    box-sizing: border-box;
+  }
+  .order_tabs{
+    height: 36px !important;
+    line-height: 36px !important
+  }
+  .bar_option{
+    width: 100vw;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    position: fixed;
+    z-index: 999
+  }
+  .option_p{
+    font-size: 13px;
+    line-height: 36px;
+    border-bottom: 1rpx solid #f5f5f5
+  }
+  .theme_color_text{
+    color: #ff6333
+  }
+  .gray_color_text{
+    color: #acacac
+  }
+
+  .product_wrap{
+    flex: 3;
+    height: calc(100vh -80px);
+    background-color: rgb(255, 255, 255);
+    float: left;
+  }
+  .product_item{
+    padding: 8px;
+    font-size: 14px;
+    border-bottom: 1rpx solid #f5f5f5
+  }
+  .product_item_c{
+    position: relative;
+  }
+  .product_item_price{
+    position: absolute;
+    top: 2px;
+    left: 80px;
+  }
+  .product_item_counter{
+    position: absolute;
+    bottom: 0;
+    right: 2px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 12px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+  }
+  .counter_btn{
+    display: inline-block;
+    width: 26px;
+    text-align: center;
+  }
+  .counter_disable{
+    color: #a8a8a8
+  }
+  .counter_text{
+    display: inline-block;
+    width: 42px;
+    text-align: center;
+    font-size: 14px
+  }
+
+  .inline_btn{
+    display: inline-block;
+    margin-right: 0 !important;
+    width: 80px
   }
 </style>

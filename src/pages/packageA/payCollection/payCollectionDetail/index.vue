@@ -20,7 +20,7 @@
             </i-tabs>
         </i-panel>
 
-        <view v-if="activeName == 'first'" class="white_bg font_size_12">
+        <view v-if="activeName == 'first'" class="white_bg">
             <view class="detail_module"></view>
             <i-steps :current="stepIndex" direction="vertical" i-class="stage_steps">
                 <i-step v-for="item in auditLog" :key="item.orderId" :status="item.stepStatus" :icon="item.stepIcon">
@@ -32,7 +32,7 @@
             </i-steps>
         </view>
 
-        <view v-if="activeName == 'second'" class="font_size_12">
+        <view v-if="activeName == 'second'">
             <i-cell-group>
                 <i-cell title="回款单号" :value="payCollectionDetail.backNo"></i-cell>
                 <i-cell title="客户名称" :value="payCollectionDetail.customerName"></i-cell>
@@ -48,7 +48,7 @@
             </i-cell-group>
         </view>
 
-        <view v-if="activeName == 'third'" class="font_size_12">
+        <view v-if="activeName == 'third'">
             <i-card full title="已回款信息">
                 <i-cell slot="content" i-class="card_cell" v-for="item in payInfoData" :key="item.id" :title="item.back_plan" :label="'回款日期：' + item.createTime">
                     <view slot="footer">

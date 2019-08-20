@@ -3,13 +3,13 @@
     <i-panel title=" " class="_i-panel data-v-2e9e7bee"></i-panel>
     <i-panel title="{{contactName}}" class="_i-panel data-v-2e9e7bee">
       <i-input value="{{updateList.name}}" bindchange="handleProxy" title="联系人" right request maxlength="20" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-2e9e7bee"></i-input>
-      <i-cell title="公司名称" value="{{updateList.poolName}}" is-link i-class="simple_cell" request bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-2e9e7bee"></i-cell>
+      <i-cell title="公司名称" value="{{updateList.poolName}}" is-link i-class="simple_cell" i-cell-text="color_495060_text" request bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-2e9e7bee"></i-cell>
       <i-input value="{{updateList.phone}}" bindchange="handleProxy" title="手机号码" right request type="number" maxlength="11" bindinput="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-input data-v-2e9e7bee"></i-input>
       <i-input value="{{updateList.telephone}}" bindchange="handleProxy" title="电话" right type="number" maxlength="21" bindinput="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-input data-v-2e9e7bee"></i-input>
       <i-input value="{{updateList.qq}}" bindchange="handleProxy" title="QQ" right maxlength="50" bindinput="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-input data-v-2e9e7bee"></i-input>
       <i-input value="{{updateList.email}}" bindchange="handleProxy" title="邮箱" right maxlength="50" bindinput="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-input data-v-2e9e7bee"></i-input>
       <i-input value="{{updateList.wechat}}" bindchange="handleProxy" title="微信" right maxlength="50" bindinput="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}" class="_i-input data-v-2e9e7bee"></i-input>
-      <i-cell title="性别" value="{{updateList.sex}}" is-link i-class="simple_cell" bindtap="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-cell data-v-2e9e7bee"></i-cell>
+      <i-cell title="性别" value="{{updateList.sex}}" is-link i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_i-cell data-v-2e9e7bee"></i-cell>
       <i-input value="{{updateList.remark}}" bindchange="handleProxy" title="备注" right type="textarea" maxlength="200" bindinput="handleProxy" data-eventid="{{'8'}}" data-comkey="{{$k}}" class="_i-input data-v-2e9e7bee"></i-input>
     </i-panel>
     <view class="_p data-v-2e9e7bee request_tip"><label style="color:#f56c6c" class="_span data-v-2e9e7bee"> * </label>为必填项</view>

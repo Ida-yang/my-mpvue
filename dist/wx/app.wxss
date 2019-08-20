@@ -113,9 +113,6 @@
 .margin_card {
   margin: 20rpx 20rpx 0 20rpx !important;
 }
-.follow_view {
-  background-color: #fff;
-}
 .contact_span1 {
   color: #80848f;
 }
@@ -155,6 +152,20 @@
   width: 100%;
   z-index: 9;
 }
+.bottom_view {
+  width: 100vw;
+  height: 80rpx;
+  background-color: #fff;
+  border-top: 1rpx solid #f5f5f5;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  z-index: 9;
+}
 .followimg_btn {
   margin-top: 60rpx !important;
 }
@@ -184,6 +195,9 @@
 }
 .simple_cell::after {
   display: initial !important;
+}
+.color_495060_text {
+  color: #495060;
 }
 .cell_picker {
   min-width: 200rpx;
@@ -225,10 +239,104 @@
 }
 .add_or_update_wrap {
   margin-bottom: 80rpx;
+  padding-bottom: 20rpx;
 }
 .white_bg {
   background-color: #fff;
 }
 .note_input {
   min-height: 600rpx !important;
+}
+.order_search {
+  position: fixed;
+  top: 20rpx;
+  width: calc(100% - 60rpx);
+  background-color: #fff;
+  margin: 0 30rpx 20rpx 30rpx;
+  border: 1rpx solid #f5f5f5;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+}
+.order_search_input {
+  flex: 0 0 90%;
+  font-size: 28rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  padding: 4rpx 10rpx;
+  box-sizing: border-box;
+}
+.order_tabs {
+  height: 72rpx !important;
+  line-height: 72rpx !important;
+}
+.bar_option {
+  width: 100vw;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  position: fixed;
+  z-index: 999;
+}
+.option_p {
+  font-size: 26rpx;
+  line-height: 72rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.theme_color_text {
+  color: #ff6333;
+}
+.gray_color_text {
+  color: #acacac;
+}
+.product_wrap {
+  flex: 3;
+  height: calc(100vh -160rpx);
+  background-color: rgb(255, 255, 255);
+  float: left;
+}
+.product_item {
+  padding: 16rpx;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.product_item_c {
+  position: relative;
+}
+.product_item_price {
+  position: absolute;
+  top: 4rpx;
+  left: 160rpx;
+}
+.product_item_counter {
+  position: absolute;
+  bottom: 0;
+  right: 4rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  border-radius: 24rpx;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.counter_btn {
+  display: inline-block;
+  width: 52rpx;
+  text-align: center;
+}
+.counter_disable {
+  color: #a8a8a8;
+}
+.counter_text {
+  display: inline-block;
+  width: 84rpx;
+  text-align: center;
+  font-size: 28rpx;
+}
+.inline_btn {
+  display: inline-block;
+  margin-right: 0 !important;
+  width: 160rpx;
 }

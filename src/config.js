@@ -1,7 +1,7 @@
 //配置项
 
 const defaulthost = 'https://crm.yunzoe.com/yzcrm/'
-const sourcehost = 'https://crm.yunzoe.com/'
+const sourcehost = 'http://crm.yunzoe.com/'
 const SESSIONID = ''
 const rememberMe = ''
 const account = ''
@@ -54,6 +54,11 @@ const information = {
     
     noteupdateData:'',
     noteDetailData:'',
+
+    orderupdateData:'',
+    orderDetailData:'',
+    orderPoolNameData:'',
+    orderProductData:'',
 }
 
 const config = {

@@ -1,6 +1,6 @@
 require("../../common/manifest.js")
 require("../../common/vendor.js")
-global.webpackJsonpMpvue([65],{
+global.webpackJsonpMpvue([70],{
 
 /***/ 68:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -162,6 +162,7 @@ if (false) {(function () {
                     "Content-Type": "application/x-www-form-urlencoded"
                 },
                 success: function success(res) {
+                    console.log(res);
                     if (res.data.code && res.data.code == "200") {
                         Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
                             content: '登录成功',

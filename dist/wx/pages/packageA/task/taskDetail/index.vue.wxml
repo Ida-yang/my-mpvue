@@ -5,7 +5,7 @@
       <view class="_p data-v-bc6a4a58 cell_info">描述：  {{taskDetail.describe}}</view>
     </i-cell>
     <i-panel title=" " class="_i-panel data-v-bc6a4a58"></i-panel>
-    <view class="_view data-v-bc6a4a58 font_size_12">
+    <view class="_view data-v-bc6a4a58">
       <i-cell-group class="_i-cell-group data-v-bc6a4a58">
         <i-cell title="开始时间" value="{{taskDetail.startTime}}" class="_i-cell data-v-bc6a4a58"></i-cell>
         <i-cell title="结束时间" value="{{taskDetail.endTime}}" class="_i-cell data-v-bc6a4a58"></i-cell>

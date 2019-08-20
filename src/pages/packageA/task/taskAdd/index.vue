@@ -2,14 +2,14 @@
     <div class="add_or_update_wrap">
         <i-panel title=" "></i-panel>
         <i-panel title=" ">
-            <i-cell title="关联客户" :value="addList.customerName" request is-link i-class="simple_cell" @click="cellFocus($event,1)"></i-cell>
-            <i-cell title="开始时间" request is-link i-class="simple_cell">
+            <i-cell title="关联客户" :value="addList.customerName" request is-link  i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,1)"></i-cell>
+            <i-cell title="开始时间" request is-link  i-class="simple_cell" i-cell-text="color_495060_text">
                 <i-datetime-picker slot="footer" :value="addList.startTime" @change="dealChange($event,1)" class="cell_picker"></i-datetime-picker>
             </i-cell>
-            <i-cell title="结束时间" request is-link i-class="simple_cell">
+            <i-cell title="结束时间" request is-link  i-class="simple_cell" i-cell-text="color_495060_text">
                 <i-datetime-picker slot="footer" :value="addList.endTime" @change="dealChange($event,2)" class="cell_picker"></i-datetime-picker>
             </i-cell>
-            <i-cell title="提醒时间" request is-link i-class="simple_cell">
+            <i-cell title="提醒时间" request is-link  i-class="simple_cell" i-cell-text="color_495060_text">
                 <i-datetime-picker slot="footer" :value="addList.remindTime" @change="dealChange($event,3)" class="cell_picker"></i-datetime-picker>
             </i-cell>
             <i-input v-model="addList.planningTheme" title="任务主题" right request maxlength="50" @input="handleInput($event,1)" />

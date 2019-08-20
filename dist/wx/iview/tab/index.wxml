@@ -2,7 +2,7 @@
     <i-badge dot="{{ dot }}" count="{{ dot ? 0 : count }}">
         <view bindtap="handleClickItem">
             <view class="i-tabs-tab-title {{ current ? 'i-tabs-tab-title-current' : '' }}" wx:if="{{ current && currentColor }}" style="color: {{ currentColor }}">{{ title }}</view>
-            <view class="i-tabs-tab-title {{ current ? 'i-tabs-tab-title-current' : '' }}" wx:else>{{ title }}</view>
+            <view class="i-tabs-tab-title {{ current ? 'i-tabs-tab-title-current' : '' }}" wx:else>{{ title }}<slot></slot></view>
         </view>
     </i-badge>
     <view class="i-tabs-tab-bar" wx:if="{{ current }}" style="background: {{ currentColor }}"></view>

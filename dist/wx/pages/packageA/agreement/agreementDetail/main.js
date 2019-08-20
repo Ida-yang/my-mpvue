@@ -2,14 +2,14 @@ require("../../../../common/manifest.js")
 require("../../../../common/vendor.js")
 global.webpackJsonpMpvue([59],{
 
-/***/ 104:
+/***/ 129:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(130);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 105:
+/***/ 130:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_2882c40a_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_2882c40a_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(133);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(106)
+  __webpack_require__(131)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,14 +72,14 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 106:
+/***/ 131:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 107:
+/***/ 132:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -191,9 +191,9 @@ if (false) {(function () {
         return {
             current: '合同详情',
 
+            infoData: {},
+
             agreementDetail: {},
-            checkStatus: '',
-            examineRecordId: '',
             authority: false,
 
             activeName: 'first',
@@ -222,37 +222,46 @@ if (false) {(function () {
     methods: {
         loadData: function loadData() {
             var _this = this;
-            this.agreementDetail = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.agreementDetailData;
-            // let info = config.information.agreementDetailData
-            // let data = {
-            //     contractId: info.contract_id
-            // }
+            this.infoData = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.agreementDetailData;
 
-            // wx.request({
-            //     method:'post',
-            //     url: config.defaulthost + 'backPlan/selectBackPlanByContractId.do?cId=' + config.userData.cId,  //接口地址
-            //     data: data,
-            //     header:{
-            //         "Content-Type": "application/x-www-form-urlencoded",
-            //         'Cookie': config.SESSIONID
-            //     },
-            //     success:function(res) {
-            //         _this.agreementDetail = res.data
-            _this.checkStatus = _this.agreementDetail.checkStatus;
-            _this.examineRecordId = _this.agreementDetail.examineRecordId;
+            var data = {
+                contractId: this.infoData.contract_id
+            };
 
-            _this.loadState();
-            _this.loadFollows();
-            _this.loadMoneyBack();
-            //     }
-            // })
+            wx.request({
+                method: 'post',
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'getContractById.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                data: data,
+                header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    var info = res.data;
+
+                    if (info.checkStatus == 0) {
+                        info.auditStatus = '未审核';
+                    } else if (info.checkStatus == 1) {
+                        info.auditStatus = '审核中';
+                    } else if (info.checkStatus == 2) {
+                        info.auditStatus = '已审核';
+                    } else if (info.checkStatus == 3) {
+                        info.auditStatus = '未通过';
+                    }
+                    _this.agreementDetail = info;
+
+                    _this.loadState();
+                    _this.loadFollows();
+                    _this.loadMoneyBack();
+                }
+            });
         },
         loadState: function loadState() {
             var _this = this;
 
             var data = {
-                checkStatus: this.checkStatus,
-                recordId: this.examineRecordId,
+                checkStatus: this.agreementDetail.checkStatus,
+                recordId: this.agreementDetail.examineRecordId,
                 pId: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.pId
             };
 
@@ -267,7 +276,7 @@ if (false) {(function () {
                 success: function success(res) {
                     var info = res.data;
 
-                    if (info.isCheck == 1 && _this.checkStatus !== 2) {
+                    if (info.isCheck == 1 && _this.agreementDetail.checkStatus !== 2) {
                         _this.authority = true;
                     } else {
                         _this.authority = false;
@@ -278,7 +287,7 @@ if (false) {(function () {
         loadFollows: function loadFollows() {
             var _this = this;
             var data = {
-                contract_id: this.agreementDetail.contract_id
+                contract_id: this.infoData.contract_id
             };
 
             wx.request({
@@ -314,7 +323,7 @@ if (false) {(function () {
         loadMoneyBack: function loadMoneyBack() {
             var _this = this;
             var data = {
-                contract_id: this.agreementDetail.contract_id
+                contract_id: this.infoData.contract_id
             };
 
             wx.request({
@@ -543,7 +552,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 108:
+/***/ 133:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -631,7 +640,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "mpcomid": '6'
     }
   })], 1)], 1), _vm._v(" "), (_vm.activeName == 'first') ? _c('view', {
-    staticClass: "follow_view"
+    staticClass: "white_bg"
   }, _vm._l((_vm.followData), function(item, index) {
     return _c('view', {
       key: item.id
@@ -670,9 +679,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "src": item.followImg
       }
     }) : _vm._e()], 1)])], 1)
-  })) : _vm._e(), _vm._v(" "), (_vm.activeName == 'second') ? _c('view', {
-    staticClass: "font_size_12"
-  }, [_c('i-cell-group', {
+  })) : _vm._e(), _vm._v(" "), (_vm.activeName == 'second') ? _c('view', [_c('i-cell-group', {
     attrs: {
       "mpcomid": '24'
     }
@@ -748,9 +755,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "value": _vm.agreementDetail.parentname,
       "mpcomid": '23'
     }
-  })], 1)], 1) : _vm._e(), _vm._v(" "), (_vm.activeName == 'third') ? _c('view', {
-    staticClass: "font_size_12"
-  }, [_c('i-card', {
+  })], 1)], 1) : _vm._e(), _vm._v(" "), (_vm.activeName == 'third') ? _c('view', [_c('i-card', {
     attrs: {
       "full": "",
       "desc": "",
@@ -955,4 +960,4 @@ if (false) {
 
 /***/ })
 
-},[104]);
+},[129]);
