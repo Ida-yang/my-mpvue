@@ -52,7 +52,7 @@
   .search_view{
     width: 100%;
     height: 40px;
-    background-color: #f0f0f0;
+    background-color: #f5f5f5;
     padding: 0 10px;
     box-sizing: border-box;
     position: fixed;
@@ -65,7 +65,7 @@
     height: 30px;
     line-height: 30px;
     background-color: #ffffff;
-    border: 1px solid #f0f0f0;
+    border: 1px solid #f5f5f5;
     border-radius: 5px;
     padding: 3px;
     box-sizing: border-box;
@@ -148,6 +148,7 @@
   }
   .i-swipeout-button{
     height: 100%;
+    display: flex
   }
   .i-swipeout-button-item{
     height: 100%;
@@ -315,11 +316,16 @@
   /* 订单查询筛选 */
   .order_search{
     position: fixed;
-    top: 10px;
+    top: 0;
+    width: 100%;
+    background-color: #fafafa;
+    z-index: 10
+  }
+  .order_searck_box{
     width: calc(100% - 30px);
     background-color: #fff;
-    margin: 0px 15px 10px 15px;
-    border: 1rpx solid #f5f5f5;
+    margin: 10px 15px;
+    border: 1rpx solid #fafafa;
     border-radius: 4px;
     padding: 0 10px;
     box-sizing: border-box;
@@ -401,6 +407,128 @@
     width: 42px;
     text-align: center;
     font-size: 14px
+  }
+  .product_item_shopping{
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    height: 28px;
+    width: 28px;
+    border-radius: 13px;
+    background-color: #e62c2c;
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+  .product_item_add{
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    height: 28px;
+    width: 28px;
+    border-radius: 13px;
+    background-color: #ff6333;
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+  .product_item_update{
+    position: absolute;
+    right: 20px;
+    top: calc(50% - 7px);
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+
+  .product_item_more{
+    position: fixed;
+    top: 0;
+    z-index: 98
+  }
+  .item_more_head{
+    width: 100vw;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.281);
+  }
+  .item_more_content{
+    height: calc(100vh - 100px);
+    background-color: #fff;
+    position: relative;
+  }
+  .item_more_close{
+    color: #c7c7c7;
+    position: absolute;
+    right: 10px;
+    top: 20px
+  }
+  .item_more_goods{
+    padding: 20px 10px;
+    font-size: 14px;
+    line-height: 20px;
+    display: flex
+  }
+  .item_more_scroll_wrap{
+    height: calc(100vh - 240px)
+  }
+  .item_more_goods_item{
+    height: 80px;
+    position: relative;
+    padding: 20px 10px;
+    font-size: 14px;
+    border-bottom: 1rpx solid #e9eaec
+  }
+  .goods_item_head{
+    display: flex;
+    align-items: center
+  }
+  .goods_item_foot{
+    position: absolute;
+    bottom: 20px
+  }
+
+  .product_counter{
+    background-color: rgba(0, 0, 0, 0.281);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 99
+  }
+  .counter_wrap{
+    position: relative;
+    background-color: #fff;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 50%
+  }
+  .counter_head{
+    background-color: #ff6333;
+    padding: 10px;
+    font-size: 14;
+    color: #fff
+  }
+  .counter_content{
+    position: relative;
+  }
+  .counter_item{
+    height: 26px;
+    line-height: 26px;
+    border-radius: 12px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+  }
+  .counter_foot{
+    padding: 5px;
+    display: flex;
+    text-align: center;
+    justify-content: center
+  }
+  .counter_foot span{
+    flex: 1;
+    line-height: 28px
   }
 
   .inline_btn{

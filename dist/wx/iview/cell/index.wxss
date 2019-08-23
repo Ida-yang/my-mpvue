@@ -20,7 +20,7 @@
     pointer-events:none;
     box-sizing:border-box;
     border:0 solid #e9eaec;
-    border-bottom-width:1px;
+    border-bottom-width:1rpx;
     left:15px;
     right:0
 }
@@ -66,8 +66,8 @@
     position:absolute;
     top:50%;
     right:2px;
-    border-width:2px 2px 0 0;
-    border-color:#dddee1;
+    border-width:2rpx 2rpx 0 0;
+    border-color:#e9eaec;
     border-style:solid;
     transform:translateY(-50%) matrix(.71,.71,-.71,.71,0,0)
 }

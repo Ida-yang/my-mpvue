@@ -15,28 +15,55 @@
             <i-cell title="产品" :value="addList.orderDetails" request is-link  i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,4)"></i-cell>
             <view style="padding:0 8px">
                 <view v-for="item in productData" :key="item.id" class="product_item">
-                    <p style="margin-bottom:8px">{{item.tbGoods.goodsName}}</p>
+                    <p style="margin-bottom:8px">{{item.goodsName}}</p>
                     <view class="product_item_c">
                         <image :src="item.proImage" style="width:70px;height:70px" />
                         <view class="product_item_price">
-                            <p style="margin-bottom:10px">{{item.title}}</p>
-                            <p><span style="color:#e62c2c;">￥{{item.tbGoods.price}}</span> /{{item.tbGoods.unit}}</p>
+                            <p style="margin-bottom:10px" v-if="item.title !== item.goodsName">{{item.title}}</p>
+                            <p><span style="color:#e62c2c;">￥{{item.price}}</span> /{{item.unit}}</p>
                         </view>
-                        <view class="product_item_counter">
+                        <view class="product_item_update" @click="showCounters($event,item)">
+                            <span style="color:#ff6333;font-size:14px">修改</span>
+                        </view>
+                        <!-- <view class="product_item_counter">
                             <span class="counter_btn" :class="item.countNum == 0 ? 'gray_color_text' : ''" @click="countReduce($event,item)">-</span>
                             <input v-model="item.countNum" class="counter_text" @input="countInput($event,item)"></input>
                             <span class="counter_btn" @click="countAdd($event,item)">+</span>
-                        </view>
+                        </view> -->
                     </view>
                 </view>
             </view>
             <i-cell title="销售金额" :value="productInfo.totalAmount"  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
-            <i-input v-model="productInfo.discountRate" title="折扣率(%)" right type="number" maxlength="3" @input="handleInput($event,2)" />
-            <i-input v-model="productInfo.taxRate" title="税率(%)" right type="number" maxlength="3" @input="handleInput($event,3)" />
+            <i-cell title="折后金额" :value="productInfo.discountAfter"  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
+            <i-input v-model="productInfo.taxRate" title="税率(%)" right type="number" maxlength="3" @input="handleInput($event,2)" />
             <i-cell title="折税后金额" :value="productInfo.realAmount"  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
             <i-input v-model="addList.deliveryAddress" title="交货地址" right type="textarea" maxlength="200" @input="handleInput($event,1)" />
         </i-panel>
         <p class="request_tip"><span style="color:#f56c6c"> * </span>为必填项</p>
+
+        
+        <view class="product_counter" v-if="showCounter">
+            <view class="counter_wrap">
+                <view class="counter_head">{{countProduct.goodsName}}</view>
+                <view class="counter_content">
+                    <i-cell title="数量" i-class="simple_cell" i-cell-text="color_495060_text">
+                        <view slot="footer" class="counter_item">
+                            <span class="counter_btn" :class="countProduct.countNum == 0 ? 'gray_color_text' : ''" @click="itemcountReduce">-</span>
+                            <input :value="countProduct.countNum" type="number" class="counter_text" @input="itemCountInput($event,1)"></input>
+                            <span class="counter_btn" @click="itemcountAdd">+</span>
+                        </view>
+                    </i-cell>
+                    <i-input v-model="countProduct.price" title="单价" right type="number" maxlength="11" @input="itemCountInput($event,2)" />
+                    <i-input v-model="countProduct.discount" title="折扣率(%)" right type="number" maxlength="3" @input="itemCountInput($event,3)" />
+                    <i-cell title="折扣金额" :value="countProduct.discountAmount"  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
+                    <i-cell title="折后金额" :value="countProduct.discountAfter"  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
+                </view>
+                <view class="counter_foot">
+                    <span style="border-right:1rpx solid #e9eaec" @click="closeCounter($event,1)">取消</span>
+                    <span style="color:#ff6333" @click="closeCounter($event,2)">确定</span>
+                </view>
+            </view>
+        </view>
 
         <!-- 新增 -->
         <i-button @click="addOrder" type="ghost" :long="true" class="bottom_btn">确定</i-button>
@@ -71,7 +98,7 @@
                 productData:[],
                 productInfo:{
                     totalAmount: 0,
-                    discountRate: '100',
+                    discountAfter: 0,
                     taxRate: '0',
                     realAmount: 0,
                 },
@@ -86,6 +113,9 @@
                 modeList:[],
 
                 nowDate:'',
+
+                showCounter:false,
+                countProduct:{},
             }
         },
 
@@ -105,7 +135,6 @@
                     this.addList.customerpoolName = poolObj.poolName
                     this.addList.customerpoolId = poolObj.poolNameID
                     this.addList.ascriptionId = poolObj.ascriptionId
-                    this.productInfo.discountRate = poolObj.discount
                     this.productInfo.taxRate = poolObj.taxRate
                 }
 
@@ -129,40 +158,39 @@
 
                         this.productData = aarr.concat(barr)
                     }
+
+                    console.log(this.productData)
                     this.loadProduct()
                 }else{
                     return
                 }
             },
             loadProduct(){
-                let anum = 0
+                let anum = 0  //消费总金额
+                let bnum = 0  //税后总金额金额
+                let cnum = 0  //折税后金额
                 this.productData.forEach(el => {
-                    if(el.image){
-                        el.proImage = config.sourcehost + 'product/' + config.userData.cId + '/' + el.image
-                    }else{
-                        el.proImage = '../../../static/images/noProduct.png'
-                    }
 
-                    let bnum = el.tbGoods.price * el.countNum
-                    anum += bnum
+                    let xnum = parseFloat(el.price) * parseInt(el.countNum)    //本产品总金额
+                    el.amountOfMoney = xnum.toFixed(2)
+
+                    anum += xnum
+                    bnum += parseFloat(el.discountAfter)
                     
-                    el.amountOfMoney = bnum.toFixed(2)
                     el.taxRate = this.productInfo.taxRate
-                    el.discount = this.productInfo.discountRate
-                    let discountAfter = parseFloat(this.productInfo.discountRate) * bnum / 100
-                    let taxAmount = parseFloat(this.productInfo.taxRate) * discountAfter / 100
-                    let discountAmount = bnum - discountAfter
-                    let taxAfter = discountAfter + taxAmount
 
-                    el.discountAmount = discountAmount.toFixed(2)
-                    el.discountAfter = discountAfter.toFixed(2)
-                    el.taxAmount = taxAmount.toFixed(2)
-                    el.taxAfter = taxAfter.toFixed(2)
+                    let ynum = parseFloat(el.taxRate) * parseFloat(el.discountAfter) / 100   //本产品税额
+                    let znum = parseFloat(el.discountAfter) + ynum    //本产品税后金额
+                    el.taxAmount = ynum.toFixed(2)
+                    el.taxAfter = znum.toFixed(2)
+
+                    cnum += znum
                 });
                 this.productInfo.totalAmount = anum.toFixed(2)
-                let cnum = parseFloat(this.productInfo.discountRate) * anum / 100
-                let dnum = parseFloat(this.productInfo.taxRate) * cnum / 100
-                this.productInfo.realAmount = (cnum + dnum).toFixed(2)
+                this.productInfo.discountAfter = bnum.toFixed(2)
+                this.productInfo.realAmount = cnum.toFixed(2)
+
+                console.log(this.productData)
             },
             loadList(){
                 this.addList = {
@@ -175,6 +203,13 @@
                     orderDetails:[],
                     orderTime:'',
                     settlement:'',   //结算方式
+                }
+                this.productData = []
+                this.productInfo = {
+                    totalAmount: 0,
+                    discountAfter: 0,
+                    taxRate: '0',
+                    realAmount: 0,
                 }
             },
             loadMode(){
@@ -226,9 +261,6 @@
                 if(val == 1){
                     this.addList.deliveryAddress = e.mp.detail
                 }else if(val == 2){
-                    this.productInfo.discountRate = e.mp.detail
-                    this.loadProduct()
-                }else if(val == 3){
                     this.productInfo.taxRate = e.mp.detail
                     this.loadProduct()
                 }
@@ -266,38 +298,61 @@
                 }
             },
 
-            countReduce(e,val){
-                this.productData.forEach(el => {
-                    if(el.id == val.id){
-                        if(el.countNum == 0){
-                            return
-                        }else{
-                            el.countNum --
+            showCounters(e,val){
+                this.showCounter = true
+
+                this.countProduct = val
+            },
+            closeCounter(e,val){
+                if(val == 2){
+                    this.productData.forEach(item => {
+                        if(item.id == this.countProduct.id){
+                            // console.log(item,'替换大的值')
+                            item = this.countProduct
                         }
-                    }
-                });
+                    });
+                }
+                this.showCounter = false
 
                 this.loadProduct()
             },
-            countAdd(e,val){
-                this.productData.forEach(el => {
-                    if(el.id == val.id){
-                        el.countNum ++
-                    }
-                });
+            itemcountReduce(){
+                if(this.countProduct.countNum == 0){
+                    return
+                }else{
+                    this.countProduct.countNum --
+                }
 
-                this.loadProduct()
+                this.countdiscount()
             },
-            countInput(e,val){
-                let value = e.target.value
+            itemcountAdd(){
+                this.countProduct.countNum ++
 
-                this.productData.forEach(el => {
-                    if(el.id == val.id){
-                        el.countNum = parseInt(value)
-                    }
-                });
+                this.countdiscount()
+            },
+            itemCountInput(e,val){
+                if(val == 1){
+                    this.countProduct.countNum = e.target.value
+                }else if(val == 2){
+                    this.countProduct.price = e.mp.detail
+                }else if(val == 3){
+                    this.countProduct.discount = e.mp.detail
+                }
 
-                this.loadProduct()
+                this.countdiscount()
+            },
+
+            countdiscount(){
+                let a = 0
+                let b = 0
+                let c = 0
+
+                a = parseInt(this.countProduct.countNum) * parseFloat(this.countProduct.price)
+                b = parseFloat(this.countProduct.discount) * a / 100
+                c = a - b
+                console.log(a,b,c)
+                this.countProduct.discountAfter = b.toFixed(2)
+                this.countProduct.discountAmount = c.toFixed(2)
             },
 
             addOrder(){
@@ -309,7 +364,7 @@
                     newArr.push({
                         "itemId":element.id,
                         "num":parseInt(element.countNum),
-                        "price":parseFloat(element.tbGoods.price),
+                        "price":parseFloat(element.price),
                         "commitTime":'',
                         "amountOfMoney":element.amountOfMoney ,
                         "discount":element.discount ,

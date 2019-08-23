@@ -1,8 +1,10 @@
 <template name="6e1a2ce3">
   <view class="_div data-v-784716fc order_wrap">
     <view class="_view data-v-784716fc order_search">
-      <i-icon type="search" size="16" color="#80848f" class="_i-icon data-v-784716fc order_search_icon"></i-icon> <input value="{{searchList.searchName}}" bindinput="handleProxy" placeholder="请输入公司名称查询" maxlength="50" class="_input data-v-784716fc order_search_input" confirm-type="search" bindconfirm="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" />
-      <i-icon wx:if="{{isValue}}" type="close" size="14" color="#80848f" class="_i-icon data-v-784716fc order_search_icon" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}"></i-icon>
+      <view class="_view data-v-784716fc order_searck_box">
+        <i-icon type="search" size="16" color="#80848f" class="_i-icon data-v-784716fc order_search_icon"></i-icon> <input value="{{searchList.searchName}}" bindinput="handleProxy" placeholder="请输入公司名称查询" maxlength="50" class="_input data-v-784716fc order_search_input" confirm-type="search" bindconfirm="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" />
+        <i-icon wx:if="{{isValue}}" type="close" size="14" color="#80848f" class="_i-icon data-v-784716fc order_search_icon" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}"></i-icon>
+      </view>
     </view>
     <i-tabs bindchange="handleProxy" i-class="order_tabs" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-tabs data-v-784716fc">
       <i-tab key="first" title="{{firstItem}}" class="_i-tab data-v-784716fc">   <i-icon wx:if="{{showFirst}}" type="packup" class="_i-icon data-v-784716fc"></i-icon>
@@ -19,7 +21,7 @@
       <view class="_p data-v-784716fc option_p {{timeActive == item.label ? 'theme_color_text' : ''}}" wx:key="item.label" key="{{item.label}}" bindtap="handleProxy" data-eventid="{{'4_'+index}}" data-comkey="{{$k}}" wx:for="{{timeList}}" wx:for-index="index" wx:for-item="item">{{item.name}}</view>
     </view>
     <view class="_view data-v-784716fc detail_module"></view>
-    <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{60}}" wx:key="item.id" key="{{item.id}}" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item" class="_i-swipeout data-v-784716fc">
+    <i-swipeout i-class="i-swipeout-demo-item" operateWidth="{{120}}" wx:key="item.id" key="{{item.id}}" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item" class="_i-swipeout data-v-784716fc">
       <view slot="content" bindtap="handleProxy" data-eventid="{{'5_'+index}}" data-comkey="{{$k}}" class="_view data-v-784716fc">
         <i-cell i-class="cell_content" title="{{item.customerName}}" label="{{item.orderNo}}" class="_i-cell data-v-784716fc">
           <view class="_view data-v-784716fc cell_footer"> 订单时间：{{item.orderTime}}   |   金额： {{item.totalSum}}
@@ -32,12 +34,21 @@
         <view class="_view data-v-784716fc i-swipeout-button-item" style="width:60px;background-color:#f5f5f5" bindtap="handleProxy" data-eventid="{{'6_'+index}}" data-comkey="{{$k}}">
           <i-icon size="24" type="editor" style="color:#80848f" class="_i-icon data-v-784716fc"></i-icon>
         </view>
+        <view class="_view data-v-784716fc i-swipeout-button-item" style="width:60px;background-color:#f56c6c" bindtap="handleProxy" data-eventid="{{'7_'+index}}" data-comkey="{{$k}}">
+          <i-icon size="24" type="trash" style="color:#fff" class="_i-icon data-v-784716fc"></i-icon>
+        </view>
       </view>
     </i-swipeout>
     <i-load-more wx:if="{{noMore}}" tip="我是有底线的" loading="{{false}}" class="_i-load-more data-v-784716fc"></i-load-more>
     <view class="_view data-v-784716fc bottom_view"><label style="padding-left:15px" class="_span data-v-784716fc">合计</label> <label style="padding-right:15px" class="_span data-v-784716fc">￥{{totalAmount}}</label></view>
-    <view class="_view data-v-784716fc order_add_btn" bindtap="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}">
+    <view class="_view data-v-784716fc order_add_btn" bindtap="handleProxy" data-eventid="{{'8'}}" data-comkey="{{$k}}">
       <i-icon type="add" size="24" color="#ff6633" class="_i-icon data-v-784716fc"></i-icon>
     </view>
+    <i-action-sheet visible="{{showDetele}}" actions="{{deleteActions}}" show-cancel bindcancel="handleProxy" bindchange="handleProxy" mask-closable="{{false}}" data-eventid="{{'9'}}" data-comkey="{{$k}}" class="_i-action-sheet data-v-784716fc">
+      <view slot="header" style="padding: 16px" class="_view data-v-784716fc">
+        <view style="color: #444;font-size: 16px" class="_view data-v-784716fc">确定吗？</view> <text class="_text data-v-784716fc">删除后无法恢复哦</text>
+      </view>
+    </i-action-sheet>
+    <i-message id="message" class="_i-message data-v-784716fc"></i-message>
   </view>
 </template>

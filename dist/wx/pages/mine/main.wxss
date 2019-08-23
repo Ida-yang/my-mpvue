@@ -1,1 +1,36 @@
 @import "../../common/vendor.wxss";
+
+.mine_wrap {
+  background-color: #fafafa;
+}
+.mine_user_data {
+  background-color: #fff;
+  padding: 70rpx 0;
+}
+.mine_info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.mine_portrait {
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+}
+.mine_data {
+  width: calc(100% - 300rpx);
+  font-size: 28rpx;
+  line-height: 52rpx;
+}
+.mine_communicate {
+  height: 160rpx;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.mine_card {
+  flex: 1;
+  font-size: 28rpx;
+  text-align: center;
+}

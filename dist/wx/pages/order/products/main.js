@@ -2,14 +2,14 @@ require("../../../common/manifest.js")
 require("../../../common/vendor.js")
 global.webpackJsonpMpvue([61],{
 
-/***/ 119:
+/***/ 123:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(124);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 120:
+/***/ 124:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_74545b2d_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_74545b2d_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(127);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(121)
+  __webpack_require__(125)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,20 +72,100 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 121:
+/***/ 125:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 122:
+/***/ 126:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -149,6 +229,8 @@ if (false) {(function () {
             noMore: false,
             classData: [],
             productData: [],
+            proItemData: {},
+            countProduct: {},
 
             searchList: {
                 searchName: '',
@@ -161,6 +243,10 @@ if (false) {(function () {
             searchCriteria: false,
 
             activename: 'name1',
+            allactive: true,
+
+            showMore: false,
+            showCounter: false,
 
             totalNumber: 0,
             totalAmount: 0
@@ -198,6 +284,8 @@ if (false) {(function () {
             });
         },
         loadData: function loadData() {
+            var customerinfo = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.orderPoolNameData;
+            console.log(customerinfo);
             var _this = this;
             var data = {
                 searchName: this.searchList.searchName,
@@ -207,7 +295,7 @@ if (false) {(function () {
             };
             wx.request({
                 method: 'post',
-                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'goods/search.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'goods/searchGoods.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
                 data: data,
                 header: {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -216,13 +304,28 @@ if (false) {(function () {
                 success: function success(res) {
                     var info = res.data.map.goods;
 
-                    info.forEach(function (el) {
-                        el.countNum = 0;
-                        if (el.image) {
-                            el.proImage = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].sourcehost + 'product/' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId + '/' + el.image;
-                        } else {
-                            el.proImage = '../../../static/images/noProduct.png';
-                        }
+                    info.forEach(function (item) {
+                        item.itemList.forEach(function (el) {
+                            el.goodsName = item.goodsName;
+                            el.discount = customerinfo.discount;
+                            el.discountAfter = parseFloat(el.discount) * parseFloat(el.price) / 100;
+                            el.countNum = 0;
+                            if (el.image) {
+                                el.proImage = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].sourcehost + 'product/' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId + '/' + el.image;
+                            } else {
+                                el.proImage = '../../../static/images/noProduct.png';
+                            }
+                            if (el.spec1 && !el.spec2 && !el.spec3) {
+                                // console.log('只有一个')
+                                el.goodsSpec = el.spec1;
+                            } else if (el.spec1 && el.spec2 && !el.spec3) {
+                                // console.log('有两个')
+                                el.goodsSpec = el.spec1 + ', ' + el.spec2;
+                            } else if (el.spec1 && el.spec2 && el.spec3) {
+                                // console.log('有三个')
+                                el.goodsSpec = el.spec1 + ', ' + el.spec2 + ', ' + el.spec3;
+                            }
+                        });
                     });
 
                     if (_this.init === true) {
@@ -264,8 +367,10 @@ if (false) {(function () {
         collapseClick: function collapseClick(e, val, index) {
             if (index == 1) {
                 this.searchList.classification_id = '';
+                this.allactive = true;
             } else if (index == 2) {
                 this.searchList.classification_id = val.id;
+                this.allactive = false;
             }
 
             this.search();
@@ -285,65 +390,155 @@ if (false) {(function () {
             });
             this.search();
         },
-        countReduce: function countReduce(e, val) {
-            this.productData.forEach(function (el) {
-                if (el.id == val.id) {
-                    if (el.countNum == 0) {
-                        return;
-                    } else {
-                        el.countNum--;
+        showCounters: function showCounters(e, row, val) {
+            this.showCounter = true;
+
+            if (row !== 1) {
+                this.proItemData = row;
+            }
+            this.countProduct = val;
+        },
+        closeCounter: function closeCounter(e, val) {
+            var _this2 = this;
+
+            if (val == 2) {
+                this.proItemData.itemList.forEach(function (el) {
+                    if (el.id == _this2.countProduct.id) {
+                        // console.log(el,'替换小的值')
+                        el = _this2.countProduct;
                     }
+                });
+
+                this.productData.forEach(function (item) {
+                    if (item.id == _this2.proItemData.id) {
+                        // console.log(item,'替换大的值')
+                        item = _this2.proItemData;
+                    }
+                });
+            }
+            this.showCounter = false;
+
+            this.countAll();
+        },
+        showItemList: function showItemList(e, row) {
+            this.showMore = true;
+            this.proItemData = row;
+            this.countProduct = row;
+        },
+        closeItemList: function closeItemList() {
+            this.showMore = false;
+
+            this.countAll();
+        },
+        countReduce: function countReduce(e, row, val) {
+            this.productData.forEach(function (item) {
+                if (item.id == row.id) {
+                    item.itemList.forEach(function (el) {
+                        if (el.id == val.id) {
+                            if (el.countNum == 0) {
+                                return;
+                            } else {
+                                el.countNum--;
+                            }
+                        }
+                    });
                 }
             });
 
             this.countAll();
         },
-        countAdd: function countAdd(e, val) {
-            this.productData.forEach(function (el) {
-                if (el.id == val.id) {
-                    el.countNum++;
+        countAdd: function countAdd(e, row, val) {
+            this.productData.forEach(function (item) {
+                if (item.id == row.id) {
+                    item.itemList.forEach(function (el) {
+                        if (el.id == val.id) {
+                            el.countNum++;
+                        }
+                    });
                 }
             });
 
             this.countAll();
         },
-        countInput: function countInput(e, val) {
+        countInput: function countInput(e, row, val) {
             var value = e.target.value;
 
-            this.productData.forEach(function (el) {
-                if (el.id == val.id) {
-                    el.countNum = parseInt(value);
+            this.productData.forEach(function (item) {
+                if (item.id == row.id) {
+                    item.itemList.forEach(function (el) {
+                        if (el.id == val.id) {
+                            el.countNum = parseInt(value);
+                        }
+                    });
                 }
             });
 
             this.countAll();
+        },
+        itemcountReduce: function itemcountReduce() {
+            if (this.countProduct.countNum == 0) {
+                return;
+            } else {
+                this.countProduct.countNum--;
+            }
+
+            this.countdiscount();
+        },
+        itemcountAdd: function itemcountAdd() {
+            this.countProduct.countNum++;
+
+            this.countdiscount();
+        },
+        itemCountInput: function itemCountInput(e, val) {
+            if (val == 1) {
+                this.countProduct.countNum = e.target.value;
+            } else if (val == 2) {
+                this.countProduct.price = e.mp.detail;
+            } else if (val == 3) {
+                this.countProduct.discount = e.mp.detail;
+            }
+
+            this.countdiscount();
+        },
+        countdiscount: function countdiscount() {
+            var a = 0;
+            var b = 0;
+            var c = 0;
+
+            a = parseInt(this.countProduct.countNum) * parseFloat(this.countProduct.price);
+            b = parseFloat(this.countProduct.discount) * a / 100;
+            c = a - b;
+            console.log(a, b, c);
+            this.countProduct.amountOfMoney = a.toFixed(2);
+            this.countProduct.discountAfter = b.toFixed(2);
+            this.countProduct.discountAmount = c.toFixed(2);
         },
         countAll: function countAll() {
             var num = 0;
             var amount = 0;
-            this.productData.forEach(function (el) {
-                if (el.countNum) {
-                    var a = 0;
-                    num += el.countNum;
-                    a = el.countNum * el.tbGoods.price;
-                    amount += a;
-                }
+            this.productData.forEach(function (item) {
+                item.itemList.forEach(function (el) {
+                    if (el.countNum) {
+                        var a = 0;
+                        num += el.countNum;
+                        a = el.countNum * item.price;
+                        amount += a;
+                    }
+                });
             });
-
-            console.log(num, amount);
 
             this.totalNumber = num;
             this.totalAmount = amount;
         },
         addProduct: function addProduct() {
-            // let productData = []
-            // let orderDetails = []
             var newArr = new Array();
 
-            this.productData.forEach(function (el, i) {
-                if (el.countNum) {
-                    newArr.push(el);
-                }
+            this.productData.forEach(function (item) {
+                item.itemList.forEach(function (el) {
+                    if (el.countNum) {
+                        newArr.push(el);
+                    }
+                });
             });
 
             __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.orderProductData = {
@@ -361,7 +556,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 123:
+/***/ 127:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -370,6 +565,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "order_product_wrap"
   }, [_c('view', {
     staticClass: "order_search"
+  }, [_c('view', {
+    staticClass: "order_searck_box"
   }, [_c('i-icon', {
     staticClass: "order_search_icon",
     attrs: {
@@ -416,7 +613,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.closeSearch
     }
-  }) : _vm._e()], 1), _vm._v(" "), _c('view', {
+  }) : _vm._e()], 1)]), _vm._v(" "), _c('view', {
     staticClass: "order_product_content"
   }, [_c('scroll-view', {
     staticClass: "caption_wrap",
@@ -431,6 +628,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "mpcomid": '4'
     }
   }, [_c('i-collapse-item', {
+    class: _vm.allactive ? 'theme_color_text' : '',
     attrs: {
       "title": "全部商品",
       "name": "name1",
@@ -481,15 +679,60 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "scroll-y": ""
     }
-  }, _vm._l((_vm.productData), function(item, index) {
+  }, _vm._l((_vm.productData), function(el, i) {
     return _c('view', {
-      key: item.id,
+      key: el.id,
       staticClass: "product_item"
-    }, [_c('p', {
+    }, [_vm._l((el.itemList), function(item, index) {
+      return (el.itemList.length == 1) ? _c('view', {
+        key: item.id
+      }, [_c('p', {
+        staticStyle: {
+          "margin-bottom": "8px"
+        }
+      }, [_vm._v(_vm._s(item.goodsName))]), _vm._v(" "), _c('view', {
+        staticClass: "product_item_c"
+      }, [_c('image', {
+        staticStyle: {
+          "width": "70px",
+          "height": "70px"
+        },
+        attrs: {
+          "src": item.proImage
+        }
+      }), _vm._v(" "), _c('view', {
+        staticClass: "product_item_price"
+      }, [_c('p', [_c('span', {
+        staticStyle: {
+          "color": "#e62c2c"
+        }
+      }, [_vm._v("￥" + _vm._s(item.price))]), _vm._v(" / " + _vm._s(item.unit))]), _vm._v(" "), (item.title !== el.goodsName) ? _c('p', {
+        staticStyle: {
+          "margin-top": "5px"
+        }
+      }, [_vm._v(_vm._s(item.title))]) : _vm._e()], 1), _vm._v(" "), _c('view', {
+        staticClass: "product_item_add",
+        attrs: {
+          "eventid": '5_' + i + '-' + index
+        },
+        on: {
+          "click": function($event) {
+            _vm.showCounters($event, el, item)
+          }
+        }
+      }, [_c('i-icon', {
+        attrs: {
+          "type": "add",
+          "size": "20",
+          "color": "#fff",
+          "mpcomid": '5_' + i + '-' + index
+        }
+      })], 1)])], 1) : _vm._e()
+    }), _vm._v(" "), (el.itemList.length > 1) ? _c('view', [_c('p', {
       staticStyle: {
         "margin-bottom": "8px"
       }
-    }, [_vm._v(_vm._s(item.tbGoods.goodsName))]), _vm._v(" "), _c('view', {
+    }, [_vm._v(_vm._s(el.goodsName))]), _vm._v(" "), _c('view', {
       staticClass: "product_item_c"
     }, [_c('image', {
       staticStyle: {
@@ -497,64 +740,37 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "height": "70px"
       },
       attrs: {
-        "src": item.proImage
+        "src": el.itemList[0].proImage
       }
     }), _vm._v(" "), _c('view', {
       staticClass: "product_item_price"
-    }, [_c('p', {
-      staticStyle: {
-        "margin-bottom": "10px"
-      }
-    }, [_vm._v(_vm._s(item.title))]), _vm._v(" "), _c('p', [_c('span', {
+    }, [_c('p', [_c('span', {
       staticStyle: {
         "color": "#e62c2c"
       }
-    }, [_vm._v("￥" + _vm._s(item.tbGoods.price))]), _vm._v(" /" + _vm._s(item.tbGoods.unit))])], 1), _vm._v(" "), _c('view', {
-      staticClass: "product_item_counter"
-    }, [_c('span', {
-      staticClass: "counter_btn",
-      class: item.countNum == 0 ? 'gray_color_text' : '',
+    }, [_vm._v("￥" + _vm._s(el.price))]), _vm._v(" / " + _vm._s(el.unit))]), _vm._v(" "), _c('p', {
+      staticStyle: {
+        "margin-top": "30px",
+        "color": "#80848f"
+      }
+    }, [_vm._v(_vm._s(el.itemList.length) + "中规格可选")])], 1), _vm._v(" "), _c('view', {
+      staticClass: "product_item_shopping",
       attrs: {
-        "eventid": '5_' + index
+        "eventid": '6_' + i
       },
       on: {
         "click": function($event) {
-          _vm.countReduce($event, item)
+          _vm.showItemList($event, el)
         }
       }
-    }, [_vm._v("-")]), _vm._v(" "), _c('input', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
-        value: (item.countNum),
-        expression: "item.countNum"
-      }],
-      staticClass: "counter_text",
+    }, [_c('i-icon', {
       attrs: {
-        "eventid": '6_' + index
-      },
-      domProps: {
-        "value": (item.countNum)
-      },
-      on: {
-        "input": [function($event) {
-          if ($event.target.composing) { return; }
-          item.countNum = $event.target.value
-        }, function($event) {
-          _vm.countInput($event, item)
-        }]
+        "type": "publishgoods_fill",
+        "size": "20",
+        "color": "#fff",
+        "mpcomid": '6_' + i
       }
-    }), _vm._v(" "), _c('span', {
-      staticClass: "counter_btn",
-      attrs: {
-        "eventid": '7_' + index
-      },
-      on: {
-        "click": function($event) {
-          _vm.countAdd($event, item)
-        }
-      }
-    }, [_vm._v("+")])])])], 1)
+    })], 1)])], 1) : _vm._e()], 2)
   }))], 1), _vm._v(" "), _c('view', {
     staticClass: "bottom_view"
   }, [_c('span', {
@@ -565,13 +781,246 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "type": "subject",
       "i-class": "inline_btn",
-      "eventid": '8',
-      "mpcomid": '5'
+      "eventid": '7',
+      "mpcomid": '7'
     },
     on: {
       "click": _vm.addProduct
     }
-  }, [_vm._v("确定")])], 1)])
+  }, [_vm._v("确定")])], 1), _vm._v(" "), (_vm.showMore) ? _c('view', {
+    staticClass: "product_item_more"
+  }, [_c('view', {
+    staticClass: "item_more_head"
+  }), _vm._v(" "), _c('view', {
+    staticClass: "item_more_content"
+  }, [_c('i-icon', {
+    staticClass: "item_more_close",
+    attrs: {
+      "type": "close",
+      "color": "#bebebe",
+      "size": "20",
+      "eventid": '8',
+      "mpcomid": '8'
+    },
+    on: {
+      "click": _vm.closeItemList
+    }
+  }), _vm._v(" "), _c('view', {
+    staticClass: "item_more_goods"
+  }, [_c('image', {
+    staticStyle: {
+      "width": "100px",
+      "height": "100px"
+    },
+    attrs: {
+      "src": _vm.proItemData.itemList[0].proImage
+    }
+  }), _vm._v(" "), _c('p', {
+    staticStyle: {
+      "margin-left": "24px"
+    }
+  }, [_vm._v(_vm._s(_vm.proItemData.goodsName))])], 1), _vm._v(" "), _c('scroll-view', {
+    staticClass: "item_more_scroll_wrap",
+    attrs: {
+      "scroll-y": ""
+    }
+  }, _vm._l((_vm.proItemData.itemList), function(sub, index) {
+    return _c('view', {
+      key: sub.id,
+      staticClass: "item_more_goods_item"
+    }, [_c('view', {
+      staticClass: "goods_item_head"
+    }, [_c('image', {
+      staticStyle: {
+        "width": "20px",
+        "height": "20px"
+      },
+      attrs: {
+        "src": sub.proImage
+      }
+    }), _vm._v(" "), _c('span', {
+      staticStyle: {
+        "margin-left": "10px"
+      }
+    }, [_vm._v("\n                            " + _vm._s(sub.goodsSpec) + "\n                            "), _c('span', {
+      staticStyle: {
+        "color": "#80848f"
+      }
+    }, [_vm._v("(" + _vm._s(sub.goodsCode) + ")")])])]), _vm._v(" "), _c('view', {
+      staticClass: "goods_item_foot"
+    }, [_c('p', {
+      staticStyle: {
+        "color": "#80848f"
+      }
+    }, [_vm._v("市场价 ￥" + _vm._s(sub.price) + " / " + _vm._s(sub.unit))]), _vm._v(" "), _c('p', [_c('span', {
+      staticStyle: {
+        "color": "#f56c6c"
+      }
+    }, [_vm._v("￥" + _vm._s(sub.discountAfter))]), _vm._v(" "), _c('span', {
+      staticStyle: {
+        "color": "#80848f"
+      }
+    }, [_vm._v(" / " + _vm._s(sub.unit))])])], 1), _vm._v(" "), _c('view', {
+      staticClass: "product_item_add",
+      staticStyle: {
+        "margin-bottom": "20px"
+      },
+      attrs: {
+        "eventid": '9_' + index
+      },
+      on: {
+        "click": function($event) {
+          _vm.showCounters($event, 1, sub)
+        }
+      }
+    }, [_c('i-icon', {
+      attrs: {
+        "type": "add",
+        "size": "20",
+        "color": "#fff",
+        "mpcomid": '9_' + index
+      }
+    })], 1)])
+  }))], 1)]) : _vm._e(), _vm._v(" "), (_vm.showCounter) ? _c('view', {
+    staticClass: "product_counter"
+  }, [_c('view', {
+    staticClass: "counter_wrap"
+  }, [_c('view', {
+    staticClass: "counter_head"
+  }, [_vm._v(_vm._s(_vm.countProduct.goodsName))]), _vm._v(" "), _c('view', {
+    staticClass: "counter_content"
+  }, [_c('i-cell', {
+    attrs: {
+      "title": "数量",
+      "i-class": "simple_cell",
+      "i-cell-text": "color_495060_text",
+      "mpcomid": '10'
+    }
+  }, [_c('view', {
+    staticClass: "counter_item",
+    slot: "footer"
+  }, [_c('span', {
+    staticClass: "counter_btn",
+    class: _vm.countProduct.countNum == 0 ? 'gray_color_text' : '',
+    attrs: {
+      "eventid": '10'
+    },
+    on: {
+      "click": _vm.itemcountReduce
+    }
+  }, [_vm._v("-")]), _vm._v(" "), _c('input', {
+    staticClass: "counter_text",
+    attrs: {
+      "value": _vm.countProduct.countNum,
+      "type": "number",
+      "eventid": '11'
+    },
+    on: {
+      "input": function($event) {
+        _vm.itemCountInput($event, 1)
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "counter_btn",
+    attrs: {
+      "eventid": '12'
+    },
+    on: {
+      "click": _vm.itemcountAdd
+    }
+  }, [_vm._v("+")])])]), _vm._v(" "), _c('i-input', {
+    attrs: {
+      "title": "单价",
+      "right": "",
+      "type": "number",
+      "maxlength": "11",
+      "eventid": '13',
+      "mpcomid": '11'
+    },
+    on: {
+      "input": function($event) {
+        _vm.itemCountInput($event, 2)
+      }
+    },
+    model: {
+      value: (_vm.countProduct.price),
+      callback: function($$v) {
+        _vm.countProduct.price = $$v
+      },
+      expression: "countProduct.price"
+    }
+  }), _vm._v(" "), _c('i-cell', {
+    attrs: {
+      "title": "消费金额",
+      "value": _vm.countProduct.amountOfMoney,
+      "i-class": "simple_cell",
+      "i-cell-text": "color_495060_text",
+      "mpcomid": '12'
+    }
+  }), _vm._v(" "), _c('i-input', {
+    attrs: {
+      "title": "折扣率(%)",
+      "right": "",
+      "type": "number",
+      "maxlength": "3",
+      "eventid": '14',
+      "mpcomid": '13'
+    },
+    on: {
+      "input": function($event) {
+        _vm.itemCountInput($event, 3)
+      }
+    },
+    model: {
+      value: (_vm.countProduct.discount),
+      callback: function($$v) {
+        _vm.countProduct.discount = $$v
+      },
+      expression: "countProduct.discount"
+    }
+  }), _vm._v(" "), _c('i-cell', {
+    attrs: {
+      "title": "折扣金额",
+      "value": _vm.countProduct.discountAmount,
+      "i-class": "simple_cell",
+      "i-cell-text": "color_495060_text",
+      "mpcomid": '14'
+    }
+  }), _vm._v(" "), _c('i-cell', {
+    attrs: {
+      "title": "折后金额",
+      "value": _vm.countProduct.discountAfter,
+      "i-class": "simple_cell",
+      "i-cell-text": "color_495060_text",
+      "mpcomid": '15'
+    }
+  })], 1), _vm._v(" "), _c('view', {
+    staticClass: "counter_foot"
+  }, [_c('span', {
+    staticStyle: {
+      "border-right": "1rpx solid #e9eaec"
+    },
+    attrs: {
+      "eventid": '15'
+    },
+    on: {
+      "click": function($event) {
+        _vm.closeCounter($event, 1)
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "color": "#ff6333"
+    },
+    attrs: {
+      "eventid": '16'
+    },
+    on: {
+      "click": function($event) {
+        _vm.closeCounter($event, 2)
+      }
+    }
+  }, [_vm._v("确定")])])])]) : _vm._e()])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -586,4 +1035,4 @@ if (false) {
 
 /***/ })
 
-},[119]);
+},[123]);

@@ -6,7 +6,7 @@
     position:relative;
     z-index:2;
     margin:0 auto;
-    border:#dddee1 solid 1px
+    border:#e9eaec solid 1rpx
 }
 .i-step-ico-in{
     vertical-align:baseline !important
@@ -16,8 +16,8 @@
     left:-50%;
     top:12px;
     width:100%;
-    height:1px;
-    background:#dddee1
+    height:1rpx;
+    background:#e9eaec
 }
 .i-step-horizontal .i-step-ico::after{
     position:absolute;
@@ -47,7 +47,7 @@
     font-size:12px
 }
 .i-step-process .i-step-ico{
-    border:#2d8cf0 solid 1px;
+    border:#2d8cf0 solid 1rpx;
     color:#fff;
     background:#2d8cf0
 }
@@ -55,21 +55,21 @@
     background:#2d8cf0
 }
 .i-step-wait .i-step-ico{
-    border:#e9eaec solid 1px;
+    border:#e9eaec solid 1rpx;
     color:#e9eaec
 }
 .i-step-wait .i-step-line{
     background:#e9eaec
 }
 .i-step-finish .i-step-ico{
-    border:#19be6b solid 1px;
+    border:#19be6b solid 1rpx;
     color:#19be6b
 }
 .i-step-finish .i-step-line{
     background:#19be6b
 }
 .i-step-error .i-step-ico{
-    border:#f56c6c solid 1px;
+    border:#f56c6c solid 1rpx;
     color:#f56c6c
 }
 .i-step-error .i-step-line{

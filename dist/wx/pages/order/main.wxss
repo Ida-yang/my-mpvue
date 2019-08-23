@@ -1,8 +1,8 @@
 @import "../../common/vendor.wxss";
 
 .order_wrap {
-  background-color: #fcfcfc;
-  padding-top: 100rpx;
+  background-color: #fafafa;
+  margin-top: 100rpx;
   margin-bottom: 80rpx;
 }
 .order_add_btn {

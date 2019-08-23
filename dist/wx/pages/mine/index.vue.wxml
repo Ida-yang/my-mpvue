@@ -1,5 +1,43 @@
 <template name="96cb208c">
-  <view class="_div data-v-47a9ff3b">
-    <i-panel title="{{current}}" class="_i-panel data-v-47a9ff3b"></i-panel>
+  <view class="_div data-v-47a9ff3b mine_wrap">
+    <view class="_view data-v-47a9ff3b mine_user_data">
+      <view class="_view data-v-47a9ff3b mine_info">
+        <image src="{{mineData.portrait}}" class="_image data-v-47a9ff3b mine_portrait"></image>
+        <view class="_view data-v-47a9ff3b mine_data">
+          <view class="_p data-v-47a9ff3b">{{mineData.name}}<label style="margin-left:50px" class="_span data-v-47a9ff3b">{{mineData.role_name}}</label></view>
+          <view class="_p data-v-47a9ff3b">{{mineData.corporate_name}}</view>
+          <view class="_p data-v-47a9ff3b">{{mineData.private_phone}}</view>
+        </view>
+      </view>
+      <view class="_view data-v-47a9ff3b mine_communicate">
+        <view class="_view data-v-47a9ff3b mine_card">
+          <i-icon type="addressbook" size="26" color="#8a8a8a" class="_i-icon data-v-47a9ff3b"></i-icon>
+          <view class="_p data-v-47a9ff3b">通讯录</view>
+        </view>
+        <view class="_view data-v-47a9ff3b mine_card">
+          <i-icon type="group" size="26" color="#707070" class="_i-icon data-v-47a9ff3b"></i-icon>
+          <view class="_p data-v-47a9ff3b">人脉</view>
+        </view>
+        <view class="_view data-v-47a9ff3b mine_card">
+          <i-icon type="businesscard" size="26" color="#8a8a8a" class="_i-icon data-v-47a9ff3b"></i-icon>
+          <view class="_p data-v-47a9ff3b">名片</view>
+        </view>
+      </view>
+    </view>
+    <view class="_view data-v-47a9ff3b detail_module"></view>
+    <i-cell-group class="_i-cell-group data-v-47a9ff3b">
+      <i-cell title="个人资料" is-link class="_i-cell data-v-47a9ff3b">
+        <i-icon slot="icon" type="mine" size="20" color="#8a8a8a" class="_i-icon data-v-47a9ff3b"></i-icon>
+      </i-cell>
+      <i-cell title="修改密码" class="_i-cell data-v-47a9ff3b">
+        <i-icon slot="icon" type="lock" size="20" color="#707070" class="_i-icon data-v-47a9ff3b"></i-icon>
+      </i-cell>
+      <i-cell title="技术支持" is-link class="_i-cell data-v-47a9ff3b">
+        <i-icon slot="icon" type="mail" size="20" color="#8a8a8a" class="_i-icon data-v-47a9ff3b"></i-icon>
+      </i-cell>
+      <i-cell title="版本信息" class="_i-cell data-v-47a9ff3b">
+        <i-icon slot="icon" type="prompt" size="20" color="#707070" class="_i-icon data-v-47a9ff3b"></i-icon>
+      </i-cell>
+    </i-cell-group>
   </view>
 </template>

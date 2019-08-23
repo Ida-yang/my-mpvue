@@ -136,6 +136,19 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -168,7 +181,15 @@ if (false) {(function () {
             secondItem: '订单日期',
 
             showFirst: false,
-            showSecond: false
+            showSecond: false,
+
+            deleteId: '',
+
+            showDetele: false,
+            deleteActions: [{
+                name: '删除',
+                color: '#f56c6c'
+            }]
         };
     },
     onShow: function onShow() {
@@ -317,6 +338,50 @@ if (false) {(function () {
             var url = 'orderDetail/main';
             __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.orderDetailData = val;
             global.mpvue.navigateTo({ url: url });
+        },
+        toDeleteOrder: function toDeleteOrder(e, val) {
+            this.showDetele = true;
+            this.deleteId = val.id;
+        },
+        cancelDelete: function cancelDelete() {
+            this.showDetele = false;
+        },
+        deleteOrder: function deleteOrder(val) {
+            var _this = this;
+            var data = {
+                id: this.deleteId
+            };
+
+            wx.request({
+                method: 'post',
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'order/delete.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                data: data,
+                header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    if (res.data.code && res.data.code == "200") {
+                        _this.cancelDelete();
+                        $Message({
+                            content: '删除成功',
+                            type: 'success'
+                        });
+                        _this.loadData();
+                    } else if (res.data.msg && res.data.msg == 'error') {
+                        $Toast({
+                            content: '对不起，您没有此权限',
+                            type: 'error'
+                        });
+                        _this.cancelDelete();
+                    } else {
+                        $Message({
+                            content: res.data.msg,
+                            type: 'error'
+                        });
+                    }
+                }
+            });
         }
     }
 });
@@ -332,6 +397,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "order_wrap"
   }, [_c('view', {
     staticClass: "order_search"
+  }, [_c('view', {
+    staticClass: "order_searck_box"
   }, [_c('i-icon', {
     staticClass: "order_search_icon",
     attrs: {
@@ -378,7 +445,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.closeSearch
     }
-  }) : _vm._e()], 1), _vm._v(" "), _c('i-tabs', {
+  }) : _vm._e()], 1)]), _vm._v(" "), _c('i-tabs', {
     attrs: {
       "i-class": "order_tabs",
       "eventid": '2',
@@ -458,8 +525,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       key: item.id,
       attrs: {
         "i-class": "i-swipeout-demo-item",
-        "operateWidth": 60,
-        "mpcomid": '11_' + index
+        "operateWidth": 120,
+        "mpcomid": '12_' + index
       }
     }, [_c('view', {
       attrs: {
@@ -508,12 +575,35 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "type": "editor",
         "mpcomid": '10_' + index
       }
+    })], 1), _vm._v(" "), _c('view', {
+      staticClass: "i-swipeout-button-item",
+      staticStyle: {
+        "width": "60px",
+        "background-color": "#f56c6c"
+      },
+      attrs: {
+        "eventid": '7_' + index
+      },
+      on: {
+        "click": function($event) {
+          _vm.toDeleteOrder($event, item)
+        }
+      }
+    }, [_c('i-icon', {
+      staticStyle: {
+        "color": "#fff"
+      },
+      attrs: {
+        "size": "24",
+        "type": "trash",
+        "mpcomid": '11_' + index
+      }
     })], 1)])])
   }), _vm._v(" "), (_vm.noMore) ? _c('i-load-more', {
     attrs: {
       "tip": "我是有底线的",
       "loading": false,
-      "mpcomid": '12'
+      "mpcomid": '13'
     }
   }) : _vm._e(), _vm._v(" "), _c('view', {
     staticClass: "bottom_view"
@@ -528,7 +618,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("￥" + _vm._s(_vm.totalAmount))])]), _vm._v(" "), _c('view', {
     staticClass: "order_add_btn",
     attrs: {
-      "eventid": '7'
+      "eventid": '8'
     },
     on: {
       "click": _vm.toAddOrder
@@ -538,9 +628,37 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "type": "add",
       "size": "24",
       "color": "#ff6633",
-      "mpcomid": '13'
+      "mpcomid": '14'
     }
-  })], 1)], 2)
+  })], 1), _vm._v(" "), _c('i-action-sheet', {
+    attrs: {
+      "visible": _vm.showDetele,
+      "actions": _vm.deleteActions,
+      "show-cancel": "",
+      "mask-closable": false,
+      "eventid": '9',
+      "mpcomid": '15'
+    },
+    on: {
+      "cancel": _vm.cancelDelete,
+      "change": _vm.deleteOrder
+    }
+  }, [_c('view', {
+    staticStyle: {
+      "padding": "16px"
+    },
+    slot: "header"
+  }, [_c('view', {
+    staticStyle: {
+      "color": "#444",
+      "font-size": "16px"
+    }
+  }, [_vm._v("确定吗？")]), _vm._v(" "), _c('text', [_vm._v("删除后无法恢复哦")])])]), _vm._v(" "), _c('i-message', {
+    attrs: {
+      "id": "message",
+      "mpcomid": '16'
+    }
+  })], 2)
 }
 var staticRenderFns = []
 render._withStripped = true

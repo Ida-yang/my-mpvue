@@ -136,6 +136,33 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -159,7 +186,7 @@ if (false) {(function () {
             productData: [],
             productInfo: {
                 totalAmount: 0,
-                discountRate: '100',
+                discountAfter: 0,
                 taxRate: '0',
                 realAmount: 0
             },
@@ -169,7 +196,10 @@ if (false) {(function () {
             showMode: false,
             modeList: [],
 
-            nowDate: ''
+            nowDate: '',
+
+            showCounter: false,
+            countProduct: {}
         };
     },
     onShow: function onShow() {
@@ -188,7 +218,6 @@ if (false) {(function () {
                 this.addList.customerpoolName = poolObj.poolName;
                 this.addList.customerpoolId = poolObj.poolNameID;
                 this.addList.ascriptionId = poolObj.ascriptionId;
-                this.productInfo.discountRate = poolObj.discount;
                 this.productInfo.taxRate = poolObj.taxRate;
             }
 
@@ -212,6 +241,8 @@ if (false) {(function () {
 
                     this.productData = aarr.concat(barr);
                 }
+
+                console.log(this.productData);
                 this.loadProduct();
             } else {
                 return;
@@ -220,34 +251,31 @@ if (false) {(function () {
         loadProduct: function loadProduct() {
             var _this2 = this;
 
-            var anum = 0;
+            var anum = 0; //消费总金额
+            var bnum = 0; //税后总金额金额
+            var cnum = 0; //折税后金额
             this.productData.forEach(function (el) {
-                if (el.image) {
-                    el.proImage = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].sourcehost + 'product/' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId + '/' + el.image;
-                } else {
-                    el.proImage = '../../../static/images/noProduct.png';
-                }
 
-                var bnum = el.tbGoods.price * el.countNum;
-                anum += bnum;
+                var xnum = parseFloat(el.price) * parseInt(el.countNum); //本产品总金额
+                el.amountOfMoney = xnum.toFixed(2);
 
-                el.amountOfMoney = bnum.toFixed(2);
+                anum += xnum;
+                bnum += parseFloat(el.discountAfter);
+
                 el.taxRate = _this2.productInfo.taxRate;
-                el.discount = _this2.productInfo.discountRate;
-                var discountAfter = parseFloat(_this2.productInfo.discountRate) * bnum / 100;
-                var taxAmount = parseFloat(_this2.productInfo.taxRate) * discountAfter / 100;
-                var discountAmount = bnum - discountAfter;
-                var taxAfter = discountAfter + taxAmount;
 
-                el.discountAmount = discountAmount.toFixed(2);
-                el.discountAfter = discountAfter.toFixed(2);
-                el.taxAmount = taxAmount.toFixed(2);
-                el.taxAfter = taxAfter.toFixed(2);
+                var ynum = parseFloat(el.taxRate) * parseFloat(el.discountAfter) / 100; //本产品税额
+                var znum = parseFloat(el.discountAfter) + ynum; //本产品税后金额
+                el.taxAmount = ynum.toFixed(2);
+                el.taxAfter = znum.toFixed(2);
+
+                cnum += znum;
             });
             this.productInfo.totalAmount = anum.toFixed(2);
-            var cnum = parseFloat(this.productInfo.discountRate) * anum / 100;
-            var dnum = parseFloat(this.productInfo.taxRate) * cnum / 100;
-            this.productInfo.realAmount = (cnum + dnum).toFixed(2);
+            this.productInfo.discountAfter = bnum.toFixed(2);
+            this.productInfo.realAmount = cnum.toFixed(2);
+
+            console.log(this.productData);
         },
         loadList: function loadList() {
             this.addList = {
@@ -260,6 +288,13 @@ if (false) {(function () {
                 orderDetails: [],
                 orderTime: '',
                 settlement: '' //结算方式
+            };
+            this.productData = [];
+            this.productInfo = {
+                totalAmount: 0,
+                discountAfter: 0,
+                taxRate: '0',
+                realAmount: 0
             };
         },
         loadMode: function loadMode() {
@@ -311,9 +346,6 @@ if (false) {(function () {
             if (val == 1) {
                 this.addList.deliveryAddress = e.mp.detail;
             } else if (val == 2) {
-                this.productInfo.discountRate = e.mp.detail;
-                this.loadProduct();
-            } else if (val == 3) {
                 this.productInfo.taxRate = e.mp.detail;
                 this.loadProduct();
             }
@@ -348,38 +380,62 @@ if (false) {(function () {
                 });
             }
         },
-        countReduce: function countReduce(e, val) {
-            this.productData.forEach(function (el) {
-                if (el.id == val.id) {
-                    if (el.countNum == 0) {
-                        return;
-                    } else {
-                        el.countNum--;
+        showCounters: function showCounters(e, val) {
+            this.showCounter = true;
+
+            this.countProduct = val;
+        },
+        closeCounter: function closeCounter(e, val) {
+            var _this3 = this;
+
+            if (val == 2) {
+                this.productData.forEach(function (item) {
+                    if (item.id == _this3.countProduct.id) {
+                        // console.log(item,'替换大的值')
+                        item = _this3.countProduct;
                     }
-                }
-            });
+                });
+            }
+            this.showCounter = false;
 
             this.loadProduct();
         },
-        countAdd: function countAdd(e, val) {
-            this.productData.forEach(function (el) {
-                if (el.id == val.id) {
-                    el.countNum++;
-                }
-            });
+        itemcountReduce: function itemcountReduce() {
+            if (this.countProduct.countNum == 0) {
+                return;
+            } else {
+                this.countProduct.countNum--;
+            }
 
-            this.loadProduct();
+            this.countdiscount();
         },
-        countInput: function countInput(e, val) {
-            var value = e.target.value;
+        itemcountAdd: function itemcountAdd() {
+            this.countProduct.countNum++;
 
-            this.productData.forEach(function (el) {
-                if (el.id == val.id) {
-                    el.countNum = parseInt(value);
-                }
-            });
+            this.countdiscount();
+        },
+        itemCountInput: function itemCountInput(e, val) {
+            if (val == 1) {
+                this.countProduct.countNum = e.target.value;
+            } else if (val == 2) {
+                this.countProduct.price = e.mp.detail;
+            } else if (val == 3) {
+                this.countProduct.discount = e.mp.detail;
+            }
 
-            this.loadProduct();
+            this.countdiscount();
+        },
+        countdiscount: function countdiscount() {
+            var a = 0;
+            var b = 0;
+            var c = 0;
+
+            a = parseInt(this.countProduct.countNum) * parseFloat(this.countProduct.price);
+            b = parseFloat(this.countProduct.discount) * a / 100;
+            c = a - b;
+            console.log(a, b, c);
+            this.countProduct.discountAfter = b.toFixed(2);
+            this.countProduct.discountAmount = c.toFixed(2);
         },
         addOrder: function addOrder() {
             var _this = this;
@@ -390,7 +446,7 @@ if (false) {(function () {
                 newArr.push({
                     "itemId": element.id,
                     "num": parseInt(element.countNum),
-                    "price": parseFloat(element.tbGoods.price),
+                    "price": parseFloat(element.price),
                     "commitTime": '',
                     "amountOfMoney": element.amountOfMoney,
                     "discount": element.discount,
@@ -596,7 +652,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       staticStyle: {
         "margin-bottom": "8px"
       }
-    }, [_vm._v(_vm._s(item.tbGoods.goodsName))]), _vm._v(" "), _c('view', {
+    }, [_vm._v(_vm._s(item.goodsName))]), _vm._v(" "), _c('view', {
       staticClass: "product_item_c"
     }, [_c('image', {
       staticStyle: {
@@ -608,60 +664,30 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       }
     }), _vm._v(" "), _c('view', {
       staticClass: "product_item_price"
-    }, [_c('p', {
+    }, [(item.title !== item.goodsName) ? _c('p', {
       staticStyle: {
         "margin-bottom": "10px"
       }
-    }, [_vm._v(_vm._s(item.title))]), _vm._v(" "), _c('p', [_c('span', {
+    }, [_vm._v(_vm._s(item.title))]) : _vm._e(), _vm._v(" "), _c('p', [_c('span', {
       staticStyle: {
         "color": "#e62c2c"
       }
-    }, [_vm._v("￥" + _vm._s(item.tbGoods.price))]), _vm._v(" /" + _vm._s(item.tbGoods.unit))])], 1), _vm._v(" "), _c('view', {
-      staticClass: "product_item_counter"
-    }, [_c('span', {
-      staticClass: "counter_btn",
-      class: item.countNum == 0 ? 'gray_color_text' : '',
+    }, [_vm._v("￥" + _vm._s(item.price))]), _vm._v(" /" + _vm._s(item.unit))])], 1), _vm._v(" "), _c('view', {
+      staticClass: "product_item_update",
       attrs: {
         "eventid": '5_' + index
       },
       on: {
         "click": function($event) {
-          _vm.countReduce($event, item)
+          _vm.showCounters($event, item)
         }
       }
-    }, [_vm._v("-")]), _vm._v(" "), _c('input', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
-        value: (item.countNum),
-        expression: "item.countNum"
-      }],
-      staticClass: "counter_text",
-      attrs: {
-        "eventid": '6_' + index
-      },
-      domProps: {
-        "value": (item.countNum)
-      },
-      on: {
-        "input": [function($event) {
-          if ($event.target.composing) { return; }
-          item.countNum = $event.target.value
-        }, function($event) {
-          _vm.countInput($event, item)
-        }]
+    }, [_c('span', {
+      staticStyle: {
+        "color": "#ff6333",
+        "font-size": "14px"
       }
-    }), _vm._v(" "), _c('span', {
-      staticClass: "counter_btn",
-      attrs: {
-        "eventid": '7_' + index
-      },
-      on: {
-        "click": function($event) {
-          _vm.countAdd($event, item)
-        }
-      }
-    }, [_vm._v("+")])])])], 1)
+    }, [_vm._v("修改")])])])], 1)
   })), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "销售金额",
@@ -670,26 +696,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "i-cell-text": "color_495060_text",
       "mpcomid": '6'
     }
-  }), _vm._v(" "), _c('i-input', {
+  }), _vm._v(" "), _c('i-cell', {
     attrs: {
-      "title": "折扣率(%)",
-      "right": "",
-      "type": "number",
-      "maxlength": "3",
-      "eventid": '8',
+      "title": "折后金额",
+      "value": _vm.productInfo.discountAfter,
+      "i-class": "simple_cell",
+      "i-cell-text": "color_495060_text",
       "mpcomid": '7'
-    },
-    on: {
-      "input": function($event) {
-        _vm.handleInput($event, 2)
-      }
-    },
-    model: {
-      value: (_vm.productInfo.discountRate),
-      callback: function($$v) {
-        _vm.productInfo.discountRate = $$v
-      },
-      expression: "productInfo.discountRate"
     }
   }), _vm._v(" "), _c('i-input', {
     attrs: {
@@ -697,12 +710,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "right": "",
       "type": "number",
       "maxlength": "3",
-      "eventid": '9',
+      "eventid": '6',
       "mpcomid": '8'
     },
     on: {
       "input": function($event) {
-        _vm.handleInput($event, 3)
+        _vm.handleInput($event, 2)
       }
     },
     model: {
@@ -726,7 +739,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "right": "",
       "type": "textarea",
       "maxlength": "200",
-      "eventid": '10',
+      "eventid": '7',
       "mpcomid": '10'
     },
     on: {
@@ -747,13 +760,144 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticStyle: {
       "color": "#f56c6c"
     }
-  }, [_vm._v(" * ")]), _vm._v("为必填项")]), _vm._v(" "), _c('i-button', {
+  }, [_vm._v(" * ")]), _vm._v("为必填项")]), _vm._v(" "), (_vm.showCounter) ? _c('view', {
+    staticClass: "product_counter"
+  }, [_c('view', {
+    staticClass: "counter_wrap"
+  }, [_c('view', {
+    staticClass: "counter_head"
+  }, [_vm._v(_vm._s(_vm.countProduct.goodsName))]), _vm._v(" "), _c('view', {
+    staticClass: "counter_content"
+  }, [_c('i-cell', {
+    attrs: {
+      "title": "数量",
+      "i-class": "simple_cell",
+      "i-cell-text": "color_495060_text",
+      "mpcomid": '12'
+    }
+  }, [_c('view', {
+    staticClass: "counter_item",
+    slot: "footer"
+  }, [_c('span', {
+    staticClass: "counter_btn",
+    class: _vm.countProduct.countNum == 0 ? 'gray_color_text' : '',
+    attrs: {
+      "eventid": '8'
+    },
+    on: {
+      "click": _vm.itemcountReduce
+    }
+  }, [_vm._v("-")]), _vm._v(" "), _c('input', {
+    staticClass: "counter_text",
+    attrs: {
+      "value": _vm.countProduct.countNum,
+      "type": "number",
+      "eventid": '9'
+    },
+    on: {
+      "input": function($event) {
+        _vm.itemCountInput($event, 1)
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "counter_btn",
+    attrs: {
+      "eventid": '10'
+    },
+    on: {
+      "click": _vm.itemcountAdd
+    }
+  }, [_vm._v("+")])])]), _vm._v(" "), _c('i-input', {
+    attrs: {
+      "title": "单价",
+      "right": "",
+      "type": "number",
+      "maxlength": "11",
+      "eventid": '11',
+      "mpcomid": '13'
+    },
+    on: {
+      "input": function($event) {
+        _vm.itemCountInput($event, 2)
+      }
+    },
+    model: {
+      value: (_vm.countProduct.price),
+      callback: function($$v) {
+        _vm.countProduct.price = $$v
+      },
+      expression: "countProduct.price"
+    }
+  }), _vm._v(" "), _c('i-input', {
+    attrs: {
+      "title": "折扣率(%)",
+      "right": "",
+      "type": "number",
+      "maxlength": "3",
+      "eventid": '12',
+      "mpcomid": '14'
+    },
+    on: {
+      "input": function($event) {
+        _vm.itemCountInput($event, 3)
+      }
+    },
+    model: {
+      value: (_vm.countProduct.discount),
+      callback: function($$v) {
+        _vm.countProduct.discount = $$v
+      },
+      expression: "countProduct.discount"
+    }
+  }), _vm._v(" "), _c('i-cell', {
+    attrs: {
+      "title": "折扣金额",
+      "value": _vm.countProduct.discountAmount,
+      "i-class": "simple_cell",
+      "i-cell-text": "color_495060_text",
+      "mpcomid": '15'
+    }
+  }), _vm._v(" "), _c('i-cell', {
+    attrs: {
+      "title": "折后金额",
+      "value": _vm.countProduct.discountAfter,
+      "i-class": "simple_cell",
+      "i-cell-text": "color_495060_text",
+      "mpcomid": '16'
+    }
+  })], 1), _vm._v(" "), _c('view', {
+    staticClass: "counter_foot"
+  }, [_c('span', {
+    staticStyle: {
+      "border-right": "1rpx solid #e9eaec"
+    },
+    attrs: {
+      "eventid": '13'
+    },
+    on: {
+      "click": function($event) {
+        _vm.closeCounter($event, 1)
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "color": "#ff6333"
+    },
+    attrs: {
+      "eventid": '14'
+    },
+    on: {
+      "click": function($event) {
+        _vm.closeCounter($event, 2)
+      }
+    }
+  }, [_vm._v("确定")])])])]) : _vm._e(), _vm._v(" "), _c('i-button', {
     staticClass: "bottom_btn",
     attrs: {
       "type": "ghost",
       "long": true,
-      "eventid": '11',
-      "mpcomid": '12'
+      "eventid": '15',
+      "mpcomid": '17'
     },
     on: {
       "click": _vm.addOrder
@@ -762,8 +906,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "visible": _vm.showSettle,
       "actions": _vm.settleList,
-      "eventid": '12',
-      "mpcomid": '13'
+      "eventid": '16',
+      "mpcomid": '18'
     },
     on: {
       "change": function($event) {
@@ -775,8 +919,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "visible": _vm.showMode,
       "actions": _vm.modeList,
       "show-cancel": "",
-      "eventid": '13',
-      "mpcomid": '14'
+      "eventid": '17',
+      "mpcomid": '19'
     },
     on: {
       "cancel": function($event) {
@@ -789,12 +933,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }), _vm._v(" "), _c('i-message', {
     attrs: {
       "id": "message",
-      "mpcomid": '15'
+      "mpcomid": '20'
     }
   }), _vm._v(" "), _c('i-toast', {
     attrs: {
       "id": "toast",
-      "mpcomid": '16'
+      "mpcomid": '21'
     }
   })], 1)
 }

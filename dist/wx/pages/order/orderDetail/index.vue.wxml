@@ -24,7 +24,7 @@
         <view class="_view data-v-6fbeb1a8 pro_content">
           <view class="_view data-v-6fbeb1a8 detail_module"></view>
           <view class="_view data-v-6fbeb1a8 pro_title">{{item.goodsName}}</view>
-          <view class="_view data-v-6fbeb1a8 pro_spec">{{item.title}}</view>
+          <view class="_view data-v-6fbeb1a8 pro_spec" wx:if="{{item.title !== item.goodsName}}">{{item.title}}</view>
           <view class="_view data-v-6fbeb1a8 pro_desc">{{item.describe}}</view>
           <view class="_view data-v-6fbeb1a8 pro_foot">数量：{{item.num}}    单价：{{item.price}}   金额：{{item.amountOfMoney}}</view>
         </view>

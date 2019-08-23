@@ -1,5 +1,5 @@
 .i-swipeout-wrap{
-    border-bottom:#dddee1 solid 1px;
+    border-bottom:#e9eaec solid 1rpx;
     background:#fff;
     position:relative;
     overflow:hidden

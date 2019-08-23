@@ -27,7 +27,7 @@
                 <view class="pro_content">
                     <view class="detail_module"></view>
                     <view class="pro_title">{{item.goodsName}}</view>
-                    <view class="pro_spec">{{item.title}}</view>
+                    <view class="pro_spec" v-if="item.title !== item.goodsName">{{item.title}}</view>
                     <view class="pro_desc">{{item.describe}}</view>
                     <view class="pro_foot">数量：{{item.num}} &nbsp;&nbsp;&nbsp;单价：{{item.price}}&nbsp;&nbsp;&nbsp;金额：{{item.amountOfMoney}}</view>
                 </view>
@@ -365,7 +365,7 @@
     }
     .order_pro{
         background-color: rgb(255, 255, 255);
-        border-bottom: 1rpx solid #dddee1;
+        border-bottom: 1rpx solid #e9eaec;
         display: flex;
         align-items: center;
     }

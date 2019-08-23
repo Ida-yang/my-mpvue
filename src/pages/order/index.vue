@@ -2,9 +2,11 @@
     <div class="order_wrap">
         <!-- 查询 -->
         <view class="order_search">
-            <i-icon type="search" size="16" color="#80848f" class="order_search_icon" />
-            <input v-model="searchList.searchName" placeholder="请输入公司名称查询" maxlength="50" class="order_search_input" confirm-type="search" @input="handleInput($event,1)" @confirm="search" />
-            <i-icon v-if="isValue" type="close" size="14" color="#80848f" class="order_search_icon" @click="closeSearch" />
+            <view class="order_searck_box">
+                <i-icon type="search" size="16" color="#80848f" class="order_search_icon" />
+                <input v-model="searchList.searchName" placeholder="请输入公司名称查询" maxlength="50" class="order_search_input" confirm-type="search" @input="handleInput($event,1)" @confirm="search" />
+                <i-icon v-if="isValue" type="close" size="14" color="#80848f" class="order_search_icon" @click="closeSearch" />
+            </view>
         </view>
         <i-tabs @change="changeBar" i-class="order_tabs">
             <i-tab key="first" :title="firstItem">
@@ -27,7 +29,7 @@
         <view class="detail_module"></view>
 
         <!-- 列表 -->
-        <i-swipeout i-class="i-swipeout-demo-item" :operateWidth="60" v-for="item in tableData" :key="item.id">
+        <i-swipeout i-class="i-swipeout-demo-item" :operateWidth="120" v-for="item in tableData" :key="item.id">
             <view slot="content" @click="toOrderDetail($event,item)">
                 <i-cell 
                     i-class="cell_content" 
@@ -49,6 +51,9 @@
                 <view class="i-swipeout-button-item" style="width:60px;background-color:#f5f5f5" @click="toUpdateOrder($event,item)">
                     <i-icon size="24" type="editor" style="color:#80848f"></i-icon>
                 </view>
+                <view class="i-swipeout-button-item" style="width:60px;background-color:#f56c6c" @click="toDeleteOrder($event,item)">
+                    <i-icon size="24" type="trash" style="color:#fff"></i-icon>
+                </view>
             </view>
         </i-swipeout>
 
@@ -63,6 +68,14 @@
         <view class="order_add_btn" @click="toAddOrder">
             <i-icon type="add" size="24" color="#ff6633" />
         </view>
+
+        <i-action-sheet :visible="showDetele" :actions="deleteActions" show-cancel @cancel="cancelDelete" @change="deleteOrder" :mask-closable="false">
+            <view slot="header" style="padding: 16px">
+                <view style="color: #444;font-size: 16px">确定吗？</view>
+                <text>删除后无法恢复哦</text>
+            </view>
+        </i-action-sheet>
+        <i-message id="message" />
     </div>
 </template>
 
@@ -112,6 +125,16 @@
 
                 showFirst: false,
                 showSecond: false,
+
+                deleteId:'',
+
+                showDetele:false,
+                deleteActions:[
+                    {
+                        name: '删除',
+                        color: '#f56c6c'
+                    }
+                ],
             }
         },
 
@@ -261,14 +284,59 @@
                 config.information.orderDetailData = val
                 mpvue.navigateTo({ url })
             },
+            toDeleteOrder(e,val){
+                this.showDetele = true
+                this.deleteId = val.id
+            },
+            
+            cancelDelete(){
+                this.showDetele = false
+            },
+            deleteOrder(val){
+                const _this = this
+                let data = {
+                    id: this.deleteId
+                }
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'order/delete.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success: function (res) {
+                        if(res.data.code && res.data.code == "200"){
+                            _this.cancelDelete()
+                            $Message({
+                                content: '删除成功',
+                                type: 'success'
+                            });
+                            _this.loadData()
+                        }else if(res.data.msg && res.data.msg == 'error'){
+                            $Toast({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                            _this.cancelDelete()
+                        }else{
+                            $Message({
+                                content: res.data.msg,
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
+            }
         },
     }
 </script>
 
 <style>
     .order_wrap{
-        background-color: #fcfcfc;
-        padding-top: 50px;
+        background-color: #fafafa;
+        margin-top: 50px;
         margin-bottom: 40px
     }
     

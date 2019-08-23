@@ -2,15 +2,17 @@
     <div class="order_product_wrap">
         <!-- 查询 -->
         <view class="order_search">
-            <i-icon type="search" size="16" color="#80848f" class="order_search_icon" />
-            <input v-model="searchList.searchName" placeholder="请输入公司名称查询" maxlength="50" class="order_search_input" confirm-type="search" @input="handleInput($event,1)" @confirm="search" />
-            <i-icon v-if="isValue" type="close" size="14" color="#80848f" class="order_search_icon" @click="closeSearch" />
+            <view class="order_searck_box">
+                <i-icon type="search" size="16" color="#80848f" class="order_search_icon" />
+                <input v-model="searchList.searchName" placeholder="请输入公司名称查询" maxlength="50" class="order_search_input" confirm-type="search" @input="handleInput($event,1)" @confirm="search" />
+                <i-icon v-if="isValue" type="close" size="14" color="#80848f" class="order_search_icon" @click="closeSearch" />
+            </view>
         </view>
 
         <view class="order_product_content">
             <scroll-view scroll-y class="caption_wrap">
                 <i-collapse :name="activename" accordion i-class="order_collapse">
-                    <i-collapse-item title="全部商品" name="name1" i-class="order_collapse_item" @collapse="collapseClick($event,item,1)"></i-collapse-item>
+                    <i-collapse-item title="全部商品" name="name1" :class="allactive ? 'theme_color_text' : ''" i-class="order_collapse_item" @collapse="collapseClick($event,item,1)"></i-collapse-item>
                     <i-collapse-item v-for="(item,index) in classData" :key="index" :title="item.name" :name="item.id" i-class="order_collapse_item" i-collapse-title-wrap="order_collapse_title" @collapse="collapseClick($event,item,2)">
                         <view slot="content">
                             <p v-for="(el,i) in item.next" :key="i" class="order_collapse_c_p" :class="el.active ? 'theme_color_text' : ''" @click="collapseItem($event,el,2)">{{el.name}}</p>
@@ -19,18 +21,31 @@
                 </i-collapse>
             </scroll-view>
             <scroll-view scroll-y class="product_wrap">
-                <view v-for="item in productData" :key="item.id" class="product_item">
-                    <p style="margin-bottom:8px">{{item.tbGoods.goodsName}}</p>
-                    <view class="product_item_c">
-                        <image :src="item.proImage" style="width:70px;height:70px" />
-                        <view class="product_item_price">
-                            <p style="margin-bottom:10px">{{item.title}}</p>
-                            <p><span style="color:#e62c2c;">￥{{item.tbGoods.price}}</span> /{{item.tbGoods.unit}}</p>
+                <view v-for="(el,i) in productData" :key="el.id" class="product_item">
+                    <view v-for="(item,index) in el.itemList" :key="item.id" v-if="el.itemList.length == 1">
+                        <p style="margin-bottom:8px">{{item.goodsName}}</p>
+                        <view class="product_item_c">
+                            <image :src="item.proImage" style="width:70px;height:70px" />
+                            <view class="product_item_price">
+                                <p><span style="color:#e62c2c;">￥{{item.price}}</span> / {{item.unit}}</p>
+                                <p style="margin-top:5px" v-if="item.title !== el.goodsName">{{item.title}}</p>
+                            </view>
+                            <view class="product_item_add" @click="showCounters($event,el,item)">
+                                <i-icon type="add" size="20" color="#fff" />
+                            </view>
                         </view>
-                        <view class="product_item_counter">
-                            <span class="counter_btn" :class="item.countNum == 0 ? 'gray_color_text' : ''" @click="countReduce($event,item)">-</span>
-                            <input v-model="item.countNum" class="counter_text" @input="countInput($event,item)"></input>
-                            <span class="counter_btn" @click="countAdd($event,item)">+</span>
+                    </view>
+                    <view v-if="el.itemList.length > 1">
+                        <p style="margin-bottom:8px">{{el.goodsName}}</p>
+                        <view class="product_item_c">
+                            <image :src="el.itemList[0].proImage" style="width:70px;height:70px" />
+                            <view class="product_item_price">
+                                <p><span style="color:#e62c2c;">￥{{el.price}}</span> / {{el.unit}}</p>
+                                <p style="margin-top:30px;color:#80848f">{{el.itemList.length}}中规格可选</p>
+                            </view>
+                            <view class="product_item_shopping" @click="showItemList($event,el)">
+                                <i-icon type="publishgoods_fill" size="20" color="#fff" />
+                            </view>
                         </view>
                     </view>
                 </view>
@@ -44,6 +59,71 @@
                 合计<span style="color:#e62c2c">￥{{totalAmount}}</span> -->
                 <i-button @click="addProduct" type="subject" i-class="inline_btn">确定</i-button>
             <!-- </span> -->
+        </view>
+        
+        <view class="product_item_more" v-if="showMore">
+            <view class="item_more_head"></view>
+            <view class="item_more_content">
+                <i-icon type="close" color="#bebebe" size="20" class="item_more_close" @click="closeItemList" />
+                <view class="item_more_goods">
+                    <image :src="proItemData.itemList[0].proImage" style="width:100px;height:100px;" />
+                    <p style="margin-left:24px;">{{proItemData.goodsName}}</p>
+                </view>
+                <scroll-view scroll-y class="item_more_scroll_wrap">
+                    <view v-for="sub in proItemData.itemList" :key="sub.id" class="item_more_goods_item">
+                        <view class="goods_item_head">
+                            <image :src="sub.proImage" style="width:20px;height:20px;" />
+                            <span style="margin-left:10px">
+                                {{sub.goodsSpec}}
+                                <span style="color:#80848f">({{sub.goodsCode}})</span>
+                            </span>
+                        </view>
+                        <view class="goods_item_foot">
+                            <p style="color:#80848f">市场价 ￥{{sub.price}} / {{sub.unit}}</p>
+                            <p>
+                                <span style="color:#f56c6c">￥{{sub.discountAfter}}</span>
+                                <span style="color:#80848f"> / {{sub.unit}}</span>
+                            </p>
+                        </view>
+                        <view class="product_item_add" style="margin-bottom:20px" @click="showCounters($event,1,sub)">
+                            <i-icon type="add" size="20" color="#fff" />
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+        <view class="product_counter" v-if="showCounter">
+            <view class="counter_wrap">
+                <view class="counter_head">{{countProduct.goodsName}}</view>
+                <view class="counter_content">
+                    <i-cell title="数量" i-class="simple_cell" i-cell-text="color_495060_text">
+                        <view slot="footer" class="counter_item">
+                            <span class="counter_btn" :class="countProduct.countNum == 0 ? 'gray_color_text' : ''" @click="itemcountReduce">-</span>
+                            <input :value="countProduct.countNum" type="number" class="counter_text" @input="itemCountInput($event,1)"></input>
+                            <span class="counter_btn" @click="itemcountAdd">+</span>
+                        </view>
+                    </i-cell>
+                    <i-input v-model="countProduct.price" title="单价" right type="number" maxlength="11" @input="itemCountInput($event,2)" />
+                    <i-cell title="消费金额" :value="countProduct.amountOfMoney"  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
+                    <i-input v-model="countProduct.discount" title="折扣率(%)" right type="number" maxlength="3" @input="itemCountInput($event,3)" />
+                    <i-cell title="折扣金额" :value="countProduct.discountAmount"  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
+                    <i-cell title="折后金额" :value="countProduct.discountAfter"  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
+                </view>
+                <view class="counter_foot">
+                    <span style="border-right:1rpx solid #e9eaec" @click="closeCounter($event,1)">取消</span>
+                    <span style="color:#ff6333" @click="closeCounter($event,2)">确定</span>
+                </view>
+            </view>
+            <!-- <view class="product_item_counter">
+                <span class="counter_btn" :class="item.countNum == 0 ? 'gray_color_text' : ''" @click="countReduce($event,el,item)">-</span>
+                <input v-model="item.countNum" class="counter_text" @input="countInput($event,el,item)"></input>
+                <span class="counter_btn" @click="countAdd($event,el,item)">+</span>
+            </view>
+            <view class="counter_item">
+                <span class="counter_btn" :class="sub.countNum == 0 ? 'gray_color_text' : ''" @click="itemcountReduce($event,sub)">-</span>
+                <input :value="sub.countNum" class="counter_text" @input="itemcountInput($event,sub)"></input>
+                <span class="counter_btn" @click="itemcountAdd($event,sub)">+</span>
+            </view> -->
         </view>
     </div>
 </template>
@@ -61,6 +141,8 @@
                 noMore:false,
                 classData:[],
                 productData:[],
+                proItemData:{},
+                countProduct:{},
 
                 searchList:{
                     searchName:'',
@@ -73,9 +155,13 @@
                 searchCriteria:false,
 
                 activename:'name1',
+                allactive:true,
+
+                showMore:false,
+                showCounter:false,
 
                 totalNumber:0,
-                totalAmount:0
+                totalAmount:0,
             }
         },
 
@@ -111,6 +197,8 @@
                 })
             },
             loadData(){
+                let customerinfo = config.information.orderPoolNameData
+                console.log(customerinfo)
                 const _this = this
                 let data = {
                     searchName: this.searchList.searchName,
@@ -120,7 +208,7 @@
                 }
                 wx.request({
                     method:'post',
-                    url: config.defaulthost + 'goods/search.do?cId=' + config.userData.cId,  //接口地址
+                    url: config.defaulthost + 'goods/searchGoods.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
                         "Content-Type": "application/x-www-form-urlencoded",
@@ -129,13 +217,28 @@
                     success: function (res) {
                         let info = res.data.map.goods
 
-                        info.forEach(el => {
-                            el.countNum = 0
-                            if(el.image){
-                                el.proImage = config.sourcehost + 'product/' + config.userData.cId + '/' + el.image
-                            }else{
-                                el.proImage = '../../../static/images/noProduct.png'
-                            }
+                        info.forEach(item => {
+                            item.itemList.forEach(el => {
+                                el.goodsName = item.goodsName
+                                el.discount = customerinfo.discount
+                                el.discountAfter = parseFloat(el.discount) * parseFloat(el.price) / 100
+                                el.countNum = 0
+                                if(el.image){
+                                    el.proImage = config.sourcehost + 'product/' + config.userData.cId + '/' + el.image
+                                }else{
+                                    el.proImage = '../../../static/images/noProduct.png'
+                                }
+                                if(el.spec1 && !el.spec2 && !el.spec3){
+                                    // console.log('只有一个')
+                                    el.goodsSpec = el.spec1
+                                }else if(el.spec1 && el.spec2 && !el.spec3){
+                                    // console.log('有两个')
+                                    el.goodsSpec = el.spec1 + ', ' + el.spec2
+                                }else if(el.spec1 && el.spec2 && el.spec3){
+                                    // console.log('有三个')
+                                    el.goodsSpec = el.spec1 + ', ' + el.spec2 + ', ' + el.spec3
+                                }
+                            });
                         });
 
                         if(_this.init === true){
@@ -179,8 +282,10 @@
             collapseClick(e,val,index){
                 if(index == 1){
                     this.searchList.classification_id = ''
+                    this.allactive = true
                 }else if(index == 2){
                     this.searchList.classification_id = val.id
+                    this.allactive = false
                 }
                 
                 this.search()
@@ -201,53 +306,145 @@
                 this.search()
             },
 
-            countReduce(e,val){
-                this.productData.forEach(el => {
-                    if(el.id == val.id){
-                        if(el.countNum == 0){
-                            return
-                        }else{
-                            el.countNum --
+            showCounters(e,row,val){
+                this.showCounter = true
+
+                if(row !== 1){
+                    this.proItemData = row
+                }
+                this.countProduct = val
+            },
+            closeCounter(e,val){
+                if(val == 2){
+                    this.proItemData.itemList.forEach(el => {
+                        if(el.id == this.countProduct.id){
+                            // console.log(el,'替换小的值')
+                            el = this.countProduct
                         }
+                    });
+
+                    this.productData.forEach(item => {
+                        if(item.id == this.proItemData.id){
+                            // console.log(item,'替换大的值')
+                            item = this.proItemData
+                        }
+                    });
+                }
+                this.showCounter = false
+
+                this.countAll()
+            },
+
+            showItemList(e,row){
+                this.showMore = true
+                this.proItemData = row
+                this.countProduct = row
+            },
+            closeItemList(){
+                this.showMore = false
+
+                this.countAll()
+            },
+
+            countReduce(e,row,val){
+                this.productData.forEach(item => {
+                    if(item.id == row.id){
+                        item.itemList.forEach(el => {
+                            if(el.id == val.id){
+                                if(el.countNum == 0){
+                                    return
+                                }else{
+                                    el.countNum --
+                                }
+                            }
+                        });
                     }
                 });
 
                 this.countAll()
             },
-            countAdd(e,val){
-                this.productData.forEach(el => {
-                    if(el.id == val.id){
-                        el.countNum ++
+            countAdd(e,row,val){
+                this.productData.forEach(item => {
+                    if(item.id == row.id){
+                        item.itemList.forEach(el => {
+                            if(el.id == val.id){
+                                el.countNum ++
+                            }
+                        });
                     }
                 });
 
                 this.countAll()
             },
-            countInput(e,val){
+            countInput(e,row,val){
                 let value = e.target.value
 
-                this.productData.forEach(el => {
-                    if(el.id == val.id){
-                        el.countNum = parseInt(value)
+                this.productData.forEach(item => {
+                    if(item.id == row.id){
+                        item.itemList.forEach(el => {
+                            if(el.id == val.id){
+                                el.countNum = parseInt(value)
+                            }
+                        });
                     }
                 });
 
                 this.countAll()
+            },
+
+            itemcountReduce(){
+                if(this.countProduct.countNum == 0){
+                    return
+                }else{
+                    this.countProduct.countNum --
+                }
+
+                this.countdiscount()
+            },
+            itemcountAdd(){
+                this.countProduct.countNum ++
+
+                this.countdiscount()
+            },
+            itemCountInput(e,val){
+                if(val == 1){
+                    this.countProduct.countNum = e.target.value
+                }else if(val == 2){
+                    this.countProduct.price = e.mp.detail
+                }else if(val == 3){
+                    this.countProduct.discount = e.mp.detail
+                }
+
+                this.countdiscount()
+            },
+
+            countdiscount(){
+                let a = 0
+                let b = 0
+                let c = 0
+
+                a = parseInt(this.countProduct.countNum) * parseFloat(this.countProduct.price)
+                b = parseFloat(this.countProduct.discount) * a / 100
+                c = a - b
+                console.log(a,b,c)
+                this.countProduct.amountOfMoney = a.toFixed(2)
+                this.countProduct.discountAfter = b.toFixed(2)
+                this.countProduct.discountAmount = c.toFixed(2)
             },
 
             countAll(){
                 let num = 0
                 let amount = 0
-                this.productData.forEach(el => {
-                    if(el.countNum){
-                        let a = 0
-                        num += el.countNum
-                        a = el.countNum * el.tbGoods.price
-                        amount += a
-                    }
+                this.productData.forEach(item => {
+                    item.itemList.forEach(el => {
+                        if(el.countNum){
+                            let a = 0
+                            num += el.countNum
+                            a = el.countNum * item.price
+                            amount += a
+                        }
+                    });
                 });
-
-                console.log(num,amount)
 
                 this.totalNumber = num
                 this.totalAmount = amount
@@ -255,14 +452,14 @@
 
 
             addProduct(){
-                // let productData = []
-                // let orderDetails = []
                 let newArr = new Array()
 
-                this.productData.forEach((el,i) => {
-                    if(el.countNum){
-                        newArr.push(el)
-                    }
+                this.productData.forEach(item => {
+                    item.itemList.forEach(el => {
+                        if(el.countNum){
+                            newArr.push(el)
+                        }
+                    });
                 });
 
                 config.information.orderProductData = {
@@ -282,11 +479,11 @@
 <style>
     .order_product_wrap{
         background-color: #fafafa;
-        padding-top: 50px;
+        margin-top: 50px;
         margin-bottom: 40px
     }
     .order_product_content{
-        height: calc(100vh - 80px);
+        height: calc(100vh - 100px);
         display: flex
     }
     .caption_wrap{

@@ -22,7 +22,7 @@
     pointer-events:none;
     box-sizing:border-box;
     border:0 solid #e9eaec;
-    border-bottom-width:1px
+    border-bottom-width:1rpx
 }
 .i-tabs-scroll{
     display:block;

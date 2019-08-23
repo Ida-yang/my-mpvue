@@ -545,9 +545,9 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       staticClass: "detail_module"
     }), _vm._v(" "), _c('view', {
       staticClass: "pro_title"
-    }, [_vm._v(_vm._s(item.goodsName))]), _vm._v(" "), _c('view', {
+    }, [_vm._v(_vm._s(item.goodsName))]), _vm._v(" "), (item.title !== item.goodsName) ? _c('view', {
       staticClass: "pro_spec"
-    }, [_vm._v(_vm._s(item.title))]), _vm._v(" "), _c('view', {
+    }, [_vm._v(_vm._s(item.title))]) : _vm._e(), _vm._v(" "), _c('view', {
       staticClass: "pro_desc"
     }, [_vm._v(_vm._s(item.describe))]), _vm._v(" "), _c('view', {
       staticClass: "pro_foot"

@@ -2,11 +2,11 @@
 
 .order_product_wrap {
   background-color: #fafafa;
-  padding-top: 100rpx;
+  margin-top: 100rpx;
   margin-bottom: 80rpx;
 }
 .order_product_content {
-  height: calc(100vh - 160rpx);
+  height: calc(100vh - 200rpx);
   display: flex;
 }
 .caption_wrap {

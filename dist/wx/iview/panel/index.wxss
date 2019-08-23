@@ -27,8 +27,8 @@
     pointer-events:none;
     box-sizing:border-box;
     border:0 solid #e9eaec;
-    border-top-width:1px;
-    border-bottom-width:1px
+    border-top-width:1rpx;
+    border-bottom-width:1rpx
 }
 .i-panel-without-border::after{
     border:0 none}

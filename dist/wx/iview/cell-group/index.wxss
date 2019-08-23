@@ -1,4 +1,4 @@
 .i-cell-group{
     border:0 solid #e9eaec;
-    border-bottom-width:1px;
+    border-bottom-width:1rpx;
 }

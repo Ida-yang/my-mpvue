@@ -14,6 +14,9 @@ const userData = {
     private_deptid:2,
     roleid:78,
     second_id:61,
+    corporate_name:'广州云纵互联网技术有限公司',
+    private_phone:'18312120303',
+    role_name:'客户经理',
     portrait:'https://crm.yunzoe.com/upload/201901973891/34d21231-7ec6-461d-9445-647ac98a81e1.png'
 }
 const information = {
