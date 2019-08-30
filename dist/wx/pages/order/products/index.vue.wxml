@@ -37,7 +37,7 @@
             <view class="_view data-v-74545b2d product_item_c">
               <image src="{{el.itemList[0].proImage}}" style="width:70px;height:70px" class="_image data-v-74545b2d"></image>
               <view class="_view data-v-74545b2d product_item_price">
-                <view class="_p data-v-74545b2d"><label style="color:#e62c2c;" class="_span data-v-74545b2d">￥{{el.price}}</label> / {{el.unit}}</view>
+                <view class="_p data-v-74545b2d"><label style="color:#e62c2c;" class="_span data-v-74545b2d">￥{{el.minprice}}</label><label style="font-size:12px" class="_span data-v-74545b2d"> 起</label></view>
                 <view style="margin-top:30px;color:#80848f" class="_p data-v-74545b2d">{{el.itemList.length}}中规格可选</view>
               </view>
               <view class="_view data-v-74545b2d product_item_shopping" bindtap="handleProxy" data-eventid="{{'6_'+i}}" data-comkey="{{$k}}">

@@ -19,8 +19,11 @@
                     <view class="product_item_c">
                         <image :src="item.proImage" style="width:70px;height:70px" />
                         <view class="product_item_price">
-                            <p style="margin-bottom:10px" v-if="item.title !== item.goodsName">{{item.title}}</p>
+                            <p style="margin-bottom:3px" v-if="item.title !== item.goodsName">{{item.title}}</p>
                             <p><span style="color:#e62c2c;">￥{{item.price}}</span> /{{item.unit}}</p>
+                        </view>
+                        <view class="product_item_amount">
+                            <span>数量：{{item.countNum}} &nbsp;&nbsp;&nbsp;总额：{{item.discountAfter}}</span>
                         </view>
                         <view class="product_item_update" @click="showCounters($event,item)">
                             <span style="color:#ff6333;font-size:14px">修改</span>
@@ -434,6 +437,8 @@
                                 content: '新增成功',
                                 type: 'success'
                             });
+                            config.information.orderPoolNameData = ''
+                            config.information.orderPoolNameData = ''
                             _this.toOrder()
                         }else{
                             $Message({

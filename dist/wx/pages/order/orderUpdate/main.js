@@ -23,7 +23,7 @@ app.$mount();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_787adcb8_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_787adcb8_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(118);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
@@ -83,15 +83,34 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__ = __webpack_require__(118);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dist_wx_iview_base_index__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__dist_wx_iview_base_index__);
-
-
-var _methods;
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -151,7 +170,8 @@ var _methods;
         return {
             current: '编辑订单',
 
-            addList: {
+            updateList: {
+                id: '',
                 ascriptionId: '', //负责人,取客户负责人
                 customerpoolId: '',
                 customerpoolName: '',
@@ -165,7 +185,7 @@ var _methods;
             productData: [],
             productInfo: {
                 totalAmount: 0,
-                discountRate: '100',
+                discountAfter: 0,
                 taxRate: '0',
                 realAmount: 0
             },
@@ -175,7 +195,10 @@ var _methods;
             showMode: false,
             modeList: [],
 
-            nowDate: ''
+            nowDate: '',
+
+            showCounter: false,
+            countProduct: {}
         };
     },
     onShow: function onShow() {
@@ -187,9 +210,9 @@ var _methods;
     },
 
 
-    methods: (_methods = {
+    methods: {
         loadData: function loadData() {
-            var product = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].information.orderProductData;
+            var product = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.orderProductData;
             if (product.orderProduct) {
                 if (this.productData.length == 0) {
                     // console.log(this.productData,'产品为空数组')
@@ -217,267 +240,344 @@ var _methods;
         loadProduct: function loadProduct() {
             var _this2 = this;
 
-            var anum = 0;
+            var anum = 0; //消费总金额
+            var bnum = 0; //税后总金额金额
+            var cnum = 0; //折税后金额
             this.productData.forEach(function (el) {
-                if (el.image) {
-                    el.proImage = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].sourcehost + 'product/' + __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].userData.cId + '/' + el.image;
-                } else {
-                    el.proImage = '../../../static/images/noProduct.png';
-                }
+                var xnum = parseFloat(el.price) * parseInt(el.countNum); //本产品总金额
+                el.amountOfMoney = xnum.toFixed(2);
 
-                var bnum = el.tbGoods.price * el.countNum;
-                anum += bnum;
+                anum += xnum;
+                bnum += parseFloat(el.discountAfter);
 
-                el.amountOfMoney = bnum.toFixed(2);
                 el.taxRate = _this2.productInfo.taxRate;
-                el.discount = _this2.productInfo.discountRate;
-                var discountAfter = parseFloat(_this2.productInfo.discountRate) * bnum / 100;
-                var taxAmount = parseFloat(_this2.productInfo.taxRate) * discountAfter / 100;
-                var discountAmount = bnum - discountAfter;
-                var taxAfter = discountAfter + taxAmount;
 
-                el.discountAmount = discountAmount.toFixed(2);
-                el.discountAfter = discountAfter.toFixed(2);
-                el.taxAmount = taxAmount.toFixed(2);
-                el.taxAfter = taxAfter.toFixed(2);
+                var ynum = parseFloat(el.taxRate) * parseFloat(el.discountAfter) / 100; //本产品税额
+                var znum = parseFloat(el.discountAfter) + ynum; //本产品税后金额
+                el.taxAmount = ynum.toFixed(2);
+                el.taxAfter = znum.toFixed(2);
+
+                cnum += znum;
             });
             this.productInfo.totalAmount = anum.toFixed(2);
-            var cnum = parseFloat(this.productInfo.discountRate) * anum / 100;
-            var dnum = parseFloat(this.productInfo.taxRate) * cnum / 100;
-            this.productInfo.realAmount = (cnum + dnum).toFixed(2);
+            this.productInfo.discountAfter = bnum.toFixed(2);
+            this.productInfo.realAmount = cnum.toFixed(2);
+
+            console.log(this.productData);
         },
         loadList: function loadList() {
             var _this = this;
-            var orderinfo = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].information.orderupdateData;
+            var info = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.orderupdateData;
+
             var data = {
-                id: orderinfo.id
+                id: info.id
+            };
+            wx.request({
+                method: 'post',
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'order/selectById.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                data: data,
+                header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    var info = res.data;
+                    _this.updateList = {
+                        id: info.id,
+                        ascriptionId: info.ascriptionId, //负责人,取客户负责人
+                        customerpoolId: info.customerpoolId,
+                        customerpoolName: info.customerName,
+                        deliveryAddress: info.deliveryAddress,
+                        deliveryMode: info.deliveryMode, //交货方式ID
+                        deliveryModeName: info.delivery,
+                        orderDetails: [],
+                        orderTime: info.orderTime,
+                        settlement: info.settlement //结算方式
+                    };
+
+                    var a = 0;
+                    var b = 0;
+                    var c = 0;
+                    var d = 0;
+                    var e = 0;
+
+                    var newArr = new Array();
+
+                    info.orderDetails.forEach(function (el) {
+                        el.countNum = el.num;
+                        if (el.image) {
+                            el.proImage = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].sourcehost + 'product/' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId + '/' + el.image;
+                        } else {
+                            el.proImage = '../../../static/images/noProduct.png';
+                        }
+                        a += el.amountOfMoney;
+                        b += el.discountAmount;
+                        c += el.discountAfter;
+                        d += el.taxAmount;
+                        e += el.taxAfter;
+
+                        newArr.push({
+                            amountOfMoney: el.amountOfMoney,
+                            commitTime: el.commitTime,
+                            discount: el.discount,
+                            discountAfter: el.discountAfter,
+                            discountAmount: el.discountAmount,
+                            goodsName: el.goodsName,
+                            image: el.image,
+                            proImage: el.proImage,
+                            id: el.itemId,
+                            num: el.num,
+                            countNum: el.num,
+                            price: el.price,
+                            taxAfter: el.taxAfter,
+                            taxAmount: el.taxAmount,
+                            taxRate: el.taxRate,
+                            title: el.title,
+                            unit: el.unit
+                        });
+                    });
+
+                    _this.productData = newArr;
+                    _this.productInfo = {
+                        totalAmount: a.toFixed(2),
+                        discountAfter: c.toFixed(2),
+                        taxRate: info.orderDetails[0].taxRate,
+                        realAmount: info.totalSum
+                    };
+
+                    console.log(_this.productData);
+                }
+            });
+        },
+        loadMode: function loadMode() {
+            var _this = this;
+            this.modeList = [];
+            var data = {
+                type: '交货方式'
             };
 
             wx.request({
                 method: 'post',
-                url: __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].defaulthost + 'order/selectById.do?cId=' + __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].userData.cId, //接口地址
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'typeInfo/getTypeInfoGroupByType.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
                 data: data,
                 header: {
                     "Content-Type": "application/x-www-form-urlencoded",
-                    'Cookie': __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].SESSIONID
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
                 },
                 success: function success(res) {
                     var info = res.data;
 
-                    info.orderDetails.forEach(function (el) {
-                        el.countNum = el.num;
+                    info.forEach(function (el) {
+                        _this.modeList.push({ id: el.id, name: el.typeName });
                     });
-                    _this.addList = {
-                        ascriptionId: '', //负责人,取客户负责人
-                        customerpoolId: '',
-                        customerpoolName: '',
-                        deliveryAddress: '',
-                        deliveryMode: '', //交货方式ID
-                        deliveryModeName: '',
-                        orderDetails: [],
-                        orderTime: '',
-                        settlement: '' //结算方式
-                    };
                 }
             });
-        }
-    }, __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_methods, 'loadList', function loadList() {}), __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_methods, 'loadMode', function loadMode() {
-        var _this = this;
-        this.modeList = [];
-        var data = {
-            type: '交货方式'
-        };
+        },
+        cellFocus: function cellFocus(e, val) {
+            var _this = this;
+            if (val == 1) {
+                this.showSettle = true;
+            } else if (val == 2) {
+                this.showMode = true;
+            } else if (val == 3) {
+                var data = {
+                    id: this.updateList.customerpoolId
+                };
+                wx.request({
+                    method: 'post',
+                    url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'customerpool/getPoolById.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                    data: data,
+                    header: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                    },
+                    success: function success(res) {
+                        var info = res.data.map.success;
+                        var customer_discount = '';
+                        var customer_taxRate = '';
+                        if (info.discount) {
+                            customer_discount = info.discount;
+                        } else {
+                            customer_discount = '100';
+                        }
+                        if (info.taxRate) {
+                            customer_taxRate = info.taxRate;
+                        } else {
+                            customer_taxRate = '0';
+                        }
+                        __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.orderPoolNameData = {
+                            taxRate: customer_taxRate,
+                            discount: customer_discount
+                        };
 
-        wx.request({
-            method: 'post',
-            url: __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].defaulthost + 'typeInfo/getTypeInfoGroupByType.do?cId=' + __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].userData.cId, //接口地址
-            data: data,
-            header: {
-                "Content-Type": "application/x-www-form-urlencoded",
-                'Cookie': __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].SESSIONID
-            },
-            success: function success(res) {
-                var info = res.data;
-
-                info.forEach(function (el) {
-                    _this.modeList.push({ id: el.id, name: el.typeName });
+                        var url = '../products/main';
+                        global.mpvue.navigateTo({ url: url });
+                    }
                 });
             }
-        });
-    }), __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_methods, 'cellFocus', function cellFocus(e, val) {
-        if (val == 1) {
-            this.showSettle = true;
-        } else if (val == 2) {
-            this.showMode = true;
-        } else if (val == 3) {
-            var url = '../products/main';
-            global.mpvue.navigateTo({ url: url });
-        }
-    }), __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_methods, 'handleInput', function handleInput(e, val) {
-        if (val == 1) {
-            this.addList.deliveryAddress = e.mp.detail;
-        } else if (val == 2) {
-            this.productInfo.discountRate = e.mp.detail;
+        },
+        handleInput: function handleInput(e, val) {
+            if (val == 1) {
+                this.updateList.deliveryAddress = e.mp.detail;
+            } else if (val == 2) {
+                this.productInfo.taxRate = e.mp.detail;
+                this.loadProduct();
+            }
+        },
+        dealChange: function dealChange(e, val) {
+            if (val == 1) {
+                this.updateList.orderTime = e.target.value;
+            }
+        },
+        sheetCancel: function sheetCancel(e, val) {
+            if (val == 2) {
+                this.showMode = false;
+            }
+        },
+        sheetChange: function sheetChange(e, val) {
+            var _this = this;
+            var index = e.target.index;
+            if (val == 1) {
+                this.settleList.forEach(function (a, i) {
+                    if (i == index) {
+                        _this.updateList.settlement = a.name;
+                        _this.showSettle = false;
+                    }
+                });
+            } else if (val == 2) {
+                this.modeList.forEach(function (b, j) {
+                    if (j == index) {
+                        _this.updateList.deliveryModeName = b.name;
+                        _this.updateList.deliveryMode = b.id;
+                        _this.showMode = false;
+                    }
+                });
+            }
+        },
+        showCounters: function showCounters(e, val) {
+            this.showCounter = true;
+
+            this.countProduct = val;
+        },
+        closeCounter: function closeCounter(e, val) {
+            var _this3 = this;
+
+            if (val == 2) {
+                this.productData.forEach(function (item) {
+                    if (item.id == _this3.countProduct.id) {
+                        // console.log(item,'替换大的值')
+                        item = _this3.countProduct;
+                    }
+                });
+            }
+            this.showCounter = false;
+
             this.loadProduct();
-        } else if (val == 3) {
-            this.productInfo.taxRate = e.mp.detail;
-            this.loadProduct();
-        }
-    }), __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_methods, 'dealChange', function dealChange(e, val) {
-        if (val == 1) {
-            this.addList.orderTime = e.target.value;
-        }
-    }), __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_methods, 'sheetCancel', function sheetCancel(e, val) {
-        if (val == 2) {
-            this.showMode = false;
-        }
-    }), __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_methods, 'sheetChange', function sheetChange(e, val) {
-        var _this = this;
-        var index = e.target.index;
-        if (val == 1) {
-            this.settleList.forEach(function (a, i) {
-                if (i == index) {
-                    _this.addList.settlement = a.name;
-                    _this.showSettle = false;
+        },
+        itemcountReduce: function itemcountReduce() {
+            if (this.countProduct.countNum == 0) {
+                return;
+            } else {
+                this.countProduct.countNum--;
+            }
+
+            this.countdiscount();
+        },
+        itemcountAdd: function itemcountAdd() {
+            this.countProduct.countNum++;
+
+            this.countdiscount();
+        },
+        itemCountInput: function itemCountInput(e, val) {
+            if (val == 1) {
+                this.countProduct.countNum = e.target.value;
+            } else if (val == 2) {
+                this.countProduct.price = e.mp.detail;
+            } else if (val == 3) {
+                this.countProduct.discount = e.mp.detail;
+            }
+
+            this.countdiscount();
+        },
+        countdiscount: function countdiscount() {
+            var a = 0;
+            var b = 0;
+            var c = 0;
+
+            a = parseInt(this.countProduct.countNum) * parseFloat(this.countProduct.price);
+            b = parseFloat(this.countProduct.discount) * a / 100;
+            c = a - b;
+            this.countProduct.discountAfter = b.toFixed(2);
+            this.countProduct.discountAmount = c.toFixed(2);
+        },
+        addOrder: function addOrder() {
+            var _this = this;
+
+            var newArr = new Array();
+            this.productData.forEach(function (element) {
+                console.log(element);
+                newArr.push({
+                    "itemId": element.id,
+                    "num": parseInt(element.countNum),
+                    "price": parseFloat(element.price),
+                    "commitTime": '',
+                    "amountOfMoney": element.amountOfMoney,
+                    "discount": element.discount,
+                    "discountAmount": element.discountAmount,
+                    "discountAfter": element.discountAfter,
+                    "taxRate": element.taxRate,
+                    "taxAmount": element.taxAmount,
+                    "taxAfter": element.taxAfter
+                });
+            });
+            var data = {
+                id: this.updateList.id,
+                ascriptionId: this.updateList.ascriptionId, //负责人,取客户负责人
+                customerpoolId: this.updateList.customerpoolId,
+                deliveryAddress: this.updateList.deliveryAddress,
+                deliveryMode: this.updateList.deliveryMode, //交货方式ID
+                orderDetails: newArr,
+                orderTime: this.updateList.orderTime,
+                settlement: this.updateList.settlement, //结算方式
+                totalSum: this.productInfo.realAmount,
+                pId: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.pId
+            };
+
+            wx.request({
+                method: 'post',
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'order/update.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                data: data,
+                header: {
+                    // "Content-Type": "application/x-www-form-urlencoded",
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    if (res.data.code && res.data.code == "200") {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: '编辑成功',
+                            type: 'success'
+                        });
+                        _this.toOrder();
+                    } else {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
+                            content: res.data.msg,
+                            type: 'error'
+                        });
+                    }
                 }
             });
-        } else if (val == 2) {
-            this.modeList.forEach(function (b, j) {
-                if (j == index) {
-                    _this.addList.deliveryModeName = b.name;
-                    _this.addList.deliveryMode = b.id;
-                    _this.showMode = false;
-                }
+        },
+        toOrder: function toOrder() {
+            wx.navigateBack({
+                delta: 1
             });
         }
-    }), __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_methods, 'countReduce', function countReduce(e, val) {
-        this.productData.forEach(function (el) {
-            if (el.id == val.id) {
-                if (el.countNum == 0) {
-                    return;
-                } else {
-                    el.countNum--;
-                }
-            }
-        });
-
-        this.loadProduct();
-    }), __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_methods, 'countAdd', function countAdd(e, val) {
-        this.productData.forEach(function (el) {
-            if (el.id == val.id) {
-                el.countNum++;
-            }
-        });
-
-        this.loadProduct();
-    }), __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_methods, 'countInput', function countInput(e, val) {
-        var value = e.target.value;
-
-        this.productData.forEach(function (el) {
-            if (el.id == val.id) {
-                el.countNum = parseInt(value);
-            }
-        });
-
-        this.loadProduct();
-    }), __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_methods, 'addOrder', function addOrder() {
-        var _this = this;
-
-        var newArr = new Array();
-        this.productData.forEach(function (element) {
-            console.log(element);
-            newArr.push({
-                "itemId": element.id,
-                "num": parseInt(element.countNum),
-                "price": parseFloat(element.tbGoods.price),
-                "commitTime": '',
-                "amountOfMoney": element.amountOfMoney,
-                "discount": element.discount,
-                "discountAmount": element.discountAmount,
-                "discountAfter": element.discountAfter,
-                "taxRate": element.taxRate,
-                "taxAmount": element.taxAmount,
-                "taxAfter": element.taxAfter
-            });
-        });
-        var data = {
-            ascriptionId: this.addList.ascriptionId, //负责人,取客户负责人
-            customerpoolId: this.addList.customerpoolId,
-            deliveryAddress: this.addList.deliveryAddress,
-            deliveryMode: this.addList.deliveryMode, //交货方式ID
-            orderDetails: newArr,
-            orderTime: this.addList.orderTime,
-            settlement: this.addList.settlement, //结算方式
-            totalSum: this.productInfo.realAmount,
-            pId: __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].userData.pId
-        };
-
-        console.log(data);
-
-        var flag = false;
-        if (data.orderDetails.length == 0) {
-            Object(__WEBPACK_IMPORTED_MODULE_2__dist_wx_iview_base_index__["$Toast"])({
-                content: '请选择产品',
-                type: 'warning'
-            });
-            flag = true;
-        }
-        if (!data.settlement) {
-            Object(__WEBPACK_IMPORTED_MODULE_2__dist_wx_iview_base_index__["$Toast"])({
-                content: '请选择结算方式',
-                type: 'warning'
-            });
-            flag = true;
-        }
-        if (!data.customerpoolId) {
-            Object(__WEBPACK_IMPORTED_MODULE_2__dist_wx_iview_base_index__["$Toast"])({
-                content: '请选择客户名称',
-                type: 'warning'
-            });
-            flag = true;
-        }
-        if (!data.orderTime) {
-            Object(__WEBPACK_IMPORTED_MODULE_2__dist_wx_iview_base_index__["$Toast"])({
-                content: '请选择订单时间',
-                type: 'warning'
-            });
-            flag = true;
-        }
-        if (flag) return;
-
-        wx.request({
-            method: 'post',
-            url: __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].defaulthost + 'order/insert.do?cId=' + __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].userData.cId, //接口地址
-            data: data,
-            header: {
-                // "Content-Type": "application/x-www-form-urlencoded",
-                'Cookie': __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].SESSIONID
-            },
-            success: function success(res) {
-                if (res.data.code && res.data.code == "200") {
-                    Object(__WEBPACK_IMPORTED_MODULE_2__dist_wx_iview_base_index__["$Message"])({
-                        content: '新增成功',
-                        type: 'success'
-                    });
-                    _this.toOrder();
-                } else {
-                    Object(__WEBPACK_IMPORTED_MODULE_2__dist_wx_iview_base_index__["$Message"])({
-                        content: res.data.msg,
-                        type: 'error'
-                    });
-                }
-            }
-        });
-    }), __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default()(_methods, 'toOrder', function toOrder() {
-        wx.navigateBack({
-            delta: 1
-        });
-    }), _methods)
+    }
 });
 
 /***/ }),
 
-/***/ 122:
+/***/ 118:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -504,7 +604,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_c('picker', {
     attrs: {
       "mode": "date",
-      "value": _vm.addList.orderTime,
+      "value": _vm.updateList.orderTime,
       "start": _vm.nowDate,
       "eventid": '0'
     },
@@ -516,10 +616,10 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     slot: "footer"
   }, [_c('view', {
     staticClass: "picker cell_picker"
-  }, [_vm._v("\n                " + _vm._s(_vm.addList.orderTime) + "\n                ")])])], 1), _vm._v(" "), _c('i-cell', {
+  }, [_vm._v("\n                " + _vm._s(_vm.updateList.orderTime) + "\n                ")])])], 1), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "客户名称",
-      "value": _vm.addList.customerpoolName,
+      "value": _vm.updateList.customerpoolName,
       "request": "",
       "i-class": "simple_cell",
       "i-cell-text": "color_495060_text",
@@ -528,7 +628,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "结算方式",
-      "value": _vm.addList.settlement,
+      "value": _vm.updateList.settlement,
       "request": "",
       "is-link": "",
       "i-class": "simple_cell",
@@ -544,7 +644,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "交货方式",
-      "value": _vm.addList.deliveryModeName,
+      "value": _vm.updateList.deliveryModeName,
       "is-link": "",
       "i-class": "simple_cell",
       "i-cell-text": "color_495060_text",
@@ -559,7 +659,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "产品",
-      "value": _vm.addList.orderDetails,
+      "value": _vm.updateList.orderDetails,
       "request": "",
       "is-link": "",
       "i-class": "simple_cell",
@@ -584,7 +684,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       staticStyle: {
         "margin-bottom": "8px"
       }
-    }, [_vm._v(_vm._s(item.tbGoods.goodsName))]), _vm._v(" "), _c('view', {
+    }, [_vm._v(_vm._s(item.goodsName))]), _vm._v(" "), _c('view', {
       staticClass: "product_item_c"
     }, [_c('image', {
       staticStyle: {
@@ -596,60 +696,32 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       }
     }), _vm._v(" "), _c('view', {
       staticClass: "product_item_price"
-    }, [_c('p', {
+    }, [(item.title !== item.goodsName) ? _c('p', {
       staticStyle: {
-        "margin-bottom": "10px"
+        "margin-bottom": "3px"
       }
-    }, [_vm._v(_vm._s(item.title))]), _vm._v(" "), _c('p', [_c('span', {
+    }, [_vm._v(_vm._s(item.title))]) : _vm._e(), _vm._v(" "), _c('p', [_c('span', {
       staticStyle: {
         "color": "#e62c2c"
       }
-    }, [_vm._v("￥" + _vm._s(item.tbGoods.price))]), _vm._v(" /" + _vm._s(item.tbGoods.unit))])], 1), _vm._v(" "), _c('view', {
-      staticClass: "product_item_counter"
-    }, [_c('span', {
-      staticClass: "counter_btn",
-      class: item.countNum == 0 ? 'gray_color_text' : '',
+    }, [_vm._v("￥" + _vm._s(item.price))]), _vm._v(" /" + _vm._s(item.unit))])], 1), _vm._v(" "), _c('view', {
+      staticClass: "product_item_amount"
+    }, [_c('span', [_vm._v("数量：" + _vm._s(item.countNum) + "    总额：" + _vm._s(item.discountAfter))])]), _vm._v(" "), _c('view', {
+      staticClass: "product_item_update",
       attrs: {
         "eventid": '4_' + index
       },
       on: {
         "click": function($event) {
-          _vm.countReduce($event, item)
+          _vm.showCounters($event, item)
         }
       }
-    }, [_vm._v("-")]), _vm._v(" "), _c('input', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
-        value: (item.countNum),
-        expression: "item.countNum"
-      }],
-      staticClass: "counter_text",
-      attrs: {
-        "eventid": '5_' + index
-      },
-      domProps: {
-        "value": (item.countNum)
-      },
-      on: {
-        "input": [function($event) {
-          if ($event.target.composing) { return; }
-          item.countNum = $event.target.value
-        }, function($event) {
-          _vm.countInput($event, item)
-        }]
+    }, [_c('span', {
+      staticStyle: {
+        "color": "#ff6333",
+        "font-size": "14px"
       }
-    }), _vm._v(" "), _c('span', {
-      staticClass: "counter_btn",
-      attrs: {
-        "eventid": '6_' + index
-      },
-      on: {
-        "click": function($event) {
-          _vm.countAdd($event, item)
-        }
-      }
-    }, [_vm._v("+")])])])], 1)
+    }, [_vm._v("修改")])])])], 1)
   })), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "销售金额",
@@ -658,26 +730,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "i-cell-text": "color_495060_text",
       "mpcomid": '6'
     }
-  }), _vm._v(" "), _c('i-input', {
+  }), _vm._v(" "), _c('i-cell', {
     attrs: {
-      "title": "折扣率(%)",
-      "right": "",
-      "type": "number",
-      "maxlength": "3",
-      "eventid": '7',
+      "title": "折后金额",
+      "value": _vm.productInfo.discountAfter,
+      "i-class": "simple_cell",
+      "i-cell-text": "color_495060_text",
       "mpcomid": '7'
-    },
-    on: {
-      "input": function($event) {
-        _vm.handleInput($event, 2)
-      }
-    },
-    model: {
-      value: (_vm.productInfo.discountRate),
-      callback: function($$v) {
-        _vm.productInfo.discountRate = $$v
-      },
-      expression: "productInfo.discountRate"
     }
   }), _vm._v(" "), _c('i-input', {
     attrs: {
@@ -685,12 +744,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "right": "",
       "type": "number",
       "maxlength": "3",
-      "eventid": '8',
+      "eventid": '5',
       "mpcomid": '8'
     },
     on: {
       "input": function($event) {
-        _vm.handleInput($event, 3)
+        _vm.handleInput($event, 2)
       }
     },
     model: {
@@ -714,7 +773,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "right": "",
       "type": "textarea",
       "maxlength": "200",
-      "eventid": '9',
+      "eventid": '6',
       "mpcomid": '10'
     },
     on: {
@@ -723,11 +782,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       }
     },
     model: {
-      value: (_vm.addList.deliveryAddress),
+      value: (_vm.updateList.deliveryAddress),
       callback: function($$v) {
-        _vm.addList.deliveryAddress = $$v
+        _vm.updateList.deliveryAddress = $$v
       },
-      expression: "addList.deliveryAddress"
+      expression: "updateList.deliveryAddress"
     }
   })], 1), _vm._v(" "), _c('p', {
     staticClass: "request_tip"
@@ -735,13 +794,144 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticStyle: {
       "color": "#f56c6c"
     }
-  }, [_vm._v(" * ")]), _vm._v("为必填项")]), _vm._v(" "), _c('i-button', {
+  }, [_vm._v(" * ")]), _vm._v("为必填项")]), _vm._v(" "), (_vm.showCounter) ? _c('view', {
+    staticClass: "product_counter"
+  }, [_c('view', {
+    staticClass: "counter_wrap"
+  }, [_c('view', {
+    staticClass: "counter_head"
+  }, [_vm._v(_vm._s(_vm.countProduct.goodsName))]), _vm._v(" "), _c('view', {
+    staticClass: "counter_content"
+  }, [_c('i-cell', {
+    attrs: {
+      "title": "数量",
+      "i-class": "simple_cell",
+      "i-cell-text": "color_495060_text",
+      "mpcomid": '12'
+    }
+  }, [_c('view', {
+    staticClass: "counter_item",
+    slot: "footer"
+  }, [_c('span', {
+    staticClass: "counter_btn",
+    class: _vm.countProduct.countNum == 0 ? 'gray_color_text' : '',
+    attrs: {
+      "eventid": '7'
+    },
+    on: {
+      "click": _vm.itemcountReduce
+    }
+  }, [_vm._v("-")]), _vm._v(" "), _c('input', {
+    staticClass: "counter_text",
+    attrs: {
+      "value": _vm.countProduct.countNum,
+      "type": "number",
+      "eventid": '8'
+    },
+    on: {
+      "input": function($event) {
+        _vm.itemCountInput($event, 1)
+      }
+    }
+  }), _vm._v(" "), _c('span', {
+    staticClass: "counter_btn",
+    attrs: {
+      "eventid": '9'
+    },
+    on: {
+      "click": _vm.itemcountAdd
+    }
+  }, [_vm._v("+")])])]), _vm._v(" "), _c('i-input', {
+    attrs: {
+      "title": "单价",
+      "right": "",
+      "type": "number",
+      "maxlength": "11",
+      "eventid": '10',
+      "mpcomid": '13'
+    },
+    on: {
+      "input": function($event) {
+        _vm.itemCountInput($event, 2)
+      }
+    },
+    model: {
+      value: (_vm.countProduct.price),
+      callback: function($$v) {
+        _vm.countProduct.price = $$v
+      },
+      expression: "countProduct.price"
+    }
+  }), _vm._v(" "), _c('i-input', {
+    attrs: {
+      "title": "折扣率(%)",
+      "right": "",
+      "type": "number",
+      "maxlength": "3",
+      "eventid": '11',
+      "mpcomid": '14'
+    },
+    on: {
+      "input": function($event) {
+        _vm.itemCountInput($event, 3)
+      }
+    },
+    model: {
+      value: (_vm.countProduct.discount),
+      callback: function($$v) {
+        _vm.countProduct.discount = $$v
+      },
+      expression: "countProduct.discount"
+    }
+  }), _vm._v(" "), _c('i-cell', {
+    attrs: {
+      "title": "折扣金额",
+      "value": _vm.countProduct.discountAmount,
+      "i-class": "simple_cell",
+      "i-cell-text": "color_495060_text",
+      "mpcomid": '15'
+    }
+  }), _vm._v(" "), _c('i-cell', {
+    attrs: {
+      "title": "折后金额",
+      "value": _vm.countProduct.discountAfter,
+      "i-class": "simple_cell",
+      "i-cell-text": "color_495060_text",
+      "mpcomid": '16'
+    }
+  })], 1), _vm._v(" "), _c('view', {
+    staticClass: "counter_foot"
+  }, [_c('span', {
+    staticStyle: {
+      "border-right": "1rpx solid #e9eaec"
+    },
+    attrs: {
+      "eventid": '12'
+    },
+    on: {
+      "click": function($event) {
+        _vm.closeCounter($event, 1)
+      }
+    }
+  }, [_vm._v("取消")]), _vm._v(" "), _c('span', {
+    staticStyle: {
+      "color": "#ff6333"
+    },
+    attrs: {
+      "eventid": '13'
+    },
+    on: {
+      "click": function($event) {
+        _vm.closeCounter($event, 2)
+      }
+    }
+  }, [_vm._v("确定")])])])]) : _vm._e(), _vm._v(" "), _c('i-button', {
     staticClass: "bottom_btn",
     attrs: {
       "type": "ghost",
       "long": true,
-      "eventid": '10',
-      "mpcomid": '12'
+      "eventid": '14',
+      "mpcomid": '17'
     },
     on: {
       "click": _vm.addOrder
@@ -750,8 +940,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "visible": _vm.showSettle,
       "actions": _vm.settleList,
-      "eventid": '11',
-      "mpcomid": '13'
+      "eventid": '15',
+      "mpcomid": '18'
     },
     on: {
       "change": function($event) {
@@ -763,8 +953,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "visible": _vm.showMode,
       "actions": _vm.modeList,
       "show-cancel": "",
-      "eventid": '12',
-      "mpcomid": '14'
+      "eventid": '16',
+      "mpcomid": '19'
     },
     on: {
       "cancel": function($event) {
@@ -777,12 +967,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }), _vm._v(" "), _c('i-message', {
     attrs: {
       "id": "message",
-      "mpcomid": '15'
+      "mpcomid": '20'
     }
   }), _vm._v(" "), _c('i-toast', {
     attrs: {
       "id": "toast",
-      "mpcomid": '16'
+      "mpcomid": '21'
     }
   })], 1)
 }

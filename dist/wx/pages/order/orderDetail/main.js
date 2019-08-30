@@ -169,6 +169,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -237,6 +238,7 @@ if (false) {(function () {
                     var c = 0;
                     var d = 0;
                     var e = 0;
+                    var f = 0;
 
                     _this.productsData.forEach(function (el) {
                         if (el.image) {
@@ -249,6 +251,7 @@ if (false) {(function () {
                         c += el.discountAfter;
                         d += el.taxAmount;
                         e += el.taxAfter;
+                        f += el.num;
                     });
 
                     _this.orderDetail.amountOfMoney = a.toFixed(2);
@@ -256,6 +259,7 @@ if (false) {(function () {
                     _this.orderDetail.discountAfter = c.toFixed(2);
                     _this.orderDetail.taxAmount = d.toFixed(2);
                     _this.orderDetail.taxAfter = e.toFixed(2);
+                    _this.orderDetail.amountofNum = f;
 
                     _this.loadState();
                     _this.loadLog();
@@ -559,14 +563,22 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "full": "",
       "desc": "",
       "title": "金额信息",
-      "mpcomid": '14'
+      "mpcomid": '15'
     }
   }, [_c('i-cell', {
     attrs: {
       "i-class": "card_cell",
+      "title": "总数量",
+      "value": _vm.orderDetail.amountofNum,
+      "mpcomid": '9'
+    },
+    slot: "content"
+  }), _vm._v(" "), _c('i-cell', {
+    attrs: {
+      "i-class": "card_cell",
       "title": "销售金额",
       "value": _vm.orderDetail.amountOfMoney,
-      "mpcomid": '9'
+      "mpcomid": '10'
     },
     slot: "content"
   }), _vm._v(" "), _c('i-cell', {
@@ -574,7 +586,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "i-class": "card_cell",
       "title": "折扣额",
       "value": _vm.orderDetail.discountAmount,
-      "mpcomid": '10'
+      "mpcomid": '11'
     },
     slot: "content"
   }), _vm._v(" "), _c('i-cell', {
@@ -582,7 +594,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "i-class": "card_cell",
       "title": "折后金额",
       "value": _vm.orderDetail.discountAfter,
-      "mpcomid": '11'
+      "mpcomid": '12'
     },
     slot: "content"
   }), _vm._v(" "), _c('i-cell', {
@@ -590,7 +602,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "i-class": "card_cell",
       "title": "税额",
       "value": _vm.orderDetail.taxAmount,
-      "mpcomid": '12'
+      "mpcomid": '13'
     },
     slot: "content"
   }), _vm._v(" "), _c('i-cell', {
@@ -598,72 +610,72 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "i-class": "card_cell",
       "title": "税后金额",
       "value": _vm.orderDetail.taxAfter,
-      "mpcomid": '13'
+      "mpcomid": '14'
     },
     slot: "content"
   })], 1)], 2) : _vm._e(), _vm._v(" "), (_vm.activeName == 'second') ? _c('view', [_c('i-cell-group', {
     attrs: {
-      "mpcomid": '25'
+      "mpcomid": '26'
     }
   }, [_c('i-cell', {
     attrs: {
       "title": "总金额",
       "value": _vm.orderDetail.totalSum,
-      "mpcomid": '15'
+      "mpcomid": '16'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "联系人",
       "value": _vm.orderDetail.contactsName,
-      "mpcomid": '16'
+      "mpcomid": '17'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "结算方式",
       "value": _vm.orderDetail.settlement,
-      "mpcomid": '17'
+      "mpcomid": '18'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "交货方式",
       "value": _vm.orderDetail.delivery,
-      "mpcomid": '18'
+      "mpcomid": '19'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "交货地址",
       "value": _vm.orderDetail.deliveryAddress,
-      "mpcomid": '19'
+      "mpcomid": '20'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "创建时间",
       "value": _vm.orderDetail.createTime,
-      "mpcomid": '20'
+      "mpcomid": '21'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "制单人",
       "value": _vm.orderDetail.private_employee,
-      "mpcomid": '21'
+      "mpcomid": '22'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "业务员",
       "value": _vm.orderDetail.ascription,
-      "mpcomid": '22'
+      "mpcomid": '23'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "部门",
       "value": _vm.orderDetail.deptname,
-      "mpcomid": '23'
+      "mpcomid": '24'
     }
   }), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "机构",
       "value": _vm.orderDetail.parentname,
-      "mpcomid": '24'
+      "mpcomid": '25'
     }
   })], 1)], 1) : _vm._e(), _vm._v(" "), (_vm.activeName == 'third') ? _c('view', {
     staticClass: "white_bg"
@@ -674,7 +686,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "current": _vm.stepIndex,
       "direction": "vertical",
       "i-class": "stage_steps",
-      "mpcomid": '28'
+      "mpcomid": '29'
     }
   }, _vm._l((_vm.auditLog), function(item, index) {
     return _c('i-step', {
@@ -682,7 +694,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       attrs: {
         "status": item.stepStatus,
         "icon": item.stepIcon,
-        "mpcomid": '27_' + index
+        "mpcomid": '28_' + index
       }
     }, [_c('i-fiche', {
       attrs: {
@@ -691,7 +703,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "title": item.realname,
         "extra": item.auditState,
         "thumb": item.portrait,
-        "mpcomid": '26_' + index
+        "mpcomid": '27_' + index
       },
       slot: "title"
     }, [_c('view', {
@@ -704,7 +716,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "title": "请填写审核意见",
       "visible": _vm.showSure,
       "eventid": '4',
-      "mpcomid": '30'
+      "mpcomid": '31'
     },
     on: {
       "ok": _vm.adopt,
@@ -719,7 +731,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "request": "",
       "maxlength": "200",
       "eventid": '3',
-      "mpcomid": '29'
+      "mpcomid": '30'
     },
     on: {
       "input": _vm.handleInput
@@ -736,7 +748,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "title": "请填写审核意见",
       "visible": _vm.showRefuse,
       "eventid": '6',
-      "mpcomid": '32'
+      "mpcomid": '33'
     },
     on: {
       "ok": _vm.refuse,
@@ -751,7 +763,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "request": "",
       "maxlength": "200",
       "eventid": '5',
-      "mpcomid": '31'
+      "mpcomid": '32'
     },
     on: {
       "input": _vm.handleInput
@@ -766,12 +778,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   })], 1), _vm._v(" "), _c('i-toast', {
     attrs: {
       "id": "toast",
-      "mpcomid": '33'
+      "mpcomid": '34'
     }
   }), _vm._v(" "), _c('i-message', {
     attrs: {
       "id": "message",
-      "mpcomid": '34'
+      "mpcomid": '35'
     }
   })], 1)
 }

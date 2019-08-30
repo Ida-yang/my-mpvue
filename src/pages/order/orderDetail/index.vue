@@ -34,6 +34,7 @@
             </view>
             <view class="detail_module"></view>
             <i-card full desc title="金额信息">
+                <i-cell slot="content" i-class="card_cell" title="总数量" :value="orderDetail.amountofNum"></i-cell>
                 <i-cell slot="content" i-class="card_cell" title="销售金额" :value="orderDetail.amountOfMoney"></i-cell>
                 <i-cell slot="content" i-class="card_cell" title="折扣额" :value="orderDetail.discountAmount"></i-cell>
                 <i-cell slot="content" i-class="card_cell" title="折后金额" :value="orderDetail.discountAfter"></i-cell>
@@ -149,6 +150,7 @@
                         let c = 0
                         let d = 0
                         let e = 0
+                        let f = 0
 
                         _this.productsData.forEach(el => {
                             if(el.image){
@@ -161,6 +163,7 @@
                             c += el.discountAfter
                             d += el.taxAmount
                             e += el.taxAfter
+                            f += el.num
                         });
 
                         _this.orderDetail.amountOfMoney = a.toFixed(2)
@@ -168,6 +171,7 @@
                         _this.orderDetail.discountAfter = c.toFixed(2)
                         _this.orderDetail.taxAmount = d.toFixed(2)
                         _this.orderDetail.taxAfter = e.toFixed(2)
+                        _this.orderDetail.amountofNum = f
 
                         _this.loadState()
                         _this.loadLog()

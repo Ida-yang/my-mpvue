@@ -50,5 +50,6 @@
       </view>
     </i-action-sheet>
     <i-message id="message" class="_i-message data-v-784716fc"></i-message>
+    <i-toast id="toast" class="_i-toast data-v-784716fc"></i-toast>
   </view>
 </template>

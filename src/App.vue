@@ -382,6 +382,11 @@
     top: 2px;
     left: 80px;
   }
+  .product_item_amount{
+    position: absolute;
+    bottom: 2px;
+    left: 80px;
+  }
   .product_item_counter{
     position: absolute;
     bottom: 0;
@@ -435,7 +440,7 @@
   .product_item_update{
     position: absolute;
     right: 20px;
-    top: calc(50% - 7px);
+    top: 2px;
     display: flex;
     align-items: center;
     justify-content: center

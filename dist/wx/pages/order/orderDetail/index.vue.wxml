@@ -31,6 +31,7 @@
       </view>
       <view class="_view data-v-6fbeb1a8 detail_module"></view>
       <i-card full desc title="金额信息" class="_i-card data-v-6fbeb1a8">
+        <i-cell slot="content" i-class="card_cell" title="总数量" value="{{orderDetail.amountofNum}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
         <i-cell slot="content" i-class="card_cell" title="销售金额" value="{{orderDetail.amountOfMoney}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
         <i-cell slot="content" i-class="card_cell" title="折扣额" value="{{orderDetail.discountAmount}}" class="_i-cell data-v-6fbeb1a8"></i-cell>
         <i-cell slot="content" i-class="card_cell" title="折后金额" value="{{orderDetail.discountAfter}}" class="_i-cell data-v-6fbeb1a8"></i-cell>

@@ -163,6 +163,9 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
 
 
 
@@ -516,6 +519,8 @@ if (false) {(function () {
                             content: '新增成功',
                             type: 'success'
                         });
+                        __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.orderPoolNameData = '';
+                        __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.orderPoolNameData = '';
                         _this.toOrder();
                     } else {
                         Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
@@ -666,13 +671,15 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       staticClass: "product_item_price"
     }, [(item.title !== item.goodsName) ? _c('p', {
       staticStyle: {
-        "margin-bottom": "10px"
+        "margin-bottom": "3px"
       }
     }, [_vm._v(_vm._s(item.title))]) : _vm._e(), _vm._v(" "), _c('p', [_c('span', {
       staticStyle: {
         "color": "#e62c2c"
       }
     }, [_vm._v("￥" + _vm._s(item.price))]), _vm._v(" /" + _vm._s(item.unit))])], 1), _vm._v(" "), _c('view', {
+      staticClass: "product_item_amount"
+    }, [_c('span', [_vm._v("数量：" + _vm._s(item.countNum) + "    总额：" + _vm._s(item.discountAfter))])]), _vm._v(" "), _c('view', {
       staticClass: "product_item_update",
       attrs: {
         "eventid": '5_' + index

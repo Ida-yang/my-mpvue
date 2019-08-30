@@ -40,7 +40,7 @@
                         <view class="product_item_c">
                             <image :src="el.itemList[0].proImage" style="width:70px;height:70px" />
                             <view class="product_item_price">
-                                <p><span style="color:#e62c2c;">￥{{el.price}}</span> / {{el.unit}}</p>
+                                <p><span style="color:#e62c2c;">￥{{el.minprice}}</span><span style="font-size:12px"> 起</span></p>
                                 <p style="margin-top:30px;color:#80848f">{{el.itemList.length}}中规格可选</p>
                             </view>
                             <view class="product_item_shopping" @click="showItemList($event,el)">
@@ -198,7 +198,6 @@
             },
             loadData(){
                 let customerinfo = config.information.orderPoolNameData
-                console.log(customerinfo)
                 const _this = this
                 let data = {
                     searchName: this.searchList.searchName,
@@ -218,6 +217,7 @@
                         let info = res.data.map.goods
 
                         info.forEach(item => {
+                            let priceArr = new Array()
                             item.itemList.forEach(el => {
                                 el.goodsName = item.goodsName
                                 el.discount = customerinfo.discount
@@ -238,7 +238,10 @@
                                     // console.log('有三个')
                                     el.goodsSpec = el.spec1 + ', ' + el.spec2 + ', ' + el.spec3
                                 }
+                                priceArr.push(el.price)
                             });
+
+                            item.minprice = Math.min.apply(null,priceArr)
                         });
 
                         if(_this.init === true){
@@ -461,6 +464,8 @@
                         }
                     });
                 });
+
+                console.log(newArr)
 
                 config.information.orderProductData = {
                     orderProduct: newArr,

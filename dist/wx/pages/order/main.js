@@ -68,6 +68,8 @@ if (false) {(function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
 //
 //
 //
@@ -149,6 +151,8 @@ if (false) {(function () {
 //
 //
 //
+//
+
 
 
 
@@ -362,20 +366,20 @@ if (false) {(function () {
                 },
                 success: function success(res) {
                     if (res.data.code && res.data.code == "200") {
-                        _this.cancelDelete();
-                        $Message({
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
                             content: '删除成功',
                             type: 'success'
                         });
+                        _this.cancelDelete();
                         _this.loadData();
                     } else if (res.data.msg && res.data.msg == 'error') {
-                        $Toast({
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
                             content: '对不起，您没有此权限',
                             type: 'error'
                         });
                         _this.cancelDelete();
                     } else {
-                        $Message({
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
                             content: res.data.msg,
                             type: 'error'
                         });
@@ -657,6 +661,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "id": "message",
       "mpcomid": '16'
+    }
+  }), _vm._v(" "), _c('i-toast', {
+    attrs: {
+      "id": "toast",
+      "mpcomid": '17'
     }
   })], 2)
 }

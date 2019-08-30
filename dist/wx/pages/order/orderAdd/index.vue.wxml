@@ -19,9 +19,10 @@
           <view class="_view data-v-5e4f5d08 product_item_c">
             <image src="{{item.proImage}}" style="width:70px;height:70px" class="_image data-v-5e4f5d08"></image>
             <view class="_view data-v-5e4f5d08 product_item_price">
-              <view style="margin-bottom:10px" wx:if="{{item.title !== item.goodsName}}" class="_p data-v-5e4f5d08">{{item.title}}</view>
+              <view style="margin-bottom:3px" wx:if="{{item.title !== item.goodsName}}" class="_p data-v-5e4f5d08">{{item.title}}</view>
               <view class="_p data-v-5e4f5d08"><label style="color:#e62c2c;" class="_span data-v-5e4f5d08">￥{{item.price}}</label> /{{item.unit}}</view>
             </view>
+            <view class="_view data-v-5e4f5d08 product_item_amount"><label class="_span data-v-5e4f5d08">数量：{{item.countNum}}    总额：{{item.discountAfter}}</label></view>
             <view class="_view data-v-5e4f5d08 product_item_update" bindtap="handleProxy" data-eventid="{{'5_'+index}}" data-comkey="{{$k}}"><label style="color:#ff6333;font-size:14px" class="_span data-v-5e4f5d08">修改</label></view>
           </view>
         </view>

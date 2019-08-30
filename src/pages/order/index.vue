@@ -76,11 +76,13 @@
             </view>
         </i-action-sheet>
         <i-message id="message" />
+        <i-toast id="toast" />
     </div>
 </template>
 
 <script>
     import config from '../../config'
+    import { $Toast,$Message } from '../../../dist/wx/iview/base/index'
 
     export default {
         data () {
@@ -308,11 +310,11 @@
                     },
                     success: function (res) {
                         if(res.data.code && res.data.code == "200"){
-                            _this.cancelDelete()
                             $Message({
                                 content: '删除成功',
                                 type: 'success'
                             });
+                            _this.cancelDelete()
                             _this.loadData()
                         }else if(res.data.msg && res.data.msg == 'error'){
                             $Toast({

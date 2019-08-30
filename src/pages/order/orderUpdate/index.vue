@@ -3,42 +3,67 @@
         <i-panel title=" "></i-panel>
         <i-panel title=" ">
             <i-cell title="订单日期" request is-link  i-class="simple_cell" i-cell-text="color_495060_text">
-                <picker slot="footer" mode="date" :value="addList.orderTime" :start="nowDate" @change="dealChange($event,1)">
+                <picker slot="footer" mode="date" :value="updateList.orderTime" :start="nowDate" @change="dealChange($event,1)">
                     <view class="picker cell_picker">
-                    {{addList.orderTime}}
+                    {{updateList.orderTime}}
                     </view>
                 </picker>
             </i-cell>
-            <i-cell title="客户名称" :value="addList.customerpoolName" request i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
-            <i-cell title="结算方式" :value="addList.settlement" request is-link i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,1)"></i-cell>
-            <i-cell title="交货方式" :value="addList.deliveryModeName" is-link i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,2)"></i-cell>
-            <i-cell title="产品" :value="addList.orderDetails" request is-link i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,3)"></i-cell>
+            <i-cell title="客户名称" :value="updateList.customerpoolName" request i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
+            <i-cell title="结算方式" :value="updateList.settlement" request is-link i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,1)"></i-cell>
+            <i-cell title="交货方式" :value="updateList.deliveryModeName" is-link i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,2)"></i-cell>
+            <i-cell title="产品" :value="updateList.orderDetails" request is-link i-class="simple_cell" i-cell-text="color_495060_text" @click="cellFocus($event,3)"></i-cell>
             <view style="padding:0 8px">
                 <view v-for="item in productData" :key="item.id" class="product_item">
-                    <p style="margin-bottom:8px">{{item.tbGoods.goodsName}}</p>
+                    <p style="margin-bottom:8px">{{item.goodsName}}</p>
                     <view class="product_item_c">
                         <image :src="item.proImage" style="width:70px;height:70px" />
                         <view class="product_item_price">
-                            <p style="margin-bottom:10px">{{item.title}}</p>
-                            <p><span style="color:#e62c2c;">￥{{item.tbGoods.price}}</span> /{{item.tbGoods.unit}}</p>
+                            <p style="margin-bottom:3px" v-if="item.title !== item.goodsName">{{item.title}}</p>
+                            <p><span style="color:#e62c2c;">￥{{item.price}}</span> /{{item.unit}}</p>
                         </view>
-                        <view class="product_item_counter">
-                            <span class="counter_btn" :class="item.countNum == 0 ? 'gray_color_text' : ''" @click="countReduce($event,item)">-</span>
-                            <input v-model="item.countNum" class="counter_text" @input="countInput($event,item)"></input>
-                            <span class="counter_btn" @click="countAdd($event,item)">+</span>
+                        <view class="product_item_amount">
+                            <span>数量：{{item.countNum}} &nbsp;&nbsp;&nbsp;总额：{{item.discountAfter}}</span>
+                        </view>
+                        <view class="product_item_update" @click="showCounters($event,item)">
+                            <span style="color:#ff6333;font-size:14px">修改</span>
                         </view>
                     </view>
                 </view>
             </view>
             <i-cell title="销售金额" :value="productInfo.totalAmount"  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
-            <i-input v-model="productInfo.discountRate" title="折扣率(%)" right type="number" maxlength="3" @input="handleInput($event,2)" />
-            <i-input v-model="productInfo.taxRate" title="税率(%)" right type="number" maxlength="3" @input="handleInput($event,3)" />
+            <i-cell title="折后金额" :value="productInfo.discountAfter"  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
+            <i-input v-model="productInfo.taxRate" title="税率(%)" right type="number" maxlength="3" @input="handleInput($event,2)" />
             <i-cell title="折税后金额" :value="productInfo.realAmount"  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
-            <i-input v-model="addList.deliveryAddress" title="交货地址" right type="textarea" maxlength="200" @input="handleInput($event,1)" />
+            <i-input v-model="updateList.deliveryAddress" title="交货地址" right type="textarea" maxlength="200" @input="handleInput($event,1)" />
         </i-panel>
         <p class="request_tip"><span style="color:#f56c6c"> * </span>为必填项</p>
 
-        <!-- 新增 -->
+        
+        <view class="product_counter" v-if="showCounter">
+            <view class="counter_wrap">
+                <view class="counter_head">{{countProduct.goodsName}}</view>
+                <view class="counter_content">
+                    <i-cell title="数量" i-class="simple_cell" i-cell-text="color_495060_text">
+                        <view slot="footer" class="counter_item">
+                            <span class="counter_btn" :class="countProduct.countNum == 0 ? 'gray_color_text' : ''" @click="itemcountReduce">-</span>
+                            <input :value="countProduct.countNum" type="number" class="counter_text" @input="itemCountInput($event,1)"></input>
+                            <span class="counter_btn" @click="itemcountAdd">+</span>
+                        </view>
+                    </i-cell>
+                    <i-input v-model="countProduct.price" title="单价" right type="number" maxlength="11" @input="itemCountInput($event,2)" />
+                    <i-input v-model="countProduct.discount" title="折扣率(%)" right type="number" maxlength="3" @input="itemCountInput($event,3)" />
+                    <i-cell title="折扣金额" :value="countProduct.discountAmount"  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
+                    <i-cell title="折后金额" :value="countProduct.discountAfter"  i-class="simple_cell" i-cell-text="color_495060_text"></i-cell>
+                </view>
+                <view class="counter_foot">
+                    <span style="border-right:1rpx solid #e9eaec" @click="closeCounter($event,1)">取消</span>
+                    <span style="color:#ff6333" @click="closeCounter($event,2)">确定</span>
+                </view>
+            </view>
+        </view>
+
+        <!-- 编辑 -->
         <i-button @click="addOrder" type="ghost" :long="true" class="bottom_btn">确定</i-button>
         
         <i-action-sheet :visible="showSettle" :actions="settleList" @change="sheetChange($event,1)" />
@@ -57,7 +82,8 @@
             return {
                 current: '编辑订单',
 
-                addList:{
+                updateList:{
+                    id:'',
                     ascriptionId:'',  //负责人,取客户负责人
                     customerpoolId:'',
                     customerpoolName:'',
@@ -71,7 +97,7 @@
                 productData:[],
                 productInfo:{
                     totalAmount: 0,
-                    discountRate: '100',
+                    discountAfter: 0,
                     taxRate: '0',
                     realAmount: 0,
                 },
@@ -86,6 +112,9 @@
                 modeList:[],
 
                 nowDate:'',
+
+                showCounter:false,
+                countProduct:{},
             }
         },
 
@@ -126,42 +155,38 @@
                 }
             },
             loadProduct(){
-                let anum = 0
+                let anum = 0  //消费总金额
+                let bnum = 0  //税后总金额金额
+                let cnum = 0  //折税后金额
                 this.productData.forEach(el => {
-                    if(el.image){
-                        el.proImage = config.sourcehost + 'product/' + config.userData.cId + '/' + el.image
-                    }else{
-                        el.proImage = '../../../static/images/noProduct.png'
-                    }
+                    let xnum = parseFloat(el.price) * parseInt(el.countNum)    //本产品总金额
+                    el.amountOfMoney = xnum.toFixed(2)
 
-                    let bnum = el.tbGoods.price * el.countNum
-                    anum += bnum
+                    anum += xnum
+                    bnum += parseFloat(el.discountAfter)
                     
-                    el.amountOfMoney = bnum.toFixed(2)
                     el.taxRate = this.productInfo.taxRate
-                    el.discount = this.productInfo.discountRate
-                    let discountAfter = parseFloat(this.productInfo.discountRate) * bnum / 100
-                    let taxAmount = parseFloat(this.productInfo.taxRate) * discountAfter / 100
-                    let discountAmount = bnum - discountAfter
-                    let taxAfter = discountAfter + taxAmount
 
-                    el.discountAmount = discountAmount.toFixed(2)
-                    el.discountAfter = discountAfter.toFixed(2)
-                    el.taxAmount = taxAmount.toFixed(2)
-                    el.taxAfter = taxAfter.toFixed(2)
+                    let ynum = parseFloat(el.taxRate) * parseFloat(el.discountAfter) / 100   //本产品税额
+                    let znum = parseFloat(el.discountAfter) + ynum    //本产品税后金额
+                    el.taxAmount = ynum.toFixed(2)
+                    el.taxAfter = znum.toFixed(2)
+
+                    cnum += znum
                 });
                 this.productInfo.totalAmount = anum.toFixed(2)
-                let cnum = parseFloat(this.productInfo.discountRate) * anum / 100
-                let dnum = parseFloat(this.productInfo.taxRate) * cnum / 100
-                this.productInfo.realAmount = (cnum + dnum).toFixed(2)
+                this.productInfo.discountAfter = bnum.toFixed(2)
+                this.productInfo.realAmount = cnum.toFixed(2)
+
+                console.log(this.productData)
             },
             loadList(){
                 const _this = this
-                let orderinfo = config.information.orderupdateData
+                let info = config.information.orderupdateData
+                
                 let data = {
-                    id: orderinfo.id
+                    id: info.id
                 }
-
                 wx.request({
                     method:'post',
                     url: config.defaulthost + 'order/selectById.do?cId=' + config.userData.cId,  //接口地址
@@ -172,26 +197,72 @@
                     },
                     success: function (res) {
                         let info = res.data
+                        _this.updateList = {
+                            id:info.id,
+                            ascriptionId:info.ascriptionId,  //负责人,取客户负责人
+                            customerpoolId:info.customerpoolId,
+                            customerpoolName:info.customerName,
+                            deliveryAddress:info.deliveryAddress,
+                            deliveryMode:info.deliveryMode,   //交货方式ID
+                            deliveryModeName:info.delivery,
+                            orderDetails:[],
+                            orderTime:info.orderTime,
+                            settlement:info.settlement,   //结算方式
+                        }
+
+                        let a = 0
+                        let b = 0
+                        let c = 0
+                        let d = 0
+                        let e = 0
+
+                        let newArr = new Array()
 
                         info.orderDetails.forEach(el => {
                             el.countNum = el.num
+                            if(el.image){
+                                el.proImage = config.sourcehost + 'product/' + config.userData.cId + '/' + el.image
+                            }else{
+                                el.proImage = '../../../static/images/noProduct.png'
+                            }
+                            a += el.amountOfMoney
+                            b += el.discountAmount
+                            c += el.discountAfter
+                            d += el.taxAmount
+                            e += el.taxAfter
+
+                            newArr.push({
+                                amountOfMoney: el.amountOfMoney,
+                                commitTime: el.commitTime,
+                                discount: el.discount,
+                                discountAfter: el.discountAfter,
+                                discountAmount: el.discountAmount,
+                                goodsName: el.goodsName,
+                                image: el.image,
+                                proImage: el.proImage,
+                                id: el.itemId,
+                                num: el.num,
+                                countNum: el.num,
+                                price: el.price,
+                                taxAfter: el.taxAfter,
+                                taxAmount: el.taxAmount,
+                                taxRate: el.taxRate,
+                                title: el.title,
+                                unit: el.unit
+                            })
                         });
-                        _this.addList = {
-                            ascriptionId:'',  //负责人,取客户负责人
-                            customerpoolId:'',
-                            customerpoolName:'',
-                            deliveryAddress:'',
-                            deliveryMode:'',   //交货方式ID
-                            deliveryModeName:'',
-                            orderDetails:[],
-                            orderTime:'',
-                            settlement:'',   //结算方式
+                        
+                        _this.productData = newArr
+                        _this.productInfo = {
+                            totalAmount: a.toFixed(2),
+                            discountAfter: c.toFixed(2),
+                            taxRate: info.orderDetails[0].taxRate,
+                            realAmount: info.totalSum,
                         }
+
+                        console.log(_this.productData)
                     }
                 })
-            },
-            loadList(){
-                
             },
             loadMode(){
                 const _this = this
@@ -218,29 +289,60 @@
                 })
             },
             cellFocus(e,val){
+                const _this = this
                 if(val == 1){
                     this.showSettle = true
                 }else if(val == 2){
                     this.showMode = true
                 }else if(val == 3){
-                    const url = '../products/main'
-                    mpvue.navigateTo({ url })
+                    let data = {
+                        id: this.updateList.customerpoolId
+                    }
+                    wx.request({
+                        method:'post',
+                        url: config.defaulthost + 'customerpool/getPoolById.do?cId=' + config.userData.cId,  //接口地址
+                        data: data,
+                        header:{
+                            "Content-Type": "application/x-www-form-urlencoded",
+                            'Cookie': config.SESSIONID
+                        },
+                        success:function(res) {
+                            let info = res.data.map.success
+                            let customer_discount = ''
+                            let customer_taxRate = ''
+                            if(info.discount){
+                                customer_discount = info.discount
+                            }else{
+                                customer_discount = '100'
+                            }
+                            if(info.taxRate){
+                                customer_taxRate = info.taxRate
+                            }else{
+                                customer_taxRate = '0'
+                            }
+                            config.information.orderPoolNameData = {
+                                taxRate: customer_taxRate,
+                                discount: customer_discount
+                            }
+
+                            const url = '../products/main'
+                            mpvue.navigateTo({ url })
+                        }
+                    })
+                    
                 }
             },
             handleInput(e,val){
                 if(val == 1){
-                    this.addList.deliveryAddress = e.mp.detail
+                    this.updateList.deliveryAddress = e.mp.detail
                 }else if(val == 2){
-                    this.productInfo.discountRate = e.mp.detail
-                    this.loadProduct()
-                }else if(val == 3){
                     this.productInfo.taxRate = e.mp.detail
                     this.loadProduct()
                 }
             },
             dealChange(e,val){
                 if(val == 1){
-                    this.addList.orderTime = e.target.value
+                    this.updateList.orderTime = e.target.value
                 }
             },
 
@@ -255,15 +357,15 @@
                 if(val == 1){
                     this.settleList.forEach((a,i) => {
                         if(i == index){
-                            _this.addList.settlement = a.name
+                            _this.updateList.settlement = a.name
                             _this.showSettle = false
                         }
                     });
                 }else if(val == 2){
                     this.modeList.forEach((b,j) => {
                         if(j == index){
-                            _this.addList.deliveryModeName = b.name
-                            _this.addList.deliveryMode = b.id
+                            _this.updateList.deliveryModeName = b.name
+                            _this.updateList.deliveryMode = b.id
                             _this.showMode = false
                             
                         }
@@ -271,38 +373,60 @@
                 }
             },
 
-            countReduce(e,val){
-                this.productData.forEach(el => {
-                    if(el.id == val.id){
-                        if(el.countNum == 0){
-                            return
-                        }else{
-                            el.countNum --
+            showCounters(e,val){
+                this.showCounter = true
+
+                this.countProduct = val
+            },
+            closeCounter(e,val){
+                if(val == 2){
+                    this.productData.forEach(item => {
+                        if(item.id == this.countProduct.id){
+                            // console.log(item,'替换大的值')
+                            item = this.countProduct
                         }
-                    }
-                });
+                    });
+                }
+                this.showCounter = false
 
                 this.loadProduct()
             },
-            countAdd(e,val){
-                this.productData.forEach(el => {
-                    if(el.id == val.id){
-                        el.countNum ++
-                    }
-                });
+            itemcountReduce(){
+                if(this.countProduct.countNum == 0){
+                    return
+                }else{
+                    this.countProduct.countNum --
+                }
 
-                this.loadProduct()
+                this.countdiscount()
             },
-            countInput(e,val){
-                let value = e.target.value
+            itemcountAdd(){
+                this.countProduct.countNum ++
 
-                this.productData.forEach(el => {
-                    if(el.id == val.id){
-                        el.countNum = parseInt(value)
-                    }
-                });
+                this.countdiscount()
+            },
+            itemCountInput(e,val){
+                if(val == 1){
+                    this.countProduct.countNum = e.target.value
+                }else if(val == 2){
+                    this.countProduct.price = e.mp.detail
+                }else if(val == 3){
+                    this.countProduct.discount = e.mp.detail
+                }
 
-                this.loadProduct()
+                this.countdiscount()
+            },
+
+            countdiscount(){
+                let a = 0
+                let b = 0
+                let c = 0
+
+                a = parseInt(this.countProduct.countNum) * parseFloat(this.countProduct.price)
+                b = parseFloat(this.countProduct.discount) * a / 100
+                c = a - b
+                this.countProduct.discountAfter = b.toFixed(2)
+                this.countProduct.discountAmount = c.toFixed(2)
             },
 
             addOrder(){
@@ -314,7 +438,7 @@
                     newArr.push({
                         "itemId":element.id,
                         "num":parseInt(element.countNum),
-                        "price":parseFloat(element.tbGoods.price),
+                        "price":parseFloat(element.price),
                         "commitTime":'',
                         "amountOfMoney":element.amountOfMoney ,
                         "discount":element.discount ,
@@ -326,53 +450,21 @@
                     })
                 });
                 let data = {
-                    ascriptionId: this.addList.ascriptionId,  //负责人,取客户负责人
-                    customerpoolId: this.addList.customerpoolId,
-                    deliveryAddress: this.addList.deliveryAddress,
-                    deliveryMode: this.addList.deliveryMode,   //交货方式ID
+                    id: this.updateList.id,
+                    ascriptionId: this.updateList.ascriptionId,  //负责人,取客户负责人
+                    customerpoolId: this.updateList.customerpoolId,
+                    deliveryAddress: this.updateList.deliveryAddress,
+                    deliveryMode: this.updateList.deliveryMode,   //交货方式ID
                     orderDetails: newArr,
-                    orderTime: this.addList.orderTime,
-                    settlement: this.addList.settlement,   //结算方式
+                    orderTime: this.updateList.orderTime,
+                    settlement: this.updateList.settlement,   //结算方式
                     totalSum: this.productInfo.realAmount,
                     pId: config.userData.pId,
                 }
 
-                console.log(data)
-
-                let flag = false
-                if(data.orderDetails.length == 0){
-                    $Toast({
-                        content: '请选择产品',
-                        type: 'warning'
-                    });
-                    flag = true
-                }
-                if(!data.settlement){
-                    $Toast({
-                        content: '请选择结算方式',
-                        type: 'warning'
-                    });
-                    flag = true
-                }
-                if(!data.customerpoolId){
-                    $Toast({
-                        content: '请选择客户名称',
-                        type: 'warning'
-                    });
-                    flag = true
-                }
-                if(!data.orderTime){
-                    $Toast({
-                        content: '请选择订单时间',
-                        type: 'warning'
-                    });
-                    flag = true
-                }
-                if(flag) return
-
                 wx.request({
                     method:'post',
-                    url: config.defaulthost + 'order/insert.do?cId=' + config.userData.cId,  //接口地址
+                    url: config.defaulthost + 'order/update.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
                         // "Content-Type": "application/x-www-form-urlencoded",
@@ -381,7 +473,7 @@
                     success: function (res) {
                         if(res.data.code && res.data.code == "200"){
                             $Message({
-                                content: '新增成功',
+                                content: '编辑成功',
                                 type: 'success'
                             });
                             _this.toOrder()
