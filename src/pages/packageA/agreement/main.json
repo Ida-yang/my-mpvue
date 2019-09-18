@@ -4,6 +4,8 @@
   "backgroundTextStyle": "dark",
   "usingComponents": {
     "i-panel": "../../../iview/panel/index",
+    "i-toast": "../../../iview/toast/index",
+    "i-message": "../../../iview/message/index",
     "i-card": "../../../iview/card/index",
     "i-load-more": "../../../iview/load-more/index",
     "i-cell-group": "../../../iview/cell-group/index",

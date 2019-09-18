@@ -15,7 +15,7 @@
             <view class="search_container">
                 <i-panel title="数据授权" i-class="query_label">
                     <view class="query_view">
-                        <span class="queryBtn" :class="[index == powerActive ? 'isActive':'']" v-for="(item,index) in powerList" :key="item.label" @click="checkCriteria(item,index,1)">{{item.name}}</span>
+                        <span class="queryBtn" :class="[index == powerActive ? 'isActive':'']" v-for="(item,index) in powerList" :key="item.label" @click="powerCriteria(item,index,1)">{{item.name}}</span>
                     </view>
                 </i-panel>
                 <i-panel title="商机进度" i-class="query_label">
@@ -70,11 +70,15 @@
 
         <!-- 新增 -->
         <i-button @click="toAddOpportunity" type="ghost" :long="true" class="bottom_btn">新增</i-button>
+
+        <i-message id="message" />
+        <i-toast id="toast" />
     </div>
 </template>
 
 <script>
     import config from '../../../config'
+    import { $Toast,$Message } from '../../../../dist/wx/iview/base/index'
 
     export default {
         data () {
@@ -213,6 +217,9 @@
 
                 wx.request({
                     url: config.defaulthost + 'addstep/selectAddstep.do?cId=' + config.userData.cId,  //接口地址
+                    header:{
+                        'Cookie': config.SESSIONID
+                    },
                     success:function(res) {
                         _this.stateList = res.data.map.addsteps
                     }
@@ -243,10 +250,7 @@
                 this.searchCriteria = !this.searchCriteria
             },
             checkCriteria(item,index,val){
-                if(val === 1){
-                    this.powerActive = index
-                    this.searchList.powerid = item.label
-                }else if(val === 2){
+                if(val === 2){
                     this.stateActive = index
                     this.searchList.stateid = item.step_id
                 }else if(val === 3){
@@ -257,6 +261,42 @@
                     this.searchList.example = item.label
                 }
                 this.search()
+            },
+            powerCriteria(item,index,val){
+                const _this = this
+                this.powerActive = index
+                this.searchList.powerid = item.label
+
+                let queryUrl = ''
+                if(item.label == '11'){
+                    queryUrl = 'opportunityJurisdiction/all.do'
+                }else if(item.label == '13'){
+                    queryUrl = 'opportunityJurisdiction/second.do'
+                }else if(item.label == '14'){
+                    queryUrl = 'opportunityJurisdiction/dept.do'
+                }
+
+                if(index == 1){
+                    this.search()
+                }else{
+                    wx.request({
+                        url: config.defaulthost + queryUrl,  //接口地址
+                        header:{
+                            'Cookie': config.SESSIONID
+                        },
+                        success:function(res) {
+                            let info = res.data.msg
+                            if(info == 'success'){
+                                _this.search()
+                            }else if(info == 'error'){
+                                $Toast({
+                                    content: '对不起，您没有此权限',
+                                    type: 'error'
+                                });
+                            }
+                        }
+                    })
+                }
             },
             reSet(){
                 this.searchList = {
@@ -278,13 +318,49 @@
             },
 
             toAddOpportunity(){
-                const url = 'opportunityAdd/main'
-                mpvue.navigateTo({ url })
+                const _this = this
+
+                wx.request({
+                    url: config.defaulthost + 'opportunityJurisdiction/insert.do',  //接口地址
+                    header:{
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        let info = res.data.msg
+                        if(info == 'success'){
+                            const url = 'opportunityAdd/main'
+                            mpvue.navigateTo({ url })
+                        }else if(info == 'error'){
+                            $Toast({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
             },
             toUpdateOpportunity(e,val){
-                const url = 'opportunityUpdate/main'
-                config.information.opportunityupdateData = val
-                mpvue.navigateTo({ url })
+                const _this = this
+
+                wx.request({
+                    url: config.defaulthost + 'opportunityJurisdiction/update.do',  //接口地址
+                    header:{
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        let info = res.data.msg
+                        if(info == 'success'){
+                            const url = 'opportunityUpdate/main'
+                            config.information.opportunityupdateData = val
+                            mpvue.navigateTo({ url })
+                        }else if(info == 'error'){
+                            $Toast({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
             },
             toOpportunityDetail(e,val){
                 console.log('11111')

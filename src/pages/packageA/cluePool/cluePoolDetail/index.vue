@@ -173,12 +173,47 @@
             },
 
             changeBar(val){
+                const _this = this
+
                 let key = val.target.key
                 this.activeBar = key
-                if(key == 'receive'){
-                    this.receiveItem()
-                }else if(key == 'distribute'){
-                    this.distributeItem()
+
+                if(key == 'receive'){  // 领取
+                    wx.request({
+                        url: config.defaulthost + 'cluePoolJurisdiction/receive.do',  //接口地址
+                        header:{
+                            'Cookie': config.SESSIONID
+                        },
+                        success:function(res) {
+                            let info = res.data.msg
+                            if(info == 'success'){
+                                _this.receiveItem()
+                            }else if(info == 'error'){
+                                $Toast({
+                                    content: '对不起，您没有此权限',
+                                    type: 'error'
+                                });
+                            }
+                        }
+                    })
+                }else if(key == 'distribute'){  // 分配
+                    wx.request({
+                        url: config.defaulthost + 'cluePoolJurisdiction/distribution.do',  //接口地址
+                        header:{
+                            'Cookie': config.SESSIONID
+                        },
+                        success:function(res) {
+                            let info = res.data.msg
+                            if(info == 'success'){
+                                _this.distributeItem()
+                            }else if(info == 'error'){
+                                $Toast({
+                                    content: '对不起，您没有此权限',
+                                    type: 'error'
+                                });
+                            }
+                        }
+                    })
                 }else if(key == 'trash'){
                     this.deleteItem()
                 }
@@ -207,11 +242,6 @@
                                 type: 'success'
                             });
                             _this.toCluePool()
-                        }else if(res.data.msg && res.data.msg == 'error'){
-                            $Toast({
-                                content: '对不起，您没有此权限',
-                                type: 'error'
-                            });
                         }else{
                             $Message({
                                 content: res.data.msg,

@@ -15,7 +15,7 @@
             <view class="search_container">
                 <i-panel title="数据授权" i-class="query_label">
                     <view class="query_view">
-                        <span class="queryBtn" :class="[index == powerActive ? 'isActive':'']" v-for="(item,index) in powerList" :key="item.label" @click="checkCriteria(item,index,1)">{{item.name}}</span>
+                        <span class="queryBtn" :class="[index == powerActive ? 'isActive':'']" v-for="(item,index) in powerList" :key="item.label" @click="powerCriteria(item,index,1)">{{item.name}}</span>
                     </view>
                 </i-panel>
                 <i-panel title="线索状态" i-class="query_label">
@@ -64,11 +64,15 @@
 
         <!-- 新增 -->
         <i-button @click="toAddClue" type="ghost" :long="true" class="bottom_btn">新增</i-button>
+
+        <i-message id="message" />
+        <i-toast id="toast" />
     </div>
 </template>
 
 <script>
     import config from '../../../config'
+    import { $Toast,$Message } from '../../../../dist/wx/iview/base/index'
 
     export default {
         data () {
@@ -170,11 +174,11 @@
                         if(_this.init === true){
                             _this.tableData = info
                             _this.init = false
-                            console.log('我的第一次加载')
+                            // console.log('我的第一次加载')
                             wx.stopPullDownRefresh()
                         }else{
                             _this.tableData = _this.tableData.concat(info)
-                            console.log('我不是第一次加载了')
+                            // console.log('我不是第一次加载了')
                             if(info.length < 10){
                                 _this.noMore = true
                             }
@@ -188,6 +192,9 @@
 
                 wx.request({
                     url: config.defaulthost + 'typeInfo/getTypeInfoByType.do?cId=' + config.userData.cId,  //接口地址
+                    header:{
+                        'Cookie': config.SESSIONID
+                    },
                     success:function(res) {
                         // console.log(res.data)
                         _this.stateList = res.data.name1001
@@ -220,10 +227,7 @@
                 this.searchCriteria = !this.searchCriteria
             },
             checkCriteria(item,index,val){
-                if(val === 1){
-                    this.powerActive = index
-                    this.searchList.powerid = item.label
-                }else if(val === 2){
+                if(val === 2){
                     this.stateActive = index
                     this.searchList.stateid = item.id
                 }else if(val === 3){
@@ -234,6 +238,42 @@
                     this.searchList.example = item.label
                 }
                 this.search()
+            },
+            powerCriteria(item,index,val){
+                const _this = this
+                this.powerActive = index
+                this.searchList.powerid = item.label
+
+                let queryUrl = ''
+                if(item.label == '11'){
+                    queryUrl = 'clueJurisdiction/all.do'
+                }else if(item.label == '13'){
+                    queryUrl = 'clueJurisdiction/second.do'
+                }else if(item.label == '14'){
+                    queryUrl = 'clueJurisdiction/dept.do'
+                }
+
+                if(index == 1){
+                    this.search()
+                }else{
+                    wx.request({
+                        url: config.defaulthost + queryUrl,  //接口地址
+                        header:{
+                            'Cookie': config.SESSIONID
+                        },
+                        success:function(res) {
+                            let info = res.data.msg
+                            if(info == 'success'){
+                                _this.search()
+                            }else if(info == 'error'){
+                                $Toast({
+                                    content: '对不起，您没有此权限',
+                                    type: 'error'
+                                });
+                            }
+                        }
+                    })
+                }
             },
             reSet(){
                 this.searchList = {
@@ -255,13 +295,49 @@
             },
 
             toAddClue(){
-                const url = 'clueAdd/main'
-                mpvue.navigateTo({ url })
+                const _this = this
+
+                wx.request({
+                    url: config.defaulthost + 'clueJurisdiction/insert.do',  //接口地址
+                    header:{
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        let info = res.data.msg
+                        if(info == 'success'){
+                            const url = 'clueAdd/main'
+                            mpvue.navigateTo({ url })
+                        }else if(info == 'error'){
+                            $Toast({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
             },
             toUpdateClue(e,val){
-                const url = 'clueUpdate/main'
-                config.information.clueupdateData = val
-                mpvue.navigateTo({ url })
+                const _this = this
+
+                wx.request({
+                    url: config.defaulthost + 'clueJurisdiction/update.do',  //接口地址
+                    header:{
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        let info = res.data.msg
+                        if(info == 'success'){
+                            const url = 'clueUpdate/main'
+                            config.information.clueupdateData = val
+                            mpvue.navigateTo({ url })
+                        }else if(info == 'error'){
+                            $Toast({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
             },
             toClueDetail(e,val){
                 const url = 'clueDetail/main'

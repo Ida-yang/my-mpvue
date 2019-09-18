@@ -102,6 +102,9 @@
                     data: {
                         type: '客户状态'
                     },
+                    header:{
+                        'Cookie': config.SESSIONID
+                    },
                     success: function (res) {
                         let info = res.data.slice(1)
                         info.forEach(el => {

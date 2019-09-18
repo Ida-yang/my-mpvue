@@ -15,7 +15,7 @@
             <view class="search_container">
                 <i-panel title="数据授权" i-class="query_label">
                     <view class="query_view">
-                        <span class="queryBtn" :class="[index == powerActive ? 'isActive':'']" v-for="(item,index) in powerList" :key="item.label" @click="checkCriteria(item,index,1)">{{item.name}}</span>
+                        <span class="queryBtn" :class="[index == powerActive ? 'isActive':'']" v-for="(item,index) in powerList" :key="item.label" @click="powerCriteria(item,index,1)">{{item.name}}</span>
                     </view>
                 </i-panel>
                 <i-panel title="任务时间" i-class="query_label">
@@ -220,10 +220,7 @@
                 this.searchCriteria = !this.searchCriteria
             },
             checkCriteria(item,index,val){
-                if(val === 1){
-                    this.powerActive = index
-                    this.searchList.powerid = item.label
-                }else if(val === 2){
+                if(val === 2){
                     this.timeActive = index
                     this.searchList.example = item.label
                 }else if(val === 3){
@@ -231,6 +228,42 @@
                     this.searchList.state = item.name
                 }
                 this.search()
+            },
+            powerCriteria(item,index,val){
+                const _this = this
+                this.powerActive = index
+                this.searchList.powerid = item.label
+
+                let queryUrl = ''
+                if(item.label == '11'){
+                    queryUrl = 'workPlanJurisdiction/all.do'
+                }else if(item.label == '13'){
+                    queryUrl = 'workPlanJurisdiction/second.do'
+                }else if(item.label == '14'){
+                    queryUrl = 'workPlanJurisdiction/dept.do'
+                }
+
+                if(index == 1){
+                    this.search()
+                }else{
+                    wx.request({
+                        url: config.defaulthost + queryUrl,  //接口地址
+                        header:{
+                            'Cookie': config.SESSIONID
+                        },
+                        success:function(res) {
+                            let info = res.data.msg
+                            if(info == 'success'){
+                                _this.search()
+                            }else if(info == 'error'){
+                                $Toast({
+                                    content: '对不起，您没有此权限',
+                                    type: 'error'
+                                });
+                            }
+                        }
+                    })
+                }
             },
             reSet(){
                 this.searchList = {
@@ -250,8 +283,26 @@
             },
 
             toAddTask(){
-                const url = 'taskAdd/main'
-                mpvue.navigateTo({ url })
+                const _this = this
+
+                wx.request({
+                    url: config.defaulthost + 'workPlanJurisdiction/insert.do',  //接口地址
+                    header:{
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        let info = res.data.msg
+                        if(info == 'success'){
+                            const url = 'taskAdd/main'
+                            mpvue.navigateTo({ url })
+                        }else if(info == 'error'){
+                            $Toast({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
             },
             toUpdateTask(e,val){
                 if(val.state == '已完成'){
@@ -259,10 +310,27 @@
                         content: '不可编辑',
                         type: 'warning'
                     });
+                }else{
+                    wx.request({
+                        url: config.defaulthost + 'workPlanJurisdiction/update.do',  //接口地址
+                        header:{
+                            'Cookie': config.SESSIONID
+                        },
+                        success:function(res) {
+                            let info = res.data.msg
+                            if(info == 'success'){
+                                const url = 'taskUpdate/main'
+                                config.information.taskupdateData = val
+                                mpvue.navigateTo({ url })
+                            }else if(info == 'error'){
+                                $Toast({
+                                    content: '对不起，您没有此权限',
+                                    type: 'error'
+                                });
+                            }
+                        }
+                    })
                 }
-                const url = 'taskUpdate/main'
-                config.information.taskupdateData = val
-                mpvue.navigateTo({ url })
             },
             toTaskDetail(e,val){
                 const url = 'taskDetail/main'

@@ -184,6 +184,9 @@ if (false) {(function () {
                 data: {
                     type: '客户状态'
                 },
+                header: {
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
                 success: function success(res) {
                     var info = res.data.slice(1);
                     info.forEach(function (el) {

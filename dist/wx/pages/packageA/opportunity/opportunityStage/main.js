@@ -184,6 +184,9 @@ if (false) {(function () {
 
             wx.request({
                 url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'addstep/selectAddstep.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                header: {
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
                 success: function success(res) {
                     var info = res.data.map.addsteps;
                     info.forEach(function (el) {

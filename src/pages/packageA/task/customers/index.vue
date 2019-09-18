@@ -25,7 +25,10 @@
                 current: '选择客户',
                 
                 poolName:'',
-                itemData:[],
+                page:1,
+                limit:15,
+                init:true,
+                noMore:false,
 
                 cheakItem:'',
                 poolNameID:'',
@@ -36,40 +39,73 @@
         },
 
         mounted(){
+            this.init = true
+            this.noMore = false
+            this.page = 1
+            this.itemList = []
+            this.cheakItem = ''
+            this.poolNameID = ''
             this.loadData()
+        },
+        // 触底加载
+        onReachBottom(){
+            // console.log('碰到底部啦')
+            this.page += 1
+            if(this.noMore == false){
+                this.loadData()
+            }else{
+                return
+            }
         },
 
         methods: {
             loadData(){
                 const _this = this
-                this.cheakItem = ''
-                this.poolNameID = ''
-                this.itemList = []
+                let newArr = new Array()
                 let data = {
-                    page: 1,
-                    limit: 10,
+                    page: this.page,
+                    limit: 15,
                     pId:config.userData.pId,
                     searchName:this.poolName,
                 }
 
                 wx.request({
                     method:'post',
-                    url: config.defaulthost + 'rightPoolName.do?cId=' + config.userData.cId,  //接口地址
+                    url: config.defaulthost + 'customerpool/query.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
                         "Content-Type": "application/x-www-form-urlencoded",
                         'Cookie': config.SESSIONID
                     },
                     success:function(res) {
-                        let info = res.data.map.success.customerpools
-                        _this.poolNameData = info
+                        let info = res.data.map.success
+                        if(_this.init === true){
+                            _this.poolNameData = info
+                            _this.init = false
+                            // console.log('我的第一次加载')
+                        }else{
+                            _this.poolNameData = _this.poolNameData.concat(info)
+                            // console.log('我不是第一次加载了')
+                            if(info.length < 15){
+                                _this.noMore = true
+                            }
+                        }
+                        
                         info.forEach(el => {
-                            _this.itemList.push({id:el.id,name:el.name})
+                            newArr.push({id:el.id,name:el.pName})
                         });
+
+                        _this.itemList = _this.itemList.concat(newArr)
                     }
                 })
             },
             search(e){
+                this.init = true
+                this.noMore = false
+                this.page = 1
+                this.itemList = []
+                this.cheakItem = ''
+                this.poolNameID = ''
                 this.poolName = e.mp.detail
                 this.loadData()
             },

@@ -548,7 +548,6 @@ if (false) {(function () {
                 url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'order/update.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
                 data: data,
                 header: {
-                    // "Content-Type": "application/x-www-form-urlencoded",
                     'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
                 },
                 success: function success(res) {

@@ -84,6 +84,8 @@ if (false) {(function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
 //
 //
 //
@@ -129,6 +131,10 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+
 
 
 
@@ -214,11 +220,11 @@ if (false) {(function () {
                     if (_this.init === true) {
                         _this.tableData = info;
                         _this.init = false;
-                        console.log('我的第一次加载');
+                        // console.log('我的第一次加载')
                         wx.stopPullDownRefresh();
                     } else {
                         _this.tableData = _this.tableData.concat(info);
-                        console.log('我不是第一次加载了');
+                        // console.log('我不是第一次加载了')
                         if (info.length < 10) {
                             _this.noMore = true;
                         }
@@ -251,14 +257,47 @@ if (false) {(function () {
             this.searchCriteria = !this.searchCriteria;
         },
         checkCriteria: function checkCriteria(item, index, val) {
-            if (val === 1) {
-                this.powerActive = index;
-                this.searchList.powerid = item.label;
-            } else if (val === 2) {
+            if (val === 2) {
                 this.timeActive = index;
                 this.searchList.example = item.label;
             }
             this.search();
+        },
+        powerCriteria: function powerCriteria(item, index, val) {
+            var _this = this;
+            this.powerActive = index;
+            this.searchList.powerid = item.label;
+
+            var queryUrl = '';
+            if (item.label == '11') {
+                queryUrl = 'cluePoolJurisdiction/all.do';
+            } else if (item.label == '13') {
+                queryUrl = 'cluePoolJurisdiction/second.do';
+            } else if (item.label == '14') {
+                queryUrl = 'cluePoolJurisdiction/dept.do';
+            }
+
+            if (index == 1) {
+                this.search();
+            } else {
+                wx.request({
+                    url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + queryUrl, //接口地址
+                    header: {
+                        'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                    },
+                    success: function success(res) {
+                        var info = res.data.msg;
+                        if (info == 'success') {
+                            _this.search();
+                        } else if (info == 'error') {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }
+                    }
+                });
+            }
         },
         reSet: function reSet() {
             this.searchList = {
@@ -385,7 +424,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       },
       on: {
         "click": function($event) {
-          _vm.checkCriteria(item, index, 1)
+          _vm.powerCriteria(item, index, 1)
         }
       }
     }, [_vm._v(_vm._s(item.name))])
@@ -451,7 +490,17 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "loading": false,
       "mpcomid": '10'
     }
-  }) : _vm._e()], 1)
+  }) : _vm._e(), _vm._v(" "), _c('i-message', {
+    attrs: {
+      "id": "message",
+      "mpcomid": '11'
+    }
+  }), _vm._v(" "), _c('i-toast', {
+    attrs: {
+      "id": "toast",
+      "mpcomid": '12'
+    }
+  })], 1)
 }
 var staticRenderFns = []
 render._withStripped = true

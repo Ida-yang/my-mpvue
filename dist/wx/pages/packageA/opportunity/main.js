@@ -84,6 +84,8 @@ if (false) {(function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
 //
 //
 //
@@ -159,6 +161,10 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+
 
 
 
@@ -281,6 +287,9 @@ if (false) {(function () {
 
             wx.request({
                 url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'addstep/selectAddstep.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                header: {
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
                 success: function success(res) {
                     _this.stateList = res.data.map.addsteps;
                 }
@@ -311,10 +320,7 @@ if (false) {(function () {
             this.searchCriteria = !this.searchCriteria;
         },
         checkCriteria: function checkCriteria(item, index, val) {
-            if (val === 1) {
-                this.powerActive = index;
-                this.searchList.powerid = item.label;
-            } else if (val === 2) {
+            if (val === 2) {
                 this.stateActive = index;
                 this.searchList.stateid = item.step_id;
             } else if (val === 3) {
@@ -325,6 +331,42 @@ if (false) {(function () {
                 this.searchList.example = item.label;
             }
             this.search();
+        },
+        powerCriteria: function powerCriteria(item, index, val) {
+            var _this = this;
+            this.powerActive = index;
+            this.searchList.powerid = item.label;
+
+            var queryUrl = '';
+            if (item.label == '11') {
+                queryUrl = 'opportunityJurisdiction/all.do';
+            } else if (item.label == '13') {
+                queryUrl = 'opportunityJurisdiction/second.do';
+            } else if (item.label == '14') {
+                queryUrl = 'opportunityJurisdiction/dept.do';
+            }
+
+            if (index == 1) {
+                this.search();
+            } else {
+                wx.request({
+                    url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + queryUrl, //接口地址
+                    header: {
+                        'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                    },
+                    success: function success(res) {
+                        var info = res.data.msg;
+                        if (info == 'success') {
+                            _this.search();
+                        } else if (info == 'error') {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }
+                    }
+                });
+            }
         },
         reSet: function reSet() {
             this.searchList = {
@@ -345,13 +387,49 @@ if (false) {(function () {
             this.loadData();
         },
         toAddOpportunity: function toAddOpportunity() {
-            var url = 'opportunityAdd/main';
-            global.mpvue.navigateTo({ url: url });
+            var _this = this;
+
+            wx.request({
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'opportunityJurisdiction/insert.do', //接口地址
+                header: {
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    var info = res.data.msg;
+                    if (info == 'success') {
+                        var url = 'opportunityAdd/main';
+                        global.mpvue.navigateTo({ url: url });
+                    } else if (info == 'error') {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                            content: '对不起，您没有此权限',
+                            type: 'error'
+                        });
+                    }
+                }
+            });
         },
         toUpdateOpportunity: function toUpdateOpportunity(e, val) {
-            var url = 'opportunityUpdate/main';
-            __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.opportunityupdateData = val;
-            global.mpvue.navigateTo({ url: url });
+            var _this = this;
+
+            wx.request({
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'opportunityJurisdiction/update.do', //接口地址
+                header: {
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    var info = res.data.msg;
+                    if (info == 'success') {
+                        var url = 'opportunityUpdate/main';
+                        __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.opportunityupdateData = val;
+                        global.mpvue.navigateTo({ url: url });
+                    } else if (info == 'error') {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                            content: '对不起，您没有此权限',
+                            type: 'error'
+                        });
+                    }
+                }
+            });
         },
         toOpportunityDetail: function toOpportunityDetail(e, val) {
             console.log('11111');
@@ -464,7 +542,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       },
       on: {
         "click": function($event) {
-          _vm.checkCriteria(item, index, 1)
+          _vm.powerCriteria(item, index, 1)
         }
       }
     }, [_vm._v(_vm._s(item.name))])
@@ -627,7 +705,17 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.toAddOpportunity
     }
-  }, [_vm._v("新增")])], 2)
+  }, [_vm._v("新增")]), _vm._v(" "), _c('i-message', {
+    attrs: {
+      "id": "message",
+      "mpcomid": '16'
+    }
+  }), _vm._v(" "), _c('i-toast', {
+    attrs: {
+      "id": "toast",
+      "mpcomid": '17'
+    }
+  })], 2)
 }
 var staticRenderFns = []
 render._withStripped = true

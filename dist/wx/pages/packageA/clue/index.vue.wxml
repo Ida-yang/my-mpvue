@@ -41,5 +41,7 @@
     </i-swipeout>
     <i-load-more wx:if="{{noMore}}" tip="我是有底线的" loading="{{false}}" class="_i-load-more data-v-787ea77b"></i-load-more>
     <i-button bindtap="handleProxy" type="ghost" long="{{true}}" class="_i-button data-v-787ea77b bottom_btn" data-eventid="{{'12'}}" data-comkey="{{$k}}">新增</i-button>
+    <i-message id="message" class="_i-message data-v-787ea77b"></i-message>
+    <i-toast id="toast" class="_i-toast data-v-787ea77b"></i-toast>
   </view>
 </template>

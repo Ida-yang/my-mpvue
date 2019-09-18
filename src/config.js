@@ -3,6 +3,7 @@
 const defaulthost = 'https://crm.yunzoe.com/yzcrm/'
 const sourcehost = 'http://crm.yunzoe.com/'
 const SESSIONID = ''
+// const SESSIONID = 'JSESSIONID=2DC80CC7DF41F50E8E5E9352762C49D9'
 const rememberMe = ''
 const account = ''
 const cipher = ''

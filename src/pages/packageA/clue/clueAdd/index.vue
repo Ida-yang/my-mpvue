@@ -75,6 +75,9 @@
                     data: {
                         type: '客户来源'
                     },
+                    header:{
+                        'Cookie': config.SESSIONID
+                    },
                     success: function (res) {
                         _this.typeData = res.data
                         let info = res.data

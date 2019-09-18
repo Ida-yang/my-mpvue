@@ -245,12 +245,47 @@
             },
 
             changeBar(val){
+                const _this = this
+
                 let key = val.target.key
                 this.activeBar = key
+
                 if(key == 'receive'){
-                    this.receiveItem()
+                    wx.request({
+                        url: config.defaulthost + 'customerPoolJurisdiction/receive.do',  //接口地址
+                        header:{
+                            'Cookie': config.SESSIONID
+                        },
+                        success:function(res) {
+                            let info = res.data.msg
+                            if(info == 'success'){
+                                _this.receiveItem()
+                            }else if(info == 'error'){
+                                $Toast({
+                                    content: '对不起，您没有此权限',
+                                    type: 'error'
+                                });
+                            }
+                        }
+                    })
                 }else if(key == 'distribute'){
-                    this.distributeItem()
+                    wx.request({
+                        url: config.defaulthost + 'customerPoolJurisdiction/distribution.do',  //接口地址
+                        header:{
+                            'Cookie': config.SESSIONID
+                        },
+                        success:function(res) {
+                            let info = res.data.msg
+                            if(info == 'success'){
+                                _this.distributeItem()
+                            }else if(info == 'error'){
+                                $Toast({
+                                    content: '对不起，您没有此权限',
+                                    type: 'error'
+                                });
+                            }
+                        }
+                    })
                 }else if(key == 'trash'){
                     this.deleteItem()
                 }
@@ -279,11 +314,6 @@
                                 type: 'success'
                             });
                             _this.toCustomerPool()
-                        }else if(res.data.msg && res.data.msg == 'error'){
-                            $Toast({
-                                content: '对不起，您没有此权限',
-                                type: 'error'
-                            });
                         }else{
                             $Message({
                                 content: res.data.msg,

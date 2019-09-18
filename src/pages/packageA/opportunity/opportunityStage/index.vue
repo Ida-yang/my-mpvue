@@ -96,6 +96,9 @@
                 
                 wx.request({
                     url: config.defaulthost + 'addstep/selectAddstep.do?cId=' + config.userData.cId,  //接口地址
+                    header:{
+                        'Cookie': config.SESSIONID
+                    },
                     success:function(res) {
                         let info = res.data.map.addsteps
                         info.forEach(el => {

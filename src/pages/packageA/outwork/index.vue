@@ -15,7 +15,7 @@
             <view class="search_container">
                 <i-panel title="数据授权" i-class="query_label">
                     <view class="query_view">
-                        <span class="queryBtn" :class="[index == powerActive ? 'isActive':'']" v-for="(item,index) in powerList" :key="item.label" @click="checkCriteria(item,index,1)">{{item.name}}</span>
+                        <span class="queryBtn" :class="[index == powerActive ? 'isActive':'']" v-for="(item,index) in powerList" :key="item.label" @click="powerCriteria(item,index,1)">{{item.name}}</span>
                     </view>
                 </i-panel>
                 <i-panel title="任务时间" i-class="query_label">
@@ -96,6 +96,8 @@
                     {label:'12',name:'我的'},
                     {label:'13',name:'本组'},
                     {label:'14',name:'本机构'},
+                    {label:'15',name:'我协助'},
+                    {label:'16',name:'我审批'},
                 ],
                 powerActive: '1',
                 timeList:[
@@ -163,6 +165,12 @@
                     data.secondid = config.userData.second_id
                 }else if(this.searchList.powerid == '14'){
                     data.deptid = config.userData.private_deptid
+                }else if(this.searchList.powerid == '15'){
+                    data.userid = config.userData.pId
+                    data.type = 1
+                }else if(this.searchList.powerid == '15'){
+                    data.userid = config.userData.pId
+                    data.type = 2
                 }
                 wx.request({
                     method:'post',
@@ -226,10 +234,7 @@
                 this.searchCriteria = !this.searchCriteria
             },
             checkCriteria(item,index,val){
-                if(val === 1){
-                    this.powerActive = index
-                    this.searchList.powerid = item.label
-                }else if(val === 2){
+                if(val === 2){
                     this.timeActive = index
                     this.searchList.example = item.label
                 }else if(val === 3){
@@ -237,6 +242,46 @@
                     this.searchList.state = item.name
                 }
                 this.search()
+            },
+            powerCriteria(item,index,val){
+                const _this = this
+                this.powerActive = index
+                this.searchList.powerid = item.label
+
+                let queryUrl = ''
+                if(item.label == '11'){
+                    queryUrl = 'visitJurisdiction/all.do'
+                }else if(item.label == '13'){
+                    queryUrl = 'visitJurisdiction/second.do'
+                }else if(item.label == '14'){
+                    queryUrl = 'visitJurisdiction/dept.do'
+                // }else if(item.label == '15'){
+                //     queryUrl = 'visitJurisdiction/assistants.do'
+                // }else if(item.label == '16'){
+                //     queryUrl = 'visitJurisdiction/approver.do'
+                }
+
+                if(index == 1){
+                    this.search()
+                }else{
+                    wx.request({
+                        url: config.defaulthost + queryUrl,  //接口地址
+                        header:{
+                            'Cookie': config.SESSIONID
+                        },
+                        success:function(res) {
+                            let info = res.data.msg
+                            if(info == 'success'){
+                                _this.search()
+                            }else if(info == 'error'){
+                                $Toast({
+                                    content: '对不起，您没有此权限',
+                                    type: 'error'
+                                });
+                            }
+                        }
+                    })
+                }
             },
             reSet(){
                 this.searchList = {
@@ -256,19 +301,55 @@
             },
 
             toAddVisit(){
-                const url = 'outworkAdd/main'
-                mpvue.navigateTo({ url })
+                const _this = this
+
+                wx.request({
+                    url: config.defaulthost + 'visitJurisdiction/insert.do',  //接口地址
+                    header:{
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        let info = res.data.msg
+                        if(info == 'success'){
+                            const url = 'outworkAdd/main'
+                            mpvue.navigateTo({ url })
+                        }else if(info == 'error'){
+                            $Toast({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }
+                    }
+                })
             },
             toUpdateVisit(e,val){
+                const _this = this
+
                 if(val.checkStatus !== 5 || val.state == '已完成' || val.state == '作废'){
                     $Toast({
                         content: '不可编辑',
                         type: 'warning'
                     });
                 }else{
-                    const url = 'outworkUpdate/main'
-                    config.information.outworkupdateData = val
-                    mpvue.navigateTo({ url })
+                    wx.request({
+                        url: config.defaulthost + 'visitJurisdiction/update.do',  //接口地址
+                        header:{
+                            'Cookie': config.SESSIONID
+                        },
+                        success:function(res) {
+                            let info = res.data.msg
+                            if(info == 'success'){
+                                const url = 'outworkUpdate/main'
+                                config.information.outworkupdateData = val
+                                mpvue.navigateTo({ url })
+                            }else if(info == 'error'){
+                                $Toast({
+                                    content: '对不起，您没有此权限',
+                                    type: 'error'
+                                });
+                            }
+                        }
+                    })
                 }
             },
             toVisitDetail(e,val){

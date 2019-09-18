@@ -84,6 +84,8 @@ if (false) {(function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
 //
 //
 //
@@ -140,6 +142,10 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+
 
 
 
@@ -262,14 +268,47 @@ if (false) {(function () {
             this.searchCriteria = !this.searchCriteria;
         },
         checkCriteria: function checkCriteria(item, index, val) {
-            if (val === 1) {
-                this.powerActive = index;
-                this.searchList.powerid = item.label;
-            } else if (val === 2) {
+            if (val === 2) {
                 this.timeActive = index;
                 this.searchList.example = item.label;
             }
             this.search();
+        },
+        powerCriteria: function powerCriteria(item, index, val) {
+            var _this = this;
+            this.powerActive = index;
+            this.searchList.powerid = item.label;
+
+            var queryUrl = '';
+            if (item.label == '11') {
+                queryUrl = 'contactsJurisdiction/all.do';
+            } else if (item.label == '13') {
+                queryUrl = 'contactsJurisdiction/second.do';
+            } else if (item.label == '14') {
+                queryUrl = 'contactsJurisdiction/dept.do';
+            }
+
+            if (index == 1) {
+                this.search();
+            } else {
+                wx.request({
+                    url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + queryUrl, //接口地址
+                    header: {
+                        'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                    },
+                    success: function success(res) {
+                        var info = res.data.msg;
+                        if (info == 'success') {
+                            _this.search();
+                        } else if (info == 'error') {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }
+                    }
+                });
+            }
         },
         reSet: function reSet() {
             this.searchList = {
@@ -287,13 +326,49 @@ if (false) {(function () {
             this.loadData();
         },
         toAddContact: function toAddContact() {
-            var url = 'contactAdd/main';
-            global.mpvue.navigateTo({ url: url });
+            var _this = this;
+
+            wx.request({
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'contactsJurisdiction/insert.do', //接口地址
+                header: {
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    var info = res.data.msg;
+                    if (info == 'success') {
+                        var url = 'contactAdd/main';
+                        global.mpvue.navigateTo({ url: url });
+                    } else if (info == 'error') {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                            content: '对不起，您没有此权限',
+                            type: 'error'
+                        });
+                    }
+                }
+            });
         },
         toUpdateContact: function toUpdateContact(e, val) {
-            var url = 'contactUpdate/main';
-            __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.contactupdateData = val;
-            global.mpvue.navigateTo({ url: url });
+            var _this = this;
+
+            wx.request({
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'contactsJurisdiction/update.do', //接口地址
+                header: {
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    var info = res.data.msg;
+                    if (info == 'success') {
+                        var url = 'contactUpdate/main';
+                        __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.contactupdateData = val;
+                        global.mpvue.navigateTo({ url: url });
+                    } else if (info == 'error') {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                            content: '对不起，您没有此权限',
+                            type: 'error'
+                        });
+                    }
+                }
+            });
         },
         toContactDetail: function toContactDetail(e, val) {
             var url = 'contactDetail/main';
@@ -405,7 +480,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       },
       on: {
         "click": function($event) {
-          _vm.checkCriteria(item, index, 1)
+          _vm.powerCriteria(item, index, 1)
         }
       }
     }, [_vm._v(_vm._s(item.name))])
@@ -514,7 +589,17 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.toAddContact
     }
-  }, [_vm._v("新增")])], 2)
+  }, [_vm._v("新增")]), _vm._v(" "), _c('i-message', {
+    attrs: {
+      "id": "message",
+      "mpcomid": '13'
+    }
+  }), _vm._v(" "), _c('i-toast', {
+    attrs: {
+      "id": "toast",
+      "mpcomid": '14'
+    }
+  })], 2)
 }
 var staticRenderFns = []
 render._withStripped = true

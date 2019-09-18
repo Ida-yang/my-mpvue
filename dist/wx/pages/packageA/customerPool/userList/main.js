@@ -179,15 +179,10 @@ if (false) {(function () {
                 success: function success(res) {
                     if (res.data.code && res.data.code == '200') {
                         Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
-                            content: '领取成功',
+                            content: '分配成功',
                             type: 'success'
                         });
                         _this.toCustomerPool();
-                    } else if (res.data.msg && res.data.msg == 'error') {
-                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
-                            content: '对不起，您没有此权限',
-                            type: 'error'
-                        });
                     } else {
                         Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
                             content: res.data.msg,

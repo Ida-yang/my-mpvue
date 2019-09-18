@@ -179,7 +179,7 @@ if (false) {(function () {
                 limit: 10
             },
 
-            powerList: [{ label: '11', name: '全部' }, { label: '12', name: '我的' }, { label: '13', name: '本组' }, { label: '14', name: '本机构' }],
+            powerList: [{ label: '11', name: '全部' }, { label: '12', name: '我的' }, { label: '13', name: '本组' }, { label: '14', name: '本机构' }, { label: '15', name: '我协助' }, { label: '16', name: '我审批' }],
             powerActive: '1',
             timeList: [{ label: '1', name: '昨天' }, { label: '2', name: '今天' }, { label: '5', name: '明天' }, { label: '3', name: '本周' }, { label: '6', name: '本月' }, { label: '7', name: '上月' }, { label: '8', name: '下月' }],
             timeActive: '-1',
@@ -235,6 +235,12 @@ if (false) {(function () {
                 data.secondid = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.second_id;
             } else if (this.searchList.powerid == '14') {
                 data.deptid = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.private_deptid;
+            } else if (this.searchList.powerid == '15') {
+                data.userid = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.pId;
+                data.type = 1;
+            } else if (this.searchList.powerid == '15') {
+                data.userid = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.pId;
+                data.type = 2;
             }
             wx.request({
                 method: 'post',
@@ -298,10 +304,7 @@ if (false) {(function () {
             this.searchCriteria = !this.searchCriteria;
         },
         checkCriteria: function checkCriteria(item, index, val) {
-            if (val === 1) {
-                this.powerActive = index;
-                this.searchList.powerid = item.label;
-            } else if (val === 2) {
+            if (val === 2) {
                 this.timeActive = index;
                 this.searchList.example = item.label;
             } else if (val === 3) {
@@ -309,6 +312,46 @@ if (false) {(function () {
                 this.searchList.state = item.name;
             }
             this.search();
+        },
+        powerCriteria: function powerCriteria(item, index, val) {
+            var _this = this;
+            this.powerActive = index;
+            this.searchList.powerid = item.label;
+
+            var queryUrl = '';
+            if (item.label == '11') {
+                queryUrl = 'visitJurisdiction/all.do';
+            } else if (item.label == '13') {
+                queryUrl = 'visitJurisdiction/second.do';
+            } else if (item.label == '14') {
+                queryUrl = 'visitJurisdiction/dept.do';
+                // }else if(item.label == '15'){
+                //     queryUrl = 'visitJurisdiction/assistants.do'
+                // }else if(item.label == '16'){
+                //     queryUrl = 'visitJurisdiction/approver.do'
+            }
+
+            if (index == 1) {
+                this.search();
+            } else {
+                wx.request({
+                    url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + queryUrl, //接口地址
+                    header: {
+                        'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                    },
+                    success: function success(res) {
+                        var info = res.data.msg;
+                        if (info == 'success') {
+                            _this.search();
+                        } else if (info == 'error') {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }
+                    }
+                });
+            }
         },
         reSet: function reSet() {
             this.searchList = {
@@ -327,19 +370,55 @@ if (false) {(function () {
             this.loadData();
         },
         toAddVisit: function toAddVisit() {
-            var url = 'outworkAdd/main';
-            global.mpvue.navigateTo({ url: url });
+            var _this = this;
+
+            wx.request({
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'visitJurisdiction/insert.do', //接口地址
+                header: {
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    var info = res.data.msg;
+                    if (info == 'success') {
+                        var url = 'outworkAdd/main';
+                        global.mpvue.navigateTo({ url: url });
+                    } else if (info == 'error') {
+                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                            content: '对不起，您没有此权限',
+                            type: 'error'
+                        });
+                    }
+                }
+            });
         },
         toUpdateVisit: function toUpdateVisit(e, val) {
+            var _this = this;
+
             if (val.checkStatus !== 5 || val.state == '已完成' || val.state == '作废') {
                 Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
                     content: '不可编辑',
                     type: 'warning'
                 });
             } else {
-                var url = 'outworkUpdate/main';
-                __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.outworkupdateData = val;
-                global.mpvue.navigateTo({ url: url });
+                wx.request({
+                    url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'visitJurisdiction/update.do', //接口地址
+                    header: {
+                        'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                    },
+                    success: function success(res) {
+                        var info = res.data.msg;
+                        if (info == 'success') {
+                            var url = 'outworkUpdate/main';
+                            __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.outworkupdateData = val;
+                            global.mpvue.navigateTo({ url: url });
+                        } else if (info == 'error') {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }
+                    }
+                });
             }
         },
         toVisitDetail: function toVisitDetail(e, val) {
@@ -452,7 +531,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       },
       on: {
         "click": function($event) {
-          _vm.checkCriteria(item, index, 1)
+          _vm.powerCriteria(item, index, 1)
         }
       }
     }, [_vm._v(_vm._s(item.name))])

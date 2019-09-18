@@ -329,12 +329,47 @@ if (false) {(function () {
             this.activeName = e.target.key;
         },
         changeBar: function changeBar(val) {
+            var _this = this;
+
             var key = val.target.key;
             this.activeBar = key;
+
             if (key == 'receive') {
-                this.receiveItem();
+                wx.request({
+                    url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'customerPoolJurisdiction/receive.do', //接口地址
+                    header: {
+                        'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                    },
+                    success: function success(res) {
+                        var info = res.data.msg;
+                        if (info == 'success') {
+                            _this.receiveItem();
+                        } else if (info == 'error') {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }
+                    }
+                });
             } else if (key == 'distribute') {
-                this.distributeItem();
+                wx.request({
+                    url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'customerPoolJurisdiction/distribution.do', //接口地址
+                    header: {
+                        'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                    },
+                    success: function success(res) {
+                        var info = res.data.msg;
+                        if (info == 'success') {
+                            _this.distributeItem();
+                        } else if (info == 'error') {
+                            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                                content: '对不起，您没有此权限',
+                                type: 'error'
+                            });
+                        }
+                    }
+                });
             } else if (key == 'trash') {
                 this.deleteItem();
             }
@@ -363,11 +398,6 @@ if (false) {(function () {
                             type: 'success'
                         });
                         _this.toCustomerPool();
-                    } else if (res.data.msg && res.data.msg == 'error') {
-                        Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
-                            content: '对不起，您没有此权限',
-                            type: 'error'
-                        });
                     } else {
                         Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Message"])({
                             content: res.data.msg,

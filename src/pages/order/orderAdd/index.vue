@@ -428,7 +428,6 @@
                     url: config.defaulthost + 'order/insert.do?cId=' + config.userData.cId,  //接口地址
                     data: data,
                     header:{
-                        // "Content-Type": "application/x-www-form-urlencoded",
                         'Cookie': config.SESSIONID
                     },
                     success: function (res) {

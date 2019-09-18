@@ -27,5 +27,7 @@
       </i-cell>
     </i-cell-group>
     <i-load-more wx:if="{{noMore}}" tip="我是有底线的" loading="{{false}}" class="_i-load-more data-v-d8ef2e92"></i-load-more>
+    <i-message id="message" class="_i-message data-v-d8ef2e92"></i-message>
+    <i-toast id="toast" class="_i-toast data-v-d8ef2e92"></i-toast>
   </view>
 </template>

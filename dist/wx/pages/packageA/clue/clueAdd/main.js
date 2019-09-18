@@ -163,6 +163,9 @@ if (false) {(function () {
                 data: {
                     type: '客户来源'
                 },
+                header: {
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
                 success: function success(res) {
                     _this.typeData = res.data;
                     var info = res.data;

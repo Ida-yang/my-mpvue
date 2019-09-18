@@ -91,15 +91,10 @@
                     success:function(res) {
                         if(res.data.code && res.data.code == '200'){
                             $Message({
-                                content: '领取成功',
+                                content: '分配成功',
                                 type: 'success'
                             });
                             _this.toCluePool()
-                        }else if(res.data.msg && res.data.msg == 'error'){
-                            $Toast({
-                                content: '对不起，您没有此权限',
-                                type: 'error'
-                            });
                         }else{
                             $Message({
                                 content: res.data.msg,

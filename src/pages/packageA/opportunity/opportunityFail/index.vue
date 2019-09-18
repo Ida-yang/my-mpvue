@@ -89,8 +89,6 @@
                     deptid: config.userData.private_deptid,
                 }
 
-                console.log(data)
-
                 wx.request({
                     method:'post',
                     url: config.defaulthost + 'saveOpportunityProgress.do?cId=' + config.userData.cId,  //接口地址

@@ -85,6 +85,9 @@
                     data: {
                         type: '客户来源'
                     },
+                    header:{
+                        'Cookie': config.SESSIONID
+                    },
                     success: function (res) {
                         _this.cuesData = res.data.name3001
                         _this.typeData = res.data.name4001

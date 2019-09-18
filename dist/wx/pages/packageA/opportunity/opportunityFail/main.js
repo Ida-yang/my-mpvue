@@ -175,8 +175,6 @@ if (false) {(function () {
                 deptid: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.private_deptid
             };
 
-            console.log(data);
-
             wx.request({
                 method: 'post',
                 url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'saveOpportunityProgress.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
