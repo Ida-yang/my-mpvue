@@ -120,7 +120,7 @@
                 this.poolNameData.forEach(a => {
                     if(label == a.id){
                         this.poolNameID = label
-                        this.ascriptionId = a.user_id
+                        this.ascriptionId = a.privateUser[0].private_id
                         if(a.discount){
                             this.discount = a.discount
                         }else{

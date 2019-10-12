@@ -1,0 +1,1 @@
+<import src="/pages/packageA/payback-item/index.vue.wxml" /><template is="1733f8a7" data="{{ ...$root['0'], $root }}"/>

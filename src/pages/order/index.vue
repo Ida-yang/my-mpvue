@@ -310,18 +310,21 @@
                     },
                     success: function (res) {
                         if(res.data.code && res.data.code == "200"){
+                            _this.cancelDelete()
                             $Message({
                                 content: '删除成功',
                                 type: 'success'
                             });
-                            _this.cancelDelete()
+                            _this.init = true
+                            _this.noMore = false
+                            _this.searchList.page = 1
                             _this.loadData()
                         }else if(res.data.msg && res.data.msg == 'error'){
+                            _this.cancelDelete()
                             $Toast({
                                 content: '对不起，您没有此权限',
                                 type: 'error'
                             });
-                            _this.cancelDelete()
                         }else{
                             $Message({
                                 content: res.data.msg,

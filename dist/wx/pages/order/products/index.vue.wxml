@@ -8,16 +8,16 @@
     </view>
     <view class="_view data-v-74545b2d order_product_content">
       <scroll-view scroll-y class="_scroll-view data-v-74545b2d caption_wrap">
-        <i-collapse name="{{activename}}" accordion i-class="order_collapse" class="_i-collapse data-v-74545b2d">
-          <i-collapse-item title="全部商品" name="name1" i-class="order_collapse_item" bindcollapse="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-collapse-item data-v-74545b2d {{allactive ? 'theme_color_text' : ''}}"></i-collapse-item>
-          <i-collapse-item wx:key="index" key="{{index}}" title="{{item.name}}" name="{{item.id}}" i-class="order_collapse_item" i-collapse-title-wrap="order_collapse_title" bindcollapse="handleProxy" data-eventid="{{'4_'+index}}" data-comkey="{{$k}}" wx:for="{{classData}}" wx:for-index="index" wx:for-item="item" class="_i-collapse-item data-v-74545b2d">
+        <i-collapse name="{{activename}}" accordion i-class="product_collapse" class="_i-collapse data-v-74545b2d">
+          <i-collapse-item title="全部商品" name="name1" i-class="product_collapse_item" bindcollapse="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-collapse-item data-v-74545b2d {{allactive ? 'theme_color_text' : ''}}"></i-collapse-item>
+          <i-collapse-item wx:key="index" key="{{index}}" title="{{item.name}}" name="{{item.id}}" i-class="product_collapse_item" i-collapse-title-wrap="product_collapse_title" bindcollapse="handleProxy" data-eventid="{{'4_'+index}}" data-comkey="{{$k}}" wx:for="{{classData}}" wx:for-index="index" wx:for-item="item" class="_i-collapse-item data-v-74545b2d">
             <view slot="content" class="_view data-v-74545b2d">
-              <view wx:key="i" key="{{i}}" class="_p data-v-74545b2d order_collapse_c_p {{el.active ? 'theme_color_text' : ''}}" bindtap="handleProxy" data-eventid="{{'3_'+index+'-'+i}}" data-comkey="{{$k}}" wx:for="{{item.next}}" wx:for-index="i" wx:for-item="el">{{el.name}}</view>
+              <view wx:key="i" key="{{i}}" class="_p data-v-74545b2d product_collapse_c_p {{el.active ? 'theme_color_text' : ''}}" bindtap="handleProxy" data-eventid="{{'3_'+index+'-'+i}}" data-comkey="{{$k}}" wx:for="{{item.next}}" wx:for-index="i" wx:for-item="el">{{el.name}}</view>
             </view>
           </i-collapse-item>
         </i-collapse>
       </scroll-view>
-      <scroll-view scroll-y class="_scroll-view data-v-74545b2d product_wrap">
+      <scroll-view scroll-y class="_scroll-view data-v-74545b2d order_product_right">
         <view wx:key="el.id" key="{{el.id}}" class="_view data-v-74545b2d product_item" wx:for="{{productData}}" wx:for-index="i" wx:for-item="el">
           <view wx:key="item.id" key="{{item.id}}" wx:if="{{el.itemList.length == 1}}" wx:for="{{el.itemList}}" wx:for-index="index" wx:for-item="item" class="_view data-v-74545b2d">
             <view style="margin-bottom:8px" class="_p data-v-74545b2d">{{item.goodsName}}</view>
@@ -38,7 +38,7 @@
               <image src="{{el.itemList[0].proImage}}" style="width:70px;height:70px" class="_image data-v-74545b2d"></image>
               <view class="_view data-v-74545b2d product_item_price">
                 <view class="_p data-v-74545b2d"><label style="color:#e62c2c;" class="_span data-v-74545b2d">￥{{el.minprice}}</label><label style="font-size:12px" class="_span data-v-74545b2d"> 起</label></view>
-                <view style="margin-top:30px;color:#80848f" class="_p data-v-74545b2d">{{el.itemList.length}}中规格可选</view>
+                <view style="margin-top:30px;color:#80848f" class="_p data-v-74545b2d">{{el.itemList.length}}种规格可选</view>
               </view>
               <view class="_view data-v-74545b2d product_item_shopping" bindtap="handleProxy" data-eventid="{{'6_'+i}}" data-comkey="{{$k}}">
                 <i-icon type="publishgoods_fill" size="20" color="#fff" class="_i-icon data-v-74545b2d"></i-icon>

@@ -1,1 +1,17 @@
 @import "../../common/vendor.wxss";
+
+.approval_wrap {
+  background-color: #fff;
+}
+.meaasge_icon_span {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.message_image {
+  width: 50rpx;
+  height: 50rpx;
+}

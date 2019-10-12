@@ -9,24 +9,9 @@
   height: calc(100vh - 200rpx);
   display: flex;
 }
-.caption_wrap {
-  flex: 1;
+.order_product_right {
+  flex: 3;
+  height: calc(100vh - 160rpx);
+  background-color: rgb(255, 255, 255);
   float: left;
-}
-.order_collapse {
-  font-size: 28rpx;
-}
-.order_collapse_item {
-  border-top: 0 !important;
-  line-height: 64rpx;
-}
-.order_collapse_title {
-  overflow: hidden;
-  height: 64rpx;
-}
-.order_collapse_c_p {
-  overflow: hidden;
-  padding-left: 20rpx;
-  height: 64rpx;
-  line-height: 64rpx;
 }

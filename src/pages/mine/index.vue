@@ -30,16 +30,23 @@
             <i-cell title="个人资料" is-link>
                 <i-icon slot="icon" type="mine" size="20" color="#8a8a8a" />
             </i-cell>
-            <i-cell title="修改密码">
+            <i-cell title="修改密码" is-link @click="toPassword">
                 <i-icon slot="icon" type="lock" size="20" color="#707070" />
             </i-cell>
-            <i-cell title="技术支持" is-link>
+            <i-cell title="技术支持" @click="showPhone">
                 <i-icon slot="icon" type="mail" size="20" color="#8a8a8a" />
             </i-cell>
-            <i-cell title="版本信息">
+            <i-cell title="版本信息" is-link @click="toEdition">
                 <i-icon slot="icon" type="prompt" size="20" color="#707070" />
             </i-cell>
         </i-cell-group>
+
+        <i-modal :visible="phoneVisible" @ok="serviceCall" @cancel="closePhone">
+            <view>
+                <p>客户服务热线</p>
+                <p>020-38880730</p>
+            </view>
+        </i-modal>
     </div>
 </template>
 
@@ -52,6 +59,8 @@
                 current: '我的',
 
                 mineData:{},
+
+                phoneVisible:false
             }
         },
 
@@ -63,6 +72,28 @@
             loadData(){
                 let info = config.userData
                 this.mineData = info
+            },
+            
+            showPhone(){
+                this.phoneVisible = true
+            },
+            closePhone(){
+                this.phoneVisible = false
+            },
+            serviceCall(){
+                let phoneNum = '020-38880730'
+                wx.makePhoneCall({
+                    phoneNumber: phoneNum
+                })
+            },
+
+            toPassword(){
+                const url = 'password/main'
+                mpvue.navigateTo({ url })
+            },
+            toEdition(){
+                const url = 'edition/main'
+                mpvue.navigateTo({ url })
             },
         },
     }

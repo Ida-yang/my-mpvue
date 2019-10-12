@@ -11,16 +11,16 @@
 
         <view class="order_product_content">
             <scroll-view scroll-y class="caption_wrap">
-                <i-collapse :name="activename" accordion i-class="order_collapse">
-                    <i-collapse-item title="全部商品" name="name1" :class="allactive ? 'theme_color_text' : ''" i-class="order_collapse_item" @collapse="collapseClick($event,item,1)"></i-collapse-item>
-                    <i-collapse-item v-for="(item,index) in classData" :key="index" :title="item.name" :name="item.id" i-class="order_collapse_item" i-collapse-title-wrap="order_collapse_title" @collapse="collapseClick($event,item,2)">
+                <i-collapse :name="activename" accordion i-class="product_collapse">
+                    <i-collapse-item title="全部商品" name="name1" :class="allactive ? 'theme_color_text' : ''" i-class="product_collapse_item" @collapse="collapseClick($event,item,1)"></i-collapse-item>
+                    <i-collapse-item v-for="(item,index) in classData" :key="index" :title="item.name" :name="item.id" i-class="product_collapse_item" i-collapse-title-wrap="product_collapse_title" @collapse="collapseClick($event,item,2)">
                         <view slot="content">
-                            <p v-for="(el,i) in item.next" :key="i" class="order_collapse_c_p" :class="el.active ? 'theme_color_text' : ''" @click="collapseItem($event,el,2)">{{el.name}}</p>
+                            <p v-for="(el,i) in item.next" :key="i" class="product_collapse_c_p" :class="el.active ? 'theme_color_text' : ''" @click="collapseItem($event,el,2)">{{el.name}}</p>
                         </view>
                     </i-collapse-item>
                 </i-collapse>
             </scroll-view>
-            <scroll-view scroll-y class="product_wrap">
+            <scroll-view scroll-y class="order_product_right">
                 <view v-for="(el,i) in productData" :key="el.id" class="product_item">
                     <view v-for="(item,index) in el.itemList" :key="item.id" v-if="el.itemList.length == 1">
                         <p style="margin-bottom:8px">{{item.goodsName}}</p>
@@ -41,7 +41,7 @@
                             <image :src="el.itemList[0].proImage" style="width:70px;height:70px" />
                             <view class="product_item_price">
                                 <p><span style="color:#e62c2c;">￥{{el.minprice}}</span><span style="font-size:12px"> 起</span></p>
-                                <p style="margin-top:30px;color:#80848f">{{el.itemList.length}}中规格可选</p>
+                                <p style="margin-top:30px;color:#80848f">{{el.itemList.length}}种规格可选</p>
                             </view>
                             <view class="product_item_shopping" @click="showItemList($event,el)">
                                 <i-icon type="publishgoods_fill" size="20" color="#fff" />
@@ -269,6 +269,8 @@
                 }else{
                     this.isValue = false
                 }
+
+                this.search()
             },
             closeSearch(){
                 this.searchList.searchName = ''
@@ -491,27 +493,10 @@
         height: calc(100vh - 100px);
         display: flex
     }
-    .caption_wrap{
-        flex: 1;
+    .order_product_right{
+        flex: 3;
+        height: calc(100vh - 80px);
+        background-color: rgb(255, 255, 255);
         float: left;
     }
-    .order_collapse{
-        font-size: 14px
-    }
-    .order_collapse_item{
-        border-top: 0 !important;
-        line-height: 32px
-    }
-    .order_collapse_title{
-        overflow: hidden;
-        height: 32px;
-    }
-    .order_collapse_c_p{
-        overflow: hidden;
-        padding-left: 10px;
-        height: 32px;
-        line-height: 32px
-    }
-
-    
 </style>

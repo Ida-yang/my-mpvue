@@ -13,6 +13,8 @@
     "pages/order/orderDetail/main",
     "pages/order/customers/main",
     "pages/order/products/main",
+    "pages/mine/password/main",
+    "pages/mine/edition/main",
     "pages/notYet/main"
   ],
   "subPackages": [
@@ -61,6 +63,7 @@
         "payCollection/payCollectionDetail/main",
         "follow/main",
         "follow/followDetail/main",
+        "product/main",
         "outwork/main",
         "outwork/outworkAdd/main",
         "outwork/outworkUpdate/main",
@@ -76,7 +79,13 @@
         "note/main",
         "note/noteAdd/main",
         "note/noteUpdate/main",
-        "note/noteDetail/main"
+        "note/noteDetail/main",
+        "call-item/main",
+        "clue-item/main",
+        "customer-item/main",
+        "opportunity-item/main",
+        "agreement-item/main",
+        "payback-item/main"
       ]
     }
   ],
@@ -111,6 +120,12 @@
         "selectedIconPath": "static/tabs/03-2.png"
       },
       {
+        "text": "消息",
+        "pagePath": "pages/approval/main",
+        "iconPath": "static/tabs/04-1.png",
+        "selectedIconPath": "static/tabs/04-2.png"
+      },
+      {
         "text": "我的",
         "pagePath": "pages/mine/main",
         "iconPath": "static/tabs/05-1.png",
@@ -137,6 +152,12 @@
         "activeIcon": "static/tabs/03-2.png"
       },
       {
+        "name": "消息",
+        "pagePath": "pages/approval/main",
+        "icon": "static/tabs/04-1.png",
+        "activeIcon": "static/tabs/04-2.png"
+      },
+      {
         "name": "我的",
         "pagePath": "pages/mine/main",
         "icon": "static/tabs/05-1.png",
@@ -150,5 +171,5 @@
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
-  "sitemapLocation": "sitemap75.json"
+  "sitemapLocation": "sitemap71.json"
 }

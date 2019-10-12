@@ -1,0 +1,70 @@
+<template name="750b3216">
+  <view class="_div data-v-7cb42dfa produce_wrap">
+    <view class="_view data-v-7cb42dfa order_search">
+      <view class="_view data-v-7cb42dfa order_searck_box">
+        <i-icon type="search" size="16" color="#80848f" class="_i-icon data-v-7cb42dfa order_search_icon"></i-icon> <input value="{{searchList.searchName}}" bindinput="handleProxy" placeholder="请输入公司名称查询" maxlength="50" class="_input data-v-7cb42dfa order_search_input" confirm-type="search" bindconfirm="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" />
+        <i-icon wx:if="{{isValue}}" type="close" size="14" color="#80848f" class="_i-icon data-v-7cb42dfa order_search_icon" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}"></i-icon>
+      </view>
+    </view>
+    <view class="_view data-v-7cb42dfa product_content">
+      <scroll-view scroll-y class="_scroll-view data-v-7cb42dfa caption_wrap">
+        <i-collapse name="{{activename}}" accordion i-class="product_collapse" class="_i-collapse data-v-7cb42dfa">
+          <i-collapse-item title="全部商品" name="name1" i-class="product_collapse_item" bindcollapse="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-collapse-item data-v-7cb42dfa {{allactive ? 'theme_color_text' : ''}}"></i-collapse-item>
+          <i-collapse-item wx:key="index" key="{{index}}" title="{{item.name}}" name="{{item.id}}" i-class="product_collapse_item" i-collapse-title-wrap="product_collapse_title" bindcollapse="handleProxy" data-eventid="{{'4_'+index}}" data-comkey="{{$k}}" wx:for="{{classData}}" wx:for-index="index" wx:for-item="item" class="_i-collapse-item data-v-7cb42dfa">
+            <view slot="content" class="_view data-v-7cb42dfa">
+              <view wx:key="i" key="{{i}}" class="_p data-v-7cb42dfa product_collapse_c_p {{el.active ? 'theme_color_text' : ''}}" bindtap="handleProxy" data-eventid="{{'3_'+index+'-'+i}}" data-comkey="{{$k}}" wx:for="{{item.next}}" wx:for-index="i" wx:for-item="el">{{el.name}}</view>
+            </view>
+          </i-collapse-item>
+        </i-collapse>
+      </scroll-view>
+      <scroll-view scroll-y class="_scroll-view data-v-7cb42dfa product_wrap">
+        <view wx:key="el.id" key="{{el.id}}" class="_view data-v-7cb42dfa product_item" wx:for="{{productData}}" wx:for-index="i" wx:for-item="el">
+          <view wx:key="item.id" key="{{item.id}}" wx:if="{{el.itemList.length == 1}}" wx:for="{{el.itemList}}" wx:for-index="index" wx:for-item="item" class="_view data-v-7cb42dfa">
+            <view style="margin-bottom:8px" class="_p data-v-7cb42dfa">
+              {{item.goodsName}}
+              <label style="color:#80848f" class="_span data-v-7cb42dfa">({{el.itemList[0].goodsCode}})</label></view>
+            <view class="_view data-v-7cb42dfa product_item_c">
+              <image src="{{item.proImage}}" style="width:70px;height:70px" class="_image data-v-7cb42dfa"></image>
+              <view class="_view data-v-7cb42dfa product_item_price">
+                <view class="_p data-v-7cb42dfa"><label style="color:#e62c2c;" class="_span data-v-7cb42dfa">￥{{item.price}}</label> / {{item.unit}}</view>
+                <view style="margin-top:5px" wx:if="{{item.title !== el.goodsName}}" class="_p data-v-7cb42dfa">{{item.title}}</view>
+              </view>
+            </view>
+          </view>
+          <view wx:if="{{el.itemList.length > 1}}" class="_view data-v-7cb42dfa">
+            <view style="margin-bottom:8px" class="_p data-v-7cb42dfa">{{el.goodsName}}</view>
+            <view class="_view data-v-7cb42dfa product_item_c" bindtap="handleProxy" data-eventid="{{'5_'+i}}" data-comkey="{{$k}}">
+              <image src="{{el.itemList[0].proImage}}" style="width:70px;height:70px" class="_image data-v-7cb42dfa"></image>
+              <view class="_view data-v-7cb42dfa product_item_price">
+                <view class="_p data-v-7cb42dfa"><label style="color:#e62c2c;" class="_span data-v-7cb42dfa">￥{{el.minprice}}</label><label style="font-size:12px" class="_span data-v-7cb42dfa"> 起</label></view>
+                <view style="margin-top:30px;color:#80848f" class="_p data-v-7cb42dfa">{{el.itemList.length}}种规格</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="_view data-v-7cb42dfa product_item_more" wx:if="{{showMore}}">
+      <view class="_view data-v-7cb42dfa item_more_head"></view>
+      <view class="_view data-v-7cb42dfa item_more_content">
+        <i-icon type="close" color="#bebebe" size="20" class="_i-icon data-v-7cb42dfa item_more_close" bindtap="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}"></i-icon>
+        <view class="_view data-v-7cb42dfa item_more_goods">
+          <image src="{{proItemData.itemList[0].proImage}}" style="width:100px;height:100px;" class="_image data-v-7cb42dfa"></image>
+          <view style="margin-left:24px;" class="_p data-v-7cb42dfa">{{proItemData.goodsName}}</view>
+        </view>
+        <scroll-view scroll-y class="_scroll-view data-v-7cb42dfa item_more_scroll_wrap">
+          <view wx:key="sub.id" key="{{sub.id}}" class="_view data-v-7cb42dfa item_more_goods_item" wx:for="{{proItemData.itemList}}" wx:for-index="index" wx:for-item="sub">
+            <view class="_view data-v-7cb42dfa goods_item_head">
+              <image src="{{sub.proImage}}" style="width:20px;height:20px;" class="_image data-v-7cb42dfa"></image> <label style="margin-left:10px" class="_span data-v-7cb42dfa">
+                {{sub.goodsSpec}}
+                <label style="color:#80848f" class="_span data-v-7cb42dfa">({{sub.goodsCode}})</label></label>
+            </view>
+            <view class="_view data-v-7cb42dfa goods_item_foot">
+              <view class="_p data-v-7cb42dfa"><label style="color:#f56c6c" class="_span data-v-7cb42dfa">￥{{sub.price}}</label> <label style="color:#80848f" class="_span data-v-7cb42dfa"> / {{sub.unit}}</label></view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+</template>

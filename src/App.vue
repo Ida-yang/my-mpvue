@@ -363,12 +363,30 @@
     color: #acacac
   }
 
-  .product_wrap{
-    flex: 3;
-    height: calc(100vh -80px);
-    background-color: rgb(255, 255, 255);
+  
+  .caption_wrap{
+    flex: 1;
     float: left;
   }
+  .product_collapse{
+    font-size: 14px
+  }
+  .product_collapse_item{
+    border-top: 0 !important;
+    line-height: 32px
+  }
+  .product_collapse_title{
+    overflow: hidden;
+    height: 32px;
+  }
+  .product_collapse_c_p{
+    overflow: hidden;
+    padding-left: 10px;
+    height: 32px;
+    line-height: 32px
+  }
+
+  
   .product_item{
     padding: 8px;
     font-size: 14px;

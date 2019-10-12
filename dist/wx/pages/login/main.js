@@ -1,6 +1,6 @@
 require("../../common/manifest.js")
 require("../../common/vendor.js")
-global.webpackJsonpMpvue([70],{
+global.webpackJsonpMpvue([79],{
 
 /***/ 68:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -200,6 +200,13 @@ if (false) {(function () {
                             type: 'error'
                         });
                     }
+                }
+            });
+        },
+        getJurisdiction: function getJurisdiction() {
+            wx.getSetting({
+                success: function success(res) {
+                    console.log(res.authSetting);
                 }
             });
         },

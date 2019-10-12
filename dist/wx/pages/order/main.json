@@ -5,6 +5,8 @@
     "usingComponents": {
       "i-panel": "../../iview/panel/index",
       "i-action-sheet": "../../iview/action-sheet/index",
+      "i-message": "../../iview/message/index",
+      "i-toast": "../../iview/toast/index",
       "i-card": "../../iview/card/index",
       "i-load-more": "../../iview/load-more/index",
       "i-cell-group": "../../iview/cell-group/index",

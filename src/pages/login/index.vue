@@ -114,6 +114,13 @@
                     }
                 })
             },
+            getJurisdiction(){
+                wx.getSetting({
+                    success (res) {
+                        console.log(res.authSetting)
+                    }
+                })
+            },
             toExperience(){
                 const _this = this
                 let data = {

@@ -29,15 +29,21 @@
       <i-cell title="个人资料" is-link class="_i-cell data-v-47a9ff3b">
         <i-icon slot="icon" type="mine" size="20" color="#8a8a8a" class="_i-icon data-v-47a9ff3b"></i-icon>
       </i-cell>
-      <i-cell title="修改密码" class="_i-cell data-v-47a9ff3b">
+      <i-cell title="修改密码" is-link bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-cell data-v-47a9ff3b">
         <i-icon slot="icon" type="lock" size="20" color="#707070" class="_i-icon data-v-47a9ff3b"></i-icon>
       </i-cell>
-      <i-cell title="技术支持" is-link class="_i-cell data-v-47a9ff3b">
+      <i-cell title="技术支持" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-47a9ff3b">
         <i-icon slot="icon" type="mail" size="20" color="#8a8a8a" class="_i-icon data-v-47a9ff3b"></i-icon>
       </i-cell>
-      <i-cell title="版本信息" class="_i-cell data-v-47a9ff3b">
+      <i-cell title="版本信息" is-link bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-cell data-v-47a9ff3b">
         <i-icon slot="icon" type="prompt" size="20" color="#707070" class="_i-icon data-v-47a9ff3b"></i-icon>
       </i-cell>
     </i-cell-group>
+    <i-modal visible="{{phoneVisible}}" bindok="handleProxy" bindcancel="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-modal data-v-47a9ff3b">
+      <view class="_view data-v-47a9ff3b">
+        <view class="_p data-v-47a9ff3b">客户服务热线</view>
+        <view class="_p data-v-47a9ff3b">020-38880730</view>
+      </view>
+    </i-modal>
   </view>
 </template>

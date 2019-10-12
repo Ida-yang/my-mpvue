@@ -296,11 +296,26 @@
 .gray_color_text {
   color: #acacac;
 }
-.product_wrap {
-  flex: 3;
-  height: calc(100vh -160rpx);
-  background-color: rgb(255, 255, 255);
+.caption_wrap {
+  flex: 1;
   float: left;
+}
+.product_collapse {
+  font-size: 28rpx;
+}
+.product_collapse_item {
+  border-top: 0 !important;
+  line-height: 64rpx;
+}
+.product_collapse_title {
+  overflow: hidden;
+  height: 64rpx;
+}
+.product_collapse_c_p {
+  overflow: hidden;
+  padding-left: 20rpx;
+  height: 64rpx;
+  line-height: 64rpx;
 }
 .product_item {
   padding: 16rpx;

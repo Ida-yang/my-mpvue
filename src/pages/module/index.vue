@@ -80,6 +80,12 @@
                     </i-grid-icon>
                     <i-grid-label>跟进记录</i-grid-label>
                 </i-grid-item>
+                <i-grid-item @click="toProduct">
+                    <i-grid-icon>
+                        <image src="../../static/images/payCollection.png" style="width:20px;height:20px;" />
+                    </i-grid-icon>
+                    <i-grid-label>产品</i-grid-label>
+                </i-grid-item>
             </i-row>
         </i-grid>
         <i-panel title="办公" class="small_panel"></i-panel>
@@ -167,6 +173,11 @@
             toFollow(){
                 console.log('去跟进记录')
                 const url = '../packageA/follow/main'
+                mpvue.navigateTo({ url })
+            },
+            toProduct(){
+                console.log('去产品')
+                const url = '../packageA/product/main'
                 mpvue.navigateTo({ url })
             },
 

@@ -1,0 +1,12 @@
+<template name="d769b1c8">
+  <view class="_div data-v-b02279ac edition_wrap">
+    <i-cell-group class="_i-cell-group data-v-b02279ac">
+      <i-cell title="公司名称" class="_i-cell data-v-b02279ac"><label slot="footer" class="_span data-v-b02279ac">{{editionData.corporate_name}}</label></i-cell>
+      <i-cell title="总用户数" class="_i-cell data-v-b02279ac"><label slot="footer" class="_span data-v-b02279ac">{{editionData.user_number}}</label></i-cell>
+      <i-cell title="可新增用户数" class="_i-cell data-v-b02279ac"><label slot="footer" class="_span data-v-b02279ac">{{editionData.canAdd}}</label></i-cell>
+      <i-cell title="数据中心套餐数" class="_i-cell data-v-b02279ac"><label slot="footer" class="_span data-v-b02279ac">{{editionData.clue_number}}</label></i-cell>
+      <i-cell title="到期时间" class="_i-cell data-v-b02279ac"><label slot="footer" class="_span data-v-b02279ac">{{editionData.expiry_time}}</label></i-cell>
+      <i-cell title="短信数" class="_i-cell data-v-b02279ac"><label slot="footer" class="_span data-v-b02279ac">{{editionData.send}}</label></i-cell>
+    </i-cell-group>
+  </view>
+</template>

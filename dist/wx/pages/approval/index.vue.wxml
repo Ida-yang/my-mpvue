@@ -1,5 +1,36 @@
 <template name="51b4912a">
-  <view class="_div data-v-6e9206ab">
-    <i-panel title="{{current}}" class="_i-panel data-v-6e9206ab"></i-panel>
+  <view class="_div data-v-6e9206ab approval_wrap">
+    <i-cell-group class="_i-cell-group data-v-6e9206ab">
+      <i-cell title=" 今日需联系" is-link bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-cell data-v-6e9206ab">
+        <view slot="icon" class="_view data-v-6e9206ab meaasge_icon_span" style="background-color:rgb(104,150,245)">
+          <image src="../../static/images/jrxlx.png" class="_image data-v-6e9206ab message_image"></image>
+        </view>
+      </i-cell>
+      <i-cell title=" 分配给我的线索" is-link bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-6e9206ab">
+        <view slot="icon" class="_view data-v-6e9206ab meaasge_icon_span" style="background-color:rgb(255,156,46)">
+          <image src="../../static/images/xs.png" class="_image data-v-6e9206ab message_image"></image>
+        </view>
+      </i-cell>
+      <i-cell title=" 分配给我的客户" is-link bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-cell data-v-6e9206ab">
+        <view slot="icon" class="_view data-v-6e9206ab meaasge_icon_span" style="background-color:rgb(37,199,120)">
+          <image src="../../static/images/kh.png" class="_image data-v-6e9206ab message_image"></image>
+        </view>
+      </i-cell>
+      <i-cell title=" 异常商机信息" is-link bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_i-cell data-v-6e9206ab">
+        <view slot="icon" class="_view data-v-6e9206ab meaasge_icon_span" style="background-color:rgb(152,108,245)">
+          <image src="../../static/images/sj.png" class="_image data-v-6e9206ab message_image"></image>
+        </view>
+      </i-cell>
+      <i-cell title=" 待审核合同" is-link bindtap="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_i-cell data-v-6e9206ab">
+        <view slot="icon" class="_view data-v-6e9206ab meaasge_icon_span" style="background-color:rgb(102,150,246)">
+          <image src="../../static/images/ht.png" class="_image data-v-6e9206ab message_image"></image>
+        </view>
+      </i-cell>
+      <i-cell title=" 待审核回款" is-link bindtap="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_i-cell data-v-6e9206ab">
+        <view slot="icon" class="_view data-v-6e9206ab meaasge_icon_span" style="background-color:rgb(253,172,80)">
+          <image src="../../static/images/hk.png" class="_image data-v-6e9206ab message_image"></image>
+        </view>
+      </i-cell>
+    </i-cell-group>
   </view>
 </template>

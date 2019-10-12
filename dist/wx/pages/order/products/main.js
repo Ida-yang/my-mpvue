@@ -1,15 +1,15 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([61],{
+global.webpackJsonpMpvue([68],{
 
-/***/ 119:
+/***/ 129:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(130);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 120:
+/***/ 130:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_74545b2d_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_74545b2d_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(133);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(121)
+  __webpack_require__(131)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,14 +72,14 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 121:
+/***/ 131:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 122:
+/***/ 132:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -355,6 +355,8 @@ if (false) {(function () {
             } else {
                 this.isValue = false;
             }
+
+            this.search();
         },
         closeSearch: function closeSearch() {
             this.searchList.searchName = '';
@@ -561,7 +563,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 123:
+/***/ 133:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -629,7 +631,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "name": _vm.activename,
       "accordion": "",
-      "i-class": "order_collapse",
+      "i-class": "product_collapse",
       "mpcomid": '4'
     }
   }, [_c('i-collapse-item', {
@@ -637,7 +639,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "title": "全部商品",
       "name": "name1",
-      "i-class": "order_collapse_item",
+      "i-class": "product_collapse_item",
       "eventid": '2',
       "mpcomid": '2'
     },
@@ -652,8 +654,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       attrs: {
         "title": item.name,
         "name": item.id,
-        "i-class": "order_collapse_item",
-        "i-collapse-title-wrap": "order_collapse_title",
+        "i-class": "product_collapse_item",
+        "i-collapse-title-wrap": "product_collapse_title",
         "eventid": '4_' + index,
         "mpcomid": '3_' + index
       },
@@ -667,7 +669,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     }, _vm._l((item.next), function(el, i) {
       return _c('p', {
         key: i,
-        staticClass: "order_collapse_c_p",
+        staticClass: "product_collapse_c_p",
         class: el.active ? 'theme_color_text' : '',
         attrs: {
           "eventid": '3_' + index + '-' + i
@@ -680,7 +682,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       }, [_vm._v(_vm._s(el.name))])
     }))])
   })], 2)], 1), _vm._v(" "), _c('scroll-view', {
-    staticClass: "product_wrap",
+    staticClass: "order_product_right",
     attrs: {
       "scroll-y": ""
     }
@@ -762,7 +764,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "margin-top": "30px",
         "color": "#80848f"
       }
-    }, [_vm._v(_vm._s(el.itemList.length) + "中规格可选")])], 1), _vm._v(" "), _c('view', {
+    }, [_vm._v(_vm._s(el.itemList.length) + "种规格可选")])], 1), _vm._v(" "), _c('view', {
       staticClass: "product_item_shopping",
       attrs: {
         "eventid": '6_' + i
@@ -1044,4 +1046,4 @@ if (false) {
 
 /***/ })
 
-},[119]);
+},[129]);

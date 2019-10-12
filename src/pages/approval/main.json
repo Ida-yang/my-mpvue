@@ -1,6 +1,10 @@
 {
-    "navigationBarTitleText": "审批",
+    "navigationBarTitleText": "消息",
     "usingComponents": {
-      "i-panel": "../../iview/panel/index"
+      "i-panel": "../../iview/panel/index",
+      "i-cell-group": "../../iview/cell-group/index",
+      "i-cell": "../../iview/cell/index",
+      "i-icon": "../../iview/icon/index",
+      "i-modal": "../../iview/modal/index"
     }
 }

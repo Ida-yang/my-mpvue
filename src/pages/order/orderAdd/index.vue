@@ -2,7 +2,7 @@
     <div class="add_or_update_wrap">
         <i-panel title=" "></i-panel>
         <i-panel title=" ">
-            <i-cell title="订单日期" request is-link  i-class="simple_cell" i-cell-text="color_495060_text">
+            <i-cell title="订单日期" request is-link i-class="simple_cell" i-cell-text="color_495060_text">
                 <picker slot="footer" mode="date" :value="addList.orderTime" :start="nowDate" @change="dealChange($event,1)">
                     <view class="picker cell_picker">
                     {{addList.orderTime}}
@@ -353,7 +353,7 @@
                 a = parseInt(this.countProduct.countNum) * parseFloat(this.countProduct.price)
                 b = parseFloat(this.countProduct.discount) * a / 100
                 c = a - b
-                console.log(a,b,c)
+                
                 this.countProduct.discountAfter = b.toFixed(2)
                 this.countProduct.discountAmount = c.toFixed(2)
             },
@@ -363,7 +363,6 @@
 
                 let newArr = new Array()
                 this.productData.forEach(element => {
-                    console.log(element)
                     newArr.push({
                         "itemId":element.id,
                         "num":parseInt(element.countNum),
@@ -375,7 +374,8 @@
                         "discountAfter":element.discountAfter ,
                         "taxRate":element.taxRate,
                         "taxAmount":element.taxAmount,
-                        "taxAfter":element.taxAfter
+                        "taxAfter":element.taxAfter,
+                        // "goodsCode":element.goodsCode
                     })
                 });
                 let data = {

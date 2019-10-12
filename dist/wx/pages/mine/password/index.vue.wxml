@@ -1,0 +1,12 @@
+<template name="7b9feb19">
+  <view class="_div data-v-17ba5a45 password_wrap">
+    <i-panel title=" " class="_i-panel data-v-17ba5a45">
+      <i-input value="{{old_password}}" bindchange="handleProxy" title="旧密码" right maxlength="50" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-17ba5a45"></i-input>
+      <i-input value="{{new_password}}" bindchange="handleProxy" title="新密码" right maxlength="50" placeholder="长度不超16位" bindinput="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-input data-v-17ba5a45"></i-input>
+      <i-input value="{{re_password}}" bindchange="handleProxy" title="重复密码" right maxlength="50" bindinput="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-input data-v-17ba5a45"></i-input>
+    </i-panel>
+    <i-button bindtap="handleProxy" type="ghost" long="{{true}}" class="_i-button data-v-17ba5a45 bottom_btn" data-eventid="{{'3'}}" data-comkey="{{$k}}">确定</i-button>
+    <i-message id="message" class="_i-message data-v-17ba5a45"></i-message>
+    <i-toast id="toast" class="_i-toast data-v-17ba5a45"></i-toast>
+  </view>
+</template>

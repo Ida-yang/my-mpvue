@@ -43,19 +43,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/mine/main",
-					"pathName": "pages/mine/main",
+					"name": "pages/approval/main",
+					"pathName": "pages/approval/main",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": 1,
-					"name": "pages/packageA/task/main",
-					"pathName": "pages/packageA/task/main",
+					"name": "pages/mine/edition/main",
+					"pathName": "pages/mine/edition/main",
 					"query": "",
 					"scene": null
 				},
