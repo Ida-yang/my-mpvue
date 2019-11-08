@@ -341,7 +341,8 @@
             },
             toClueDetail(e,val){
                 const url = 'clueDetail/main'
-                config.information.clueDetailData = val
+                // config.information.clueDetailData = val
+                config.information.clueDetailData = {id:val.id, name:val.name}
                 mpvue.navigateTo({ url })
             }
         },

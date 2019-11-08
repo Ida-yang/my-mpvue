@@ -1,15 +1,15 @@
 require("../../../../common/manifest.js")
 require("../../../../common/vendor.js")
-global.webpackJsonpMpvue([37],{
+global.webpackJsonpMpvue([35],{
 
-/***/ 269:
+/***/ 279:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(280);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 270:
+/***/ 280:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(272);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_17e39e18_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_17e39e18_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(283);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(271)
+  __webpack_require__(281)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,14 +72,14 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 271:
+/***/ 281:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 272:
+/***/ 282:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -215,13 +215,33 @@ if (false) {(function () {
 
     methods: {
         loadData: function loadData() {
-            this.customerData = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.customerDetailData;
-            this.customerContact = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.customerDetailData.contacts[0];
-
+            var _this = this;
             this.activeBar = '';
 
-            this.loadFollows();
-            this.loadOthers();
+            var customerDetail = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.customerDetailData;
+            // this.customerData = config.information.customerDetailData
+            // this.customerContact = config.information.customerDetailData.contacts[0]
+
+            var data = {
+                id: customerDetail.id
+            };
+
+            wx.request({
+                method: 'post',
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'customerpool/getPoolById.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                data: data,
+                header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    var info = res.data.map.success;
+                    _this.customerData = info;
+                    _this.customerContact = info.contacts[0];
+                    _this.loadFollows();
+                    _this.loadOthers();
+                }
+            });
         },
         loadFollows: function loadFollows() {
             var _this = this;
@@ -414,7 +434,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 273:
+/***/ 283:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -732,4 +752,4 @@ if (false) {
 
 /***/ })
 
-},[269]);
+},[279]);

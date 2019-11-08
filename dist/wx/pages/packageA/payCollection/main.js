@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([12],{
+global.webpackJsonpMpvue([11],{
 
 /***/ 420:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -288,7 +288,7 @@ if (false) {(function () {
         },
         topayDetail: function topayDetail(e, val) {
             var url = 'payCollectionDetail/main';
-            __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.payCollectionDetailData = val;
+            __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.payCollectionDetailData = { id: val.id };
             global.mpvue.navigateTo({ url: url });
         }
     }

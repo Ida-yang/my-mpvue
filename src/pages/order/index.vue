@@ -277,9 +277,16 @@
                 mpvue.navigateTo({ url })
             },
             toUpdateOrder(e,val){
-                const url = 'orderUpdate/main'
-                config.information.orderupdateData = val
-                mpvue.navigateTo({ url })
+                if(val.checkStatus == 0){
+                    const url = 'orderUpdate/main'
+                    config.information.orderupdateData = val
+                    mpvue.navigateTo({ url })
+                }else{
+                    $Toast({
+                        content: '该订单不可编辑',
+                        type: 'warning'
+                    });
+                }
             },
             toOrderDetail(e,val){
                 const url = 'orderDetail/main'
@@ -287,8 +294,15 @@
                 mpvue.navigateTo({ url })
             },
             toDeleteOrder(e,val){
-                this.showDetele = true
-                this.deleteId = val.id
+                if(val.checkStatus == 0){
+                    this.showDetele = true
+                    this.deleteId = val.id
+                }else{
+                    $Toast({
+                        content: '该订单不可删除',
+                        type: 'warning'
+                    });
+                }
             },
             
             cancelDelete(){

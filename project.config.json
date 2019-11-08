@@ -43,7 +43,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
@@ -54,8 +54,8 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/mine/edition/main",
-					"pathName": "pages/mine/edition/main",
+					"name": "pages/order/main",
+					"pathName": "pages/order/main",
 					"query": "",
 					"scene": null
 				},
@@ -70,6 +70,13 @@
 					"id": 3,
 					"name": "首页调试",
 					"pathName": "pages/index/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "pages/packageA/clue/main",
+					"pathName": "pages/packageA/clue/main",
 					"query": "",
 					"scene": null
 				}

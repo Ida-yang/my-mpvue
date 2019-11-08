@@ -1,6 +1,6 @@
 require("../../../../common/manifest.js")
 require("../../../../common/vendor.js")
-global.webpackJsonpMpvue([11],{
+global.webpackJsonpMpvue([10],{
 
 /***/ 425:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -189,11 +189,38 @@ if (false) {(function () {
 
     methods: {
         loadData: function loadData() {
-            this.payCollectionDetail = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.payCollectionDetailData;
+            // this.payCollectionDetail = config.information.payCollectionDetailData
+            var _this = this;
+            var payCollectionDetail = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.payCollectionDetailData;
+            var data = {
+                id: payCollectionDetail.id
+            };
 
-            this.loadState();
-            this.loadAudit();
-            this.loadMoneyBack();
+            wx.request({
+                method: 'post',
+                url: __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].defaulthost + 'back/selectById.do?cId=' + __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.cId, //接口地址
+                data: data,
+                header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'Cookie': __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].SESSIONID
+                },
+                success: function success(res) {
+                    var info = res.data;
+                    if (info.checkStatus == 0) {
+                        info.checkState = '待审核';
+                    } else if (info.checkStatus == 1) {
+                        info.checkState = '审核中';
+                    } else if (info.checkStatus == 2) {
+                        info.checkState = '已审核';
+                    } else if (info.checkStatus == 3) {
+                        info.checkState = '未通过';
+                    }
+                    _this.payCollectionDetail = info;
+                    _this.loadState();
+                    _this.loadAudit();
+                    _this.loadMoneyBack();
+                }
+            });
         },
         loadState: function loadState() {
             var _this = this;
@@ -215,7 +242,7 @@ if (false) {(function () {
                 success: function success(res) {
                     var info = res.data;
 
-                    if (info.isCheck == 1 && _this.checkStatus !== 2) {
+                    if (info.isCheck == 1 && _this.payCollectionDetail.checkStatus !== 2) {
                         _this.authority = true;
                     } else {
                         _this.authority = false;

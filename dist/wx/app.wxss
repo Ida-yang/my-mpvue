@@ -84,6 +84,15 @@
   width: 100%;
   font-size: 26rpx;
 }
+.group_cell_content {
+  line-height: 2 !important;
+}
+.group_cell_footer {
+  color: #80848f;
+  font-size: 24rpx;
+  padding-top: 10rpx;
+  box-sizing: border-box;
+}
 .cell_content {
   padding: 0 !important;
   font-size: 28rpx;
@@ -485,4 +494,7 @@
   display: inline-block;
   margin-right: 0 !important;
   width: 160rpx;
+}
+.message_wrap {
+  background-color: #fafafa;
 }

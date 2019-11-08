@@ -101,11 +101,38 @@
 
         methods: {
             loadData(){
-                this.payCollectionDetail = config.information.payCollectionDetailData
-                
-                this.loadState()
-                this.loadAudit()
-                this.loadMoneyBack()
+                // this.payCollectionDetail = config.information.payCollectionDetailData
+                const _this = this
+                let payCollectionDetail = config.information.payCollectionDetailData
+                let data = {
+                    id: payCollectionDetail.id
+                }
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'back/selectById.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        let info = res.data
+                        if(info.checkStatus == 0){
+                            info.checkState = '待审核'
+                        }else if(info.checkStatus == 1){
+                            info.checkState = '审核中'
+                        }else if(info.checkStatus == 2){
+                            info.checkState = '已审核'
+                        }else if(info.checkStatus == 3){
+                            info.checkState = '未通过'
+                        }
+                        _this.payCollectionDetail = info
+                        _this.loadState()
+                        _this.loadAudit()
+                        _this.loadMoneyBack()
+                    }
+                })
             },
             loadState(){
                 const _this = this
@@ -127,7 +154,7 @@
                     success:function(res) {
                         let info = res.data
 
-                        if(info.isCheck == 1 && _this.checkStatus !== 2){
+                        if(info.isCheck == 1 && _this.payCollectionDetail.checkStatus !== 2){
                             _this.authority = true
                         }else{
                             _this.authority = false

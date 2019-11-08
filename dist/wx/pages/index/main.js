@@ -1,15 +1,15 @@
 require("../../common/manifest.js")
 require("../../common/vendor.js")
-global.webpackJsonpMpvue([80],{
+global.webpackJsonpMpvue([74],{
 
-/***/ 27:
+/***/ 57:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(58);
 
 
 
@@ -25,16 +25,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 28:
+/***/ 58:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_5307a380_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_5307a380_hasScoped_true_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(97);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(29)
+  __webpack_require__(59)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -79,14 +79,14 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 29:
+/***/ 59:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 30:
+/***/ 60:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -486,7 +486,7 @@ function initChart(canvas, width, height) {
 
 /***/ }),
 
-/***/ 67:
+/***/ 97:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -540,11 +540,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     staticClass: "sale_wrap_item_two"
   }, [_vm._m(2), _vm._v(" "), _c('view', {
     staticClass: "item_two_view2"
-  }, [_c('p', [_vm._v(_vm._s(_vm.amountData.deal))]), _vm._v(" "), _c('p', [_vm._v("完成金额")])], 1)]), _vm._v(" "), _c('view', {
+  }, [_c('p', [_vm._v(_vm._s(_vm.amountData.deal))]), _vm._v(" "), _c('p', [_vm._v("合同金额")])], 1)]), _vm._v(" "), _c('view', {
     staticClass: "sale_wrap_item_two"
   }, [_vm._m(3), _vm._v(" "), _c('view', {
     staticClass: "item_two_view2"
-  }, [_c('p', [_vm._v(_vm._s(_vm.amountData.difference))]), _vm._v(" "), _c('p', [_vm._v("差    额")])], 1)]), _vm._v(" "), _c('view', {
+  }, [_c('p', [_vm._v(_vm._s(_vm.amountData.difference))]), _vm._v(" "), _c('p', [_vm._v("目标差额")])], 1)]), _vm._v(" "), _c('view', {
     staticClass: "sale_wrap_item_two"
   }, [_vm._m(4), _vm._v(" "), _c('view', {
     staticClass: "item_two_view2"
@@ -877,4 +877,4 @@ if (false) {
 
 /***/ })
 
-},[27]);
+},[57]);

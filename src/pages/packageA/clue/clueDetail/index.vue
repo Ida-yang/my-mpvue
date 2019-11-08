@@ -98,13 +98,29 @@
 
         methods: {
             loadData(){
-                console.log(config.information.clueDetailData)
-                this.clueData = config.information.clueDetailData
-                this.clueContact = config.information.clueDetailData.contacts[0]
-                // this.clueData = {id:7057}
+                const _this = this
+                
+                let clueDetail = config.information.clueDetailData
+                let data = {
+                    id: clueDetail.id
+                }
 
-                this.loadFollows()
-                this.loadContacts()
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'customerTwo/selectByPrimaryKey.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        let info = res.data
+                        _this.clueData = info
+                        _this.clueContact = info.contacts[0]
+                        _this.loadFollows()
+                        _this.loadContacts()
+                    }
+                })
             },
             loadFollows(){
                 const _this = this

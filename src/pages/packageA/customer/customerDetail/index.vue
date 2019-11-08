@@ -129,13 +129,33 @@
 
         methods: {
             loadData(){
-                this.customerData = config.information.customerDetailData
-                this.customerContact = config.information.customerDetailData.contacts[0]
-
+                const _this = this
                 this.activeBar = ''
 
-                this.loadFollows()
-                this.loadOthers()
+                let customerDetail = config.information.customerDetailData
+                // this.customerData = config.information.customerDetailData
+                // this.customerContact = config.information.customerDetailData.contacts[0]
+
+                let data = {
+                    id: customerDetail.id
+                }
+
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'customerpool/getPoolById.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        let info = res.data.map.success
+                        _this.customerData = info
+                        _this.customerContact = info.contacts[0]
+                        _this.loadFollows()
+                        _this.loadOthers()
+                    }
+                })
             },
             loadFollows(){
                 const _this = this

@@ -33,7 +33,7 @@
                 </view>
                 <view class="item_two_view2">
                     <p>{{amountData.deal}}</p>
-                    <p>完成金额</p>
+                    <p>合同金额</p>
                 </view>
             </view>
             <view class="sale_wrap_item_two">
@@ -42,7 +42,7 @@
                 </view>
                 <view class="item_two_view2">
                     <p>{{amountData.difference}}</p>
-                    <p>差&nbsp;&nbsp;&nbsp;&nbsp;额</p>
+                    <p>目标差额</p>
                 </view>
             </view>
             <view class="sale_wrap_item_two">

@@ -1,6 +1,6 @@
 <template name="3314751a">
   <view class="_div data-v-0316c758 customer_follow">
-    <i-panel title="{{followData.name}}" class="_i-panel data-v-0316c758">
+    <i-panel title="{{followData.pName}}" class="_i-panel data-v-0316c758">
       <i-cell title="联系方式" value="{{followList.followType}}" is-link request i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-cell data-v-0316c758"></i-cell>
       <i-cell title="联系人" value="{{followList.contactsName}}" is-link request i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_i-cell data-v-0316c758"></i-cell>
       <i-cell title="状态" value="{{followList.follow_stateName}}" is-link request i-class="simple_cell" i-cell-text="color_495060_text" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_i-cell data-v-0316c758"></i-cell>

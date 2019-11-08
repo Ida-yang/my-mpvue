@@ -213,7 +213,7 @@
 
             topayDetail(e,val){
                 const url = 'payCollectionDetail/main'
-                config.information.payCollectionDetailData = val
+                config.information.payCollectionDetailData = {id:val.id}
                 mpvue.navigateTo({ url })
             },
         },

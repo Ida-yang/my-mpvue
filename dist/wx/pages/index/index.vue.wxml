@@ -32,7 +32,7 @@
         </view>
         <view class="_view data-v-5307a380 item_two_view2">
           <view class="_p data-v-5307a380">{{amountData.deal}}</view>
-          <view class="_p data-v-5307a380">完成金额</view>
+          <view class="_p data-v-5307a380">合同金额</view>
         </view>
       </view>
       <view class="_view data-v-5307a380 sale_wrap_item_two">
@@ -41,7 +41,7 @@
         </view>
         <view class="_view data-v-5307a380 item_two_view2">
           <view class="_p data-v-5307a380">{{amountData.difference}}</view>
-          <view class="_p data-v-5307a380">差    额</view>
+          <view class="_p data-v-5307a380">目标差额</view>
         </view>
       </view>
       <view class="_view data-v-5307a380 sale_wrap_item_two">

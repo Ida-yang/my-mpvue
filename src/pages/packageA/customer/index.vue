@@ -355,7 +355,7 @@
             },
             toCustomerDetail(e,val){
                 const url = 'customerDetail/main'
-                config.information.customerDetailData = val
+                config.information.customerDetailData = {id:val.id, pName:val.pName}
                 mpvue.navigateTo({ url })
             }
         },

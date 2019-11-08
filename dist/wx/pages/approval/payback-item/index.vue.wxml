@@ -1,0 +1,27 @@
+<template name="1820ae1f">
+  <view class="_div data-v-7139e06a message_wrap">
+    <i-tabs bindchange="handleProxy" i-class="order_tabs" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-tabs data-v-7139e06a">
+      <i-tab key="first" title="{{firstItem}}" class="_i-tab data-v-7139e06a">   <i-icon wx:if="{{showFirst}}" type="packup" class="_i-icon data-v-7139e06a"></i-icon>
+        <i-icon wx:else type="unfold" class="_i-icon data-v-7139e06a"></i-icon>
+      </i-tab>
+      <i-tab key="second" title="{{secondItem}}" class="_i-tab data-v-7139e06a">   <i-icon wx:if="{{showSecond}}" type="packup" class="_i-icon data-v-7139e06a"></i-icon>
+        <i-icon wx:else type="unfold" class="_i-icon data-v-7139e06a"></i-icon>
+      </i-tab>
+    </i-tabs>
+    <view class="_view data-v-7139e06a bar_option" wx:if="{{showFirst}}">
+      <view class="_p data-v-7139e06a option_p {{timeActive == item.label ? 'theme_color_text' : ''}}" wx:key="item.label" key="{{item.label}}" bindtap="handleProxy" data-eventid="{{'1_'+index}}" data-comkey="{{$k}}" wx:for="{{timeList}}" wx:for-index="index" wx:for-item="item">{{item.name}}</view>
+    </view>
+    <view class="_view data-v-7139e06a bar_option" wx:if="{{showSecond}}">
+      <view class="_p data-v-7139e06a option_p {{powerActive == item.label ? 'theme_color_text' : ''}}" wx:key="item.label" key="{{item.label}}" bindtap="handleProxy" data-eventid="{{'2_'+index}}" data-comkey="{{$k}}" wx:for="{{powerList}}" wx:for-index="index" wx:for-item="item">{{item.name}}</view>
+    </view>
+    <view class="_view data-v-7139e06a detail_module"></view>
+    <i-cell-group class="_i-cell-group data-v-7139e06a">
+      <i-cell wx:key="index" key="{{index}}" title="{{item.customerpoolName}}" label="{{item.backNo}}" i-class="group_cell_content" bindtap="handleProxy" data-eventid="{{'3_'+index}}" data-comkey="{{$k}}" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-7139e06a">
+        <view slot="footer" class="_view data-v-7139e06a group_cell_footer">
+          <view class="_p data-v-7139e06a">{{item.amount}}</view>
+          <view class="_p data-v-7139e06a">{{item.createTime}}</view>
+        </view>
+      </i-cell>
+    </i-cell-group>
+  </view>
+</template>

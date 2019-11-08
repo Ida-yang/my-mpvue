@@ -1,7 +1,7 @@
 <template>
     <div class="customer_follow">
         <!-- <i-panel :title="current"></i-panel> -->
-        <i-panel :title="followData.name">
+        <i-panel :title="followData.pName">
             <i-cell title="联系方式" :value="followList.followType" is-link request  i-class="simple_cell" i-cell-text="color_495060_text" @click="optionFocus($event,1)"></i-cell>
             <i-cell title="联系人" :value="followList.contactsName" is-link request  i-class="simple_cell" i-cell-text="color_495060_text" @click="optionFocus($event,2)"></i-cell>
             <i-cell title="状态" :value="followList.follow_stateName" is-link request  i-class="simple_cell" i-cell-text="color_495060_text" @click="optionFocus($event,3)"></i-cell>

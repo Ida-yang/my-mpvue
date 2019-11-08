@@ -129,6 +129,15 @@
   }
 
   /* 列表 */
+  .group_cell_content{
+    line-height: 2 !important
+  }
+  .group_cell_footer{
+    color: #80848f;
+    font-size: 12px;
+    padding-top: 5px;
+    box-sizing: border-box
+  }
   .cell_content{
     padding: 0 !important;
     font-size: 14px
@@ -558,5 +567,9 @@
     display: inline-block;
     margin-right: 0 !important;
     width: 80px
+  }
+
+  .message_wrap{
+    background-color: #fafafa;
   }
 </style>

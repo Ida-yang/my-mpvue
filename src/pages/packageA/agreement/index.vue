@@ -333,7 +333,7 @@
             },
             toAgreementDetail(e,val){
                 const url = 'agreementDetail/main'
-                config.information.agreementDetailData = val
+                config.information.agreementDetailData = {contract_id:val.contract_id, customerpool_id:val.customerpool_id, contract_name:val.contract_name}
                 mpvue.navigateTo({ url })
             },
         },

@@ -1,15 +1,15 @@
 require("../../common/manifest.js")
 require("../../common/vendor.js")
-global.webpackJsonpMpvue([72],{
+global.webpackJsonpMpvue([66],{
 
-/***/ 109:
+/***/ 139:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(140);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 110:
+/***/ 140:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_784716fc_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_784716fc_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(143);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(111)
+  __webpack_require__(141)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,14 +72,14 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 111:
+/***/ 141:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 112:
+/***/ 142:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -350,9 +350,16 @@ if (false) {(function () {
             global.mpvue.navigateTo({ url: url });
         },
         toUpdateOrder: function toUpdateOrder(e, val) {
-            var url = 'orderUpdate/main';
-            __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.orderupdateData = val;
-            global.mpvue.navigateTo({ url: url });
+            if (val.checkStatus == 0) {
+                var url = 'orderUpdate/main';
+                __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.orderupdateData = val;
+                global.mpvue.navigateTo({ url: url });
+            } else {
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '该订单不可编辑',
+                    type: 'warning'
+                });
+            }
         },
         toOrderDetail: function toOrderDetail(e, val) {
             var url = 'orderDetail/main';
@@ -360,8 +367,15 @@ if (false) {(function () {
             global.mpvue.navigateTo({ url: url });
         },
         toDeleteOrder: function toDeleteOrder(e, val) {
-            this.showDetele = true;
-            this.deleteId = val.id;
+            if (val.checkStatus == 0) {
+                this.showDetele = true;
+                this.deleteId = val.id;
+            } else {
+                Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                    content: '该订单不可删除',
+                    type: 'warning'
+                });
+            }
         },
         cancelDelete: function cancelDelete() {
             this.showDetele = false;
@@ -411,7 +425,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 113:
+/***/ 143:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -701,4 +715,4 @@ if (false) {
 
 /***/ })
 
-},[109]);
+},[139]);
