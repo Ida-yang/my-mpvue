@@ -11,15 +11,15 @@
                 </view>
             </view>
             <view class="mine_communicate">
-                <view class="mine_card">
+                <view class="mine_card" @click="toAddressBook">
                     <i-icon type="addressbook" size="26" color="#8a8a8a" />
                     <p>通讯录</p>
                 </view>
-                <view class="mine_card">
+                <view class="mine_card" @click="toOpen">
                     <i-icon type="group" size="26" color="#707070" />
                     <p>人脉</p>
                 </view>
-                <view class="mine_card">
+                <view class="mine_card" @click="toOpen">
                     <i-icon type="businesscard" size="26" color="#8a8a8a" />
                     <p>名片</p>
                 </view>
@@ -47,11 +47,15 @@
                 <p>020-38880730</p>
             </view>
         </i-modal>
+        
+        <i-toast id="toast" />
+        <i-message id="message" />
     </div>
 </template>
 
 <script>
     import config from '../../config'
+    import { $Toast,$Message } from '../../../dist/wx/iview/base/index'
 
     export default {
         data () {
@@ -86,7 +90,17 @@
                     phoneNumber: phoneNum
                 })
             },
-
+            
+            toOpen(){
+                $Toast({
+                    content: '付费另外开通',
+                    type: 'warning'
+                });
+            },
+            toAddressBook(){
+                const url = 'addressbook/main'
+                mpvue.navigateTo({ url })
+            },
             toPassword(){
                 const url = 'password/main'
                 mpvue.navigateTo({ url })

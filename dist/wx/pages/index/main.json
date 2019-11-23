@@ -1,5 +1,7 @@
 {
     "navigationBarTitleText": "首页",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
     "usingComponents": {
         "i-panel": "../../iview/panel/index",
         "i-tabs": "../../../iview/tabs/index",

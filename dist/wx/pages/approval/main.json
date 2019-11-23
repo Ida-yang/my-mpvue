@@ -1,5 +1,7 @@
 {
     "navigationBarTitleText": "待办",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
     "usingComponents": {
       "i-panel": "../../iview/panel/index",
       "i-cell-group": "../../iview/cell-group/index",

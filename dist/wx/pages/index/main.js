@@ -1,6 +1,6 @@
 require("../../common/manifest.js")
 require("../../common/vendor.js")
-global.webpackJsonpMpvue([74],{
+global.webpackJsonpMpvue([75],{
 
 /***/ 57:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -345,14 +345,24 @@ function initChart(canvas, width, height) {
         };
     },
     onShow: function onShow() {
-        this.next = false;
-        this.loadDate();
-        this.loadSale();
-        this.drawfunnel();
+        this.loadValue();
+    },
+
+
+    // 下拉刷新
+    onPullDownRefresh: function onPullDownRefresh() {
+        this.loadValue();
     },
 
 
     methods: {
+        loadValue: function loadValue() {
+            this.next = false;
+            this.loadDate();
+            this.loadSale();
+            this.drawfunnel();
+            wx.stopPullDownRefresh();
+        },
         loadDate: function loadDate() {
             var date = new Date();
             var y = date.getFullYear();

@@ -65,7 +65,12 @@
             }
         },
 
-        mounted(){
+        onShow(){
+            this.loadData()
+        },
+        
+        // 下拉刷新
+        onPullDownRefresh(){
             this.loadData()
         },
 
@@ -159,12 +164,12 @@
                         _this.paybackLength = res.data.length
                     }
                 })
+                wx.stopPullDownRefresh()
             },
             tolink(val){
                 let url = ''
                 if(val == 1){
                     url = 'call-item/main'
-                    // url = '../packageA/call-item/main'
                     mpvue.navigateTo({ url })
                 }else if(val == 2){
                     url = 'clue-item/main'

@@ -2,14 +2,14 @@ require("../../common/manifest.js")
 require("../../common/vendor.js")
 global.webpackJsonpMpvue([71],{
 
-/***/ 114:
+/***/ 119:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(120);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 115:
+/***/ 120:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_47a9ff3b_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_47a9ff3b_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(123);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(116)
+  __webpack_require__(121)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,18 +72,20 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 116:
+/***/ 121:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 117:
+/***/ 122:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
 //
 //
 //
@@ -136,6 +138,10 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+
 
 
 
@@ -171,6 +177,16 @@ if (false) {(function () {
                 phoneNumber: phoneNum
             });
         },
+        toOpen: function toOpen() {
+            Object(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__["$Toast"])({
+                content: '付费另外开通',
+                type: 'warning'
+            });
+        },
+        toAddressBook: function toAddressBook() {
+            var url = 'addressbook/main';
+            global.mpvue.navigateTo({ url: url });
+        },
         toPassword: function toPassword() {
             var url = 'password/main';
             global.mpvue.navigateTo({ url: url });
@@ -184,7 +200,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 118:
+/***/ 123:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -209,7 +225,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v(_vm._s(_vm.mineData.role_name))])]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.mineData.corporate_name))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.mineData.private_phone))])], 1)]), _vm._v(" "), _c('view', {
     staticClass: "mine_communicate"
   }, [_c('view', {
-    staticClass: "mine_card"
+    staticClass: "mine_card",
+    attrs: {
+      "eventid": '0'
+    },
+    on: {
+      "click": _vm.toAddressBook
+    }
   }, [_c('i-icon', {
     attrs: {
       "type": "addressbook",
@@ -218,7 +240,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "mpcomid": '0'
     }
   }), _vm._v(" "), _c('p', [_vm._v("通讯录")])], 1), _vm._v(" "), _c('view', {
-    staticClass: "mine_card"
+    staticClass: "mine_card",
+    attrs: {
+      "eventid": '1'
+    },
+    on: {
+      "click": _vm.toOpen
+    }
   }, [_c('i-icon', {
     attrs: {
       "type": "group",
@@ -227,7 +255,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "mpcomid": '1'
     }
   }), _vm._v(" "), _c('p', [_vm._v("人脉")])], 1), _vm._v(" "), _c('view', {
-    staticClass: "mine_card"
+    staticClass: "mine_card",
+    attrs: {
+      "eventid": '2'
+    },
+    on: {
+      "click": _vm.toOpen
+    }
   }, [_c('i-icon', {
     attrs: {
       "type": "businesscard",
@@ -259,7 +293,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "title": "修改密码",
       "is-link": "",
-      "eventid": '0',
+      "eventid": '3',
       "mpcomid": '6'
     },
     on: {
@@ -276,7 +310,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   })], 1), _vm._v(" "), _c('i-cell', {
     attrs: {
       "title": "技术支持",
-      "eventid": '1',
+      "eventid": '4',
       "mpcomid": '8'
     },
     on: {
@@ -294,7 +328,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "title": "版本信息",
       "is-link": "",
-      "eventid": '2',
+      "eventid": '5',
       "mpcomid": '10'
     },
     on: {
@@ -311,14 +345,24 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   })], 1)], 1), _vm._v(" "), _c('i-modal', {
     attrs: {
       "visible": _vm.phoneVisible,
-      "eventid": '3',
+      "eventid": '6',
       "mpcomid": '12'
     },
     on: {
       "ok": _vm.serviceCall,
       "cancel": _vm.closePhone
     }
-  }, [_c('view', [_c('p', [_vm._v("客户服务热线")]), _vm._v(" "), _c('p', [_vm._v("020-38880730")])], 1)])], 1)
+  }, [_c('view', [_c('p', [_vm._v("客户服务热线")]), _vm._v(" "), _c('p', [_vm._v("020-38880730")])], 1)]), _vm._v(" "), _c('i-toast', {
+    attrs: {
+      "id": "toast",
+      "mpcomid": '13'
+    }
+  }), _vm._v(" "), _c('i-message', {
+    attrs: {
+      "id": "message",
+      "mpcomid": '14'
+    }
+  })], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -333,4 +377,4 @@ if (false) {
 
 /***/ })
 
-},[114]);
+},[119]);

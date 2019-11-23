@@ -19,12 +19,20 @@
                 <i-icon v-if="showSecond" type="packup" />
                 <i-icon v-else type="unfold" />
             </i-tab>
+            <i-tab key="third" :title="thirdItem">
+                &nbsp;
+                <i-icon v-if="showThird" type="packup" />
+                <i-icon v-else type="unfold" />
+            </i-tab>
         </i-tabs>
         <view class="bar_option" v-if="showFirst">
             <p class="option_p" :class="powerActive == item.label ? 'theme_color_text' : ''" v-for="item in powerList" :key="item.label" @click="changeItem($event,item,1)">{{item.name}}</p>
         </view>
         <view class="bar_option" v-if="showSecond">
             <p class="option_p" :class="timeActive == item.label ? 'theme_color_text' : ''" v-for="item in timeList" :key="item.label" @click="changeItem($event,item,2)">{{item.name}}</p>
+        </view>
+        <view class="bar_option" v-if="showThird">
+            <p class="option_p" :class="stateActive == item.label ? 'theme_color_text' : ''" v-for="item in stateList" :key="item.label" @click="changeItem($event,item,3)">{{item.name}}</p>
         </view>
         <view class="detail_module"></view>
 
@@ -43,7 +51,11 @@
                     <view class="cell_footer">
                         负责人：{{item.ascription}}
                         &nbsp;&nbsp;|&nbsp;&nbsp;
-                        状态：{{item.auditStatus}}
+                        状态：
+                        <span v-if="item.checkStatus == 0">{{item.auditStatus}}</span>
+                        <span v-if="item.checkStatus == 1" style="color:rgb(230, 162, 60)">{{item.auditStatus}}</span>
+                        <span v-if="item.checkStatus == 2" style="color:rgb(103, 194, 58)">{{item.auditStatus}}</span>
+                        <span v-if="item.checkStatus == 3" style="color:rgb(245, 108, 108)">{{item.auditStatus}}</span>
                     </view>
                 </i-cell>
             </view>
@@ -97,6 +109,8 @@
                 searchList:{
                     searchName:'',
                     example:'',
+                    examine:'',
+                    state:'',
                     powerid:'12',
                     page:1,
                     limit:10,
@@ -117,6 +131,13 @@
                     {label:'5',name:'上月'},
                 ],
                 timeActive:'0',
+                stateList:[
+                    {label:'',name:'全部'},
+                    {label:'0',name:'待审核'},
+                    {label:'2',name:'已审核'},
+                    {label:'9',name:'待我审核'},
+                ],
+                stateActive:'',
                 
 
                 isValue:false,
@@ -124,9 +145,11 @@
 
                 firstItem:'我的',
                 secondItem:'订单日期',
+                thirdItem:'状态',
 
                 showFirst: false,
                 showSecond: false,
+                showThird: false,
 
                 deleteId:'',
 
@@ -168,6 +191,8 @@
                 let data = {
                     searchName: this.searchList.searchName,
                     example: this.searchList.example,
+                    examine: this.searchList.examine,
+                    state: this.searchList.state,
                     page: this.searchList.page,
                     limit: this.searchList.limit,
                 }
@@ -252,9 +277,15 @@
                 if(key == 'first'){
                     this.showFirst = !this.showFirst
                     this.showSecond = false
-                }else if(key == 'second'){
-                    this.showSecond = !this.showSecond
                     this.showFirst = false
+                }else if(key == 'second'){
+                    this.showFirst = false
+                    this.showSecond = !this.showSecond
+                    this.showThird = false
+                }else if(key == 'third'){
+                    this.showFirst = false
+                    this.showSecond = false
+                    this.showThird = !this.showThird
                 }
             },
             changeItem(e,item,val){
@@ -267,6 +298,16 @@
                     this.searchList.example = item.label
                     this.timeActive = item.label
                     this.showSecond = false
+                }else if(val == 3){
+                    if(item.label == '9'){
+                        this.searchList.state = ''
+                        this.searchList.examine = config.userData.pId
+                    }else{
+                        this.searchList.state = item.label
+                        this.searchList.examine = null
+                    }
+                    this.stateActive = item.label
+                    this.showThird = false
                 }
 
                 this.search()

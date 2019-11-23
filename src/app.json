@@ -17,6 +17,7 @@
 
     "pages/mine/password/main",
     "pages/mine/edition/main",
+    "pages/mine/addressbook/main",
 
     "pages/approval/call-item/main",
     "pages/approval/clue-item/main",

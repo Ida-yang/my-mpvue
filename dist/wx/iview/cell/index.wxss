@@ -47,6 +47,7 @@
 }
 .i-cell-desc{
     line-height:1.2;
+    margin-top: 5px;
     font-size:12px;
     color:#80848f
 }

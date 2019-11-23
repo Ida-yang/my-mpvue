@@ -1,0 +1,12 @@
+<template name="82f0a90a">
+  <view class="_div data-v-ba53c1ee address_book_wrap">
+    <i-input value="{{searchList.searchName}}" type="text" maxlength="50" placeholder="输入用户名称查询" bindinput="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_i-input data-v-ba53c1ee"></i-input>
+    <i-cell-group class="_i-cell-group data-v-ba53c1ee">
+      <i-cell wx:key="item.private_id" key="{{item.private_id}}" title="{{item.private_employee}}" label="{{item.private_phone}}" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-ba53c1ee">
+        <image slot="footer" src="../../../static/images/call_phone.png" bindtap="handleProxy" style="width:22px;height:22px;" data-eventid="{{'1_'+index}}" data-comkey="{{$k}}" class="_image data-v-ba53c1ee"></image>
+      </i-cell>
+    </i-cell-group>
+    <i-toast id="toast" class="_i-toast data-v-ba53c1ee"></i-toast>
+    <i-message id="message" class="_i-message data-v-ba53c1ee"></i-message>
+  </view>
+</template>

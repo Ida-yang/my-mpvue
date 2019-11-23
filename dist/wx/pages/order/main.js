@@ -2,14 +2,14 @@ require("../../common/manifest.js")
 require("../../common/vendor.js")
 global.webpackJsonpMpvue([66],{
 
-/***/ 139:
+/***/ 144:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(145);
 
 
 
@@ -18,16 +18,16 @@ app.$mount();
 
 /***/ }),
 
-/***/ 140:
+/***/ 145:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(142);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_784716fc_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_mpvue_loader_lib_selector_type_script_index_0_index_vue__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_mpvue_loader_lib_template_compiler_index_id_data_v_784716fc_hasScoped_false_transformToRequire_video_src_source_src_img_src_image_xlink_href_fileExt_template_wxml_script_js_style_wxss_platform_wx_node_modules_mpvue_loader_lib_selector_type_template_index_0_index_vue__ = __webpack_require__(148);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(141)
+  __webpack_require__(146)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -72,20 +72,32 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 141:
+/***/ 146:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
 
-/***/ 142:
+/***/ 147:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__dist_wx_iview_base_index__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -185,6 +197,8 @@ if (false) {(function () {
             searchList: {
                 searchName: '',
                 example: '',
+                examine: '',
+                state: '',
                 powerid: '12',
                 page: 1,
                 limit: 10
@@ -193,15 +207,19 @@ if (false) {(function () {
             powerActive: '12',
             timeList: [{ label: '0', name: '全部' }, { label: '2', name: '昨天' }, { label: '1', name: '今天' }, { label: '3', name: '本周' }, { label: '4', name: '本月' }, { label: '5', name: '上月' }],
             timeActive: '0',
+            stateList: [{ label: '', name: '全部' }, { label: '0', name: '待审核' }, { label: '2', name: '已审核' }, { label: '9', name: '待我审核' }],
+            stateActive: '',
 
             isValue: false,
             searchCriteria: false,
 
             firstItem: '我的',
             secondItem: '订单日期',
+            thirdItem: '状态',
 
             showFirst: false,
             showSecond: false,
+            showThird: false,
 
             deleteId: '',
 
@@ -243,6 +261,8 @@ if (false) {(function () {
             var data = {
                 searchName: this.searchList.searchName,
                 example: this.searchList.example,
+                examine: this.searchList.examine,
+                state: this.searchList.state,
                 page: this.searchList.page,
                 limit: this.searchList.limit
             };
@@ -326,9 +346,15 @@ if (false) {(function () {
             if (key == 'first') {
                 this.showFirst = !this.showFirst;
                 this.showSecond = false;
-            } else if (key == 'second') {
-                this.showSecond = !this.showSecond;
                 this.showFirst = false;
+            } else if (key == 'second') {
+                this.showFirst = false;
+                this.showSecond = !this.showSecond;
+                this.showThird = false;
+            } else if (key == 'third') {
+                this.showFirst = false;
+                this.showSecond = false;
+                this.showThird = !this.showThird;
             }
         },
         changeItem: function changeItem(e, item, val) {
@@ -341,6 +367,16 @@ if (false) {(function () {
                 this.searchList.example = item.label;
                 this.timeActive = item.label;
                 this.showSecond = false;
+            } else if (val == 3) {
+                if (item.label == '9') {
+                    this.searchList.state = '';
+                    this.searchList.examine = __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].userData.pId;
+                } else {
+                    this.searchList.state = item.label;
+                    this.searchList.examine = null;
+                }
+                this.stateActive = item.label;
+                this.showThird = false;
             }
 
             this.search();
@@ -425,7 +461,7 @@ if (false) {(function () {
 
 /***/ }),
 
-/***/ 143:
+/***/ 148:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -486,7 +522,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     attrs: {
       "i-class": "order_tabs",
       "eventid": '2',
-      "mpcomid": '8'
+      "mpcomid": '11'
     },
     on: {
       "change": _vm.changeBar
@@ -523,6 +559,22 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "type": "unfold",
       "mpcomid": '5'
     }
+  })], 1), _vm._v(" "), _c('i-tab', {
+    key: "third",
+    attrs: {
+      "title": _vm.thirdItem,
+      "mpcomid": '10'
+    }
+  }, [_vm._v("\n             \n            "), (_vm.showThird) ? _c('i-icon', {
+    attrs: {
+      "type": "packup",
+      "mpcomid": '9'
+    }
+  }) : _c('i-icon', {
+    attrs: {
+      "type": "unfold",
+      "mpcomid": '8'
+    }
   })], 1)], 1), _vm._v(" "), (_vm.showFirst) ? _c('view', {
     staticClass: "bar_option"
   }, _vm._l((_vm.powerList), function(item, index) {
@@ -555,6 +607,22 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         }
       }
     }, [_vm._v(_vm._s(item.name))])
+  })) : _vm._e(), _vm._v(" "), (_vm.showThird) ? _c('view', {
+    staticClass: "bar_option"
+  }, _vm._l((_vm.stateList), function(item, index) {
+    return _c('p', {
+      key: item.label,
+      staticClass: "option_p",
+      class: _vm.stateActive == item.label ? 'theme_color_text' : '',
+      attrs: {
+        "eventid": '5_' + index
+      },
+      on: {
+        "click": function($event) {
+          _vm.changeItem($event, item, 3)
+        }
+      }
+    }, [_vm._v(_vm._s(item.name))])
   })) : _vm._e(), _vm._v(" "), _c('view', {
     staticClass: "detail_module"
   }), _vm._v(" "), _vm._l((_vm.tableData), function(item, index) {
@@ -563,11 +631,11 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       attrs: {
         "i-class": "i-swipeout-demo-item",
         "operateWidth": 120,
-        "mpcomid": '12_' + index
+        "mpcomid": '15_' + index
       }
     }, [_c('view', {
       attrs: {
-        "eventid": '5_' + index
+        "eventid": '6_' + index
       },
       on: {
         "click": function($event) {
@@ -580,13 +648,25 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "i-class": "cell_content",
         "title": item.customerName,
         "label": item.orderNo,
-        "mpcomid": '9_' + index
+        "mpcomid": '12_' + index
       }
     }, [_c('view', {
       staticClass: "cell_footer"
     }, [_vm._v("\n                    订单时间：" + _vm._s(item.orderTime) + "\n                      |  \n                    金额： " + _vm._s(item.totalSum) + "\n                ")]), _vm._v(" "), _c('view', {
       staticClass: "cell_footer"
-    }, [_vm._v("\n                    负责人：" + _vm._s(item.ascription) + "\n                      |  \n                    状态：" + _vm._s(item.auditStatus) + "\n                ")])])], 1), _vm._v(" "), _c('view', {
+    }, [_vm._v("\n                    负责人：" + _vm._s(item.ascription) + "\n                      |  \n                    状态：\n                    "), (item.checkStatus == 0) ? _c('span', [_vm._v(_vm._s(item.auditStatus))]) : _vm._e(), _vm._v(" "), (item.checkStatus == 1) ? _c('span', {
+      staticStyle: {
+        "color": "rgb(230, 162, 60)"
+      }
+    }, [_vm._v(_vm._s(item.auditStatus))]) : _vm._e(), _vm._v(" "), (item.checkStatus == 2) ? _c('span', {
+      staticStyle: {
+        "color": "rgb(103, 194, 58)"
+      }
+    }, [_vm._v(_vm._s(item.auditStatus))]) : _vm._e(), _vm._v(" "), (item.checkStatus == 3) ? _c('span', {
+      staticStyle: {
+        "color": "rgb(245, 108, 108)"
+      }
+    }, [_vm._v(_vm._s(item.auditStatus))]) : _vm._e()])])], 1), _vm._v(" "), _c('view', {
       staticClass: "i-swipeout-button",
       slot: "button"
     }, [_c('view', {
@@ -596,7 +676,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "background-color": "#f5f5f5"
       },
       attrs: {
-        "eventid": '6_' + index
+        "eventid": '7_' + index
       },
       on: {
         "click": function($event) {
@@ -610,7 +690,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       attrs: {
         "size": "24",
         "type": "editor",
-        "mpcomid": '10_' + index
+        "mpcomid": '13_' + index
       }
     })], 1), _vm._v(" "), _c('view', {
       staticClass: "i-swipeout-button-item",
@@ -619,7 +699,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "background-color": "#f56c6c"
       },
       attrs: {
-        "eventid": '7_' + index
+        "eventid": '8_' + index
       },
       on: {
         "click": function($event) {
@@ -633,14 +713,14 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       attrs: {
         "size": "24",
         "type": "trash",
-        "mpcomid": '11_' + index
+        "mpcomid": '14_' + index
       }
     })], 1)])])
   }), _vm._v(" "), (_vm.noMore) ? _c('i-load-more', {
     attrs: {
       "tip": "我是有底线的",
       "loading": false,
-      "mpcomid": '13'
+      "mpcomid": '16'
     }
   }) : _vm._e(), _vm._v(" "), _c('view', {
     staticClass: "bottom_view"
@@ -655,7 +735,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("￥" + _vm._s(_vm.totalAmount))])]), _vm._v(" "), _c('view', {
     staticClass: "order_add_btn",
     attrs: {
-      "eventid": '8'
+      "eventid": '9'
     },
     on: {
       "click": _vm.toAddOrder
@@ -665,7 +745,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "type": "add",
       "size": "24",
       "color": "#ff6633",
-      "mpcomid": '14'
+      "mpcomid": '17'
     }
   })], 1), _vm._v(" "), _c('i-action-sheet', {
     attrs: {
@@ -673,8 +753,8 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       "actions": _vm.deleteActions,
       "show-cancel": "",
       "mask-closable": false,
-      "eventid": '9',
-      "mpcomid": '15'
+      "eventid": '10',
+      "mpcomid": '18'
     },
     on: {
       "cancel": _vm.cancelDelete,
@@ -693,12 +773,12 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
   }, [_vm._v("确定吗？")]), _vm._v(" "), _c('text', [_vm._v("删除后无法恢复哦")])])]), _vm._v(" "), _c('i-message', {
     attrs: {
       "id": "message",
-      "mpcomid": '16'
+      "mpcomid": '19'
     }
   }), _vm._v(" "), _c('i-toast', {
     attrs: {
       "id": "toast",
-      "mpcomid": '17'
+      "mpcomid": '20'
     }
   })], 2)
 }
@@ -715,4 +795,4 @@ if (false) {
 
 /***/ })
 
-},[139]);
+},[144]);

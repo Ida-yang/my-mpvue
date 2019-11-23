@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([76],{
+global.webpackJsonpMpvue([77],{
 
 /***/ 47:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -216,6 +216,12 @@ if (false) {(function () {
             }
 
             this.loadData();
+        },
+        toOpportunity: function toOpportunity(val) {
+            // console.log(val)
+            var url = '../../packageA/opportunity/opportunityDetail/main';
+            __WEBPACK_IMPORTED_MODULE_0__config__["a" /* default */].information.opportunityDetailData = { id: val.opportunity_id };
+            global.mpvue.navigateTo({ url: url });
         }
     }
 });
@@ -315,7 +321,13 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
         "title": item.opportunity_name,
         "label": item.customerpool[0].name,
         "i-class": "group_cell_content",
+        "eventid": '3_' + index,
         "mpcomid": '7_' + index
+      },
+      on: {
+        "click": function($event) {
+          _vm.toOpportunity(item)
+        }
       }
     }, [_c('view', {
       staticClass: "group_cell_footer",

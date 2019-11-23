@@ -122,17 +122,38 @@
 
         methods: {
             loadData(){
-                this.opportunityDetail = config.information.opportunityDetailData
-                let probability = this.opportunityDetail.opportunityProgress[0].progress_probability
-                let theTime = this.opportunityDetail.opportunityProgress[0].createTime
-                if(probability == '100'){
-                    this.opportunityDetail.signingTime = theTime
-                }else if(probability == '0'){
-                    this.opportunityDetail.failureTime = theTime
+                const _this = this
+                
+                let opportunityinfo = config.information.opportunityDetailData
+                let data = {
+                    opportunity_id: opportunityinfo.id
                 }
 
-                this.loadFollows()
-                this.loadOthers()
+                wx.request({
+                    method:'post',
+                    url: config.defaulthost + 'opportunity/getopportunityById.do?cId=' + config.userData.cId,  //接口地址
+                    data: data,
+                    header:{
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        'Cookie': config.SESSIONID
+                    },
+                    success:function(res) {
+                        let info = res.data.map.success[0]
+
+                        let probability = info.opportunityProgress[0].progress_probability
+                        let theTime = info.opportunityProgress[0].createTime
+                        if(probability == '100'){
+                            info.signingTime = theTime
+                        }else if(probability == '0'){
+                            info.failureTime = theTime
+                        }
+
+                        _this.opportunityDetail = info
+
+                        _this.loadFollows()
+                        _this.loadOthers()
+                    }
+                })
             },
             loadFollows(){
                 const _this = this

@@ -363,9 +363,8 @@
                 })
             },
             toOpportunityDetail(e,val){
-                console.log('11111')
                 const url = 'opportunityDetail/main'
-                config.information.opportunityDetailData = val
+                config.information.opportunityDetailData = {id:val.opportunity_id}
                 mpvue.navigateTo({ url })
             },
         },

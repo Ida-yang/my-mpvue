@@ -1,6 +1,6 @@
 require("../../common/manifest.js")
 require("../../common/vendor.js")
-global.webpackJsonpMpvue([77],{
+global.webpackJsonpMpvue([78],{
 
 /***/ 42:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -152,7 +152,13 @@ if (false) {(function () {
             paybackLength: 0
         };
     },
-    mounted: function mounted() {
+    onShow: function onShow() {
+        this.loadData();
+    },
+
+
+    // 下拉刷新
+    onPullDownRefresh: function onPullDownRefresh() {
         this.loadData();
     },
 
@@ -247,12 +253,12 @@ if (false) {(function () {
                     _this.paybackLength = res.data.length;
                 }
             });
+            wx.stopPullDownRefresh();
         },
         tolink: function tolink(val) {
             var url = '';
             if (val == 1) {
                 url = 'call-item/main';
-                // url = '../packageA/call-item/main'
                 global.mpvue.navigateTo({ url: url });
             } else if (val == 2) {
                 url = 'clue-item/main';

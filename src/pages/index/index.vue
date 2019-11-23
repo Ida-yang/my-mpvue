@@ -251,13 +251,22 @@
         },
 
         onShow () {
-            this.next = false
-            this.loadDate()
-            this.loadSale()
-            this.drawfunnel()
+            this.loadValue()
+        },
+        
+        // 下拉刷新
+        onPullDownRefresh(){
+            this.loadValue()
         },
 
         methods: {
+            loadValue(){
+                this.next = false
+                this.loadDate()
+                this.loadSale()
+                this.drawfunnel()
+                wx.stopPullDownRefresh()
+            },
             loadDate(){
                 let date = new Date()
                 let y = date.getFullYear()

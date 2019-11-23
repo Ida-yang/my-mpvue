@@ -1,6 +1,6 @@
 require("../../../common/manifest.js")
 require("../../../common/vendor.js")
-global.webpackJsonpMpvue([80],{
+global.webpackJsonpMpvue([81],{
 
 /***/ 27:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -136,7 +136,7 @@ if (false) {(function () {
                 example: '1',
                 powerid: '12'
             },
-            timeList: [{ label: '0', name: '全部需联系' }, { label: '1', name: '今日需联系' }, { label: '2', name: '本周需联系' }, { label: '3', name: '逾期未联系' }],
+            timeList: [{ label: '0', name: '全部需联系' }, { label: '1', name: '今日需联系' }, { label: '2', name: '本周需联系' }],
             timeActive: '1',
             powerList: [{ label: '12', name: '我的' }, { label: '13', name: '本组' }, { label: '14', name: '本机构' }],
             powerActive: '12',

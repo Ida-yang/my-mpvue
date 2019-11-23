@@ -1,0 +1,1 @@
+<import src="/pages/mine/addressbook/index.vue.wxml" /><template is="82f0a90a" data="{{ ...$root['0'], $root }}"/>

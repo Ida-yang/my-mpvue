@@ -16,7 +16,7 @@
     </view>
     <view class="_view data-v-6527d287 detail_module"></view>
     <i-cell-group class="_i-cell-group data-v-6527d287">
-      <i-cell wx:key="item.id" key="{{item.id}}" title="{{item.opportunity_name}}" label="{{item.customerpool[0].name}}" i-class="group_cell_content" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-6527d287">
+      <i-cell wx:key="item.id" key="{{item.id}}" title="{{item.opportunity_name}}" label="{{item.customerpool[0].name}}" i-class="group_cell_content" bindtap="handleProxy" data-eventid="{{'3_'+index}}" data-comkey="{{$k}}" wx:for="{{tableData}}" wx:for-index="index" wx:for-item="item" class="_i-cell data-v-6527d287">
         <view slot="footer" class="_view data-v-6527d287 group_cell_footer">
           <view class="_p data-v-6527d287">{{item.opportunity_achievement}}</view>
           <view class="_p data-v-6527d287">{{item.opportunityProgress[0].progress_name}}</view>

@@ -22,7 +22,7 @@
         <view class="detail_module"></view>
 
         <i-cell-group>
-            <i-cell v-for="item in tableData" :key="item.id" :title="item.opportunity_name" :label="item.customerpool[0].name" i-class="group_cell_content">
+            <i-cell v-for="item in tableData" :key="item.id" :title="item.opportunity_name" :label="item.customerpool[0].name" i-class="group_cell_content" @click="toOpportunity(item)">
                 <view slot="footer" class="group_cell_footer">
                     <p>{{item.opportunity_achievement}}</p>
                     <p>{{item.opportunityProgress[0].progress_name}}</p>
@@ -133,6 +133,13 @@
                 }
 
                 this.loadData()
+            },
+
+            toOpportunity(val){
+                // console.log(val)
+                const url = '../../packageA/opportunity/opportunityDetail/main'
+                config.information.opportunityDetailData = {id:val.opportunity_id}
+                mpvue.navigateTo({ url })
             },
         },
     }
